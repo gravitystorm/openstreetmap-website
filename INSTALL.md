@@ -37,7 +37,7 @@ These can be installed on Ubuntu 10.10 or later with:
 We use [Bundle](http://gembundler.com/) to manage the rubygems required for the project.
 
 ```
-git clone https://github.com/openstreetmap/openstreetmap-website.git
+git clone --depth=1 https://github.com/openstreetmap/openstreetmap-website.git
 cd openstreetmap-website
 bundle install
 ```
