@@ -42,7 +42,7 @@ sudo apt-get install ruby libruby ruby-dev rdoc ri ruby-bundler rubygems \
 We use [Bundle](http://gembundler.com/) to manage the rubygems required for the project.
 
 ```
-git clone https://github.com/openstreetmap/openstreetmap-website.git
+git clone --depth=1 https://github.com/openstreetmap/openstreetmap-website.git
 cd openstreetmap-website
 bundle install
 ```
