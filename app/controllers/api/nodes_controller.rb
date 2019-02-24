@@ -34,8 +34,10 @@ module Api
 
       if node.visible
         render :xml => node.to_xml.to_s
-      else
+      elsif params[:api_version] == "0.6"
         head :gone
+      else
+        render :plain => node.version.to_s, :status => :gone
       end
     end
 

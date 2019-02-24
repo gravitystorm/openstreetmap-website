@@ -155,8 +155,8 @@ class User < ActiveRecord::Base
     user
   end
 
-  def to_xml
-    doc = OSM::API.new.get_xml_doc
+  def to_xml(api_version)
+    doc = OSM::API.new(api_version).get_xml_doc
     doc.root << to_xml_node
     doc
   end

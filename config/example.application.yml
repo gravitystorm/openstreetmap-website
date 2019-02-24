@@ -14,8 +14,8 @@ defaults: &defaults
   # Sender addresses for emails
   email_from: "OpenStreetMap <openstreetmap@example.com>"
   email_return_path: "openstreetmap@example.com"
-  # API version
-  api_version: "0.6"
+  # Enabled API versions
+  api_versions: ["0.6", "0.7"]
   # Application status - possible values are:
   #   :online - online and operating normally
   #   :api_readonly - site online but API in read-only mode

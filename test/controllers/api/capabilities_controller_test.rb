@@ -7,20 +7,23 @@ module Api
     def test_routes
       assert_routing(
         { :path => "/api/capabilities", :method => :get },
-        { :controller => "api/capabilities", :action => "show" }
+        { :controller => "api/capabilities", :action => "show", :api_version => "0.6" }
       )
-      assert_recognizes(
-        { :controller => "api/capabilities", :action => "show" },
-        { :path => "/api/0.6/capabilities", :method => :get }
-      )
+
+      ["0.6", "0.7"].each do |version|
+        assert_recognizes(
+          { :controller => "api/capabilities", :action => "show", :api_version => version },
+          { :path => "/api/#{version}/capabilities", :method => :get }
+        )
+      end
     end
 
     def test_capabilities
-      get :show
+      get :show, :params => { :api_version => "0.6" }
       assert_response :success
-      assert_select "osm[version='#{API_VERSION}'][generator='#{GENERATOR}']", :count => 1 do
+      assert_select "osm[version='0.6'][generator='#{GENERATOR}']", :count => 1 do
         assert_select "api", :count => 1 do
-          assert_select "version[minimum='#{API_VERSION}'][maximum='#{API_VERSION}']", :count => 1
+          assert_select "version[minimum='0.6'][maximum='0.7']", :count => 1
           assert_select "area[maximum='#{MAX_REQUEST_AREA}']", :count => 1
           assert_select "note_area[maximum='#{MAX_NOTE_REQUEST_AREA}']", :count => 1
           assert_select "tracepoints[per_page='#{TRACEPOINTS_PER_PAGE}']", :count => 1

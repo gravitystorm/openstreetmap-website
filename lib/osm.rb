@@ -490,6 +490,10 @@ module OSM
   end
 
   class API
+    def initialize(api_version)
+      @api_version = api_version
+    end
+
     def get_xml_doc
       doc = XML::Document.new
       doc.encoding = XML::Encoding::UTF_8
@@ -502,7 +506,7 @@ module OSM
     end
 
     def xml_root_attributes
-      { "version" => API_VERSION.to_s,
+      { "version" => @api_version,
         "generator" => GENERATOR,
         "copyright" => COPYRIGHT_OWNER,
         "attribution" => ATTRIBUTION_URL,

@@ -271,7 +271,7 @@ class UserTest < ActiveSupport::TestCase
 
   def test_to_xml
     user = build(:user, :with_home_location)
-    xml = user.to_xml
+    xml = user.to_xml("0.6")
     assert_select Nokogiri::XML::Document.parse(xml.to_s), "user" do
       assert_select "[display_name=?]", user.display_name
       assert_select "[account_created=?]", user.creation_time.xmlschema
