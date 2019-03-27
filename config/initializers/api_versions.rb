@@ -5,4 +5,5 @@ all_api_versions = ["0.6"]
 
 # `deployed_api_versions` is the user-controlled setting for which versions they would like
 # to be deployed. The `api_verions` setting is the intersection of these two lists
-Settings.api_versions = Settings.deployed_api_versions & all_api_versions
+Settings.add_source!(:api_versions => Settings.deployed_api_versions & all_api_versions)
+Settings.reload!
