@@ -14,7 +14,7 @@ support_email: "openstreetmap@example.com"
 email_from: "OpenStreetMap <openstreetmap@example.com>"
 email_return_path: "openstreetmap@example.com"
 # Deployed API versions
-deployed_api_versions: ["0.6"]
+deployed_api_versions: ["0.6", "0.7"]
 # Application status - possible values are:
 #   online - online and operating normally
 #   api_readonly - site online but API in read-only mode

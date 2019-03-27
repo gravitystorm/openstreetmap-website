@@ -5,7 +5,7 @@ module Api
     ##
     # test all routes which lead to this controller
     def test_routes
-      Settings.api_versions.each do |version|
+      all_api_versions.each do |version|
         assert_routing(
           { :path => "/api/#{version}/permissions", :method => :get },
           { :controller => "api/permissions", :action => "show", :api_version => version }
@@ -14,7 +14,7 @@ module Api
     end
 
     def test_permissions_anonymous
-      Settings.api_versions.each do |version|
+      all_api_versions.each do |version|
         get :show, :params => { :api_version => version }
         assert_response :success
         assert_select "osm > permissions", :count => 1 do
@@ -24,7 +24,7 @@ module Api
     end
 
     def test_permissions_basic_auth
-      Settings.api_versions.each do |version|
+      all_api_versions.each do |version|
         basic_authorization create(:user).email, "test"
         get :show, :params => { :api_version => version }
         assert_response :success
@@ -38,7 +38,7 @@ module Api
     end
 
     def test_permissions_oauth
-      Settings.api_versions.each do |version|
+      all_api_versions.each do |version|
         @request.env["oauth.token"] = AccessToken.new do |token|
           # Just to test a few
           token.allow_read_prefs = true
