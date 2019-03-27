@@ -7,16 +7,18 @@ module Api
     def test_routes
       assert_routing(
         { :path => "/api/capabilities", :method => :get },
-        { :controller => "api/capabilities", :action => "show" }
+        { :controller => "api/capabilities", :action => "show", :api_version => "0.6" }
       )
-      assert_recognizes(
-        { :controller => "api/capabilities", :action => "show" },
-        { :path => "/api/0.6/capabilities", :method => :get }
-      )
+      Settings.api_versions.each do |version|
+        assert_recognizes(
+          { :controller => "api/capabilities", :action => "show", :api_version => version },
+          { :path => "/api/#{version}/capabilities", :method => :get }
+        )
+      end
     end
 
     def test_capabilities
-      get :show
+      get :show, :params => { :api_version => "0.6" }
       assert_response :success
       assert_select "osm[version='0.6'][generator='#{Settings.generator}']", :count => 1 do
         assert_select "api", :count => 1 do

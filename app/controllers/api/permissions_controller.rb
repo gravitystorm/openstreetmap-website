@@ -19,6 +19,7 @@ module Api
                      else
                        []
                      end
+      @current_api_version = params[:api_version]
     end
   end
 end

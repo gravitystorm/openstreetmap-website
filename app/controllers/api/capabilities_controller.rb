@@ -13,6 +13,9 @@ module Api
       @database_status = database_status
       @api_status = api_status
       @gpx_status = gpx_status
+      @minimum_api_version = Settings.api_versions.min_by(&:to_f)
+      @maximum_api_version = Settings.api_versions.max_by(&:to_f)
+      @current_api_version = params[:api_version]
     end
   end
 end
