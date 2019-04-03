@@ -1,6 +1,7 @@
 # Messages for German (Deutsch)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Al
 # Author: Als-Holder
 # Author: Apmon
@@ -49,6 +50,7 @@
 # Author: Snocker15
 # Author: Str4nd
 # Author: Suriyaa Kudo
+# Author: Sushi
 # Author: Tehabe
 # Author: The Evil IP address
 # Author: ThePiscin
@@ -61,6 +63,11 @@ de:
     formats:
       friendly: '%e. %B %Y um %H:%M Uhr'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: Die eingegebene E-Mail-Adresse scheint nicht gültig
+          zu sein.
+        email_address_not_routable: ist nicht routbar
     models:
       acl: Zugangskontrollliste
       changeset: Änderungssatz
@@ -142,8 +149,31 @@ de:
       name: Potlatch 2
       description: Potlatch 2 (im Browser eingebetteter Editor)
     remote:
-      name: externem Editor
+      name: Fernsteuerung
       description: externem Editor (JOSM oder Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: '%{when} erstellt'
+        opened_at_by_html: '%{when} von %{user} erstellt'
+        commented_at_html: '%{when} aktualisiert'
+        commented_at_by_html: '%{when} von %{user} aktualisiert'
+        closed_at_html: '%{when} gelöst'
+        closed_at_by_html: '%{when} von %{user} gelöst'
+        reopened_at_html: '%{when} reaktiviert'
+        reopened_at_by_html: '%{when} von %{user} reaktiviert'
+      rss:
+        title: OpenStreetMap Hinweise
+        description_area: Übersicht der gemeldeten, kommentierten oder geschlossen
+          Hinweise/Fehler im Bereich [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})].
+        description_item: Ein RSS-Feed für Hinweis/Fehler %{id}
+        opened: neuer Hinweis/Fehler (in der Nähe von %{place})
+        commented: neuer Kommentar (in der Nähe von %{place})
+        closed: geschlossener Hinweis/Fehler (in der Nähe von %{place})
+        reopened: reaktivierter Hinweis/Fehler (in der Nähe von %{place})
+      entry:
+        comment: Kommentieren
+        full: Vollständiger Hinweis
   browse:
     created: Erstellt
     closed: Geschlossen
@@ -268,9 +298,9 @@ de:
     query:
       title: Objektabfrage
       introduction: Klicke auf die Karte, um benachbarte Objekte zu finden.
-      nearby: Objekte in der Nähe
+      nearby: Ähnliche Eigenschaften
       enclosing: Umschließende Objekte
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Seite %{page}
       next: Nächste »
@@ -300,15 +330,20 @@ de:
     timeout:
       sorry: Entschuldigung, es hat leider zu lange gedauert, die angeforderten Änderungssätze
         abzurufen.
-    rss:
-      title_all: Diskussion zum OpenStreetMap-Änderungssatz
-      title_particular: Diskussion zum OpenStreetMap-Änderungssatz Nr. %{changeset_id}
+  changeset_comments:
+    comment:
       comment: Neuer Diskussionsbeitrag zum Änderungssatz Nr. %{changeset_id} von
         %{author}
-      commented_at_html: vor %{when} aktualisiert
       commented_at_by_html: vor %{when} durch %{user} aktualisiert
-      full: Vollständige Diskussion
-  diary_entry:
+    comments:
+      comment: 'Neuer Kommentar zum Änderungssatz #%{changeset_id} von %{author}'
+    index:
+      title_all: Diskussion zum OpenStreetMap-Änderungssatz
+      title_particular: Diskussion zum OpenStreetMap-Änderungssatz Nr. %{changeset_id}
+    timeout:
+      sorry: Leider ist die Liste der Kommentare der Änderungssätze, die du angefordert
+        hast, für den Abruf zu lang.
+  diary_entries:
     new:
       title: Neuer Blog-Eintrag
       publish_button: Veröffentlichen
@@ -565,7 +600,7 @@ de:
           motorway_junction: Autobahnausfahrt/-kreuz
           motorway_link: Autobahnauffahrt
           passing_place: Ausweichstelle
-          path: Pfad (Wanderweg)
+          path: Pfad
           pedestrian: Fußgängerzone
           platform: Bahnsteig
           primary: Bundesstraße
@@ -1120,10 +1155,9 @@ de:
     intro_text: OpenStreetMap ist eine Karte der Welt, erstellt von Menschen wie dir
       und frei verwendbar unter einer offenen Lizenz.
     intro_2_create_account: Erstelle ein Benutzerkonto
-    partners_html: Das Hosting wird von %{ucl}, %{bytemark}, %{ic} und weiteren %{partners}
+    hosting_partners_html: Das Hosting wird von %{ucl}, %{bytemark} und anderen %{partners}
       unterstützt.
     partners_ucl: UCL
-    partners_ic: dem Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: Partnern
     osm_offline: Die OpenStreetMap-Datenbank ist im Moment wegen wichtiger Wartungsarbeiten
@@ -1461,6 +1495,8 @@ de:
           BY AT</a>), des <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Landes
           Vorarlberg</a> und des Landes Tirol (<a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">lizenziert
           gemäß CC BY AT samt Erweiterungen zur Lizenz</a>).'
+        contributors_au_html: '<strong>Australien</strong>: Enthält Daten zu Siedlungen,
+          die auf Daten des <i>Australian Bureau of Statistics</i> basieren.'
         contributors_ca_html: '<strong>Kanada</strong>: Enthält Daten von GeoBase&reg;,
           GeoGratis (&copy; <i>Department of Natural Resources Canada</i>), CanVec
           (&copy; <i>Department of Natural Resources Canada</i>) und StatCan (<i>Geography
@@ -1482,11 +1518,16 @@ de:
           <a href="http://www.gu.gov.si/en/">Vermessungs- und Kartierungsbehörde</a> sowie dem
           <a href="http://www.mkgp.gov.si/en/">Ministerium für Landwirtschaft, Forsten und Ernährung</a>
           (öffentliche Informationen von Slowenien).
+        contributors_es_html: |-
+          <strong>Spanien</strong>: Enthält Daten des
+          spanischen nationalen geografischen Instituts (<a href="http://www.ign.es/">IGN</a>) und
+          nationalen kartografischen Systems (<a href="http://www.scne.es/">SCNE</a>),
+          lizenziert zur Weiterverwendung unter <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
         contributors_za_html: '<strong>Südafrika</strong>: Enthält Daten von <i><a
           href="http://www.ngi.gov.za/">Chief Directorate: National Geo-Spatial Information</a></i>,
           Staatliches Urheberrecht vorbehalten.'
         contributors_gb_html: '<strong>Vereinigtes Königreich</strong>: Enthält Daten
-          des <i>Ordnance Survey</i> &copy; Urheber- und Datenbankrecht 2010-12.'
+          des <i>Ordnance Survey</i> &copy; Urheber- und Datenbankrecht 2010-19.'
         contributors_footer_1_html: Weitere Informationen sowie andere Datenquellen,
           die zur Verbesserung von OpenStreetMap genutzt wurden, sind auf <a  href="https://wiki.openstreetmap.org/wiki/Contributors">der
           Seite über die Mitwirkenden</a> im Wiki von OpenStreetMap zu finden.
@@ -1642,6 +1683,11 @@ de:
         title: Zu OSM wechseln
         description: Hilfe für auf Karten und anderen Diensten gegründeten Unternehmen
           und Organisationen, die zu OpenStreetMap wechseln.
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: Für Organisationen
+        description: Mit einer Organisation Pläne machen für OpenStreetMap? Finde
+          heraus, was du wissen musst, auf der Willkommensseite.
       wiki:
         url: https://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1733,7 +1779,7 @@ de:
       edit: Bearbeiten
       preview: Vorschau
     markdown_help:
-      title_html: Interpretiert mit <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Geparst mit <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Überschriften
       heading: Überschrift
       subheading: Zwischenüberschrift
@@ -1787,7 +1833,7 @@ de:
         paragraph_1_html: |-
           OpenStreetMap hat mehrere Quellen zum Lernen, Stellen und Beantworten von Fragen über das Projekt
           und zum gemeinsamen Diskutieren und Dokumentieren von Kartierungsthemen.
-          <a href='%{help_url}'>Erhalte hier Hilfe</a>.
+          <a href='%{help_url}'>Erhalte Hilfe hier</a>. Hast du mit einer Organisation Pläne für OpenStreetMap? <a href='https://welcome.openstreetmap.org/'>Überprüfe unsere Willkommensseite</a>.
       start_mapping: Beginne mit dem Bearbeiten der Karte
       add_a_note:
         title: Keine Zeit? Dann füge einen Hinweis ein!
@@ -1923,16 +1969,12 @@ de:
         other: GPX-Datei mit %{count} Punkten von %{user}
       description_without_count: GPX-Datei von %{user}
   application:
+    permission_denied: Du hast keine Berechtigung, um auf diese Aktion zuzugreifen.
     require_cookies:
       cookies_needed: Es scheint als hättest du Cookies ausgeschaltet. Bitte aktiviere
         Cookies, bevor du fortfährst.
     require_admin:
       not_an_admin: Du musst ein Administrator sein, um diese Aktion auszuführen.
-    require_moderator:
-      not_a_moderator: Du musst Moderator sein, um diese Aktion durchführen zu können.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Du musst ein Moderator oder Administrator sein, um
-        diese Aktion auszuführen.
     setup_user_auth:
       blocked_zero_hour: Du hast eine dringende Nachricht auf der OpenStreetMap-Website.
         Du musst sie zuerst lesen, bevor du deine Bearbeitungen speichern kannst.
@@ -2030,7 +2072,7 @@ de:
       flash: Client-Informationen erfolgreich aktualisiert
     destroy:
       flash: Die registrierte Client-Anwendung wurde entfernt
-  user:
+  users:
     login:
       title: Anmelden
       heading: Anmelden
@@ -2147,6 +2189,7 @@ de:
       terms declined: Wir bedauern es, dass du dich dazu entschieden hast, den neuen
         Bedingungen für Mitwirkende nicht zuzustimmen. Weitere Informationen findest
         du auf <a href="%{url}">dieser Wikiseite</a>.
+      terms declined url: https://wiki.openstreetmap.org/wiki/DE:Contributor_Terms_Declined
     terms:
       title: Bedingungen für Mitwirkende
       heading: Bedingungen für Mitwirkende
@@ -2156,10 +2199,12 @@ de:
       consider_pd: Zusätzlich zu den oben genannten Bedingungen betrachte ich meine
         Beiträge als gemeinfrei (Public Domain)
       consider_pd_why: Was bedeutet dies?
+      consider_pd_why_url: https://www.osmfoundation.org/wiki/License/Why_would_I_want_my_contributions_to_be_public_domain
       guidance: 'Informationen die dabei helfen, diese Bedingungen zu verstehen: eine
         <a href="%{summary}">verständliche Zusammenfassung</a> sowie einige <a href="%{translations}">inoffizielle
         Übersetzungen</a>'
       agree: Akzeptieren
+      declined: https://wiki.openstreetmap.org/wiki/DE:Contributor_Terms_Declined
       decline: Ablehnen
       you need to accept or decline: Bitte lies die neuen Bedingungen für Mitwirkende
         und nimm sie an oder lehne sie ab, bevor du weitermachst.
@@ -2283,6 +2328,7 @@ de:
           durchzulesen sowie zu akzeptieren.
         agreed_with_pd: Du hast zudem erklärt, dass du deine Beiträge gemeinfrei veröffentlichst
           (unter Public Domain stellst).
+        link: https://www.osmfoundation.org/wiki/License/Contributor_Terms
         link text: Worum handelt es sich?
       profile description: 'Profil-Beschreibung:'
       preferred languages: 'Bevorzugte Sprachen:'
@@ -2356,8 +2402,6 @@ de:
       button: Freund entfernen
       success: '%{name} wurde als Freund entfernt.'
       not_a_friend: '%{name} ist nicht dein Freund.'
-    filter:
-      not_an_administrator: Du musst ein Administrator sein um diese Aktion auszuführen.
     index:
       title: Benutzer
       heading: Benutzer
@@ -2393,8 +2437,6 @@ de:
         mit deiner ID in deinen Benutzereinstellungen verknüpfen.
   user_role:
     filter:
-      not_an_administrator: Benutzerrollen können nur von Administratoren verwaltet
-        werden - und du bist keiner.
       not_a_role: Der String „%{role}“ bezeichnet keine gültige Rolle.
       already_has_role: Der Nutzer gehört bereits der Rolle %{role} an.
       doesnt_have_role: Der Nutzer gehört nicht der Rolle %{role} an.
@@ -2530,31 +2572,10 @@ de:
       next: Nächste »
       previous: « Vorige
   notes:
-    comment:
-      opened_at_html: '%{when} erstellt'
-      opened_at_by_html: '%{when} von %{user} erstellt'
-      commented_at_html: '%{when} aktualisiert'
-      commented_at_by_html: '%{when} von %{user} aktualisiert'
-      closed_at_html: '%{when} gelöst'
-      closed_at_by_html: '%{when} von %{user} gelöst'
-      reopened_at_html: '%{when} reaktiviert'
-      reopened_at_by_html: '%{when} von %{user} reaktiviert'
-    rss:
-      title: OpenStreetMap Hinweise
-      description_area: Übersicht der gemeldeten, kommentierten oder geschlossen Hinweise/Fehler
-        im Bereich [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})].
-      description_item: Ein RSS-Feed für Hinweis/Fehler %{id}
-      opened: neuer Hinweis/Fehler (in der Nähe von %{place})
-      commented: neuer Kommentar (in der Nähe von %{place})
-      closed: geschlossener Hinweis/Fehler (in der Nähe von %{place})
-      reopened: reaktivierter Hinweis/Fehler (in der Nähe von %{place})
-    entry:
-      comment: Kommentieren
-      full: Vollständiger Hinweis
     mine:
       title: Hinweise/Fehler erstellt oder kommentiert von %{user}
       heading: Hinweise von %{user}
-      subheading: Hinweise/Fehler erstellt oder kommentiert von %{user}
+      subheading_html: Hinweise/Fehler erstellt oder kommentiert von %{user}
       id: ID
       creator: Ersteller
       description: Hinweis
@@ -2649,13 +2670,12 @@ de:
     directions:
       ascend: Aufsteigend
       engines:
+        fossgis_osrm_bike: Fahrrad (OSRM)
+        fossgis_osrm_car: Auto (OSRM)
+        fossgis_osrm_foot: Fuß (OSRM)
         graphhopper_bicycle: Fahrrad (GraphHopper)
         graphhopper_car: Auto (GraphHopper)
         graphhopper_foot: Fuß (GraphHopper)
-        mapquest_bicycle: Fahrrad (MapQuest)
-        mapquest_car: Auto (MapQuest)
-        mapquest_foot: Fuß (MapQuest)
-        osrm_car: Auto (OSRM)
       descend: Absteigend
       directions: 'Routenanweisungen:'
       distance: Distanz
@@ -2787,4 +2807,9 @@ de:
         zugehörigen Versionen zurück, bevor du die Redaction löschst.
       flash: Redaction wurde gelöscht.
       error: Beim Löschen dieser Redaction ist ein Fehler aufgetreten.
+  validations:
+    leading_whitespace: hat anführendes Leerzeichen
+    trailing_whitespace: hat anhängendes Leerzeichen
+    invalid_characters: enthält ungültige Zeichen
+    url_characters: enthält besondere URL-Zeichen (%{characters})
 ...

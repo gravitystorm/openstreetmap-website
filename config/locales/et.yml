@@ -1,6 +1,7 @@
 # Messages for Estonian (eesti)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: AivoK
 # Author: Avjoska
 # Author: Kanne
@@ -97,6 +98,29 @@ et:
     remote:
       name: Kaugjuhtimine
       description: Kaugjuhtimine (JOSM või Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Loodud %{when} tagasi
+        opened_at_by_html: Loodud %{when} tagasi kasutaja %{user} poolt
+        commented_at_html: Uuendatud %{when} tagasi
+        commented_at_by_html: Uuendatud %{when} tagasi kasutaja %{user} poolt
+        closed_at_html: Lahendatud %{when} tagasi
+        closed_at_by_html: Lahendatud %{when} tagasi kasutaja %{user} poolt
+        reopened_at_html: Taasaktiveeritud %{when} tagasi
+        reopened_at_by_html: Taasaktiveeritud %{when} tagasi kasutaja %{user} poolt
+      rss:
+        title: OpenStreetMapi märkused
+        description_area: Loetelu märkustest mida teatati, kommenteeriti või suleti
+          sinu piirkonnas [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Märkuse %{id} RSS uudisvoog
+        opened: uus märkus (lähedal kohale %{place})
+        commented: uus kommentaar (lähedal kohale %{place})
+        closed: suletud märkus (lähedal kohale %{place})
+        reopened: taasaktiveeritud märkus (lähedal kohale %{place})
+      entry:
+        comment: Kommentaar
+        full: Täielik tekst
   browse:
     created: Loodud
     closed: Suletud
@@ -223,7 +247,7 @@ et:
       introduction: Klõpsa kaardil, et leida läheduses asuvad objektid.
       nearby: Läheduses asuvad objektid
       enclosing: Ümbritsevad objektid
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Leht %{page}
       next: Järgmine »
@@ -252,14 +276,14 @@ et:
       load_more: Laadi veel
     timeout:
       sorry: Kahjuks võttis taotletud muudatuskogumite laadimine liiga kaua aega.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Uus kommentaar muudatuskogumi #%{changeset_id} kohta kasutajalt %{author}'
+      commented_at_by_html: Uuendanud %{user} %{when} tagasi
+    index:
       title_all: OpenStreetMapi muudatuskogumi arutelu
       title_particular: 'OpenStreetMapi muudatuskogumi #%{changeset_id} arutelu'
-      comment: 'Uus kommentaar muudatuskogumis #%{changeset_id} kasutajalt %{author}'
-      commented_at_html: Uuendatud %{when} tagasi
-      commented_at_by_html: Uuendanud %{user} %{when} tagasi
-      full: Kogu arutelu
-  diary_entry:
+  diary_entries:
     new:
       title: Uus päeviku sissekanne
       publish_button: Avalda
@@ -268,7 +292,7 @@ et:
       title_friends: Sõprade päevikud
       title_nearby: Lähedalasuvate kasutajate päevikud
       user_title: Kasutaja %{user} päevik
-      in_language_title: Päeviku sissekanded %{language}
+      in_language_title: Päeviku sissekanded (%{language})
       new: Uus päeviku sissekanne
       new_title: Lisa päevikusse uus sissekanne
       no_entries: Päevikus pole sissekandeid.
@@ -297,7 +321,7 @@ et:
       title: Sellist päeviku sissekannet pole olemas
       heading: Sissekannet ID-ga %{id} pole olemas
       body: Kahjuks ei leidu päeviku sissekannet või kommentaari id-ga %{id}. Kontrolli
-        sisestatud lingi õigekirja. Võimalik, et link millele sa vajutasid on vigane.
+        sisestatud lingi õigekirja. Võimalik, et link, millele klõpsasid, on vigane.
     diary_entry:
       posted_by: Postitas %{link_user} kuupäeval %{created} – %{language_link}
       comment_link: Kommenteeri seda sissekannet
@@ -751,6 +775,9 @@ et:
     results:
       no_results: Ei leidnud midagi
       more_results: Veel tulemusi
+  issues:
+    index:
+      user_not_found: Kasutajat pole olemas.
   reports:
     new:
       title_html: Kaebus (%{link})
@@ -813,9 +840,8 @@ et:
     intro_text: OpenStreetMap on maailma kaart, mille on loonud inimesed nagu sina
       ja seda võib vabalt kasutada avatud litsentsi tingimustel.
     intro_2_create_account: loo oma konto
-    partners_html: Majutust toetavad %{ucl}, %{ic} ja %{bytemark} ning teised %{partners}.
+    hosting_partners_html: Majutust toetavad %{ucl}, %{bytemark} ja teised %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partnerid
     osm_offline: OpenStreetMapi andmebaas ei ole hetkel juurdepääsetav sest teostatakse
@@ -847,7 +873,7 @@ et:
     message_notification:
       hi: Tere, %{to_user}
       header: '%{from_user} on saatnud sulle OpenStreetMapi kaudu sõnumi teemaga %{subject}:'
-      footer_html: Sõnumit võib lugeda samuti lehel %{readurl} ja vastata sellele
+      footer_html: Sõnumit saad lugeda ka aadressil %{readurl} ning vastata saad aadressil
         %{replyurl}.
     friend_notification:
       hi: Tere, %{to_user}
@@ -951,16 +977,16 @@ et:
         %{url} ja klõpsa nuppu "Lõpeta tellimus".
   messages:
     inbox:
-      title: Saabunud kirjad
-      my_inbox: Minu postkast
-      outbox: Saadetud kirjad
+      title: Saabunud sõnumid
+      my_inbox: Saabunud sõnumid
+      outbox: saadetud sõnumid
       messages: Sul on %{new_messages} ja %{old_messages}.
       new_messages:
-        one: '%{count} uus kiri'
-        other: '%{count} uut kirja'
+        one: '%{count} uus sõnum'
+        other: '%{count} uut sõnumit'
       old_messages:
-        one: '%{count} vana kiri'
-        other: '%{count} vana kirja'
+        one: '%{count} vana sõnum'
+        other: '%{count} vana sõnumit'
       from: Saatja
       subject: Teema
       date: Kuupäev
@@ -979,7 +1005,7 @@ et:
       send_button: Saada
       back_to_inbox: Tagasi minu postkasti
     create:
-      message_sent: Sõnum saadetud
+      message_sent: Sõnum saadetud.
       limit_exceeded: Sa oled hiljuti saatnud palju sõnumeid. Palun oota mõnda aega
         enne kui proovid veel sõnumeid saata.
     no_such_message:
@@ -989,11 +1015,11 @@ et:
     outbox:
       title: Saadetud sõnumid
       my_inbox: '%{inbox_link}'
-      inbox: saabunud kirjad
+      inbox: Saabunud sõnumid
       outbox: saadetud sõnumid
       messages:
-        one: Sul on %{count} saadetud kiri
-        other: Sul on %{count} saadetud kirja
+        one: Sul on %{count} saadetud sõnum.
+        other: Sul on %{count} saadetud sõnumit.
       to: Kellele
       subject: Teema
       date: Kuupäev
@@ -1010,6 +1036,7 @@ et:
       date: Kuupäev
       reply_button: Vasta
       unread_button: Märgi mitteloetuks
+      destroy_button: Kustuta
       back: Tagasi
       to: Kellele
       wrong_user: Oled sisse loginud kui "%{user}" aga sõnum, mida soovid lugeda ei
@@ -1018,10 +1045,10 @@ et:
     sent_message_summary:
       destroy_button: Kustuta
     mark:
-      as_read: Sõnum on märgitud loetuks
-      as_unread: Sõnum on märgitud kui lugemata
+      as_read: Sõnum on märgitud loetud sõnumiks.
+      as_unread: Sõnum on märgitud lugemata sõnumiks.
     destroy:
-      destroyed: Sõnum kustutatud
+      destroyed: Sõnum kustutatud.
   site:
     about:
       next: Edasi
@@ -1082,7 +1109,7 @@ et:
         title_html: Autoriõigused ja litsents
         intro_1_html: |-
           OpenStreetMapi<sup><a href="#trademarks">&reg;</a></sup> andmed on <i>avaandmed</i>, mille
-          <a href="https://osmfoundation.org/">OpenStreetMap Foundation</a> (OSMF) on avaldanud litsentsi <a href="https://opendatacommons.org/licenses/odbl/">Open Data Commons Open Database License</a> (ODbL) all.
+          <a href="https://osmfoundation.org/">OpenStreetMap Foundation</a> (OSMF) on avaldanud Open Data Commonsi litsentsi <a href="https://opendatacommons.org/licenses/odbl/">Open Database License</a> (ODbL) all.
         intro_2_html: |-
           Tohid andmeid vabalt kopeerida, levitada, edastada ja kohandada,
           kui viitad OpenStreetMapile ja selle kaastöölistele.
@@ -1228,8 +1255,9 @@ et:
       map_image: Kaardi pilt (kuvab tavakaardi)
       embeddable_html: Põimitav HTML
       licence: Litsents
-      export_details: OpenStreetMapi andmed on avaldatud litsentsi <a href="https://opendatacommons.org/licenses/odbl/1.0/">Open
-        Data Commons Open Database License</a> (ODbL) tingimustel.
+      export_details: OpenStreetMapi andmed on avaldatud Open Data Commonsi litsentsi
+        <a href="https://opendatacommons.org/licenses/odbl/1.0/">Open Database License</a>
+        (ODbL) tingimustel.
       too_large:
         advice: 'Kui ülaltoodu eksportimine ebaõnnestub, siis kasuta palun ühte alljärgnevatest
           allikatest:'
@@ -1449,7 +1477,7 @@ et:
         title: Tekkis küsimusi?
         paragraph_1_html: |-
           OpenStreetMap pakub erinevaid võimalusi projekti tundmaõppimiseks, küsimuste esitamiseks ja vastamiseks ning kaardistamise teemade üle üheskoos arupidamiseks ja dokumenteerimiseks.
-          <a href='%{help_url}'>Leia abi siit</a>.
+          <a href='%{help_url}'>Leia abi siit</a>. Kas sinu organisatsioonil on plaane seoses OpenStreetMapiga? <a href='https://welcome.openstreetmap.org/'>Vaata tutvustuslehte</a>.
       start_mapping: Alusta kaardistamist
       add_a_note:
         title: Pole aega kaarti muuta? Lisa märkus!
@@ -1479,6 +1507,8 @@ et:
       trace_uploaded: Sinu GPX-fail on üles laaditud ja ootab andmebaasi sisestamist.
         See võtab aega tavaliselt pool tundi kuni tund. Peale lõpetamist saadetakse
         sulle meil.
+      upload_failed: Kahjuks ei õnnestunud GPX-faili üles laadida. Sellest tõrkest
+        on antud märku administraatorile. Palun proovi uuesti.
     edit:
       filename: 'Failinimi:'
       download: laadi alla
@@ -1494,6 +1524,8 @@ et:
       save_button: Salvesta muudatused
       visibility: 'Nähtavus:'
       visibility_help: mida see tähendab?
+    update:
+      updated: Rada uuendatud.
     trace_optionals:
       tags: Sildid
     show:
@@ -1546,12 +1578,14 @@ et:
       upload_trace: Lisa GPS-rada
       see_all_traces: Vaata kõiki GPS-radasid
       see_my_traces: Vaata minu radu
+    delete:
+      scheduled_for_deletion: Raja kustutamine kantud tööplaani.
+    offline_warning:
+      message: GPX-failide üleslaadimise süsteem pole praegu saadaval.
   application:
     require_cookies:
       cookies_needed: Paistab, et sul on küpsised keelatud. Enne jätkamist luba palun
         brauseris küpsised.
-    require_moderator:
-      not_a_moderator: Selle tegevuse sooritamiseks pead sa olema moderaator.
     setup_user_auth:
       blocked: Sinu juurdepääs API-le on blokeeritud. Palun logi sisse veebiliidese
         kaudu, et saada rohkem infot.
@@ -1574,13 +1608,13 @@ et:
       allow_write_notes: muuta märkuseid.
       grant_access: Luba juurdepääs
     authorize_success:
-      title: Autoriseerimise taotlemine on lubatud
+      title: Volitamistaotlus lubatud
       allowed: Oled andnud rakendusele %{app_name} juurdepääsu oma kontole.
       verification: Kontrollkood on %{code}.
     authorize_failure:
-      title: Autoriseerimistaotlus ebaõnnestus
+      title: Volitamistaotlus ebaõnnestus
       denied: Oled keelanud rakendusele %{app_name} juurdepääsu oma kontole.
-      invalid: Autoriseerimisluba ei ole kehtiv.
+      invalid: Volitamisluba ei ole kehtiv.
     revoke:
       flash: Oled tühistanud rakenduse %{application} loa.
   oauth_clients:
@@ -1596,7 +1630,7 @@ et:
       secret: 'Tarbija saladus:'
       url: Taotlustõendi URL
       access_url: 'Pääsutõendi URL:'
-      authorize_url: 'Autoriseeriv URL:'
+      authorize_url: 'Volitamise URL:'
       support_notice: Me toetame HMAC-SHA1 (soovitatav) ja RSA-SHA1 allkirju.
       edit: Muuda üksikasju
       delete: Kustuta klient
@@ -1611,7 +1645,7 @@ et:
       allow_write_notes: muuta märkuseid.
     index:
       title: Minu OAuthi üksikasjad
-      my_tokens: Minu autoriseeritud rakendused
+      my_tokens: Minu volitatud rakendused
       list_tokens: 'Sinu nimel on rakendustele väljastatud järgmised load:'
       application: Rakenduse nimi
       issued_at: Väljastatud
@@ -1641,10 +1675,10 @@ et:
     create:
       flash: Teave registreeriti edukalt.
     update:
-      flash: Kliendi informatsioon uuendati edukalt
+      flash: Kliendi informatsioon uuendati edukalt.
     destroy:
-      flash: Klientrakenduse registratsioon hävitati
-  user:
+      flash: Klientrakenduse registreering hävitati.
+  users:
     login:
       title: Sisselogimise leht
       heading: Logi sisse
@@ -1665,10 +1699,10 @@ et:
       account not active: Vabandust, sinu kasutajakonto ei ole veel aktiivne.<br />Aktiveerimiseks
         klõpsa palun lingil, mis saadeti sulle meiliga, või <a href="%{reconfirm}">taotle
         uut kontot kinnitavat meili</a>.
-      account is suspended: Vabandust, sinu kasutajakonto on peatatud kahtlase tegevuse
-        tõttu.<br />Palun võta ühendust <a href="%{webmaster}">veebimeistriga</a>
-        kui soovid sellel teemal arutleda.
-      auth failure: Vabandust, kahjuks ei saa nende andmetega sisse.
+      account is suspended: Vabandust, sinu konto tegevus on peatatud kahtlase tegevuse
+        tõttu.<br />Palun võta ühendust <a href="%{webmaster}">veebimeistriga</a>,
+        kui soovid selle teema üle arutada.
+      auth failure: Kahjuks ei õnnestu nende andmetega sisse logida.
       openid_logo_alt: Sisene OpenID tunnusega
       auth_providers:
         openid:
@@ -1755,8 +1789,8 @@ et:
         kokkuvõte</a> mõned <a href="%{translations}">mitteametlikud tõlked</a>'
       agree: Nõustun
       decline: Ei nõustu
-      you need to accept or decline: Enne jätkamist palun tutvu uute Kaastöötingimustega
-        ja seejärel kas nõustu või ära nõustu nendega.
+      you need to accept or decline: Enne jätkamist tutvu palun uute kaastöötingimustega
+        ning seejärel kas nõustu või ära nõustu nendega.
       legale_select: 'Palun valige oma elukohariik:'
       legale_names:
         france: Prantsusmaa
@@ -1853,7 +1887,7 @@ et:
         heading: 'Avalikud seaded:'
         enabled: Lubatud. Pole anonüümne ja saab andmeid muuta.
         enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
-        enabled link text: Mis see on?
+        enabled link text: mis see on?
         disabled: Keelatud ja ei saa andmeid muuta, kõik varasemad muudatused on anonüümsed.
         disabled link text: Miks ma ei saa kaarti töödelda?
       public editing note:
@@ -1874,7 +1908,7 @@ et:
           sobival ajal antud lingil.
         agreed_with_pd: Samuti oled deklareerinud oma kaastöö autoriõigustest vabaks
           (Public Domain).
-        link text: Mis see on?
+        link text: mis see on?
       profile description: 'Profiili kirjeldus:'
       preferred languages: 'Eelistatud keeled:'
       preferred editor: 'Vaikimisi redaktor:'
@@ -1896,7 +1930,7 @@ et:
       make edits public button: Tee kõik minu muudatused avalikuks
       return to profile: Tagasi profiili juurde
       flash update success confirm needed: Kasutajateabe värskendamine õnnestus. Kontrolli
-        oma elektronposti, et kinnitada oma uus e-posti aadress.
+        e-kirju, et kinnitada uus e-posti aadress.
       flash update success: Kasutaja informatsioon uuendatud edukalt.
     confirm:
       heading: Kontrolli oma e-posti.
@@ -1940,8 +1974,6 @@ et:
       button: Eemalda sõprade hulgast
       success: '%{name} eemaldati sinu sõprade hulgast.'
       not_a_friend: '%{name} ei ole üks sinu sõpradest.'
-    filter:
-      not_an_administrator: Selle tegevuse sooritamiseks pead sa olema administraator.
     index:
       title: Kasutajad
       heading: Kasutajad
@@ -1967,7 +1999,9 @@ et:
           seda arutada, siis võid võtta ühendust %{webmaster}.
         </p>
     auth_failure:
-      no_authorization_code: Autoriseerimiskood puudub
+      connection_failed: Ei õnnestunud ühenduda autentimisteenusega.
+      invalid_credentials: Vigased autentimisandmed.
+      no_authorization_code: Volitamiskood puudub.
     auth_association:
       heading: Sinu ID ei ole veel seotud OpenStreetMapi kasutajakontoga.
       option_1: |-
@@ -1978,8 +2012,6 @@ et:
         oma ID-ga.
   user_role:
     filter:
-      not_an_administrator: Kasutaja rollide haldamist saavad teostada ainult administraatorid,
-        kuid sina ei ole administraator.
       not_a_role: String `%{role}' ei ole kehtiv roll.
       already_has_role: Kasutajal on juba roll %{role}.
       doesnt_have_role: Kasutajal ei ole rolli %{role}.
@@ -2104,31 +2136,10 @@ et:
       next: Järgmine »
       previous: « Eelmine
   notes:
-    comment:
-      opened_at_html: Loodud %{when} tagasi
-      opened_at_by_html: Loodud %{when} tagasi kasutaja %{user} poolt
-      commented_at_html: Uuendatud %{when} tagasi
-      commented_at_by_html: Uuendatud %{when} tagasi kasutaja %{user} poolt
-      closed_at_html: Lahendatud %{when} tagasi
-      closed_at_by_html: Lahendatud %{when} tagasi kasutaja %{user} poolt
-      reopened_at_html: Taasaktiveeritud %{when} tagasi
-      reopened_at_by_html: Taasaktiveeritud %{when} tagasi kasutaja %{user} poolt
-    rss:
-      title: OpenStreetMapi märkused
-      description_area: Loetelu märkustest mida teatati, kommenteeriti või suleti
-        sinu piirkonnas [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Märkuse %{id} RSS uudisvoog
-      opened: uus märkus (lähedal kohale %{place})
-      commented: uus kommentaar (lähedal kohale %{place})
-      closed: suletud märkus (lähedal kohale %{place})
-      reopened: taasaktiveeritud märkus (lähedal kohale %{place})
-    entry:
-      comment: Kommentaar
-      full: Täielik tekst
     mine:
       title: Kasutaja %{user} loodud või kommenteeritud märkused
       heading: Kasutaja %{user} märkused
-      subheading: Kasutaja %{user} loodud või kommenteeritud märkused
+      subheading_html: Kasutaja %{user} loodud või kommenteeritud märkused
       id: ID
       creator: Looja
       description: Kirjeldus
@@ -2221,13 +2232,10 @@ et:
       kliki siia.
     directions:
       engines:
+        fossgis_osrm_car: Autoga (OSRM)
         graphhopper_bicycle: Rattaga (GraphHopper)
         graphhopper_car: Autoga (GraphHopper)
         graphhopper_foot: Jalgsi (GraphHopper)
-        mapquest_bicycle: Rattaga (MapQuest)
-        mapquest_car: Autoga (MapQuest)
-        mapquest_foot: Jalgsi (MapQuest)
-        osrm_car: Autoga (OSRM)
       directions: Juhised
       distance: Vahemaa
       errors:
@@ -2241,7 +2249,7 @@ et:
         endofroad_left_without_exit: 'Tee lõpus pööra vasakule teele: %{name}'
         start_without_exit: 'Alusta teelt: %{name}'
         unnamed: nimetu
-      time: Kestus
+      time: Ajakulu
     query:
       node: Sõlm
       way: Joon

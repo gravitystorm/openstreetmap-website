@@ -6,6 +6,10 @@ en:
       friendly: "%e %B %Y at %H:%M"
       blog: "%e %B %Y"
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: does not appear to be a valid e-mail address
+        email_address_not_routable: is not routable
     # Translates all the model names, which is used in error handling on the web site
     models:
       acl: "Access Control List"
@@ -94,6 +98,28 @@ en:
     remote:
       name: "Remote Control"
       description: "Remote Control (JOSM or Merkaartor)"
+  api:
+    notes:
+      comment:
+        opened_at_html: "Created %{when} ago"
+        opened_at_by_html: "Created %{when} ago by %{user}"
+        commented_at_html: "Updated %{when} ago"
+        commented_at_by_html: "Updated %{when} ago by %{user}"
+        closed_at_html: "Resolved %{when} ago"
+        closed_at_by_html: "Resolved %{when} ago by %{user}"
+        reopened_at_html: "Reactivated %{when} ago"
+        reopened_at_by_html: "Reactivated %{when} ago by %{user}"
+      rss:
+        title: "OpenStreetMap Notes"
+        description_area: "A list of notes, reported, commented on or closed in your area [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]"
+        description_item: "An rss feed for note %{id}"
+        opened: "new note (near %{place})"
+        commented: "new comment (near %{place})"
+        closed: "closed note (near %{place})"
+        reopened: "reactivated note (near %{place})"
+      entry:
+        comment: Comment
+        full: Full note
   browse:
     created: "Created"
     closed: "Closed"
@@ -213,7 +239,7 @@ en:
       introduction: "Click on the map to find nearby features."
       nearby: "Nearby features"
       enclosing: "Enclosing features"
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: "Page %{page}"
       next: "Next »"
@@ -242,14 +268,18 @@ en:
       load_more: "Load more"
     timeout:
       sorry: "Sorry, the list of changesets you requested took too long to retrieve."
-    rss:
+  changeset_comments:
+    comment:
+      comment: "New comment on changeset #%{changeset_id} by %{author}"
+      commented_at_by_html: "Updated %{when} ago by %{user}"
+    comments:
+      comment: "New comment on changeset #%{changeset_id} by %{author}"
+    index:
       title_all: OpenStreetMap changeset discussion
       title_particular: "OpenStreetMap changeset #%{changeset_id} discussion"
-      comment: "New comment on changeset #%{changeset_id} by %{author}"
-      commented_at_html: "Updated %{when} ago"
-      commented_at_by_html: "Updated %{when} ago by %{user}"
-      full: Full discussion
-  diary_entry:
+    timeout:
+      sorry: "Sorry, the list of changeset comments you requested took too long to retrieve."
+  diary_entries:
     new:
       title: New Diary Entry
       publish_button: "Publish"
@@ -860,7 +890,7 @@ en:
           "yes": "Shop"
         tourism:
           alpine_hut: "Alpine Hut"
-          apartment: "Apartment"
+          apartment: "Holiday Apartment"
           artwork: "Artwork"
           attraction: "Attraction"
           bed_and_breakfast: "Bed and Breakfast"
@@ -1347,6 +1377,11 @@ en:
           <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>),
           <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> and
           Land Tirol (under <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT with amendments</a>).
+        contributors_au_html: |
+          <strong>Australia</strong>: Contains data sourced from
+          <a href="https://www.psma.com.au/psma-data-copyright-and-disclaimer">PSMA Australia Limited</a>
+          licensed by the Commonwealth of Australia under
+          <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
         contributors_ca_html: |
           <strong>Canada</strong>: Contains data from
           GeoBase&reg;, GeoGratis (&copy; Department of Natural
@@ -1374,6 +1409,11 @@ en:
           <a href="http://www.gu.gov.si/en/">Surveying and Mapping Authority</a> and
           <a href="http://www.mkgp.gov.si/en/">Ministry of Agriculture, Forestry and Food</a>
           (public information of Slovenia).
+        contributors_es_html: |
+          <strong>Spain</strong>: Contains data sourced from the
+          Spanish National Geographic Institute (<a href="http://www.ign.es/">IGN</a>) and
+          National Cartographic System (<a href="http://www.scne.es/">SCNE</a>)
+          licensed for reuse under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
         contributors_za_html: |
           <strong>South Africa</strong>: Contains data sourced from
           <a href="http://www.ngi.gov.za/">Chief Directorate:
@@ -1381,7 +1421,7 @@ en:
         contributors_gb_html: |
           <strong>United Kingdom</strong>: Contains Ordnance
           Survey data &copy; Crown copyright and database right
-          2010-12.
+          2010-19.
         contributors_footer_1_html: |
           For further details of these, and other sources that have been used
           to help improve OpenStreetMap, please see the <a
@@ -1522,6 +1562,10 @@ en:
         url: https://switch2osm.org/
         title: switch2osm
         description: Help for companies and organisations switching to OpenStreetMap based maps and other services.
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: For Organizations
+        description: With an organization making plans for OpenStreetMap? Find what you need to know in the Welcome Mat.
       wiki:
         url: https://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1613,7 +1657,7 @@ en:
       edit: Edit
       preview: Preview
     markdown_help:
-      title_html: Parsed with <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Parsed with <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Headings
       heading: Heading
       subheading: Subheading
@@ -1668,7 +1712,7 @@ en:
         paragraph_1_html: |
           OpenStreetMap has several resources for learning about the project, asking and answering
           questions, and collaboratively discussing and documenting mapping topics.
-          <a href='%{help_url}'>Get help here</a>.
+          <a href='%{help_url}'>Get help here</a>. With an organization making plans for OpenStreetMap? <a href='https://welcome.openstreetmap.org/'>Check out the Welcome Mat</a>.
       start_mapping: Start Mapping
       add_a_note:
         title: No Time To Edit? Add a Note!
@@ -1793,14 +1837,11 @@ en:
         other: "GPX file with %{count} points from %{user}"
       description_without_count: "GPX file from %{user}"
   application:
+    permission_denied: You do not have permission to access that action
     require_cookies:
       cookies_needed: "You appear to have cookies disabled - please enable cookies in your browser before continuing."
     require_admin:
       not_an_admin: You need to be an admin to perform that action.
-    require_moderator:
-      not_a_moderator: "You need to be a moderator to perform that action."
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: You need to be a moderator or an admin to perform that action
     setup_user_auth:
       blocked_zero_hour: "You have an urgent message on the OpenStreetMap web site. You need to read the message before you will be able to save your edits."
       blocked: "Your access to the API has been blocked. Please log-in to the web interface to find out more."
@@ -1889,7 +1930,7 @@ en:
       flash: "Updated the client information successfully"
     destroy:
       flash: "Destroyed the client application registration"
-  user:
+  users:
     login:
       title: "Login"
       heading: "Login"
@@ -2165,8 +2206,6 @@ en:
       button: "Unfriend"
       success: "%{name} was removed from your friends."
       not_a_friend: "%{name} is not one of your friends."
-    filter:
-      not_an_administrator: "You need to be an administrator to perform that action."
     index:
       title: Users
       heading: Users
@@ -2208,7 +2247,6 @@ en:
         with your ID in your user settings.
   user_role:
     filter:
-      not_an_administrator: "Only administrators can perform user role management, and you are not an administrator."
       not_a_role: "The string `%{role}' is not a valid role."
       already_has_role: "The user already has role %{role}."
       doesnt_have_role: "The user does not have role %{role}."
@@ -2320,30 +2358,10 @@ en:
       next: "Next »"
       previous: "« Previous"
   notes:
-    comment:
-      opened_at_html: "Created %{when} ago"
-      opened_at_by_html: "Created %{when} ago by %{user}"
-      commented_at_html: "Updated %{when} ago"
-      commented_at_by_html: "Updated %{when} ago by %{user}"
-      closed_at_html: "Resolved %{when} ago"
-      closed_at_by_html: "Resolved %{when} ago by %{user}"
-      reopened_at_html: "Reactivated %{when} ago"
-      reopened_at_by_html: "Reactivated %{when} ago by %{user}"
-    rss:
-      title: "OpenStreetMap Notes"
-      description_area: "A list of notes, reported, commented on or closed in your area [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]"
-      description_item: "An rss feed for note %{id}"
-      opened: "new note (near %{place})"
-      commented: "new comment (near %{place})"
-      closed: "closed note (near %{place})"
-      reopened: "reactivated note (near %{place})"
-    entry:
-      comment: Comment
-      full: Full note
     mine:
       title: "Notes submitted or commented on by %{user}"
       heading: "%{user}'s notes"
-      subheading: "Notes submitted or commented on by %{user}"
+      subheading_html: "Notes submitted or commented on by %{user}"
       id: "Id"
       creator: "Creator"
       description: "Description"
@@ -2431,13 +2449,12 @@ en:
     directions:
       ascend: "Ascend"
       engines:
+        fossgis_osrm_bike: "Bicycle (OSRM)"
+        fossgis_osrm_car: "Car (OSRM)"
+        fossgis_osrm_foot: "Foot (OSRM)"
         graphhopper_bicycle: "Bicycle (GraphHopper)"
         graphhopper_car: "Car (GraphHopper)"
         graphhopper_foot: "Foot (GraphHopper)"
-        mapquest_bicycle: "Bicycle (MapQuest)"
-        mapquest_car: "Car (MapQuest)"
-        mapquest_foot: "Foot (MapQuest)"
-        osrm_car: "Car (OSRM)"
       descend: "Descend"
       directions: "Directions"
       distance: "Distance"
@@ -2556,3 +2573,8 @@ en:
       not_empty: "Redaction is not empty. Please un-redact all versions belonging to this redaction before destroying it."
       flash: "Redaction destroyed."
       error: "There was an error destroying this redaction."
+  validations:
+    leading_whitespace: "has leading whitespace"
+    trailing_whitespace: "has trailing whitespace"
+    invalid_characters: "contains invalid characters"
+    url_characters: "contains special URL characters (%{characters})"

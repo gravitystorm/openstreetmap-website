@@ -1,6 +1,7 @@
 # Messages for Lower Sorbian (dolnoserbski)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Derbeth
 # Author: Macofe
 # Author: Michawiki
@@ -92,6 +93,29 @@ dsb:
     remote:
       name: Zdalokawóźenje
       description: Zdalokawóźenje (JOSM abo Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Pśed %{when} napórany
+        opened_at_by_html: Pśed %{when} wót %{user} napórany
+        commented_at_html: Pśed %{when} zaktualizěrowany
+        commented_at_by_html: Pśed %{when} wót %{user} zaktualizěrowany
+        closed_at_html: Pśed %{when} rozwězany
+        closed_at_by_html: Pśed %{when} wót %{user} rozwězany
+        reopened_at_html: Pśed %{when} reaktiwěrowany
+        reopened_at_by_html: Pśed %{when} wót %{user} reaktiwěrowany
+      rss:
+        title: Pokazki OpenStreetMap
+        description_area: Lisćina pokazkow, kótarež su se za twój wobcerk [(%{min_lat}|%{min_lon})
+          -- (%{max_lat}|%{max_lon})] k wěsći dali, komentěrowali abo docynili
+        description_item: RSS-kanal za pokazku %{id}
+        opened: nowa pokazka (blisko %{place})
+        commented: nowy komentar (blisko %{place})
+        closed: zacynjona pokazka (blisko %{place})
+        reopened: reaktiwěrowana pokazka (blisko %{place})
+      entry:
+        comment: Komentar
+        full: Dopołna pokazka
   browse:
     created: Napórany
     closed: Zacynjony
@@ -205,7 +229,7 @@ dsb:
       reopened_by_anonymous: Reaktiwěrowany wót anonymnego <abbr title='%{exact_time}'>pśed
         %{when}</abbr>
       hidden_by: Schowany wót %{user} <abbr title='%{exact_time}'>pśed %{when}</abbr>
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Bok %{page}
       next: Pśiducy »
@@ -234,7 +258,7 @@ dsb:
       load_more: Wěcej zacytaś
     timeout:
       sorry: Bóžko jo pśedłujko trało, kupki změnow, kótarež  sy póžedał, wótwołaś.
-  diary_entry:
+  diary_entries:
     new:
       title: Nowy zapisk dnjownika
     index:
@@ -802,10 +826,7 @@ dsb:
     intro_text: OpenStreetMap jó kórta swěta, napórana wót luźi ako ty a dajo se licho
       pód wótwórjoneju licencu wužywaś.
     intro_2_create_account: Załož wužywarske konto
-    partners_html: Hostowanje pódpěra se wót %{ucl}, %{ic}, %{bytemark} a drugich
-      %{partners}.
     partners_ucl: z UCL VR Centre
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partnerow
     osm_offline: Datowa banka OpenStreetMap jo tuchylu offline, dokulaž se wažne źěło
@@ -1090,6 +1111,9 @@ dsb:
           BY</a>), <a href="http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land
           Vorarlberg</a> a  Land Tirol (pod <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY
           AT ze změnami</a>).'
+        contributors_au_html: '<strong>Awstralska</strong>: Wopśimujo pśedměsćańske
+          daty na zakłaźe datow awstralskego  amta za statistiku (Australian Bureau
+          of Statistics).'
         contributors_ca_html: '<strong>Kanada</strong>: Wopśimujo daty z GeoBase&reg;,
           GeoGratis (&copy; Department of Natural Resources Canada), CanVec (&copy;
           Department of Natural Resources Canada), a StatCan (Geography Division,
@@ -1486,8 +1510,6 @@ dsb:
     require_cookies:
       cookies_needed: Zda se, až cookieje su znjemóžnjone - pšosym zmóžni cookieje
         w swójom wobglědowaku, nježli až pókšacujoš.
-    require_moderator:
-      not_a_moderator: Musyš moderator byś, aby wuwjadł tutu akciju.
     setup_user_auth:
       blocked: Twój pśistup k API jo se zablokěrował. Pšosym pśizjaw se do webpówjercha,
         aby wěcej zgónił.
@@ -1579,7 +1601,7 @@ dsb:
       flash: Informacije wó klienśe wuspěšnje zaktualizěrowane
     destroy:
       flash: Registrěrowanje aplikacije znicone
-  user:
+  users:
     login:
       title: Pśizjawjenje
       heading: Pśizjawjenje
@@ -1845,8 +1867,6 @@ dsb:
       button: Pśijaśela wótpóraś
       success: '%{name} jo se z twójich pśijaśelow wótpórał.'
       not_a_friend: '%{name} njejo twój pśijaśel.'
-    filter:
-      not_an_administrator: Musyš administrator byś, aby wuwjadł toś tu akciju.
     index:
       title: Wužywarje
       heading: Wužywarje
@@ -1869,8 +1889,6 @@ dsb:
         Toś ten rozsud buźo se wót administratora skóro pśeglědowaś, abo móžoš se %{webmaster} do zwiska stajiś, jolic coš wó tom diskutěrowaś.
   user_role:
     filter:
-      not_an_administrator: Jano administratory mógu zastojanje wužywarskich rolow
-        wugbaś, ale ty njejsy administrator.
       not_a_role: Znamuškowy rjeśazk "%{role}" njejo płaśiwa rola.
       already_has_role: Wužywaŕ ma južo rolu %{role}.
       doesnt_have_role: Wužywaŕ njama rolu %{role}.
@@ -1993,31 +2011,10 @@ dsb:
       next: Pśiducy »
       previous: « Pjerwjejšny
   notes:
-    comment:
-      opened_at_html: Pśed %{when} napórany
-      opened_at_by_html: Pśed %{when} wót %{user} napórany
-      commented_at_html: Pśed %{when} zaktualizěrowany
-      commented_at_by_html: Pśed %{when} wót %{user} zaktualizěrowany
-      closed_at_html: Pśed %{when} rozwězany
-      closed_at_by_html: Pśed %{when} wót %{user} rozwězany
-      reopened_at_html: Pśed %{when} reaktiwěrowany
-      reopened_at_by_html: Pśed %{when} wót %{user} reaktiwěrowany
-    rss:
-      title: Pokazki OpenStreetMap
-      description_area: Lisćina pokazkow, kótarež su se za twój wobcerk [(%{min_lat}|%{min_lon})
-        -- (%{max_lat}|%{max_lon})] k wěsći dali, komentěrowali abo docynili
-      description_item: RSS-kanal za pokazku %{id}
-      opened: nowa pokazka (blisko %{place})
-      commented: nowy komentar (blisko %{place})
-      closed: zacynjona pokazka (blisko %{place})
-      reopened: reaktiwěrowana pokazka (blisko %{place})
-    entry:
-      comment: Komentar
-      full: Dopołna pokazka
     mine:
       title: Pokazki, kótarež su se wót %{user} dali abo komentěrowali
       heading: Pokazki wužywarja %{user}
-      subheading: Pokazki, kótarež su se wót %{user} dali abo komentěrowali
+      subheading_html: Pokazki, kótarež su se wót %{user} dali abo komentěrowali
       id: ID
       creator: Stwóriśel
       description: Wopis

@@ -144,7 +144,7 @@ sr-Latn:
         key: Stranica s opisom za oznaku %{key}
         tag: Stranica s opisom za oznaku %{key}=%{value}
       wikipedia_link: '%{page} članak na Vikipediji'
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Prikaz stranice %{page}
       next: Sledeća »
@@ -166,7 +166,7 @@ sr-Latn:
       title_nearby: Izmene od okolnih korisnika
     timeout:
       sorry: Žao nam je, ali spisak izmena koji ste zahtevali je predugačak.
-  diary_entry:
+  diary_entries:
     new:
       title: Novi unos u dnevniku
     index:
@@ -693,9 +693,7 @@ sr-Latn:
     edit_with: Uredi uređivačem %{editor}
     tag_line: Slobodna viki mapa sveta
     intro_2_create_account: Otvorite nalog
-    partners_html: Hosting podržava %{ucl}, %{ic} i %{bytemark}, kao i drugi %{partners}.
     partners_ucl: VR centar UCL-a
-    partners_ic: Londonski kraljevski koledž
     partners_bytemark: Hosting „Bajtmark“
     partners_partners: partneri
     osm_offline: Baza podataka Openstritmapa je trenutno nedostupna dok se ne završe
@@ -909,6 +907,9 @@ sr-Latn:
              <a href="http://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>),
              <a href="http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Forarlberg</a> i
           Land Tirol (pod licencom <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY AT sa izmenama i dopunama</a>).
+        contributors_au_html: |-
+          <strong>Australija</strong>: sadrži podatke o opštinama
+              na osnovu podataka Australijskog biroa za statistiku.
         contributors_ca_html: |-
           <strong>Kanada</strong>: sadrži podatke iz
               Beobaze&reg;, Geogratisa (&copy; Odeljenje za prirodne
@@ -1183,8 +1184,6 @@ sr-Latn:
     require_cookies:
       cookies_needed: Izgleda da ste onemogućili kolačiće. Omogućite ih pre nego što
         nastavite.
-    require_moderator:
-      not_a_moderator: Da biste izveli ovu radnju, treba da budete moderator.
     setup_user_auth:
       blocked: Vaš pristup API-ju je blokiran. Prijavite se da saznate više.
       need_to_see_terms: Vaš pristup API-ju je privremeno ukinut. Prijavite se da
@@ -1261,7 +1260,7 @@ sr-Latn:
       flash: Podaci o klijentu su uspešno ažurirani
     destroy:
       flash: Upis programa je ukinut
-  user:
+  users:
     login:
       title: Prijava
       heading: Prijava
@@ -1510,8 +1509,6 @@ sr-Latn:
       button: Ukloni iz prijatelja
       success: '%{name} je izbačen iz prijatelja.'
       not_a_friend: '%{name} nije vaš prijatelj.'
-    filter:
-      not_an_administrator: Treba da budete administrator da biste izvršili ovu radnju.
     index:
       title: Korisnici
       heading: Korisnici
@@ -1538,8 +1535,6 @@ sr-Latn:
         </p>
   user_role:
     filter:
-      not_an_administrator: Samo administratori mogu da upravljaju ulogama korisnika,
-        a vi to niste.
       not_a_role: „%{role}“ nije ispravna uloga.
       already_has_role: Korisnik već ima ulogu %{role}.
       doesnt_have_role: Korisnik nema ulogu %{role}.

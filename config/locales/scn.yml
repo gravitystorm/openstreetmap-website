@@ -1,6 +1,7 @@
 # Messages for Sicilian (sicilianu)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Gmelfi
 # Author: Macofe
 # Author: Pippinu
@@ -93,6 +94,29 @@ scn:
     remote:
       name: Telecumannu
       description: Telecumannu (JOSM o Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Criatu %{when} fa
+        opened_at_by_html: Criatu %{when} fa di %{user}
+        commented_at_html: Aggiurnatu %{when} fa
+        commented_at_by_html: Aggiurnatu %{when} fa di %{user}
+        closed_at_html: Arrisurvuta %{when} fa
+        closed_at_by_html: Arrisurvuta %{when} fa di %{user}
+        reopened_at_html: Rigraputa %{when} fa
+        reopened_at_by_html: Rigraputa %{when} fa di %{user}
+      rss:
+        title: Noti d'OpenStreetMap
+        description_area: N’elencu dî noti signalati, cummintati o arrisurvuti ntâ
+          tò zona [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Un flussu RSS pâ nota %{id}
+        opened: nota nova (vicinu a %{place})
+        commented: cummentu novu (vicinu a %{place})
+        closed: nota arrisurvuta (vicinu a %{place})
+        reopened: nota riattivata (vicinu a %{place})
+      entry:
+        comment: Cummentu
+        full: Nota cumpleta
   browse:
     created: Criatu
     closed: Chiudutu
@@ -216,7 +240,7 @@ scn:
       introduction: Clicca supra â cartina pi circari l'elimenti vicini.
       nearby: Elimenti vicini
       enclosing: Elimenti chi cuntèninu
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Pàggina %{page}
       next: Appressu »
@@ -246,15 +270,15 @@ scn:
     timeout:
       sorry: Purtroppu, ci vosi troppu tempu pi pigghiari la lista dî gruppi di canciamenti
         c'addumannasti.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Cummentu novu supra ô gruppu di canciamenti #%{changeset_id} di %{author}'
+      commented_at_by_html: Aggiurnatu %{when} fa di %{user}
+    index:
       title_all: Discussioni supra ô gruppu di canciamenti d'OpenStreetMap
       title_particular: 'Discussioni supra ô gruppu di canciamenti d''OpenStreetMap
         #%{changeset_id}'
-      comment: 'Cummentu novu supra ô gruppu di canciamenti #%{changeset_id} di %{author}'
-      commented_at_html: Aggiurnatu %{when} fa
-      commented_at_by_html: Aggiurnatu %{when} fa di %{user}
-      full: Discussioni ntera
-  diary_entry:
+  diary_entries:
     new:
       title: Vuci nova dû diariu
       publish_button: Pùbblica
@@ -879,10 +903,7 @@ scn:
     intro_text: OpenStreetMap è na cartina dû munnu, criata di genti comu a tìa e
       lìbbira a adupirari secunnu na licenza graputa.
     intro_2_create_account: Crea un cuntu d'utenti
-    partners_html: L'hosting veni sustinutu di %{ucl}, %{ic} e %{bytemark}, e àutri
-      %{partners}.
     partners_ucl: the UCL VR Centre
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: cullabburatura
     osm_offline: La basi di dati d'OpenStreetMap comu a ora nun è n lìnia pirchì si
@@ -1640,8 +1661,6 @@ scn:
     require_cookies:
       cookies_needed: Pari chi hai li cookie disattivati; pi favuri attìvali ntô tò
         browser prima chi cuntìnui.
-    require_moderator:
-      not_a_moderator: Hai a èssiri nu mudiraturi pi fari st'opirazzioni.
     setup_user_auth:
       blocked: Fu bluccatu lu tò accessu a l’API. Pi favuri trasi via web pi sapìrinni
         cchiossai.
@@ -1734,7 +1753,7 @@ scn:
       flash: Li nfurmazzioni dû clienti foru aggiurnati boni
     destroy:
       flash: Fu distruiuta la riggistrazzioni di l'applicazzioni clienti
-  user:
+  users:
     login:
       title: Trasi
       heading: Trasi
@@ -2043,8 +2062,6 @@ scn:
       button: Leva di l'amici
       success: '%{name} fu livatu dî tò amici.'
       not_a_friend: '%{name} nun è amicu tò.'
-    filter:
-      not_an_administrator: Hai a èssiri n'amministraturi pi fari st'opirazzioni.
     index:
       title: Utenti
       heading: Utenti
@@ -2076,8 +2093,6 @@ scn:
       invalid_scope: Àmmitu nun vàlidu
   user_role:
     filter:
-      not_an_administrator: Sulu l'amministratura ponnu gistiri li roli, e tu nun
-        sì amministraturi.
       not_a_role: La stringa «%{role}» nun è un rolu vàlidu.
       already_has_role: L'utenti già havi lu rolu %{role}.
       doesnt_have_role: L'utenti nun havi lu rolu %{role}.
@@ -2199,31 +2214,10 @@ scn:
       next: Appressu »
       previous: « Arreri
   notes:
-    comment:
-      opened_at_html: Criatu %{when} fa
-      opened_at_by_html: Criatu %{when} fa di %{user}
-      commented_at_html: Aggiurnatu %{when} fa
-      commented_at_by_html: Aggiurnatu %{when} fa di %{user}
-      closed_at_html: Arrisurvuta %{when} fa
-      closed_at_by_html: Arrisurvuta %{when} fa di %{user}
-      reopened_at_html: Rigraputa %{when} fa
-      reopened_at_by_html: Rigraputa %{when} fa di %{user}
-    rss:
-      title: Noti d'OpenStreetMap
-      description_area: N’elencu dî noti signalati, cummintati o arrisurvuti ntâ tò
-        zona [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Un flussu RSS pâ nota %{id}
-      opened: nota nova (vicinu a %{place})
-      commented: cummentu novu (vicinu a %{place})
-      closed: nota arrisurvuta (vicinu a %{place})
-      reopened: nota riattivata (vicinu a %{place})
-    entry:
-      comment: Cummentu
-      full: Nota cumpleta
     mine:
       title: Noti scritti o cummintati di l'utenti %{user}
       heading: Noti di %{user}
-      subheading: Noti scritti o cummintati di l'utenti %{user}
+      subheading_html: Noti scritti o cummintati di l'utenti %{user}
       id: Id
       creator: Criaturi
       description: Discrizzioni
@@ -2311,12 +2305,9 @@ scn:
       ccà.
     directions:
       engines:
+        fossgis_osrm_car: Câ màchina (OSRM)
         graphhopper_bicycle: Câ bicicretta (GraphHopper)
         graphhopper_foot: A pedi (GraphHopper)
-        mapquest_bicycle: Câ bicicretta (MapQuest)
-        mapquest_car: Câ màchina (MapQuest)
-        mapquest_foot: A pedi (MapQuest)
-        osrm_car: Câ màchina (OSRM)
       directions: Nnicazzioni
       distance: Distanza
       errors:

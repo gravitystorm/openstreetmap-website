@@ -2,10 +2,12 @@
 # Exported from translatewiki.net
 # Export driver: phpyaml
 # Author: 2axterix2
+# Author: Abijeet Patro
 # Author: Adjen
 # Author: Aguslr
 # Author: Alberto Chung
 # Author: Armando-Martin
+# Author: Carlosmg.dg
 # Author: Carlosz22
 # Author: Crazymadlover
 # Author: Csbotero
@@ -26,8 +28,11 @@
 # Author: Johnarupire
 # Author: Jynus
 # Author: KATRINE1992
+# Author: Kresp0
+# Author: Ktranz
 # Author: La Mantis
 # Author: Larjona
+# Author: Laura Ospina
 # Author: Locos epraix
 # Author: Luzcaru
 # Author: Macofe
@@ -45,6 +50,7 @@
 # Author: Rubenwap
 # Author: Ruila
 # Author: Sim6
+# Author: Tiberius1701
 # Author: Toliño
 # Author: Translationista
 # Author: VegaDark
@@ -57,6 +63,11 @@ es:
     formats:
       friendly: '%e de %B de %Y a las %H:%M'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: no aparenta ser una dirección de correo electrónico
+          válida
+        email_address_not_routable: no es enrutable
     models:
       acl: Lista de control de acceso
       changeset: Conjunto de cambios
@@ -140,6 +151,29 @@ es:
     remote:
       name: Control remoto
       description: Control remoto (JOSM o Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Creado hace %{when}
+        opened_at_by_html: Creado hace %{when} por %{user}
+        commented_at_html: Actualizado hace %{when}
+        commented_at_by_html: Actualizado hace %{when} por %{user}
+        closed_at_html: Resuelto hace %{when}
+        closed_at_by_html: Resuelto hace %{when} por %{user}
+        reopened_at_html: Reactivado hace %{when}
+        reopened_at_by_html: Reactivado hace %{when} por %{user}
+      rss:
+        title: Notas de OpenStreetMap
+        description_area: Lista de notas comunicadas, comentadas o cerradas en tu
+          zona [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Agregador RSS para la nota %{id}
+        opened: nueva nota (cerca de %{place})
+        commented: nuevo comentario (cerca de %{place})
+        closed: nota cerrada (cerca de %{place})
+        reopened: nota reactivada (cerca de %{place})
+      entry:
+        comment: Comentario
+        full: Nota completa
   browse:
     created: Creado
     closed: Cerrado
@@ -266,7 +300,7 @@ es:
       introduction: Haga clic en el mapa para encontrar características cercanas.
       nearby: Características cercanas
       enclosing: Características envolventes
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Página %{page}
       next: Siguiente »
@@ -283,7 +317,7 @@ es:
       area: Área
     index:
       title: Conjuntos de cambios
-      title_user: Conjunto de cambios por %{user}
+      title_user: Conjunto de cambios de %{user}
       title_friend: Conjuntos de cambios realizados por mis amigos
       title_nearby: Conjuntos de cambios realizados por usuarios cercanos
       empty: No se han encontrado conjuntos de cambios.
@@ -296,15 +330,21 @@ es:
     timeout:
       sorry: Lo sentimos, la lista de conjuntos de cambios que has solicitado ha tardado
         mucho tiempo en obtenerse.
-    rss:
-      title_all: Discusión del conjunto de cambios de OpenStreetMap
-      title_particular: 'Discusión del conjunto de cambios #%{changeset_id} de OpenStreetMap'
+  changeset_comments:
+    comment:
       comment: 'Comentario nuevo sobre el conjunto de cambios #%{changeset_id} de
         %{author}'
-      commented_at_html: Actualizado hace %{when}
       commented_at_by_html: Actualizado hace %{when} por %{user}
-      full: Discusión completa
-  diary_entry:
+    comments:
+      comment: 'Comentario nuevo sobre el conjunto de cambios #%{changeset_id} de
+        %{author}'
+    index:
+      title_all: Discusión del conjunto de cambios de OpenStreetMap
+      title_particular: 'Discusión del conjunto de cambios #%{changeset_id} de OpenStreetMap'
+    timeout:
+      sorry: Lo sentimos, la lista de los cambios realizados en los comentarios que
+        has solicitado ha tardado mucho tiempo en recuperarse.
+  diary_entries:
     new:
       title: Nueva entrada en el diario
       publish_button: Publicar
@@ -314,7 +354,7 @@ es:
       title_nearby: Diarios de usuarios cercanos
       user_title: Diario de %{user}
       in_language_title: Entradas de diario en %{language}
-      new: Nueva entrada en el diario
+      new: Nueva entrada de diario
       new_title: Redactar una nueva entrada en mi diario de usuario
       no_entries: No hay entradas en el diario
       recent_entries: Entradas recientes en el diario
@@ -323,7 +363,7 @@ es:
     edit:
       title: Editar entrada del diario
       subject: 'Asunto:'
-      body: 'Cuerpo:'
+      body: 'Texto:'
       language: 'Idioma:'
       location: 'Ubicación:'
       latitude: 'Latitud:'
@@ -341,15 +381,15 @@ es:
     no_such_entry:
       title: No existe esa entrada de diario
       heading: 'No hay entrada con la id: %{id}'
-      body: No hay ninguna entrada de diario con el identificador %{id}. Comprueba
-        que la dirección esté escrita correctamente.
+      body: No hay ninguna entrada de diario o comentario con el identificador %{id}.
+        Comprueba la ortografía, o puede que el enlace al que has hecho clic sea incorrecto.
     diary_entry:
       posted_by: Publicado por %{link_user} el %{created} en %{language_link}
       comment_link: Comentar esta entrada
       reply_link: Responder a esta entrada
       comment_count:
-        one: 1 comentario
-        zero: Sin comentarios
+        zero: No hay comentarios
+        one: '%{count} comentario'
         other: '%{count} comentarios'
       edit_link: Editar esta entrada
       hide_link: Ocultar esta entrada
@@ -370,7 +410,7 @@ es:
         description: Entradas recientes en el diario de OpenStreetMap de %{user}
       language:
         title: Entradas de diario en OpenStreetMap en %{language_name}
-        description: Entradas recientes en los diarios de usuario de OpenStreetMap
+        description: Entradas recientes en los diarios de usuarios de OpenStreetMap
           en %{language_name}
       all:
         title: Entradas en el diario de OpenStreetMap
@@ -919,7 +959,7 @@ es:
           "yes": Tienda
         tourism:
           alpine_hut: Refugio de montaña
-          apartment: Apartamento turístico
+          apartment: Apartamento de vacaciones
           artwork: Obra de arte
           attraction: Atracción turística
           bed_and_breakfast: Alojamiento y desayuno (B&B)
@@ -1001,8 +1041,8 @@ es:
         %{user}
       link_to_reports: Ver reportes
       reports_count:
-        one: 1 reporte
-        other: '%{count} reportes'
+        one: 1 informe
+        other: '%{count} informes'
       reported_item: Elemento reportado
       states:
         ignored: Ignorado
@@ -1015,9 +1055,9 @@ es:
     show:
       title: 'Incidencia #%{issue_id} %{status}'
       reports:
-        zero: Sin reportes
-        one: 1 reporte
-        other: '%{count} reportes'
+        zero: Sin informes
+        one: 1 informe
+        other: '%{count} informes'
       report_created_at: Reportado por primera vez el %{datetime}
       last_resolved_at: Resuelto por última vez el %{datetime}
       last_updated_at: Actualizado por última vez el %{datetime} por %{displayname}
@@ -1052,7 +1092,7 @@ es:
   reports:
     new:
       title_html: Reportar %{link}
-      missing_params: No se puede crear un nuevo reporte
+      missing_params: No se puede crear un informe nuevo
       details: Por favor, proporcione más detalles sobre el problema (obligatorio).
       select: 'Seleccione un motivo para su denuncia:'
       disclaimer:
@@ -1114,10 +1154,9 @@ es:
     intro_text: OpenStreetMap es un mapa del mundo, creado por gente como tú y de
       uso libre bajo una licencia abierta.
     intro_2_create_account: Crear una cuenta de usuario
-    partners_html: El alojamiento de los servidores está respaldado por %{ucl}, %{ic}
-      y %{bytemark}, y otros %{partners}.
+    hosting_partners_html: El alojamiento es apoyado por %{ucl}, %{bytemark}, y otros
+      %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College de Londres
     partners_bytemark: Bytemark Hosting
     partners_partners: socios
     osm_offline: La base de datos de OpenStreetMap no está disponible en estos momentos
@@ -1432,6 +1471,8 @@ es:
           <strong>Austria</strong>: Contiene datos de
              <a href="https://data.wien.gv.at/">Stadt Wien</a> (bajo
              <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>), <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> y Land Tirol (bajo licencia <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT con modificaciones</a>).
+        contributors_au_html: '<strong>Australia</strong>: Contiene datos suburbanos
+          cuya base es la información provista por Australian Bureau of Statistics.'
         contributors_ca_html: '<strong>Canadá</strong>: contiene datos de GeoBase&reg;,
           GeoGratis (&copy; Department of Natural Resources Canada), CanVec (&copy;
           Department of Natural Resources Canada) y StatCan (Geography Division, Statistics
@@ -1453,13 +1494,18 @@ es:
           <a href="http://www.gu.gov.si/en/">Surveying and Mapping Authority</a> y
           <a href="http://www.mkgp.gov.si/en/">Ministry of Agriculture, Forestry and Food</a>
           (información pública de Eslovenia).
+        contributors_es_html: '<strong>España</strong>: Contiene datos provenientes
+          del Instituto Geográfico Nacional (<a href="http://www.ign.es/">IGN</a>)
+          y del Sistema Cartográfico Nacional (<a href="http://www.scne.es/">SCNE</a>),
+          licenciados para su reutilización bajo la <a href="https://creativecommons.org/licenses/by/4.0/">CC
+          BY 4.0</a>.'
         contributors_za_html: |-
           <strong>Sudáfrica</strong>: Contiene datos extraídos de
           <a href="http://www.ngi.gov.za/">Chief Directorate: Información
           Nacional Geoespacial</a>, State copyright reserved.
         contributors_gb_html: |-
           <strong>Reino Unido</strong>: Contiene datos de Ordnance Survey &copy; Crown copyright and database right
-           2010-12.
+           2010-19.
         contributors_footer_1_html: Para obtener más detalles sobre estas y otras
           fuentes que se han utilizado para ayudar a mejorar OpenStreetMap, véase
           la <a href="https://wiki.openstreetmap.org/wiki/Contributors">página de
@@ -1613,6 +1659,11 @@ es:
         title: Migra a OSM
         description: Ayuda para las empresas y organizaciones que migran a mapas y
           a otros servicios, basados en OpenStreetMap.
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: Para organizaciones
+        description: ¿Con una organización que hace planes para OpenStreetMap? Encuentra
+          lo que debes saber en nuestra Estera de Bienvenida.
       wiki:
         url: https://wiki.openstreetmap.org/wiki/ES:Main_Page
         title: wiki.openstreetmap.org
@@ -1704,7 +1755,7 @@ es:
       edit: Editar
       preview: Vista previa
     markdown_help:
-      title_html: Procesado con <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Procesado con <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Títulos
       heading: Título
       subheading: Subcabecera
@@ -1757,8 +1808,8 @@ es:
       questions:
         title: ¿Alguna pregunta?
         paragraph_1_html: |-
-          OpenStreetMap tiene varios recursos para aprender sobre el proyecto, preguntando y contestando preguntas, y colaborativamente discutir y documentar temas de cartografía.
-          <a href='%{help_url}'>Obtenga ayuda aquí</a>.
+          OpenStreetMap tiene varios recursos para aprender sobre el proyecto, haciendo y contestando preguntas, y discutiendo y documentando temas de cartografía.
+          <a href='%{help_url}'>Obtenga ayuda aquí</a>. ¿Con una organización que hace planes para OpenStreetMap? <a href='https://welcome.openstreetmap.org/'> Visita nuestra Estera de Bienvenida.
       start_mapping: Comenzar a mapear
       add_a_note:
         title: ¿No tiene tiempo para editar? ¡Añada una nota!
@@ -1894,16 +1945,12 @@ es:
         other: Archivo GPX con %{count} puntos de %{user}
       description_without_count: Archivo GPX de %{user}
   application:
+    permission_denied: No tienes permisos para realizar esta acción
     require_cookies:
       cookies_needed: Parece que tienes las cookies deshabilitadas. Por favor, habilita
         las cookies en tu navegador antes de continuar.
     require_admin:
       not_an_admin: Necesitas ser un administrador para realizar esa acción.
-    require_moderator:
-      not_a_moderator: Tienes que ser un moderador para ejecutar esa acción.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Necesitas ser un moderador o un administrador para
-        realizar esa acción.
     setup_user_auth:
       blocked_zero_hour: Tienes un mensaje urgente en el sitio web de OpenStreetMap.
         Debes leer el mensaje antes de que puedas guardar tus ediciones.
@@ -2000,7 +2047,7 @@ es:
       flash: Actualizada la información del cliente exitosamente
     destroy:
       flash: Destruido el registro de aplicación del cliente
-  user:
+  users:
     login:
       title: Iniciar sesión
       heading: Iniciar sesión
@@ -2083,9 +2130,9 @@ es:
       title: Registrarse
       no_auto_account_create: Desafortunadamente no estamos actualmente habilitados
         para crear una cuenta para ti automáticamente.
-      contact_webmaster: Contacta al <a href="%{webmaster}">webmaster</a> para gestionar
-        la creación de una cuenta. Intentaremos gestionar la solicitud lo más pronto
-        posible.
+      contact_webmaster: Contacta con el <a href="%{webmaster}">webmaster</a> para
+        gestionar la creación de una cuenta. Intentaremos gestionar la solicitud lo
+        más pronto posible.
       about:
         header: Libre y editable
         html: <p>A diferencia de otros mapas, OpenStreetMap está creado completamente
@@ -2114,6 +2161,7 @@ es:
       terms declined: Lamentamos que haya decidido no aceptar los nuevos Términos
         de contribución. Para obtener más información, consulte <a href="%{url}">esta
         página wiki</a>.
+      terms declined url: https://wiki.openstreetmap.org/wiki/ES:Contributor_Terms_Declined
     terms:
       title: Términos del colaborador
       heading: Términos del colaborador
@@ -2123,9 +2171,11 @@ es:
       consider_pd: Además del acuerdo anterior, considero que mis contribuciones se
         encuentran en Dominio Público.
       consider_pd_why: ¿qué es esto?
+      consider_pd_why_url: https://www.osmfoundation.org/wiki/License/Why_would_I_want_my_contributions_to_be_public_domain
       guidance: 'Información para ayudar a comprender estos términos: un <a href="%{summary}">resumen
         legible</a> y algunas <a href="%{translations}">traducciones informales</a>'
       agree: Aceptar
+      declined: https://wiki.openstreetmap.org/wiki/ES:Contributor_Terms_Declined
       decline: Declinar
       you need to accept or decline: Por favor lea y, a continuación, acepte o rechace
         los nuevos Términos de contribución para continuar.
@@ -2247,6 +2297,7 @@ es:
           los nuevos Términos de Colaborador.
         agreed_with_pd: También has declarado que consideras tus modificaciones como
           de Dominio Público.
+        link: https://www.osmfoundation.org/wiki/License/Contributor_Terms
         link text: ¿Qué es esto?
       profile description: 'Descripción del perfil:'
       preferred languages: 'Idiomas preferidos:'
@@ -2320,8 +2371,6 @@ es:
       button: Quitar amistad
       success: Has quitado a %{name} de tus amigos.
       not_a_friend: '%{name} no es uno de tus amigos.'
-    filter:
-      not_an_administrator: Necesitas ser administrador para ejecutar esta acción.
     index:
       title: Usuarios
       heading: Usuarios
@@ -2359,8 +2408,6 @@ es:
         de usuario.
   user_role:
     filter:
-      not_an_administrator: Sólo los administradores pueden realizar la administración
-        de funciones de usuario y no eres un administrador.
       not_a_role: La cadena `%{role}' no es una función válida.
       already_has_role: El usuario ya tiene la función %{role}.
       doesnt_have_role: El usuario no tiene la función %{role}.
@@ -2495,31 +2542,10 @@ es:
       next: Siguiente »
       previous: « Anterior
   notes:
-    comment:
-      opened_at_html: Creado hace %{when}
-      opened_at_by_html: Creado hace %{when} por %{user}
-      commented_at_html: Actualizado hace %{when}
-      commented_at_by_html: Actualizado hace %{when} por %{user}
-      closed_at_html: Resuelto hace %{when}
-      closed_at_by_html: Resuelto hace %{when} por %{user}
-      reopened_at_html: Reactivado hace %{when}
-      reopened_at_by_html: Reactivado hace %{when} por %{user}
-    rss:
-      title: Notas de OpenStreetMap
-      description_area: Lista de notas comunicadas, comentadas o cerradas en tu zona
-        [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Agregador RSS para la nota %{id}
-      opened: nueva nota (cerca de %{place})
-      commented: nuevo comentario (cerca de %{place})
-      closed: nota cerrada (cerca de %{place})
-      reopened: nota reactivada (cerca de %{place})
-    entry:
-      comment: Comentario
-      full: Nota completa
     mine:
       title: Notas remitidas o comentadas por %{user}
       heading: Notas de %{user}
-      subheading: Notas remitidas o comentadas por %{user}
+      subheading_html: Notas remitidas o comentadas por %{user}
       id: Identificador
       creator: Creador
       description: Descripción
@@ -2613,13 +2639,12 @@ es:
     directions:
       ascend: Ascender
       engines:
+        fossgis_osrm_bike: Bicicleta (OSRM)
+        fossgis_osrm_car: En coche (OSRM)
+        fossgis_osrm_foot: Pie (OSRM)
         graphhopper_bicycle: En bicicleta (GraphHopper)
         graphhopper_car: Auto (GraphHopper)
         graphhopper_foot: A pie (GraphHopper)
-        mapquest_bicycle: En bicicleta (MapQuest)
-        mapquest_car: En coche (MapQuest)
-        mapquest_foot: A pie (MapQuest)
-        osrm_car: En coche (OSRM)
       descend: Descender
       directions: Indicaciones
       distance: Distancia
@@ -2711,7 +2736,7 @@ es:
       relation: Relación
       nothing_found: No se encontraron características
       error: 'Error al contactar con %{server}: %{error}'
-      timeout: Tiempo de espera agotado al contactar a %{server}
+      timeout: Tiempo de espera agotado al contactar con %{server}
     context:
       directions_from: Indicaciones desde aquí
       directions_to: Indicaciones hasta aquí
@@ -2751,4 +2776,9 @@ es:
         previas pertenecientes a esta redacción antes de destruirla.
       flash: Redacción destruida.
       error: Se produjo un error al destruir esta redacción
+  validations:
+    leading_whitespace: tiene espacio en blanco delantero
+    trailing_whitespace: tiene espacio en blanco final
+    invalid_characters: contiene caracteres no válidos
+    url_characters: Contiene caracteres URL especial (%{characters})
 ...

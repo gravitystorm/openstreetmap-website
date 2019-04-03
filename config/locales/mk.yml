@@ -1,9 +1,11 @@
 # Messages for Macedonian (македонски)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Bjankuloski06
 # Author: Macofe
 # Author: Nemo bis
+# Author: Vlad5250
 ---
 mk:
   html:
@@ -13,6 +15,10 @@ mk:
       friendly: '%e %B %Y г. во %H:%M ч.'
       blog: '%e %B %Y г.'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: не претставува важечка е-пошта
+        email_address_not_routable: не е насочлива
     models:
       acl: Список за контрола на пристап
       changeset: Измени
@@ -97,6 +103,29 @@ mk:
     remote:
       name: Далечинско управување
       description: Далечинско управување (JOSM или Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Создадена пред %{when}
+        opened_at_by_html: Создадена пред %{when} од %{user}
+        commented_at_html: Подновена пред %{when}
+        commented_at_by_html: Подновена пред %{when} од %{user}
+        closed_at_html: Решена пред %{when}
+        closed_at_by_html: Решена пред %{when} од %{user}
+        reopened_at_html: Повторно отворена пред %{when}
+        reopened_at_by_html: Повторно отворена пред %{when} од %{user}
+      rss:
+        title: Белешки на OpenStreetMap
+        description_area: Список на белешки, создадени, искометирани или затворени,
+          во вашата околина [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: RSS-тековник за белешката %{id}
+        opened: нова белешка (кај %{place})
+        commented: нова коментар (кај %{place})
+        closed: затворена белешка (кај %{place})
+        reopened: преактивирана белешка (кај %{place})
+      entry:
+        comment: Коментар
+        full: Целата белешка
   browse:
     created: Создадено
     closed: Затворено
@@ -221,7 +250,7 @@ mk:
       introduction: Стиснете на картата за да ги најдете елементите во близина.
       nearby: Елементи во близина
       enclosing: Обиколни елементи
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Страница %{page}
       next: Следно »
@@ -229,36 +258,41 @@ mk:
     changeset:
       anonymous: Анонимен
       no_edits: (нема уредувања)
-      view_changeset_details: Преглед на подробности од измените
+      view_changeset_details: Погл. поединости за измените
     changesets:
       id: Назнака
       saved_at: Зачувано во
       user: Корисник
       comment: Коментар
-      area: Површина
+      area: Подрачје
     index:
       title: Измени
       title_user: Измени на %{user}
-      title_friend: Измени на мои пријатели
+      title_friend: Измени од мои пријатели
       title_nearby: Измени од соседни корисници
-      empty: Не пронајдов збирови од промени.
-      empty_area: Нема збирови од промени во ова подрачје.
-      empty_user: Нема збирови на промени од тој корисник.
-      no_more: Нема повеќе збирови на промени.
-      no_more_area: Нема повеќе збирови на промени во ова подрчаје.
-      no_more_user: Нема повеќе збирови на промени од тој корисник.
+      empty: Не пронајдов промени.
+      empty_area: Нема промени на ова подрачје.
+      empty_user: Нема промени од тој корисник.
+      no_more: Нема повеќе промени.
+      no_more_area: Нема повеќе промени на ова подрчаје.
+      no_more_user: Нема повеќе промени од овој корисник.
       load_more: Вчитај уште
+    timeout:
+      sorry: За жал, на списокот на промени што го побаравте му требаше предолго за
+        да се добие.
+  changeset_comments:
+    comment:
+      comment: 'Нов коментар за промената #%{changeset_id} на %{author}'
+      commented_at_by_html: Подновено пред %{when} од %{user}
+    comments:
+      comment: 'Нов коментар за промената #%{changeset_id} на %{author}'
+    index:
+      title_all: Разговор за промена на OpenStreetMap
+      title_particular: 'Разговор за промената #%{changeset_id} на OpenStreetMap'
     timeout:
       sorry: За жал, на списокот на измени што го побаравте му требаше предолго за
         да се преземе.
-    rss:
-      title_all: Разговор за промена на OpenStreetMap
-      title_particular: 'Разговор за промената #%{changeset_id} на OpenStreetMap'
-      comment: 'Нов коментар за промената #%{changeset_id} на %{author}'
-      commented_at_html: Подновено пред %{when}
-      commented_at_by_html: Подновено пред %{when} од %{user}
-      full: Целосен разговор
-  diary_entry:
+  diary_entries:
     new:
       title: Нова дневничка ставка
       publish_button: Објави
@@ -266,12 +300,12 @@ mk:
       title: Дневници на корисници
       title_friends: Дневници на пријателите
       title_nearby: Дневници на соседните корисници
-      user_title: Дневник на %{user}
+      user_title: Дневникот на %{user}
       in_language_title: Дневнички написи на %{language}
-      new: 'Нов дневнички запис:'
-      new_title: Напишете нов запис во корисничкиот дневник
+      new: Нова дневничка ставка
+      new_title: Напишете нова ставка во вашиот кориснички дневник
       no_entries: Нема дневнички ставки
-      recent_entries: Скорешни дневнички записи
+      recent_entries: Скорешни дневнички ставки
       older_entries: Постари ставки
       newer_entries: Понови ставки
     edit:
@@ -280,37 +314,37 @@ mk:
       body: 'Содржина:'
       language: 'Јазик:'
       location: 'Местоположба:'
-      latitude: Геог. ширина
-      longitude: Геог. должина
-      use_map_link: покажи на карта
+      latitude: Г.Ш.
+      longitude: Г.Д.
+      use_map_link: на карта
       save_button: Зачувај
-      marker_text: Место на дневничкиот запис
+      marker_text: Наоѓалиште на дневничката ставка
     show:
       title: Дневникот на %{user} | %{title}
-      user_title: дневник на %{user}
-      leave_a_comment: Пиши коментар
+      user_title: Дневникот на %{user}
+      leave_a_comment: Напиши коментар
       login_to_leave_a_comment: '%{login_link} за да оставите коментар'
       login: Најава
       save_button: Зачувај
     no_such_entry:
       title: Нема таква дневничка ставка
-      heading: 'Нема ставка со назнака: %{id}'
-      body: Жалиме, но нема дневничка ставка или коментар со назнака %{id}. Проверете
-        дали сте напишале правилно, или да не сте стиснале на погрешна врска.
+      heading: Нема ставка со назнаката %{id}
+      body: Жалиме, но нема дневничка ставка или коментар со назнаката %{id}. Проверете
+        дали сте ја напишале правилно, или да не сте стиснале на погрешна врска.
     diary_entry:
       posted_by: Испратено од %{link_user} во %{created} на %{language_link}
-      comment_link: Коментирај на оваа ставка
-      reply_link: Одговори на оваа ставка
+      comment_link: Коментирај на ставкава
+      reply_link: Одговори на ставкава
       comment_count:
-        one: '%{count} коментар'
         zero: Нема коментари
+        one: '%{count} коментар'
         other: '%{count} коментари'
-      edit_link: Уреди ја оваа ставка
+      edit_link: Уреди ја ставкава
       hide_link: Скриј ја ставкава
       confirm: Потврди
       report: Пријави ја ставкава
     diary_comment:
-      comment_from: Коментар од %{link_user}  во %{comment_created_at}
+      comment_from: Коментар од %{link_user} во %{comment_created_at}
       hide_link: Скриј го коментаров
       confirm: Потврди
       report: Пријави го коментаров
@@ -324,13 +358,13 @@ mk:
         description: Скорешни дневнички ставки од %{user}
       language:
         title: Дневнички ставки на %{language_name}
-        description: Скорешни дневнички записи од корисниците на OpenStreetMap на
+        description: Скорешни дневнички ставки од корисниците на OpenStreetMap на
           %{language_name}
       all:
         title: Дневнички ставки
         description: Скорешни дневнички ставки од корисници на OpenStreetMap
     comments:
-      has_commented_on: '%{display_name} коментираше на следниве дневнички записи'
+      has_commented_on: '%{display_name} коментираше на следниве дневнички ставки'
       post: Објава
       when: Кога
       comment: Коментар
@@ -872,7 +906,7 @@ mk:
           "yes": Дуќан
         tourism:
           alpine_hut: Планинска куќарка
-          apartment: Стан
+          apartment: Одморалиштен стан
           artwork: Уметничко дело
           attraction: Атракција
           bed_and_breakfast: Полупансион
@@ -1064,10 +1098,9 @@ mk:
     intro_text: OpenStreetMap е карта на светот создадена од луѓе како вас и се нуди
       за слободна употреба под отворена лиценца.
     intro_2_create_account: Создајте корисничка сметка
-    partners_html: Вдомувањето е поддржано од %{ucl}, %{bytemark}, %{ic} како и други
+    hosting_partners_html: Вдомувањето е поддржано од %{ucl}, %{bytemark} и други
       %{partners}.
     partners_ucl: UCL
-    partners_ic: Империјалниот колеџ - Лондон
     partners_bytemark: вдомителот „Bytemark“
     partners_partners: партнери
     osm_offline: Базата на податоци на  OpenStreetMap моментално е исклучена додека
@@ -1386,6 +1419,9 @@ mk:
           <a href="https://creativecommons.org/licenses/by/3.0/at/deed.mk">CC BY</a>),
           <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Покраина Предарлска</a> и
           Покраина Тирол (под <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY AT со исправки</a>).
+        contributors_au_html: |-
+          <strong>Австралија</strong>: Содржи податоци за населби од
+          Австралиското биро за статистика.
         contributors_ca_html: |-
           <strong>Canada</strong>: Содржи податоци од
           GeoBase&reg;, GeoGratis (&copy; Министерство за природни ресурси на Канада), CanVec (&copy; Министерство за природни ресурси на Канада), and StatCan (Географско одделение,
@@ -1408,6 +1444,11 @@ mk:
           <a href="http://www.gu.gov.si/en/">Геодетската управа</a> и
           <a href="http://www.mkgp.gov.si/en/">Министерството за земјоделство, шумарство и храна</a>
           (јавни информации од Словенија).
+        contributors_es_html: |-
+          <strong>Шпанија</strong>: Содржи податоци преземени од
+          Националниот географски институт на Шпанија (<a href="http://www.ign.es/">IGN</a>) и
+          Националниот картографски систем (<a href="http://www.scne.es/">SCNE</a>)
+          достапни за употреба под лиценцата <a href="https://creativecommons.org/licenses/by/4.0/deed.mk">CC BY 4.0</a>.
         contributors_za_html: |-
           <strong>ЈАР</strong>: Содржи податоци од
           <a href="http://www.ngi.gov.za/">Главната управа:
@@ -1415,7 +1456,7 @@ mk:
         contributors_gb_html: |-
           <strong>Велика Британија</strong>: Содржи податоци
           од Картографскиот завод на Обединетото Кралство&copy; Крунски авторски права и
-          права на базата 2010-12.
+          права на базата 2010-19 г.
         contributors_footer_1_html: |-
           Повеќе информации за овие и други извори искористени
           за подобрување на OpenStreetMap ќе најдете на страницата <a
@@ -1540,7 +1581,7 @@ mk:
       title: Помош
       introduction: |-
         OpenStreetMap има неколку ресурси каде можете да дознаете за проектот, да поставувате прашања,
-        да водите заедничка дискусија и да документирате картографски теми.
+        да водите заедничка расправа и да документирате картографски теми.
       welcome:
         url: /welcome
         title: Добре дојдовте на OSM
@@ -1568,6 +1609,11 @@ mk:
         title: Преод на OSM
         description: Помош за претпријатија и организации кои преоѓаат на  карти на
           OpenStreetMap и други услуги.
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: За организации
+        description: Дали сте од организација која сака да работи со OpenStreetMap?
+          Потребните сознанија ќе ги добиете на страницата за добредојде.
       wiki:
         url: https://wiki.openstreetmap.org/wiki/Mk:Main_Page
         title: wiki.openstreetmap.org
@@ -1659,7 +1705,7 @@ mk:
       edit: Уреди
       preview: Преглед
     markdown_help:
-      title_html: Расчленето со <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Расчленето со <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Наслови
       heading: Наслов
       subheading: Поднаслов
@@ -1709,8 +1755,7 @@ mk:
         title: Имате прашања?
         paragraph_1_html: |-
           OpenStreetMap има неколку ресурси каде можете да дознаете за проектот, да поставувате прашања,
-          да водите заедничка дискусија и да документирате картографски теми.
-          <a href='%{help_url}'>Помош ќе добиете тука</a>.
+          да водите заедничка расправа и да документирате картографски теми. <a href='%{help_url}'>Помош ќе добиете тука</a>. Ако сте од организација која сака да работи со OpenStreetMap <a href='https://welcome.openstreetmap.org/'>погледајте ја страницата за добредојде</a>.
       start_mapping: Почнете да ги работите картите
       add_a_note:
         title: Немате време да уредувате? Ставете белешка.
@@ -1844,15 +1889,12 @@ mk:
         other: GPX-податотеки со %{count} точки од %{user}
       description_without_count: GPX-податотека од %{user}
   application:
+    permission_denied: Немате дозвола за ова дејство
     require_cookies:
       cookies_needed: Изгледа сте оневозможиле колачиња - дозволете колачиња во прелистувачот
         за да можете да продолжите,
     require_admin:
       not_an_admin: За да го изведете тоа, треба да сте администратор.
-    require_moderator:
-      not_a_moderator: За да го изведете тоа, треба да сте модератор.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: За да го изведете тоа, треба да сте модератор.
     setup_user_auth:
       blocked_zero_hour: Имате итна порака на OpenStreetMap. Ќе мора да ја прочитате
         пораката пред да ги зачувате уредувањата.
@@ -1949,7 +1991,7 @@ mk:
       flash: Клиентските информации се успешно подновени
     destroy:
       flash: Уништена е пријавната регистрација за клиентскиот програм.
-  user:
+  users:
     login:
       title: Најава
       heading: Најава
@@ -1972,8 +2014,8 @@ mk:
         на врската наведена во пораката со која ви ја потврдуваме сметката за да ја
         активирате, или пак <a href="%{reconfirm}">побарајте нова потврдна порака</a>.
       account is suspended: За жал, вашата сметка е закочена поради сомнителна активност.<br
-        />Обратете се кај <a href="%{webmaster}">раководителот</a> ако сакате да продискутирате
-        за проблемот.
+        />Обратете се кај <a href="%{webmaster}">раководителот</a> ако сакате да порасправате
+        по проблемот.
       auth failure: Жалиме, не можевме да ве најавиме со тие податоци.
       openid_logo_alt: Најава со OpenID
       auth_providers:
@@ -2153,9 +2195,9 @@ mk:
       delete_user: Избриши го корисников
       confirm: Потврди
       friends_changesets: измени на пријателите
-      friends_diaries: дневнички записи на пријателите
+      friends_diaries: дневнички ставки на пријателите
       nearby_changesets: измени на соседните корисници
-      nearby_diaries: дневнички записи на соседн. корисн.
+      nearby_diaries: дневнички ставки на сосед. корисн.
       report: Пријави го корисников
     popup:
       your location: Ваша местоположба
@@ -2268,8 +2310,6 @@ mk:
       button: Отстрани од пријатели
       success: Корисникот %{name} е отстранет од вашите пријатели.
       not_a_friend: '%{name} не е меѓу вашите пријатели.'
-    filter:
-      not_an_administrator: За да го изведете тоа, треба да сте администратор.
     index:
       title: Корисници
       heading: Корисници
@@ -2292,7 +2332,7 @@ mk:
         </p>
         <p>
           Донесената одлуката набргу ќе ја прегледа администратор, но
-          можете да се обратите кај %{webmaster} ако сакате да продискутирате за овој проблем.
+          можете да се обратите кај %{webmaster} ако сакате да порасправате по овој проблем.
         </p>
     auth_failure:
       connection_failed: Не успеав да воспоставам врска со услужникот за заверка
@@ -2309,8 +2349,6 @@ mk:
         со вашата назнака.
   user_role:
     filter:
-      not_an_administrator: Само администраторите можат да раководат со улоги, а вие
-        не сте администратор.
       not_a_role: Низата `%{role}' не претставува важечка улога.
       already_has_role: Корисникот веќе ја има улогата %{role}.
       doesnt_have_role: Корисникот ја нема улогата %{role}.
@@ -2437,31 +2475,10 @@ mk:
       next: Следна »
       previous: « Претходна
   notes:
-    comment:
-      opened_at_html: Создадена пред %{when}
-      opened_at_by_html: Создадена пред %{when} од %{user}
-      commented_at_html: Подновена пред %{when}
-      commented_at_by_html: Подновена пред %{when} од %{user}
-      closed_at_html: Решена пред %{when}
-      closed_at_by_html: Решена пред %{when} од %{user}
-      reopened_at_html: Повторно отворена пред %{when}
-      reopened_at_by_html: Повторно отворена пред %{when} од %{user}
-    rss:
-      title: Белешки на OpenStreetMap
-      description_area: Список на белешки, создадени, искометирани или затворени,
-        во вашата околина [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: RSS-тековник за белешката %{id}
-      opened: нова белешка (кај %{place})
-      commented: нова коментар (кај %{place})
-      closed: затворена белешка (кај %{place})
-      reopened: преактивирана белешка (кај %{place})
-    entry:
-      comment: Коментар
-      full: Целата белешка
     mine:
       title: Белешки создадени или коментирани од %{user}
       heading: Белешки на %{user}
-      subheading: Белешки создадени или коментирани од %{user}
+      subheading_html: Белешки создадени или коментирани од %{user}
       id: Назнака
       creator: Создавач
       description: Опис
@@ -2555,13 +2572,12 @@ mk:
     directions:
       ascend: Нагорно
       engines:
+        fossgis_osrm_bike: Велосипед (OSRM)
+        fossgis_osrm_car: Автомобил (OSRM)
+        fossgis_osrm_foot: Пеш (OSRM)
         graphhopper_bicycle: Велосипед (GraphHopper)
         graphhopper_car: Автомоб. (GraphHopper)
         graphhopper_foot: Пешки (GraphHopper)
-        mapquest_bicycle: Велосипед (MapQuest)
-        mapquest_car: Автомобил (MapQuest)
-        mapquest_foot: Пешки (MapQuest)
-        osrm_car: Автомобил (OSRM)
       descend: Надолно
       directions: Насоки
       distance: Растојание
@@ -2689,4 +2705,9 @@ mk:
         на оваа редакција пред да ја поништите.
       flash: Редакцијата е поништена.
       error: Се појави грешка при поништувањето на редакцијата.
+  validations:
+    leading_whitespace: има почетна белина
+    trailing_whitespace: има завршна белина
+    invalid_characters: содржи неважечки знаци
+    url_characters: содржи посебни знаци во URL-то (%{characters})
 ...

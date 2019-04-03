@@ -99,6 +99,10 @@ bs:
     remote:
       name: Udaljena kontrola
       description: Udaljena kontrola (JOSM ili Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Kreirano prije %{when}
   browse:
     created: Napravljeno
     closed: Zatvoreno
@@ -188,7 +192,7 @@ bs:
       title: Informacije o objektima
       nearby: Obližnje značajke
       enclosing: Značajke okruženja
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Stranica %{page}
       next: Sljedeća »
@@ -212,9 +216,7 @@ bs:
     timeout:
       sorry: Žao nam je, listi seta promjena koju ste tražili je predugo trajalo za
         preuzimanje.
-    rss:
-      full: Cijela diskusija
-  diary_entry:
+  diary_entries:
     new:
       title: Novi unos u dnevnik
       publish_button: Objavi
@@ -806,10 +808,7 @@ bs:
     intro_text: OpenStreetMap predstavlja mapu svijeta, kreiranu od strane ljudi kao
       što ste vi i može se besplatno koristiti.
     intro_2_create_account: Napravite korisnički račun
-    partners_html: Hosting je podržan od strane %{ucl}, %{ic} i %{bytemark}, i drugih
-      %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partnera
     osm_offline: OpenStreetMap baza podataka je trenutno nedostupna dok se ne završe
@@ -1356,8 +1355,6 @@ bs:
     require_cookies:
       cookies_needed: Čini se da su vam kolačići onemogućeni, molimo omogućite kolačiće
         u vašem pregledniku prije nastavka.
-    require_moderator:
-      not_a_moderator: Trebate biti moderator da bi izvršili tu radnju.
     setup_user_auth:
       blocked: Vaš pristup API-u je blokiran. Prijavite se na web upravljačku ploču
         da saznate više.
@@ -1439,7 +1436,7 @@ bs:
       flash: Informacije o klijentu uspješno osvježene
     destroy:
       flash: Uništena registracija klijent aplikacije
-  user:
+  users:
     login:
       title: Prijava
       heading: Prijava
@@ -1701,8 +1698,6 @@ bs:
       button: Ukloniti prijatelja
       success: '%{name} je uklonjen iz prijatelja.'
       not_a_friend: '%{name} nije jedan od Vaših prijatelja.'
-    filter:
-      not_an_administrator: Trebate biti moderator da bi izvršili tu radnju.
     index:
       title: Korisnici
       heading: Korisnici
@@ -1724,8 +1719,6 @@ bs:
         \n</p>"
   user_role:
     filter:
-      not_an_administrator: Samo administratori mogu upravljati ulogama korisnika,
-        a vi niste administrator.
       not_a_role: String `%{role}' nije valjana uloga.
       already_has_role: Korisnik već ima ulogu %{role}.
       doesnt_have_role: Korisnik nema ulogu %{role}.
@@ -1846,8 +1839,6 @@ bs:
       next: Sljedeća »
       previous: « Prethodna
   notes:
-    comment:
-      opened_at_html: Kreirano prije %{when}
     mine:
       id: Id
       creator: Izradio

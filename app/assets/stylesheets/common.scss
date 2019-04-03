@@ -150,6 +150,10 @@ small, aside {
 
 .piwik { border: 0; }
 
+[dir=rtl] { /* no-r2 */ text-align: right; }
+
+[dir=ltr] { /* no-r2 */ text-align: left; }
+
 /* Rules for icons */
 
 .icon {
@@ -1237,7 +1241,8 @@ tr.turn:hover {
     margin: $lineheight/2 0;
 
     p {
-      margin-left: 10px;
+      margin: 10px 6px 0 6px;
+      line-height: 1.5;
     }
   }
 
@@ -1323,11 +1328,11 @@ tr.turn:hover {
     #maxlat { margin-top: -1px; }
     #minlon {
       float: left;
-      margin-left: -1px;
+      /* no-r2 */ margin-left: -1px;
     }
     #maxlon {
       float: right;
-      margin-right: -1px;
+      /* no-r2 */ margin-right: -1px;
     }
     #minlat { margin-bottom: 0; }
   }
@@ -1402,9 +1407,9 @@ tr.turn:hover {
 
 /* Overrides for pages that use new layout conventions */
 
-.user-new,
-.user-create,
-.user-terms {
+.users-new,
+.users-create,
+.users-terms {
   .content-body .content-inner {
     padding: 0;
 
@@ -1415,10 +1420,10 @@ tr.turn:hover {
   }
 }
 
-.user-new,
-.user-create,
-.user-terms,
-.user-confirm {
+.users-new,
+.users-create,
+.users-terms,
+.users-confirm {
   .content-heading .content-inner {
     height: 200px;
   }
@@ -1453,6 +1458,10 @@ tr.turn:hover {
     background-image: image-url("sign-up-illustration-arm.png");
     z-index: 100;
   }
+}
+
+[dir=rtl] .header-illustration {
+  transform: scaleX(-1);
 }
 
 #content.maximised {
@@ -1594,7 +1603,7 @@ tr.turn:hover {
   margin-left: 70px;
 }
 
-.user-show {
+.users-show {
   // Silly exception; remove when user page is redesigned.
   .content-inner {
     max-width: none;
@@ -1685,7 +1694,7 @@ tr.turn:hover {
 
 /* Rules for the diary entry page */
 
-.diary_entry {
+.diary_entries {
   #map {
     position: relative;
     width: 90%;
@@ -1721,7 +1730,7 @@ tr.turn:hover {
   }
 }
 
-.diary_entry-show img.user_thumbnail {
+.diary_entries-show img.user_thumbnail {
   float: left;
 }
 
@@ -1745,7 +1754,7 @@ tr.turn:hover {
 
 /* Rules for the account confirmation page */
 
-.user-terms {
+.users-terms {
   .legale {
     border: 1px solid #ccc;
     padding: $lineheight;
@@ -2313,6 +2322,7 @@ a.button {
     font-size: 13px;
     background: #e8e8e8;
     padding: 2px 3px;
+    white-space: pre-wrap;
 
     code {
       padding: 0;
@@ -2340,11 +2350,11 @@ a.button {
     margin-left: $lineheight;
   }
 
-  ul li {
+  ul > li {
     list-style: disc;
   }
 
-  ol li {
+  ol > li {
     list-style: decimal;
   }
 }
@@ -2618,7 +2628,7 @@ input.richtext_title[type="text"] {
   }
 
   .sprite.x {
-    background-position: -50px 0;
+    /* no-r2 */ background-position: -50px 0;
   }
 
   .sprite.term {
@@ -2627,27 +2637,27 @@ input.richtext_title[type="text"] {
   }
 
   .sprite.node {
-    background-position: -100px 0;
+    /* no-r2 */ background-position: -100px 0;
   }
 
   .sprite.way {
-    background-position: -150px 0;
+    /* no-r2 */ background-position: -150px 0;
   }
 
   .sprite.tag {
-    background-position: -200px 0;
+    /* no-r2 */ background-position: -200px 0;
   }
 
   .sprite.editor {
-    background-position: -250px 0;
+    /* no-r2 */ background-position: -250px 0;
   }
 
   .sprite.question {
-    background-position: -300px 0;
+    /* no-r2 */ background-position: -300px 0;
   }
 
   .sprite.rules {
-    background-position: -350px 0;
+    /* no-r2 */ background-position: -350px 0;
   }
 
   .start-mapping {

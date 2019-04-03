@@ -1,6 +1,7 @@
 # Messages for Friulian (furlan)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Davio
 # Author: Klenje
 # Author: Macofe
@@ -92,6 +93,29 @@ fur:
     remote:
       name: Remote Control
       description: Remote Control (JOSM o Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Creât %{when} indaûr
+        opened_at_by_html: Creât %{when} indaûr di %{user}
+        commented_at_html: Inzornade %{when} indaûr
+        commented_at_by_html: Inzornade %{when} indaûr di %{user}
+        closed_at_html: Risolte %{when} indaûr
+        closed_at_by_html: Risolte %{when} indaûr di %{user}
+        reopened_at_html: Tornade a ativâ %{when} indaûr
+        reopened_at_by_html: Tornade a ativâ %{when} indaûr di %{user}
+      rss:
+        title: Notis di OpenStreetMap
+        description_area: Une liste des notis segnaladis, comentadis o risoltis inte
+          tô zone [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Un canâl RSS per note %{id}
+        opened: gnove note (dongje di %{place})
+        commented: gnûf coment (dongje di %{place})
+        closed: note sierade (dongje di %{place})
+        reopened: note tornade a ativâ (dongje di %{place})
+      entry:
+        comment: Coment
+        full: Note complete
   browse:
     created: Creât
     closed: Sierât
@@ -208,7 +232,7 @@ fur:
       introduction: Frache su la mape par cjatâ lis robis dongje.
       nearby: Elements dongje
       enclosing: Elements includûts
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Pagjine %{page}
       next: Sucessîf »
@@ -238,14 +262,14 @@ fur:
     timeout:
       sorry: Nus displâs, la liste dai grups di cambiaments che tu âs domandât e je
         stade masse timp a cjamâsi.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Gnûf coment sul grup di cambiaments #%{changeset_id} di %{author}'
+      commented_at_by_html: Inzornât %{when} indaûr di %{user}
+    index:
       title_all: Discussion sul grup di cambiaments di OpenStreetMap
       title_particular: 'Discussion sul grup di cambiaments #%{changeset_id} di OpenStreetMap'
-      comment: 'Gnûf coment sul grup di cambiaments #%{changeset_id} di %{author}'
-      commented_at_html: Inzornât %{when} indaûr
-      commented_at_by_html: Inzornât %{when} indaûr di %{user}
-      full: Dute la discussion
-  diary_entry:
+  diary_entries:
     new:
       title: Gnove vôs dal diari
     index:
@@ -631,10 +655,7 @@ fur:
     intro_text: OpenStreetMap e je une mape dal mont, creade di int come te e di ûs
       libar sot di une licence vierte.
     intro_2_create_account: Cree il to profîl utent
-    partners_html: L'hosting al è sostignût di %{ucl}, %{ic}, %{bytemark} e altris
-      %{partners}.
     partners_ucl: UCL VR Centre
-    partners_ic: Imperial College di Londre
     partners_bytemark: Bytemark Hosting
     osm_offline: La base di dâts di OpenStreetMap e je par cumò fûr linie parcè che
       o sin daûr a fâ lavôrs essenziâi di manutenzion de base di dâts.
@@ -1062,7 +1083,7 @@ fur:
       allow_write_diary: creâ vôs dal diari, comentâ e zontâ amîs.
       allow_write_api: modificâ la mape.
       allow_write_notes: cambiâ lis notis.
-  user:
+  users:
     login:
       title: Jentre
       heading: Jentre
@@ -1365,31 +1386,10 @@ fur:
       next: Sucessîf »
       previous: « Precedent
   notes:
-    comment:
-      opened_at_html: Creât %{when} indaûr
-      opened_at_by_html: Creât %{when} indaûr di %{user}
-      commented_at_html: Inzornade %{when} indaûr
-      commented_at_by_html: Inzornade %{when} indaûr di %{user}
-      closed_at_html: Risolte %{when} indaûr
-      closed_at_by_html: Risolte %{when} indaûr di %{user}
-      reopened_at_html: Tornade a ativâ %{when} indaûr
-      reopened_at_by_html: Tornade a ativâ %{when} indaûr di %{user}
-    rss:
-      title: Notis di OpenStreetMap
-      description_area: Une liste des notis segnaladis, comentadis o risoltis inte
-        tô zone [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Un canâl RSS per note %{id}
-      opened: gnove note (dongje di %{place})
-      commented: gnûf coment (dongje di %{place})
-      closed: note sierade (dongje di %{place})
-      reopened: note tornade a ativâ (dongje di %{place})
-    entry:
-      comment: Coment
-      full: Note complete
     mine:
       title: Note inseride o comentade di %{user}
       heading: Lis notis di %{user}
-      subheading: Lis notis inseridis o comentadis di %{user}
+      subheading_html: Lis notis inseridis o comentadis di %{user}
       id: Identificatîf
       creator: Creadôr
       description: Descrizion

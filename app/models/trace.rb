@@ -38,8 +38,8 @@ class Trace < ActiveRecord::Base
   scope :tagged, ->(t) { joins(:tags).where(:gpx_file_tags => { :tag => t }) }
 
   validates :user, :presence => true, :associated => true
-  validates :name, :presence => true, :length => 1..255
-  validates :description, :presence => { :on => :create }, :length => 1..255
+  validates :name, :presence => true, :length => 1..255, :characters => true
+  validates :description, :presence => { :on => :create }, :length => 1..255, :characters => true
   validates :timestamp, :presence => true
   validates :visibility, :inclusion => %w[private public trackable identifiable]
 
@@ -110,15 +110,15 @@ class Trace < ActiveRecord::Base
   end
 
   def large_picture_name
-    "#{GPX_IMAGE_DIR}/#{id}.gif"
+    "#{Settings.gpx_image_dir}/#{id}.gif"
   end
 
   def icon_picture_name
-    "#{GPX_IMAGE_DIR}/#{id}_icon.gif"
+    "#{Settings.gpx_image_dir}/#{id}_icon.gif"
   end
 
   def trace_name
-    "#{GPX_TRACE_DIR}/#{id}.gpx"
+    "#{Settings.gpx_trace_dir}/#{id}.gpx"
   end
 
   def mime_type
@@ -280,7 +280,7 @@ class Trace < ActiveRecord::Base
   def import
     logger.info("GPX Import importing #{name} (#{id}) from #{user.email}")
 
-    gpx = GPX::File.new(xml_file)
+    gpx = ::GPX::File.new(xml_file)
 
     f_lat = 0
     f_lon = 0
@@ -289,21 +289,34 @@ class Trace < ActiveRecord::Base
     # If there are any existing points for this trace then delete them
     Tracepoint.where(:gpx_id => id).delete_all
 
-    gpx.points do |point|
-      if first
-        f_lat = point.latitude
-        f_lon = point.longitude
-        first = false
+    gpx.points.each_slice(1_000) do |points|
+      # Gather the trace points together for a bulk import
+      tracepoints = []
+
+      points.each do |point|
+        if first
+          f_lat = point.latitude
+          f_lon = point.longitude
+          first = false
+        end
+
+        tp = Tracepoint.new
+        tp.lat = point.latitude
+        tp.lon = point.longitude
+        tp.altitude = point.altitude
+        tp.timestamp = point.timestamp
+        tp.gpx_id = id
+        tp.trackid = point.segment
+        tracepoints << tp
       end
 
-      tp = Tracepoint.new
-      tp.lat = point.latitude
-      tp.lon = point.longitude
-      tp.altitude = point.altitude
-      tp.timestamp = point.timestamp
-      tp.gpx_id = id
-      tp.trackid = point.segment
-      tp.save!
+      # Run the before_save and before_create callbacks, and then import them in bulk with activerecord-import
+      tracepoints.each do |tp|
+        tp.run_callbacks(:save) { false }
+        tp.run_callbacks(:create) { false }
+      end
+
+      Tracepoint.import!(tracepoints)
     end
 
     if gpx.actual_points.positive?

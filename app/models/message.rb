@@ -24,14 +24,13 @@
 #  messages_to_user_id_fkey    (to_user_id => users.id)
 #
 
-require "validators"
-
 class Message < ActiveRecord::Base
   belongs_to :sender, :class_name => "User", :foreign_key => :from_user_id
   belongs_to :recipient, :class_name => "User", :foreign_key => :to_user_id
 
   validates :title, :presence => true, :utf8 => true, :length => 1..255
   validates :body, :sent_on, :sender, :recipient, :presence => true
+  validates :title, :body, :characters => true
 
   def self.from_mail(mail, from, to)
     if mail.multipart?

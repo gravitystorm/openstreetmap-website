@@ -1,6 +1,7 @@
 # Messages for Brazilian Portuguese (português do Brasil)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Alvarenga
 # Author: Amgauna
 # Author: Athena in Wonderland
@@ -12,6 +13,7 @@
 # Author: Diego Queiroz
 # Author: EVinente
 # Author: Eduardo Addad de Oliveira
+# Author: Eelucaslima
 # Author: Fmca
 # Author: Ftrebien
 # Author: Fúlvio
@@ -26,6 +28,7 @@
 # Author: Luk3
 # Author: Macofe
 # Author: Matheus Sousa L.T
+# Author: McDutchie
 # Author: NMaia
 # Author: Naoliv
 # Author: Nemo bis
@@ -50,6 +53,10 @@ pt-BR:
       friendly: '%e de %B de %Y às %H:%M'
       blog: '%e %B %Y'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: não parece ser um endereço de e-mail válido
+        email_address_not_routable: não é roteável
     models:
       acl: Lista de controle de acesso
       changeset: Conjunto de alterações
@@ -68,9 +75,9 @@ pt-BR:
       old_relation: Relação Antiga
       old_relation_member: Membro da Relação Antiga
       old_relation_tag: Etiqueta da relação antiga
-      old_way: Linha Antiga
-      old_way_node: Ponto da linha antiga
-      old_way_tag: Etiqueta da linha antiga
+      old_way: Via antiga
+      old_way_node: Ponto da via antiga
+      old_way_tag: Etiqueta da via antiga
       relation: Relação
       relation_member: Membro da Relação
       relation_tag: Etiqueta da relação
@@ -81,9 +88,9 @@ pt-BR:
       user: Usuário
       user_preference: Preferências do Usuário
       user_token: Token do Usuário
-      way: Linha
-      way_node: Ponto da Linha
-      way_tag: Etiqueta da linha
+      way: Via
+      way_node: Ponto da via
+      way_tag: Etiqueta da via
     attributes:
       diary_comment:
         body: Corpo
@@ -134,6 +141,29 @@ pt-BR:
     remote:
       name: Controle Remoto
       description: Controle Remoto (JOSM ou Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Criado %{when} atrás
+        opened_at_by_html: Criado %{when} atrás por %{user}
+        commented_at_html: Atualizado %{when} atrás
+        commented_at_by_html: Atualizado %{when} atrás por %{user}
+        closed_at_html: Tratado %{when} atrás
+        closed_at_by_html: Resolvido %{when} atrás por %{user}
+        reopened_at_html: Reativado %{when} atrás
+        reopened_at_by_html: Reativado %{when} atrás por %{user}
+      rss:
+        title: Notas do OpenStreetMap
+        description_area: Uma lista de notas relatadas, comentadas ou encerradas na
+          sua área [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Um feed RSS para a nota %{id}
+        opened: nova nota (perto de %{place})
+        commented: novo comentário (perto de %{place})
+        closed: nota encerrada (perto de %{place})
+        reopened: reativando nota (perto de %{place})
+      entry:
+        comment: Comentar
+        full: Nota completa
   browse:
     created: Criado
     closed: Fechado
@@ -157,8 +187,8 @@ pt-BR:
       belongs_to: Autor
       node: Pontos (%{count})
       node_paginated: Pontos (%{x}-%{y} de %{count})
-      way: Linhas (%{count})
-      way_paginated: Linhas (%{x}-%{y} de %{count})
+      way: Vias (%{count})
+      way_paginated: Vias (%{x}-%{y} de %{count})
       relation: Relações (%{count})
       relation_paginated: Relações (%{x}-%{y} of %{count})
       comment: Comentários (%{count})
@@ -261,7 +291,7 @@ pt-BR:
       introduction: Clique no mapa para achar elementos próximos
       nearby: Elementos próximos
       enclosing: Elementos envoltórios
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Página %{page}
       next: Seguinte »
@@ -291,14 +321,19 @@ pt-BR:
     timeout:
       sorry: A lista de conjuntos de alterações solicitada está demorando demais para
         chegar.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Comentário novo no conjunto de alterações #%{changeset_id} por %{author}'
+      commented_at_by_html: Atualizado %{when} atrás por %{user}
+    comments:
+      comment: 'Comentário novo no conjunto de alterações #%{changeset_id} por %{author}'
+    index:
       title_all: Discussão de conjunto de alterações do OpenStreetMap
       title_particular: 'Discussão do conjunto de alteração #%{changeset_id} do OpenStreetMap'
-      comment: 'Comentário novo no conjunto de alterações #%{changeset_id} por %{author}'
-      commented_at_html: Atualizando %{when} atrás
-      commented_at_by_html: Atualizado %{when} atrás por %{user}
-      full: Discussão completa
-  diary_entry:
+    timeout:
+      sorry: Desculpe, a lista de comentários do changeset que você solicitou demorou
+        muito para ser recuperada.
+  diary_entries:
     new:
       title: Nova Publicação no Diário
       publish_button: Publicar
@@ -371,7 +406,7 @@ pt-BR:
         description: Publicações no diário recentes de usuários do OpenStreetMap
     comments:
       has_commented_on: '%{display_name} comentou nestas postagens de diário'
-      post: Publicar
+      post: Entrada
       when: Quando
       comment: Comentário
       ago: '%{ago} atrás'
@@ -913,7 +948,7 @@ pt-BR:
           "yes": Loja
         tourism:
           alpine_hut: Abrigo de Montanha
-          apartment: Apart-Hotel
+          apartment: Apartamento de Férias
           artwork: Obra de Arte
           attraction: Atração Turística
           bed_and_breakfast: Hospedagem Domiciliar
@@ -1110,10 +1145,9 @@ pt-BR:
     intro_text: O OpenStreetMap é um mapa do mundo, criado por pessoas como você e
       de uso livre sob uma licença aberta.
     intro_2_create_account: Criar uma conta de usuário
-    partners_html: A hospedagem é apoiada por %{ucl}, %{bytemark}, %{ic}, e outros
+    hosting_partners_html: A hospedagem é suportada por %{ucl}, %{bytemark} e outros
       %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College de Londres
     partners_bytemark: Hospedagem Bytemark
     partners_partners: parceiros
     osm_offline: A base de dados do OpenStreetMap está fora do ar para manutenção.
@@ -1437,6 +1471,9 @@ pt-BR:
           BY</a>), <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land
           Vorarlberg</a> e Land Tirol (sob a licença <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY
           AT com emendas</a>).'
+        contributors_au_html: |-
+          <strong>Austrália</strong>: Contém dados do subúrbio baseado
+             nos dados do Australian Bureau of Statistics.
         contributors_ca_html: "<strong>Canadá</strong>: Contém dados do\n   GeoBase&reg;,
           GeoGratis (&copy; Departamento de Recursos\n   Naturais do Canadá), CanVec
           (&copy; Departamento de Recursos\n   Naturais do Canadá), and StatCan (Divisão
@@ -1458,13 +1495,17 @@ pt-BR:
           de Levantamento e Mapeamento</a> e do <a href="http://www.mkgp.gov.si/en/">Ministério
           de Agricultura, Silvicultura e Alimentação</a> (informações públicas da
           Eslovênia).'
+        contributors_es_html: |-
+          <strong>Espanha</strong>: Contém dados provenientes do
+          Instituto Geográfico Nacional da Espanha (<a href="http://www.ign.es/">IGN</a>) e
+          Sistema Cartográfico Nacional (<a href="http://www.scne.es/">SCNE</a>)
+          licenciado para reutilização sob <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
         contributors_za_html: |-
           <strong>Africa do Sul</strong>: contém dados originários de
           <a href="http://www.ngi.gov.za/">Chief Directorate:
           National Geo-Spatial Information</a>, com direitos autorais reservados àquele Estado.
-        contributors_gb_html: |-
-          <strong>Reino Unido</strong>: Contém dados da Ordnance
-             Survey &copy; Direitos da base e autorais da Crown 2010.
+        contributors_gb_html: '<strong>Reino Unido</strong>: Contém dados do Ordnance
+          Survey &copy; Crown copyright and database right 2010-2019.'
         contributors_footer_1_html: Para mais informações sobre estas e outras fontes
           utilizadas para melhorar o OpenStreetMap, consulte a <a href="https://wiki.openstreetmap.org/wiki/Contributors">página
           de contribuidores</a> (em inglês) na wiki do OpenStreetMap.
@@ -1619,6 +1660,11 @@ pt-BR:
         title: switch2osm
         description: Ajuda para empresas e organizações migrando para mapas baseados
           no OpenStreetMap e outros serviços.
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: Para Organizações
+        description: Com uma organização fazendo planos para o OpenStreetMap? Encontre
+          o que você precisa saber no Welcome Mat.
       wiki:
         url: https://wiki.openstreetmap.org/wiki/Pt:Main_Page
         title: wiki.openstreetmap.org
@@ -1710,7 +1756,7 @@ pt-BR:
       edit: Editar
       preview: Pré-visualizar
     markdown_help:
-      title_html: Tabela de códigos (<a href="https://daringfireball.net/projects/markdown/">Markdown</a>)
+      title_html: Tabela de códigos href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Títulos
       heading: Título
       subheading: Subtítulo
@@ -1761,7 +1807,7 @@ pt-BR:
         title: Dúvidas?
         paragraph_1_html: |-
           O OpenStreetMap oferece vários recursos para você descobrir mais sobre o projeto, perguntar e responder a questões, e colaborativamente discutir e documentar vários tópicos sobre o mapa.
-          <a href='%{help_url}'>Obtenha ajuda aqui</a>
+          <a href='%{help_url}'>Obtenha ajuda aqui</a>. Com uma organização fazendo planos para o OpenStreetMap? <a href='https://welcome.openstreetmap.org/'>Confira o Welcome Mat</a>.
       start_mapping: Começando a Mapear
       add_a_note:
         title: Sem tempo para editar? Inclua uma nota!
@@ -1895,16 +1941,12 @@ pt-BR:
         other: Arquivo GPX com %{count} pontos de %{user}
       description_without_count: Arquivo GPX de %{user}
   application:
+    permission_denied: Você não tem permissão para acessar essa ação
     require_cookies:
       cookies_needed: Parece que você está com os <i>cookies</i> desabilitados - habilite-os
         no seu navegador antes de continuar.
     require_admin:
       not_an_admin: Você precisa ser um administrador para realizar essa ação.
-    require_moderator:
-      not_a_moderator: Você precisa ser um moderador para realizar essa ação.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Você precisa ser um moderador ou um administrador
-        para realizar essa ação
     setup_user_auth:
       blocked_zero_hour: Há uma mensagem urgente para você no site do OpenStreetMap.
         Você deve lê-la para poder voltar a salvar suas edições.
@@ -2001,7 +2043,7 @@ pt-BR:
       flash: Sucesso ao atualizar as informações do cliente
     destroy:
       flash: O registro da aplicação cliente foi apagado
-  user:
+  users:
     login:
       title: Entrar
       heading: Entrar
@@ -2322,8 +2364,6 @@ pt-BR:
       button: Desfazer amizade
       success: '%{name} foi removido dos seus amigos.'
       not_a_friend: '%{name} não é um dos seus amigos.'
-    filter:
-      not_an_administrator: Você precisa ser um administrador para executar essa ação.
     index:
       title: Usuários
       heading: Usuários
@@ -2363,8 +2403,6 @@ pt-BR:
         com o seu ID em suas configurações de usuário.
   user_role:
     filter:
-      not_an_administrator: Somente administradores podem gerenciar papéis de usuários,
-        mas você não é um administrador.
       not_a_role: O texto "%{role}" não é um papel válido.
       already_has_role: O usuário já tem o papel %{role}.
       doesnt_have_role: O usuário não tem o papel %{role}.
@@ -2489,31 +2527,10 @@ pt-BR:
       next: Próximo »
       previous: « Anterior
   notes:
-    comment:
-      opened_at_html: Criado %{when} atrás
-      opened_at_by_html: Criado %{when} atrás por %{user}
-      commented_at_html: Atualizado %{when} atrás
-      commented_at_by_html: Atualizado %{when} atrás por %{user}
-      closed_at_html: Tratado %{when} atrás
-      closed_at_by_html: Resolvido %{when} atrás por %{user}
-      reopened_at_html: Reativado %{when} atrás
-      reopened_at_by_html: Reativado %{when} atrás por %{user}
-    rss:
-      title: Notas do OpenStreetMap
-      description_area: Uma lista de notas relatadas, comentadas ou encerradas na
-        sua área [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Um feed RSS para a nota %{id}
-      opened: nova nota (perto de %{place})
-      commented: novo comentário (perto de %{place})
-      closed: nota encerrada (perto de %{place})
-      reopened: reativando nota (perto de %{place})
-    entry:
-      comment: Comentar
-      full: Nota completa
     mine:
       title: Notas postadas ou comentadas por %{user}
       heading: Notas de %{user}
-      subheading: Notas postadas ou comentadas por %{user}
+      subheading_html: Notas postadas ou comentadas por %{user}
       id: ID
       creator: Criador
       description: Descrição
@@ -2607,13 +2624,12 @@ pt-BR:
     directions:
       ascend: Ascender
       engines:
+        fossgis_osrm_bike: Bicicleta (OSRM)
+        fossgis_osrm_car: Carro (OSRM)
+        fossgis_osrm_foot: À Pé (OSRM)
         graphhopper_bicycle: Bicicleta (GraphHopper)
         graphhopper_car: Carro (GraphHopper)
         graphhopper_foot: Pedestre (GraphHopper)
-        mapquest_bicycle: Bicicleta (MapQuest)
-        mapquest_car: Carro (MapQuest)
-        mapquest_foot: Pedestre (MapQuest)
-        osrm_car: Carro (OSRM)
       descend: Descender
       directions: Itinerário
       distance: Distância
@@ -2741,4 +2757,9 @@ pt-BR:
         a esta anulação antes de destruí-la.
       flash: Redação destruída.
       error: Houve um erro ao destruir esta anulação.
+  validations:
+    leading_whitespace: tem espaço em branco líder
+    trailing_whitespace: tem espaço em branco à direita
+    invalid_characters: contém caracteres inválidos
+    url_characters: contém caracteres de URL especiais (%{characters})
 ...

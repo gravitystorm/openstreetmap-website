@@ -1,6 +1,8 @@
 # Messages for Hungarian (magyar)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: --szabi--
+# Author: Abijeet Patro
 # Author: Athoss
 # Author: BanKris
 # Author: Bencemac
@@ -27,6 +29,7 @@
 # Author: Tacsipacsi
 # Author: Uno20001
 # Author: Urbalazs
+# Author: Zizzerus
 ---
 hu:
   time:
@@ -114,6 +117,29 @@ hu:
     remote:
       name: Távirányító
       description: Távirányító (JOSM vagy Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Létrehozva %{when}
+        opened_at_by_html: Létrehozta %{user} %{when}
+        commented_at_html: 'Frissítve: %{when}'
+        commented_at_by_html: Frissítette %{user} %{when}
+        closed_at_html: 'Megoldva: %{when}'
+        closed_at_by_html: 'Megoldva: %{when} (%{user})'
+        reopened_at_html: 'Újra aktiválva: %{when}'
+        reopened_at_by_html: Újraaktiválta %{user} %{when}
+      rss:
+        title: OpenStreetMap jegyzetek
+        description_area: Jegyzetek listája, melyeket jelentettek vagy töröltek, vagy
+          melyekhez hozzászóltak az Ön területén [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: RSS hírcsatorna a %{id} jegyzethez
+        opened: Új megjegyzés (%{place} közelében)
+        commented: Új hozzászólás (%{place} közelében)
+        closed: Lezárt jegyzet (%{place} közelében)
+        reopened: újraaktivált jegyzet (%{place} közelében)
+      entry:
+        comment: Hozzászólás
+        full: Teljes jegyzet
   browse:
     created: Létrehozva
     closed: Lezárva
@@ -230,12 +256,13 @@ hu:
       reopened_by: Újraaktiválta %{user} <abbr title='%{exact_time}'>%{when}</abbr>
       reopened_by_anonymous: Újraaktiválva névtelenül <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by: Elrejtette %{user} <abbr title='%{exact_time}'>%{when}</abbr>
+      report: Jegyzet jelentése
     query:
       title: Funkciók lekérdezése
       introduction: Kattintson a térképen, a közeli funkciók kereséséhez.
       nearby: Közeli funkciók
       enclosing: Bentfoglalt funkciók
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: '%{page} oldal'
       next: Következő »
@@ -265,14 +292,19 @@ hu:
     timeout:
       sorry: Sajnálom, az általad kért módosításcsomagok listájának lekérése túl sokáig
         tartott.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Új hozzászólás #%{changeset_id} változtatáscsomaghoz  %{author} felhasználótól'
+      commented_at_by_html: '%{when} ezelőtt frissítette %{user}'
+    comments:
+      comment: 'Új hozzászólás #%{changeset_id} változtatáscsomaghoz  %{author} felhasználótól'
+    index:
       title_all: OpenStreetMap változtatáscsomag vita
       title_particular: 'OpenStreetMap #%{changeset_id} változtatáscsomag  vita'
-      comment: 'Új hozzászólás #%{changeset_id} változtatáscsomaghoz  %{author} felhasználótól'
-      commented_at_html: Frissítve %{when}
-      commented_at_by_html: '%{when} ezelőtt frissítette %{user}'
-      full: Teljes beszélgetés
-  diary_entry:
+    timeout:
+      sorry: Sajnálom, az általad kért módosításcsomag-hozzászólás listájának lekérése
+        túl sokáig tartott.
+  diary_entries:
     new:
       title: Új naplóbejegyzés
       publish_button: Publikálás
@@ -304,7 +336,7 @@ hu:
       user_title: '%{user} naplója'
       leave_a_comment: Hozzászólás írása
       login_to_leave_a_comment: '%{login_link} a hozzászóláshoz'
-      login: Jelentkezz be
+      login: Bejelentkezés
       save_button: Mentés
     no_such_entry:
       title: Nincs ilyen naplóbejegyzés
@@ -317,16 +349,18 @@ hu:
       comment_link: Hozzászólás ehhez a bejegyzéshez
       reply_link: Válasz a bejegyzésre
       comment_count:
-        one: Egy hozzászólás
         zero: Nincs hozzászólás
+        one: '%{count} hozzászólás'
         other: '%{count} hozzászólás'
       edit_link: Bejegyzés szerkesztése
       hide_link: Bejegyzés elrejtése
       confirm: Megerősítés
+      report: Bejegyzés jelentése
     diary_comment:
       comment_from: '%{link_user} hozzászólása ekkor: %{comment_created_at}'
       hide_link: Hozzászólás elrejtése
       confirm: Megerősítés
+      report: Bejegyzés jelentése
     location:
       location: 'Hely:'
       view: Megtekintés
@@ -348,19 +382,19 @@ hu:
       when: Mikor
       comment: Megjegyzés
       ago: '%{ago} idővel ezelőtt'
-      newer_comments: Úabb hozzászólások
+      newer_comments: Újabb hozzászólások
       older_comments: Régebbi hozzászólások
   geocoder:
     search:
       title:
-        latlon: Eredmények az <a href="https://openstreetmap.org/">Internal</a>ról
+        latlon: Eredmények az <a href="https://openstreetmap.org/">Internal</a>-ról
         ca_postcode: Eredmények a <a href="https://geocoder.ca/">Geocoder.CA</a>-ről
         osm_nominatim: Eredmények az <a href="https://nominatim.openstreetmap.org/">OpenStreetMap
-          Nominatim</a>tól
-        geonames: Eredmények a <a href="http://www.geonames.org/">GeoNames</a>ről
+          Nominatim</a>-ról
+        geonames: Eredmények a <a href="http://www.geonames.org/">GeoNames</a>-ről
         osm_nominatim_reverse: Eredmények az <a href="https://nominatim.openstreetmap.org/">OpenStreetMap
           Nominatimról</a>
-        geonames_reverse: Eredmények a <a href="http://www.geonames.org/">GeoNames-ről</a>
+        geonames_reverse: Eredmények a <a href="http://www.geonames.org/">GeoNamesről</a>
     search_osm_nominatim:
       prefix:
         aerialway:
@@ -885,7 +919,7 @@ hu:
           "yes": Bolt
         tourism:
           alpine_hut: Alpesi kunyhó
-          apartment: Lakás
+          apartment: Nyaralóház
           artwork: Műalkotás
           attraction: Látnivaló
           bed_and_breakfast: Vendégház
@@ -947,6 +981,33 @@ hu:
     results:
       no_results: Nem találhatók eredmények
       more_results: További eredmények
+  issues:
+    index:
+      title: Problémák
+      select_status: Állapot kiválasztása
+      select_type: Típus kiválasztása
+      reported_user: Jelentett felhasználó
+      not_updated: Nem frissített
+      search: Keresés
+      search_guidance: 'Problémák keresése:'
+      user_not_found: A felhasználó nem létezik
+      issues_not_found: Nem találni ilyen problémát
+      status: Státusz
+      reports: Jelentések
+      last_updated: Utoljára frissítve
+      last_updated_time_html: <abbr title='%{title}'>%{time} óta</abbr>
+      last_updated_time_user_html: <abbr title='%{title}'>%{time} óta</abbr> %{user}
+        által
+      link_to_reports: Jelentések megtekintése
+      states:
+        open: Megnyitás
+        resolved: Megoldva
+  reports:
+    new:
+      categories:
+        user:
+          vandal_label: Ez a felhasználó vandál
+          other_label: Egyéb
   layouts:
     logo:
       alt_text: OpenStreetMap logó
@@ -972,10 +1033,7 @@ hu:
     intro_text: Az OpenStreetMap egy világtérkép, amelyet hozzád hasonló emberek készítenek
       és szabad licenc alatt elérhető.
     intro_2_create_account: Felhasználói fiók létrehozása
-    partners_html: A szerver üzemeltetését az %{ucl}, a %{bytemark}, az %{ic} és további
-      %{partners} támogatják.
     partners_ucl: UCL
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partnerek
     osm_offline: Az OpenStreetMap-adatbázis jelenleg offline, miközben alapvető adatbázis-karbantartási
@@ -990,7 +1048,7 @@ hu:
     community_blogs: Közösségi blogok
     community_blogs_title: Blogok az OpenStreetMap közösség tagjaitól
     foundation: Alapítvány
-    foundation_title: Az „OpenStreetMap Foundation”
+    foundation_title: Az OpenStreetMap Alapítvány
     make_a_donation:
       title: Támogasd az OpenStreetMapot pénzadománnyal
       text: Adományozz
@@ -999,7 +1057,7 @@ hu:
   notifier:
     diary_comment_notification:
       subject: '[OpenStreetMap] %{user} hozzászólt a naplóbejegyzésedhez'
-      hi: Szia %{to_user}!
+      hi: Szia, %{to_user}!
       header: '%{from_user} hozzászólt az OpenStreetMap naplóbejegyzéshez %{subject}
         tárggyal:'
       footer: 'A hozzászólást elolvashatod itt is: %{readurl} és hozzászólhatsz itt:
@@ -1285,6 +1343,9 @@ hu:
           <strong>Ausztria</strong>: adatokat tartalmaz a következő forrásból:
              <a href="https://data.wien.gv.at/">Bécs városa</a>
              <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a> licenc alatt.
+        contributors_au_html: |-
+          <strong>Ausztrália</strong>: tartalmaz külvárosi adatokat az
+             Ausztrál Statisztikai Hivatal adatain alapulva.
         contributors_ca_html: |-
           <strong>Kanada</strong>: adatokat tartalmaz a következő forrásokból:
              GeoBase&reg;, GeoGratis (&copy; Department of Natural
@@ -1301,9 +1362,10 @@ hu:
         contributors_nl_html: |-
           <strong>Hollandia</strong>: adatokat tartalmaz innen: Automotive Navigation Data, 2007
           (<a href="https://www.and.com">www.and.com</a>)
-        contributors_nz_html: |-
-          <strong>Új-Zéland</strong>: adatokat tartalmaz a következő forrásból:
-             Land Information New Zealand. Szerzői jog fenntartva.
+        contributors_nz_html: '<strong>New Zealand</strong>:adatokat tartalmaz a következő
+          forrásból: <a href="https://data.linz.govt.nz/">LINZ Data Service</a> a
+          felhasználási engedély <a href="https://creativecommons.org/licenses/by/4.0/">CC
+          BY 4.0</a> szerint.'
         contributors_si_html: '<strong>Szlovénia</strong>: Tartalmaz adatokat a <a
           href="http://www.gu.gov.si/en/">Földmérési és Térképészeti Hatóságtól</a>
           és a <a href="http://www.mkgp.gov.si/en/">Földművelési, Erdőgazdálkodási
@@ -1730,8 +1792,6 @@ hu:
     require_cookies:
       cookies_needed: Úgy tűnik, hogy a böngésződben le vannak tiltva a sütik – a
         folytatás előtt engedélyezd azokat.
-    require_moderator:
-      not_a_moderator: A művelet végrehajtásához moderátornak kell lenned.
     setup_user_auth:
       blocked_zero_hour: Sürgős üzeneted van az OpenStreetMap weboldalon. El kell
         olvasnod az üzenetet, mielőtt elmentheted a változtatásokat.
@@ -1829,7 +1889,7 @@ hu:
       flash: A kliens információi sikeresen frissítve
     destroy:
       flash: A kliensalkalmazás regisztrációja törölve
-  user:
+  users:
     login:
       title: Bejelentkezés
       heading: Bejelentkezés
@@ -2144,9 +2204,6 @@ hu:
       button: Barát eltávolítása
       success: '%{name} eltávolítva a barátaid közül.'
       not_a_friend: '%{name} nem tartozik a barátaid közé.'
-    filter:
-      not_an_administrator: Ennek a műveletnek az elvégzéséhez adminisztrátori jogosultsággal
-        kell rendelkezned.
     index:
       title: Felhasználók
       heading: Felhasználók
@@ -2185,8 +2242,6 @@ hu:
         majd összekapcsolhatod az azonosítóddal a beállításaidban.
   user_role:
     filter:
-      not_an_administrator: Csak adminisztrátorok végezhetik a felhasználói szerepek
-        kezelését, és te nem vagy adminisztrátor.
       not_a_role: A '%{role}' kifejezés nem érvényes szerep.
       already_has_role: A felhasználó szerepe már %{role}.
       doesnt_have_role: A felhasználó szerepe nem %{role}.
@@ -2314,31 +2369,10 @@ hu:
       next: Következő »
       previous: « Előző
   notes:
-    comment:
-      opened_at_html: Létrehozva %{when}
-      opened_at_by_html: Létrehozta %{user} %{when}
-      commented_at_html: 'Frissítve: %{when}'
-      commented_at_by_html: Frissítette %{user} %{when}
-      closed_at_html: 'Megoldva: %{when}'
-      closed_at_by_html: 'Megoldva: %{when} (%{user})'
-      reopened_at_html: 'Újra aktiválva: %{when}'
-      reopened_at_by_html: Újraaktiválta %{user} %{when}
-    rss:
-      title: OpenStreetMap jegyzetek
-      description_area: Jegyzetek listája, melyeket jelentettek vagy töröltek, vagy
-        melyekhez hozzászóltak az Ön területén [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: RSS hírcsatorna a %{id} jegyzethez
-      opened: Új megjegyzés (%{place} közelében)
-      commented: Új hozzászólás (%{place} közelében)
-      closed: Lezárt jegyzet (%{place} közelében)
-      reopened: újraaktivált jegyzet (%{place} közelében)
-    entry:
-      comment: Hozzászólás
-      full: Teljes jegyzet
     mine:
       title: '%{user} által beküldött vagy kommentált jegyzetek'
       heading: '%{user} jegyzetei'
-      subheading: '%{user} által beküldött vagy kommentált jegyzetek'
+      subheading_html: '%{user} által beküldött vagy kommentált jegyzetek'
       id: ID
       creator: Létrehozta
       description: Leírás
@@ -2432,19 +2466,16 @@ hu:
     directions:
       ascend: Emelkedés
       engines:
+        fossgis_osrm_car: Autó (OSRM)
         graphhopper_bicycle: Kerékpár (GraphHopper)
         graphhopper_car: Autó (GraphHopper)
         graphhopper_foot: Gyalog (GraphHopper)
-        mapquest_bicycle: Kerékpár (MapQuest)
-        mapquest_car: Autó (MapQuest)
-        mapquest_foot: Gyalog (MapQuest)
-        osrm_car: Autó (OSRM)
       descend: Ereszkedés
       directions: Irányok
       distance: Távolság
       errors:
         no_route: Nem található útvonal a két hely között.
-        no_place: Sajnálom – a hely nem található.
+        no_place: Sajnálom – '%{place}' nem található.
       instructions:
         continue_without_exit: Folyamatosan %{name}
         slight_right_without_exit: Enyhén jobbra %{name}
@@ -2466,7 +2497,7 @@ hu:
         slight_left_without_exit: Enhén balra %{name}
         via_point_without_exit: (ponton keresztül)
         follow_without_exit: Kövesse %{name}
-        roundabout_without_exit: A körforgalomnál forduljon %{name} felé
+        roundabout_without_exit: A körforgalomnál menjen ki %{name} felé
         leave_roundabout_without_exit: Hagyja el körforgalmat - %{name}
         stay_roundabout_without_exit: Maradjon a körforgalomban - %{name}
         start_without_exit: A(z) %{name} végénél induljon
@@ -2535,4 +2566,6 @@ hu:
         mielőtt törlöd ezt a módosítást.
       flash: Módosítás törölve.
       error: Hiba történt a művelet végrehajtása során.
+  validations:
+    invalid_characters: érvénytelen karaktereket tartalmaz
 ...

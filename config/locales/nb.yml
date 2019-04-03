@@ -1,6 +1,7 @@
 # Messages for Norwegian Bokmål (norsk bokmål)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Citadell
 # Author: Danmichaelo
 # Author: Dittaeva
@@ -17,6 +18,7 @@
 # Author: Macofe
 # Author: MarkusHD
 # Author: Mathias-S
+# Author: McDutchie
 # Author: Nemo bis
 # Author: Nghtwlkr
 # Author: Oyvind
@@ -29,6 +31,9 @@ nb:
     formats:
       friendly: '%e %B %Y kl. %H:%M'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: later ikke til å være en gyldig e-postadresse
     models:
       acl: Tilgangskontrolliste
       changeset: Endringsforløp
@@ -60,9 +65,9 @@ nb:
       user: Bruker
       user_preference: Brukerinnstillinger
       user_token: Brukernøkkel
-      way: Vei
+      way: Linje
       way_node: Veinode
-      way_tag: Veimerkelapp
+      way_tag: Linjemerkelapp
     attributes:
       diary_comment:
         body: Brødtekst
@@ -110,6 +115,29 @@ nb:
     remote:
       name: Lokalt installert program
       description: Lokalt installert program (JOSM eller Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Opprettet for %{when} siden
+        opened_at_by_html: Opprettet for %{when} siden av %{user}
+        commented_at_html: Oppdatert for %{when} siden
+        commented_at_by_html: Oppdatert for %{when} siden av %{user}
+        closed_at_html: Løst for %{when} siden
+        closed_at_by_html: Løst for %{when} siden av %{user}
+        reopened_at_html: Gjenåpnet for %{when} siden
+        reopened_at_by_html: Gjenåpnet for %{when} siden av %{user}
+      rss:
+        title: OpenStreetMap-merknader
+        description_area: En liste over merknader, rapportert, kommentert på eller
+          lukket i ditt område [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: En RSS-feed for merknad %{id}
+        opened: ny merknad (nær %{place})
+        commented: ny kommentar (nær %{place})
+        closed: lukket merknad (nær %{place})
+        reopened: gjenåpnet merknad (nær %{place})
+      entry:
+        comment: Kommentar
+        full: Fullstendig merknad
   browse:
     created: Opprettet
     closed: Lukket
@@ -169,7 +197,7 @@ nb:
       entry_role: '%{type} %{name} som %{role}'
       type:
         node: Node
-        way: Vei
+        way: Linje
         relation: Relasjon
     containing_relation:
       entry: Relasjon %{relation_name}
@@ -178,7 +206,7 @@ nb:
       sorry: Beklager, klarte ikke finne %{type}-en med ID %{id}.
       type:
         node: node
-        way: vei
+        way: linje
         relation: relasjon
         changeset: endringsforløp
         note: merknad
@@ -186,7 +214,7 @@ nb:
       sorry: Beklager, det tok for lang tid å hente data for %{type} med ID %{id}.
       type:
         node: node
-        way: vei
+        way: linje
         relation: relasjon
         changeset: endringsforløp
         note: merknad
@@ -196,7 +224,7 @@ nb:
         blitt maskert. Se %{redaction_link} for detaljer.
       type:
         node: node
-        way: vei
+        way: linje
         relation: relasjon
     start_rjs:
       feature_warning: Henter %{num_features} kartkomponenter, noe som kan gjøre at
@@ -239,7 +267,7 @@ nb:
       introduction: Klikk på kartet for å finne nærliggende funksjoner.
       nearby: Nærliggende funksjoner
       enclosing: Regionsfunksjoner
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Side %{page}
       next: Neste »
@@ -247,7 +275,7 @@ nb:
     changeset:
       anonymous: Anonym
       no_edits: (ingen redigeringer)
-      view_changeset_details: Vis detaljert endringsforløp
+      view_changeset_details: Vis endringssettsdetaljer
     changesets:
       id: ID
       saved_at: Lagret den
@@ -257,35 +285,39 @@ nb:
     index:
       title: Endringssett
       title_user: Endringssett av %{user}
-      title_friend: Endringssett fra mine venner
+      title_friend: Mine venners endringssett
       title_nearby: Endringssett av brukere i nærheten
-      empty: Inget endringssett funnet.
+      empty: Fant ingen endringssett.
       empty_area: Ingen endringssett i dette området.
-      empty_user: Ingen endringssett fra denne brukeren.
-      no_more: Ingen flere endringssett funnet.
+      empty_user: Ingen endringssett av denne brukeren.
+      no_more: Fant ingen flere endringssett.
       no_more_area: Ingen flere endringssett i dette området.
-      no_more_user: Ingen flere endringssett fra denne brukeren.
+      no_more_user: Ingen flere endringssett av denne brukeren.
       load_more: Last inn mer
     timeout:
-      sorry: Beklager, listen over endringssett som du ba om tok for lang tid å hente.
-    rss:
-      title_all: OpenStreetMap endringssett-diskusjon
-      title_particular: 'OpenStreetMap endringssett #%{changeset_id} diskusjon'
+      sorry: Listen over endringssett du ba om tok for lang tid å hente.
+  changeset_comments:
+    comment:
       comment: Ny kommentar til endringssett %{changeset_id} av %{author}
-      commented_at_html: Oppdatert for %{when} siden
       commented_at_by_html: Oppdatert for %{when} siden av %{user}
-      full: Fullstendig diskusjon
-  diary_entry:
+    comments:
+      comment: Ny kommentar til endringssett %{changeset_id} av %{author}
+    index:
+      title_all: OpenStreetMap-endringssettsdiskusjon
+      title_particular: 'OpenStreetMap-endringssettsdiskusjon #%{changeset_id}'
+    timeout:
+      sorry: Listen over endringssett du ba om tok for lang tid å hente.
+  diary_entries:
     new:
-      title: Ny dagbokoppføring
+      title: Ny dagboksoppføring
       publish_button: Publiser
     index:
-      title: Brukernes dagbøker
-      title_friends: Dagbøkene til vennene dine
-      title_nearby: Dagbøkene til nærliggende brukere
+      title: Brukeres dagbøker
+      title_friends: Dine venners dagbøker
+      title_nearby: Dagbøkene til brukere i nærheten
       user_title: Dagboken til %{user}
-      in_language_title: Dagbokoppføringer på %{language}
-      new: Ny Dagbokoppføring
+      in_language_title: Dagboksoppføringer på %{language}
+      new: Ny dagboksoppføring
       new_title: Skriv et nytt innlegg i brukerdagboken min
       no_entries: Ingen innlegg i dagboka
       recent_entries: Nye innlegg i dagboka
@@ -311,7 +343,7 @@ nb:
       save_button: Lagre
     no_such_entry:
       title: Ingen slik dagbokoppføring
-      heading: 'Intet innlegg med id: %{id}'
+      heading: 'Intet innlegg med ID: %{id}'
       body: Det er ingen dagbokinnlegg eller kommentar med ID %{id}. Sjekk om du har
         skrevet feil eller om lenka du klikket er feil.
     diary_entry:
@@ -347,7 +379,7 @@ nb:
         description: Nye innlegg i dagbøkene til OpenStreetMap-brukere
     comments:
       has_commented_on: '%{display_name} har kommentert følgende dagbokinnlegg'
-      post: Skriv
+      post: Artikkel
       when: Når
       comment: Kommentar
       ago: '%{ago} siden'
@@ -889,7 +921,7 @@ nb:
           "yes": Butikk
         tourism:
           alpine_hut: Fjellhytte
-          apartment: Leilighet
+          apartment: Ferieleilighet
           artwork: Kunstverk
           attraction: Attraksjon
           bed_and_breakfast: Bed and Breakfast
@@ -1082,9 +1114,8 @@ nb:
     intro_text: OpenStreetMap er et kart over verden, skapt av mennesker som deg,
       og gratis å bruke under en åpen lisens.
     intro_2_create_account: Opprett en brukerkonto
-    partners_html: Hosting støttes av %{ucl}, %{bytemark}, %{ic}, og andre %{partners}.
+    hosting_partners_html: Hosting støttes av %{ucl}, %{bytemark}, og andre %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partnere
     osm_offline: OpenStreetMap databasen er for øyeblikket utilgjengelig mens essensielt
@@ -1384,6 +1415,9 @@ nb:
              <a href="http://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>,
           <a href="http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> og
           Land Tirol (under <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT med tilføyelser</a>).
+        contributors_au_html: |-
+          <strong>Australia</strong>: Inneholder forstaddata basert
+             på Australian Bureau of Statistics data.
         contributors_ca_html: |-
           <strong>Canada</strong>: Inneholder data fra
              GeoBase®, GeoGratis (© Department of Natural
@@ -1565,6 +1599,10 @@ nb:
         title: switch2osm
         description: Hjelp for bedrifter og organisasjoner som vil bytte til OpenStreetMap-baserte
           kart og andre tjenester.
+      welcomemat:
+        title: For organisasjoner
+        description: Er du del av en organisasjon som har planer med OpenStreetMap?
+          Finn ut av hva du har bruk for å vite på Velkomstmatten.
       wiki:
         url: http://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1656,7 +1694,7 @@ nb:
       edit: Rediger
       preview: Forhåndsvisning
     markdown_help:
-      title_html: Tolket med <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Fortolket med <a href="https://daringfireball.net/projects/markdown/">kramdown</a>
       headings: Overskrifter
       heading: Overskrift
       subheading: Underoverskrift
@@ -1708,8 +1746,8 @@ nb:
       questions:
         title: Noen spørsmål?
         paragraph_1_html: |-
-          OpenStreetMap har diverse ressurser for å undervise om prosjektet, som stiller spørsmål og svarer på disse, samt legge til rette for dokumenter og diskusjoner om ulike kartleggingsemner.
-          <a href='%{help_url}'>Få hjelp her</a>.
+          OpenStreetMap har forskjellige ressurser for å undervise om prosjektet, som stiller spørsmål og svarer på disse, samt legger til rette for diskusjon og dokumentasjon av ulike kartleggingsemner.
+          <a href='%{help_url}'>Få hjelp her</a>. Er du en del av en organisasjon som har planer med OpenStreetMap? <a href='https://welcome.openstreetmap.org/'>Sjekk ut velkomstmatten</a>.
       start_mapping: Start kartlegging
       add_a_note:
         title: Har du ikke tid til å kartlegge selv? Legg inn en merknad!
@@ -1841,15 +1879,12 @@ nb:
         other: GPX-fil med %{count} punkter fra %{user}
       description_without_count: GPX-fil fra %{user}
   application:
+    permission_denied: Du har ikke tilgang til å utføre denne handlingen
     require_cookies:
       cookies_needed: Du ser ut til å ha deaktivert informasjonskapsler. Aktiver informasjonskapsler
         i nettleseren din før du fortsetter.
     require_admin:
       not_an_admin: Du må være administrator for å kunne utføre denne handlingen.
-    require_moderator:
-      not_a_moderator: Du må være en moderator for å utføre den handlinga.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Du må være en moderator for kunne å utføre den handlingen.
     setup_user_auth:
       blocked_zero_hour: Du har en viktig beskjed på OpenStreetMap-nettsida. Du må
         lese beskjeden før du vil kunne lagre redigeringene dine.
@@ -1946,7 +1981,7 @@ nb:
       flash: Oppdaterte klientinformasjonen
     destroy:
       flash: Ødelagt klientapplikasjonsregistreringen
-  user:
+  users:
     login:
       title: Logg inn
       heading: Logg inn
@@ -2053,6 +2088,7 @@ nb:
       terms accepted: Takk for at du godtok de nye bidragsytervilkårene!
       terms declined: Vi beklager at du har besluttet å ikke akseptere de nye bidragsytervilkårene.
         For mer informasjon, se <a href="%{url}">denne wiki-siden</a> .
+      terms declined url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     terms:
       title: Bidragsytervilkår
       heading: Bidragsytervilkårene
@@ -2252,8 +2288,6 @@ nb:
       button: Fjern venn
       success: '%{name} ble fjernet fra dine venner'
       not_a_friend: '%{name} er ikke en av dine venner.'
-    filter:
-      not_an_administrator: Du må være administrator for å gjøre det.
     index:
       title: Brukere
       heading: Brukere
@@ -2288,8 +2322,6 @@ nb:
         ID i brukerinnstillingene.
   user_role:
     filter:
-      not_an_administrator: Kun administratorer kan forandre roller, og du er ikke
-        administrator.
       not_a_role: Strengen "%{role}" er ikke en gyldig rolle.
       already_has_role: Brukeren har allerede rollen %{role}.
       doesnt_have_role: Brukeren har ikke rollen %{role}.
@@ -2416,31 +2448,10 @@ nb:
       next: Neste »
       previous: « Forrige
   notes:
-    comment:
-      opened_at_html: Opprettet for %{when} siden
-      opened_at_by_html: Opprettet for %{when} siden av %{user}
-      commented_at_html: Oppdatert for %{when} siden
-      commented_at_by_html: Oppdatert for %{when} siden av %{user}
-      closed_at_html: Løst for %{when} siden
-      closed_at_by_html: Løst for %{when} siden av %{user}
-      reopened_at_html: Gjenåpnet for %{when} siden
-      reopened_at_by_html: Gjenåpnet for %{when} siden av %{user}
-    rss:
-      title: OpenStreetMap-merknader
-      description_area: En liste over merknader, rapportert, kommentert på eller lukket
-        i ditt område [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: En RSS-feed for merknad %{id}
-      opened: ny merknad (nær %{place})
-      commented: ny kommentar (nær %{place})
-      closed: lukket merknad (nær %{place})
-      reopened: gjenåpnet merknad (nær %{place})
-    entry:
-      comment: Kommentar
-      full: Fullstendig merknad
     mine:
       title: Merknader sendt inn eller kommentert på av %{user}
       heading: '%{user} sine merknader'
-      subheading: Merknader sendt inn eller kommentert på av %{user}
+      subheading_html: Merknader sendt inn eller kommentert på av %{user}
       id: ID
       creator: Skaper
       description: Beskrivelse
@@ -2509,7 +2520,7 @@ nb:
       show:
         comment: Kommentar
         subscribe: Abonner
-        unsubscribe: Avbestill
+        unsubscribe: Avslutt abonnement
         hide_comment: skjul
         unhide_comment: vis
     notes:
@@ -2534,13 +2545,12 @@ nb:
     directions:
       ascend: Stigning
       engines:
+        fossgis_osrm_bike: Sykkel (OSRM)
+        fossgis_osrm_car: Bil (OSRM)
+        fossgis_osrm_foot: Til fots (OSRM)
         graphhopper_bicycle: Sykkel (GraphHopper)
         graphhopper_car: Bil (GraphHopper)
         graphhopper_foot: Til fots (GraphHopper)
-        mapquest_bicycle: Sykkel (MapQuest)
-        mapquest_car: Bil (MapQuest)
-        mapquest_foot: Til fots (MapQuest)
-        osrm_car: Bil (OSRM)
       descend: Fall
       directions: Veianvisninger
       distance: Avstand
@@ -2623,7 +2633,7 @@ nb:
       time: Tid
     query:
       node: Node
-      way: Vei
+      way: Linje
       relation: Relasjon
       nothing_found: Ingen treff
       error: 'Fikk ikke kontakt med tjener %{server}: %{error}'
@@ -2667,4 +2677,9 @@ nb:
         maskeringen før du ødelegger den.
       flash: Maskering ødelagt.
       error: Det oppsto en feil da maskeringen skulle ødelegges
+  validations:
+    leading_whitespace: har innledende blanktegn
+    trailing_whitespace: har avsluttende blanktegn
+    invalid_characters: inneholder forbudte tegn
+    url_characters: inneholder spesielle nettadresse-tegn (%{characters})
 ...

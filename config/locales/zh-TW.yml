@@ -2,7 +2,9 @@
 # Exported from translatewiki.net
 # Export driver: phpyaml
 # Author: A2093064
+# Author: Abijeet Patro
 # Author: Anakmalaysia
+# Author: Assh1857
 # Author: Cwlin0416
 # Author: EagerLin
 # Author: Foothsu
@@ -37,6 +39,10 @@ zh-TW:
       friendly: '%Y 年 %B %e 日 %H 時 %M 分'
       blog: '%Y年%B%e日'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: 似乎不是有效的電子郵件信箱地址。
+        email_address_not_routable: 不可繞送
     models:
       acl: 存取控制清單
       changeset: 變更集
@@ -67,7 +73,7 @@ zh-TW:
       tracetag: 軌跡標籤
       user: 使用者
       user_preference: 使用者偏好設定
-      user_token: 使用者權杖
+      user_token: 使用者令牌
       way: 路徑
       way_node: 路徑節點
       way_tag: 路徑標籤
@@ -91,7 +97,7 @@ zh-TW:
         latitude: 緯度
         longitude: 經度
         public: 公開
-        description: 描述
+        description: 說明
       message:
         sender: 寄件者
         title: 標題
@@ -99,9 +105,9 @@ zh-TW:
         recipient: 收件者
       user:
         email: Email
-        active: 開啟
+        active: 開啟中
         display_name: 顯示名稱
-        description: 描述
+        description: 說明
         languages: 語言
         pass_crypt: 密碼
   printable_name:
@@ -120,6 +126,28 @@ zh-TW:
     remote:
       name: 遠端控制
       description: 遠端控制 (JOSM 或 Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: 於 %{when} 前建立
+        opened_at_by_html: 於 %{when} 前由 %{user} 建立
+        commented_at_html: 於 %{when} 前更新
+        commented_at_by_html: 於 %{when} 前由 %{user} 更新
+        closed_at_html: 已解決於 %{when} 前
+        closed_at_by_html: 於 %{when} 前由 %{user} 關閉
+        reopened_at_html: 於 %{when} 前重新開啟
+        reopened_at_by_html: 於 %{when} 前由 %{user} 重新開啟
+      rss:
+        title: OpenStreetMap 註記
+        description_area: 在你的區域[(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]所報告、評論或關閉的註記的清單
+        description_item: 註記 %{id} 的 RSS feed
+        opened: 新的註記 (在 %{place} 附近)
+        commented: 新的評論 (在 %{place} 附近)
+        closed: 關閉的註記 (在 %{place} 附近)
+        reopened: 重新開啟的註記 (在 %{place} 附近)
+      entry:
+        comment: 評論
+        full: 註記原文
   browse:
     created: 建立於
     closed: 關閉於
@@ -205,21 +233,21 @@ zh-TW:
         way: 路徑
         relation: 關聯
     start_rjs:
-      feature_warning: 載入 %{num_features} 項物件的資料，可能會使你的瀏覽器操作緩慢或反應遲緩。你確定要顯示這些資料嗎？
+      feature_warning: 載入 %{num_features} 項物件的資料，可能使您的瀏覽器延遲或無法回應。您是否想要顯示這些資料嗎？
       load_data: 載入資料
-      loading: 正在載入...
+      loading: 正在載入…
     tag_details:
       tags: 標籤
       wiki_link:
-        key: '%{key} 標籤的 wiki 描述頁面'
-        tag: '%{key}=%{value} 標籤的 wiki 描述頁面'
+        key: '%{key} 標籤的 Wiki 說明頁面'
+        tag: '%{key}=%{value} 標籤的 Wiki 說明頁面'
       wikidata_link: 維基數據上的 %{page} 項目
-      wikipedia_link: 維基百科上的 %{page} 文章
-      telephone_link: 打給 %{phone_number}
+      wikipedia_link: 維基百科上的 %{page} 條目
+      telephone_link: 致電 %{phone_number}
     note:
       title: 註記：%{id}
       new_note: 新增註記
-      description: 描述
+      description: 說明
       open_title: 未解決的註記：#%{note_name}
       closed_title: 已解決的註記：#%{note_name}
       hidden_title: 已隱藏的註記：#%{note_name}
@@ -238,14 +266,14 @@ zh-TW:
       introduction: 點選地圖以尋找附近的圖徵
       nearby: 附近圖徵
       enclosing: 區域內圖徵
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: 第 %{page} 頁
       next: 下一頁 »
       previous: « 上一頁
     changeset:
       anonymous: 匿名
-      no_edits: (沒有編輯)
+      no_edits: （沒有編輯）
       view_changeset_details: 檢視變更集詳細資料
     changesets:
       id: ID
@@ -256,34 +284,38 @@ zh-TW:
     index:
       title: 變更集
       title_user: '%{user} 的變更集'
-      title_friend: 我的好友之變更集
+      title_friend: 好友的變更集
       title_nearby: 附近使用者的變更集
       empty: 查無變更集。
-      empty_area: 此地區沒有變更集。
+      empty_area: 此區域沒有變更集。
       empty_user: 此使用者沒有變更集。
       no_more: 查無更多變更集。
-      no_more_area: 此地區沒有更多變更集。
+      no_more_area: 此區域沒有更多變更集。
       no_more_user: 此使用者沒有更多變更集。
       load_more: 載入更多
     timeout:
-      sorry: 抱歉，您請求的變更集清單取得時間過長。
-    rss:
+      sorry: 很抱歉，您請求的變更集清單逾時無法讀取。
+  changeset_comments:
+    comment:
+      comment: '由 %{author} 對變更集 #%{changeset_id} 發表的新評論'
+      commented_at_by_html: 於 %{when} 前由 %{user} 更新
+    comments:
+      comment: '%{author} 對變更集 #%{changeset_id} 發表的新評論'
+    index:
       title_all: OpenStreetMap 變更集討論
       title_particular: OpenStreetMap 變更集 %{changeset_id} 討論
-      comment: '%{author} 對變更集 #%{changeset_id} 發表新評論'
-      commented_at_html: 於 %{when} 前更新
-      commented_at_by_html: 於 %{when} 前由 %{user} 更新
-      full: 完整討論
-  diary_entry:
+    timeout:
+      sorry: 很抱歉，您請求的變更集評論逾時無法讀取
+  diary_entries:
     new:
       title: 新日記項目
       publish_button: 發佈
     index:
-      title: 日記
-      title_friends: 好友的日記
+      title: 使用者日記
+      title_friends: 好友日記
       title_nearby: 附近的使用者的日記
       user_title: '%{user} 的日記'
-      in_language_title: 日記 (語言為 %{language})
+      in_language_title: 語言為%{language}的日記項目
       new: 新增日記項目
       new_title: 在我的使用者日記裡撰寫新內容
       no_entries: 沒有日記項目
@@ -302,18 +334,18 @@ zh-TW:
       save_button: 儲存
       marker_text: 日記項目位置
     show:
-      title: '%{user} 的日記 | %{title}'
+      title: '%{user} 的日記|%{title}'
       user_title: '%{user} 的日記'
       leave_a_comment: 留下評論
-      login_to_leave_a_comment: '%{login_link} 以留下評論'
+      login_to_leave_a_comment: '%{login_link}來留下評論'
       login: 登入
       save_button: 儲存
     no_such_entry:
-      title: 沒有這個日記項目
-      heading: 沒有項目的 id 為：%{id}
+      title: 沒有這樣的日記項目
+      heading: 沒有 id 為 %{id} 的項目
       body: 抱歉，沒有日記項目或評論的 id 是 %{id}。請檢查您的拼字，或者可能是您按到錯誤的連結。
     diary_entry:
-      posted_by: 於 %{created} 由 %{link_user} 以 %{language_link} 發表
+      posted_by: 於 %{created} 由 %{link_user} 以%{language_link}發表
       comment_link: 對這個項目的評論
       reply_link: 回覆這個項目
       comment_count:
@@ -338,8 +370,8 @@ zh-TW:
         title: '%{user} 的 OpenStreetMap 日記項目'
         description: '%{user} 最近的 OpenStreetMap 日記項目'
       language:
-        title: OpenStreetMap 日記項目 (語言為 %{language_name})
-        description: OpenStreetMap 使用者最近的日記項目 (語言為 %{language_name})
+        title: 語言為%{language_name}的OpenStreetMap 日記項目
+        description: 語言為%{language_name}的 OpenStreetMap 使用者最近日記項目
       all:
         title: OpenStreetMap 日記項目
         description: OpenStreetMap 使用者最近的日記項目
@@ -396,17 +428,17 @@ zh-TW:
           bicycle_parking: 自行車停車場
           bicycle_rental: 自行車出租
           biergarten: 啤酒庭園
-          boat_rental: 船隻出租
+          boat_rental: 船艇出租
           brothel: 妓院
-          bureau_de_change: 找換店
-          bus_station: 巴士站
+          bureau_de_change: 外匯兌換店
+          bus_station: 公車站
           cafe: 咖啡廳
           car_rental: 汽車出租
           car_sharing: 汽車共乘
           car_wash: 洗車
           casino: 賭場
           charging_station: 充電站
-          childcare: 安親托兒
+          childcare: 幼兒園
           cinema: 電影院
           clinic: 診所
           clock: 時鐘
@@ -425,23 +457,23 @@ zh-TW:
           food_court: 美食廣場
           fountain: 噴泉
           fuel: 燃料
-          gambling: 賭場
+          gambling: 博弈店
           grave_yard: 墓園
           grit_bin: 砂箱
           hospital: 醫院
           hunting_stand: 狩獵站
           ice_cream: 冰淇淋
-          kindergarten: 幼稚園
+          kindergarten: 幼兒園
           library: 圖書館
           marketplace: 市場
           monastery: 修道院
           motorcycle_parking: 機車停車場
           nightclub: 夜總會
-          nursing_home: 護理院
+          nursing_home: 療養院
           office: 辦公室
           parking: 停車場
           parking_entrance: 停車場入口
-          parking_space: 停車處
+          parking_space: 停車位
           pharmacy: 藥房
           place_of_worship: 宗教場所
           police: 警察
@@ -459,8 +491,8 @@ zh-TW:
           shelter: 涼亭
           shop: 商店
           shower: 淋浴
-          social_centre: 社交中心
-          social_club: 社交會所
+          social_centre: 聚會所
+          social_club: 社交俱樂部
           social_facility: 社會福利設施
           studio: 錄音室
           swimming_pool: 游泳池
@@ -468,11 +500,11 @@ zh-TW:
           telephone: 公共電話
           theatre: 劇院
           toilets: 廁所
-          townhall: 鄉鎮市區公所
+          townhall: 市政廳
           university: 大學
           vending_machine: 自動販賣機
           veterinary: 獸醫
-          village_hall: 村里辦公室
+          village_hall: 村政廳
           waste_basket: 垃圾桶
           waste_disposal: 垃圾子車
           water_point: 取水點
@@ -500,7 +532,7 @@ zh-TW:
           photographer: 攝影師
           plumber: 管道工
           shoemaker: 鞋匠
-          tailor: 裁縫
+          tailor: 裁縫師
           "yes": 工藝品店
         emergency:
           ambulance_station: 急救站
@@ -511,66 +543,66 @@ zh-TW:
           water_tank: 緊急水箱
           "yes": 緊急
         highway:
-          abandoned: 廢棄公路
-          bridleway: 馬道
-          bus_guideway: 軌道巴士線
-          bus_stop: 巴士站
+          abandoned: 廢棄道路
+          bridleway: 馬車道
+          bus_guideway: 導向公車道
+          bus_stop: 公車站
           construction: 建造中道路
           corridor: 走廊
           cycleway: 自行車道
           elevator: 電梯
           emergency_access_point: 緊急聯絡點
           footway: 步道
-          ford: 過水點
+          ford: 河床便道
           give_way: 讓路標誌
           living_street: 生活街道
           milestone: 里程標
           motorway: 高速公路
-          motorway_junction: 高速公路交匯處
+          motorway_junction: 高速公路出口
           motorway_link: 高速公路聯絡道
-          passing_place: 讓車道
+          passing_place: 避車彎
           path: 小徑
           pedestrian: 人行道
           platform: 月台
-          primary: 省道
-          primary_link: 主要道路
-          proposed: 計畫道路
+          primary: 一級道路
+          primary_link: 一級道路聯絡道
+          proposed: 計畫中道路
           raceway: 賽道
           residential: 住宅區道路
           rest_area: 休息區
           road: 道路
-          secondary: 縣道
-          secondary_link: 次級道路連接路
+          secondary: 二級道路
+          secondary_link: 二級道路聯絡道
           service: 服務道路
-          services: 高速公路休息區
+          services: 高速公路服務區
           speed_camera: 測速照相機
           steps: 階梯
-          stop: 停車標誌
+          stop: 停止標誌
           street_lamp: 路燈
-          tertiary: 鄉道
-          tertiary_link: 三級道路連接路
+          tertiary: 三級道路
+          tertiary_link: 地區道路聯絡道
           track: 產業道路
           traffic_signals: 交通號誌
-          trail: 步徑
+          trail: 山徑
           trunk: 快速道路
-          trunk_link: 主要幹道連接路
+          trunk_link: 快速道路聯絡道
           turning_loop: 環形迴車道
-          unclassified: 無分級道路
+          unclassified: 無編制道路
           "yes": 道路
         historic:
           archaeological_site: 考古遺址
-          battlefield: 戰場
+          battlefield: 古戰場
           boundary_stone: 界石
-          building: 歷史建物
+          building: 歷史建築
           bunker: 掩體
           castle: 城堡
           church: 教堂
           city_gate: 城門
           citywalls: 城牆
-          fort: 堡疊
-          heritage: 遺產
+          fort: 堡壘
+          heritage: 遺蹟
           house: 房屋
-          icon: 圖示
+          icon: 聖像
           manor: 莊園
           memorial: 紀念館
           mine: 礦場
@@ -589,45 +621,45 @@ zh-TW:
           "yes": 路口
         landuse:
           allotments: 社區農園
-          basin: 凹地
+          basin: 盆地
           brownfield: 低污染再利用地
-          cemetery: 公墓
+          cemetery: 墓地
           commercial: 商業區
-          conservation: 保育區
-          construction: 建設中區域
-          farm: 農田
+          conservation: 保留區
+          construction: 建造中區域
+          farm: 農業用地
           farmland: 農地
-          farmyard: 農家
-          forest: 管理林
-          garages: 車庫
-          grass: 平整草地
+          farmyard: 農舍
+          forest: 人工林
+          garages: 倉庫
+          grass: 草坪
           greenfield: 空地
           industrial: 工業區
           landfill: 垃圾掩埋場
-          meadow: 野草地
+          meadow: 牧草地
           military: 軍事區
           mine: 礦場
           orchard: 果園
           quarry: 露天礦場
           railway: 鐵路
           recreation_ground: 遊樂場
-          reservoir: 水庫
-          reservoir_watershed: 水庫集水區
+          reservoir: 蓄水設施
+          reservoir_watershed: 蓄水設施集水區
           residential: 住宅區
-          retail: 店面
+          retail: 零售店
           road: 道路用地
-          village_green: 社區草地
+          village_green: 社區綠地
           vineyard: 葡萄園
           "yes": 土地利用
         leisure:
           beach_resort: 海灘遊樂區
           bird_hide: 賞鳥亭
           common: 公共用地
-          dog_park: 狗狗公園
+          dog_park: 遛狗公園
           firepit: 火坑
           fishing: 垂釣區
-          fitness_centre: 瘦身中心
-          fitness_station: 健身站
+          fitness_centre: 健身中心
+          fitness_station: 健身設施
           garden: 花園
           golf_course: 高爾夫球道
           horse_riding: 馬場
@@ -740,11 +772,11 @@ zh-TW:
           employment_agency: 人力仲介
           estate_agent: 房地產仲介
           government: 政府辦事處
-          insurance: 保險事務所
+          insurance: 保險公司辦公室
           it: IT 辦公室
           lawyer: 律師
           ngo: 非政府組織辦公室
-          telecommunication: 通訊信辦公室
+          telecommunication: 電信業辦事處
           travel_agent: 旅行社
           "yes": 辦公室
         place:
@@ -758,11 +790,11 @@ zh-TW:
           house: 房屋
           houses: 房屋
           island: 島嶼
-          islet: 小島
+          islet: 礁岩
           isolated_dwelling: 獨立住宅
           locality: 地區
           municipality: 自治市
-          neighbourhood: 居住區
+          neighbourhood: 社區
           postcode: 郵遞區號
           quarter: 住處
           region: 區域
@@ -773,35 +805,35 @@ zh-TW:
           suburb: 郊區
           town: 鄉鎮
           unincorporated_area: 非建制地區
-          village: 村落
-          "yes": 地名
+          village: 村里
+          "yes": 地點
         railway:
           abandoned: 已拆除鐵路
           construction: 建造中鐵路
           disused: 廢棄鐵路
           funicular: 纜索鐵路
-          halt: 鐵路停靠站
+          halt: 鐵路招呼站
           junction: 鐵路交匯處
           level_crossing: 平交道
-          light_rail: 輕鐵
+          light_rail: 輕軌
           miniature: 微型鐵路
           monorail: 單軌鐵路
           narrow_gauge: 窄軌鐵路
           platform: 鐵路月臺
           preserved: 保留鐵路
-          proposed: 規劃鐵路
+          proposed: 規劃中鐵路
           spur: 鐵路支線
           station: 鐵路車站
-          stop: 鐵路停車處
+          stop: 鐵路招呼站
           subway: 地下鐵
           subway_entrance: 地下鐵出入口
           switch: 道岔
-          tram: 路面電車
+          tram: 路面電車軌道
           tram_stop: 路面電車停靠站
         shop:
           alcohol: 酒館
-          antiques: 古玩店
-          art: 藝術品店
+          antiques: 古董店
+          art: 藝品店
           bakery: 麵包店
           beauty: 美容店
           beverages: 飲料店
@@ -815,8 +847,8 @@ zh-TW:
           car_repair: 汽車維修
           carpet: 地毯店
           charity: 慈善商店
-          chemist: 化學材料桁
-          clothes: 服裝店
+          chemist: 化學材料行
+          clothes: 服飾店
           computer: 電腦商店
           confectionery: 甜點店
           convenience: 便利商店
@@ -886,7 +918,7 @@ zh-TW:
           "yes": 商店
         tourism:
           alpine_hut: 山屋
-          apartment: 公寓
+          apartment: 假日公寓
           artwork: 美工
           attraction: 景點
           bed_and_breakfast: 家庭旅館
@@ -934,7 +966,7 @@ zh-TW:
         level5: 區界
         level6: 縣界
         level8: 市界
-        level9: 村界
+        level9: 村里界
         level10: 郊區邊界
     description:
       title:
@@ -1076,9 +1108,8 @@ zh-TW:
     intro_header: 歡迎來到 OpenStreetMap！
     intro_text: OpenStreetMap 是一幅世界地圖，由像您這樣的人們所建立，在開放授權下可以自由使用。
     intro_2_create_account: 建立使用者帳號
-    partners_html: 主機由 %{ucl}、%{bytemark}、%{ic}，和其他 %{partners} 所支援。
+    hosting_partners_html: 主機由 %{ucl}、%{bytemark}，和其他 %{partners} 所支援。
     partners_ucl: 倫敦大學學院
-    partners_ic: 倫敦帝國學院
     partners_bytemark: Bytemark 主機代管
     partners_partners: 合作夥伴
     osm_offline: OpenStreetMap 資料庫目前正在離線，直到必要的資料庫維護工作完成為止。
@@ -1328,6 +1359,9 @@ zh-TW:
           BY</a>授權) 、<a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land
           Vorarlberg</a>及 Land Tirol (修訂的<a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY
           AT</a>授權) 的資料。
+        contributors_au_html: |-
+          <strong>澳大利亞</strong>：包含來自
+          <a href="https://www.psma.com.au/psma-data-copyright-and-disclaimer">PSMA 澳大利亞有限公司</a>的資料來源，並依據<a href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">姓名標示 4.0 國際</a>澳大利亞聯邦條款授權。
         contributors_ca_html: |-
           <strong>加拿大</strong>：包含來自 GeoBase&reg;，GeoGratis (&copy; Department of Natural
           Resources Canada) ，CanVec (&copy; Department of Natural
@@ -1352,6 +1386,9 @@ zh-TW:
           <strong>斯洛維尼亞</strong>：包含來自<a href="http://www.gu.gov.si/en/">Surveying and Mapping Authority</a>和
           <a href="http://www.mkgp.gov.si/en/">Ministry of Agriculture, Forestry and Food</a>
           (斯洛維尼亞公開資訊).
+        contributors_es_html: |-
+          <strong>西班牙</strong>：包含來自西班牙國家地理研究所（<a href="http://www.ign.es/">IGN</a>）以及國家製圖系統<a href="http://www.scne.es/">SCNE</a>）的資料來源，並依據
+          <a href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">姓名標示 4.0 國際</a>條款授權。
         contributors_za_html: |-
           <strong>南非</strong>: 包含來自
           <a href="http://www.ngi.gov.za/">Chief Directorate:
@@ -1359,7 +1396,7 @@ zh-TW:
         contributors_gb_html: |-
           <strong>英國</strong>: 包含來自 Ordnance
           Survey data (&copy; Crown copyright and database right
-          2010-12) 的資料。
+          2010-19) 的資料。
         contributors_footer_1_html: |-
           若需要進一步詳情，以及其他曾用以協助改進
            OpenStreetMap 的資料來源，請參閱 OpenStreetMap Wiki 上的<a
@@ -1482,6 +1519,10 @@ zh-TW:
       switch2osm:
         title: switch2osm
         description: 協助公司與組織改用 OpenStreetMap 為基礎的地圖與相關服務。
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: 對於組織
+        description: 想要以組織來對 OpenStreetMap 製作計劃嗎？請在 Welcome Mat 查找您所需要的事項。
       wiki:
         url: https://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1503,11 +1544,11 @@ zh-TW:
       table:
         entry:
           motorway: 高速公路
-          main_road: 主要道路
+          main_road: 主要幹道
           trunk: 主要幹路
           primary: 一級道路
           secondary: 二級道路
-          unclassified: 未分級道路
+          unclassified: 無編制道路
           track: 產業道路
           bridleway: 馬道
           cycleway: 自行車道
@@ -1519,7 +1560,7 @@ zh-TW:
           subway: 地下鐵
           tram:
           - 輕軌
-          - 路面電車
+          - 輕軌
           cable:
           - 大型纜車
           - 升降吊椅
@@ -1565,7 +1606,7 @@ zh-TW:
           bridge: 黑線邊框 = 橋樑
           private: 私人進出
           destination: 目的地進出
-          construction: 道路施工中
+          construction: 建造中道路
           bicycle_shop: 自行車店
           bicycle_parking: 自行車停車場
           toilets: 廁所
@@ -1573,7 +1614,7 @@ zh-TW:
       edit: 編輯
       preview: 預覽
     markdown_help:
-      title_html: 使用 <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: 使用 <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
         解析
       headings: 標題
       heading: 標題
@@ -1612,7 +1653,8 @@ zh-TW:
       questions:
         title: 有任何問題嗎？
         paragraph_1_html: OpenStreetMap 有一些資源，可用於學習本專案、提出和回答問題，以及討論和紀錄與製作地圖相關的話題。
-          <a href='%{help_url}'>按此取得說明</a>。
+          <a href='%{help_url}'>按此取得說明</a>。想要以組織來對 OpenStreetMap 製作計劃嗎？請查看 <a href='https://welcome.openstreetmap.org/'>Welcome
+          Mat</a>。
       start_mapping: 開始製圖
       add_a_note:
         title: 沒有時間編輯嗎？可加入註記！
@@ -1732,14 +1774,11 @@ zh-TW:
         other: 由 %{user} 上傳的 GPX 檔案，含有 %{count} 點
       description_without_count: 由 %{user} 上傳的 GPX 檔案
   application:
+    permission_denied: 您沒有權限來存取該操作。
     require_cookies:
       cookies_needed: 您似乎已停用 cookies - 請在瀏覽器中開啟 cookies，然後繼續。
     require_admin:
       not_an_admin: 您需要是一個管理員才可執行該動作。
-    require_moderator:
-      not_a_moderator: 您必須是仲裁員才可執行此操作。
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: 您需要是仲裁員或管理員才可執行該動作。
     setup_user_auth:
       blocked_zero_hour: 您在OpenStreetMap網站有一個緊急訊息。在您儲存您的編輯內容前請先閱讀該訊息。
       blocked: 您已經被封鎖使用 API。請登入網頁介面以瞭解更多資訊。
@@ -1828,7 +1867,7 @@ zh-TW:
       flash: 更新客戶端資訊成功
     destroy:
       flash: 已銷毀此用戶端應用程式註冊
-  user:
+  users:
     login:
       title: 登入
       heading: 登入
@@ -1922,14 +1961,17 @@ zh-TW:
       continue: 註冊
       terms accepted: 感謝您接受新的貢獻條款！
       terms declined: 我們很遺憾你已決定不接受新的貢獻者條款。有關詳細資訊，請參閱<a href="%{url}">此 wiki 頁面</a>。
+      terms declined url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     terms:
       title: 貢獻者條款
       heading: 貢獻者條款
       read and accept: 請閱讀下面的協議並按同意按鈕，以確認為你現有的和將來的貢獻接受本協議的條款。
       consider_pd: 在上述協議之上，我同意將我的貢獻放到公共領域
       consider_pd_why: 這是什麼？
+      consider_pd_why_url: https://www.osmfoundation.org/wiki/License/Why_would_I_want_my_contributions_to_be_public_domain
       guidance: 幫助理解這些條款的資料：一個<a href="%{summary}">供普通人閱讀的摘要</a>和一些<a href="%{translations}">非正式翻譯</a>
       agree: 同意
+      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: 拒絕
       you need to accept or decline: 請先閱讀，然後選擇接受或拒絕新的貢獻者條款，再繼續。
       legale_select: 請選擇您的居住地：
@@ -2040,6 +2082,7 @@ zh-TW:
         not yet agreed: 您未同意新的貢獻者條款。
         review link text: 請跟隨此連結，方便你檢視並接受新的貢獻者條款。
         agreed_with_pd: 您亦同意將您的編輯放到公共領域
+        link: https://www.osmfoundation.org/wiki/License/Contributor_Terms
         link text: 這是什麼？
       profile description: 基本資料描述：
       preferred languages: 偏好的語言：
@@ -2047,6 +2090,7 @@ zh-TW:
       image: 圖片：
       gravatar:
         gravatar: 使用 Gravatar
+        link: https://wiki.openstreetmap.org/wiki/Gravatar
         link text: 這是什麼？
         disabled: Gravatar已停用。
         enabled: 您的Gravatar顯示功能已啟用。
@@ -2101,8 +2145,6 @@ zh-TW:
       button: 移除好友
       success: '%{name} 已從您的好友中移除。'
       not_a_friend: '%{name} 並不是您的好友。'
-    filter:
-      not_an_administrator: 您需要是管理員才可執行此操作。
     index:
       title: 使用者
       heading: 使用者
@@ -2132,7 +2174,6 @@ zh-TW:
       option_2: 如果您已擁有一個帳號，您可以用您的使用者名稱與密碼登入您的帳號，並在使用者設定中關連您的ID。
   user_role:
     filter:
-      not_an_administrator: 只有管理員可以進行使用者身份管理，但是您並不是管理員。
       not_a_role: 字串 "%{role}" 不是有效的身份。
       already_has_role: 這個使用者已經有 %{role} 身份。
       doesnt_have_role: 這個使用者沒有 %{role} 身份。
@@ -2244,30 +2285,10 @@ zh-TW:
       next: 下一頁 »
       previous: « 上一頁
   notes:
-    comment:
-      opened_at_html: 於 %{when} 前建立
-      opened_at_by_html: 於 %{when} 前由 %{user} 建立
-      commented_at_html: 於 %{when} 前更新
-      commented_at_by_html: 於 %{when} 前由 %{user} 更新
-      closed_at_html: 已解決於 %{when} 前
-      closed_at_by_html: 於 %{when} 前由 %{user} 關閉
-      reopened_at_html: 於 %{when} 前重新開啟
-      reopened_at_by_html: 於 %{when} 前由 %{user} 重新開啟
-    rss:
-      title: OpenStreetMap 註記
-      description_area: 在你的區域[(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]所報告、評論或關閉的註記的清單
-      description_item: 註記 %{id} 的 RSS feed
-      opened: 新的註記 (在 %{place} 附近)
-      commented: 新的評論 (在 %{place} 附近)
-      closed: 關閉的註記 (在 %{place} 附近)
-      reopened: 重新開啟的註記 (在 %{place} 附近)
-    entry:
-      comment: 評論
-      full: 註記原文
     mine:
       title: 由 %{user} 送出或評論的註記
       heading: '%{user} 的註記'
-      subheading: '%{user} 送出或評論的註記'
+      subheading_html: '%{user} 送出或評論的註記'
       id: ID
       creator: 建立者
       description: 說明
@@ -2355,13 +2376,12 @@ zh-TW:
     directions:
       ascend: 上升
       engines:
-        graphhopper_bicycle: 腳踏車 (GraphHopper)
+        fossgis_osrm_bike: 自行車（OSRM）
+        fossgis_osrm_car: 開車 (OSRM)
+        fossgis_osrm_foot: 步行（OSRM）
+        graphhopper_bicycle: 自行車（GraphHopper）
         graphhopper_car: 汽車(GraphHopper)
         graphhopper_foot: 徒步 (GraphHopper)
-        mapquest_bicycle: 腳踏車 (MapQuest)
-        mapquest_car: 開車 (MapQuest)
-        mapquest_foot: 徒步 (MapQuest)
-        osrm_car: 開車 (OSRM)
       descend: 下降
       directions: 路線
       distance: 距離
@@ -2421,7 +2441,7 @@ zh-TW:
         roundabout_with_exit: 從圓環出口 %{exit} 離開至 %{name}
         roundabout_with_exit_ordinal: 於圓環的 %{exit} 出口離開進入 %{name}
         exit_roundabout: 離開圓環進入 %{name}
-        unnamed: 未命名
+        unnamed: 未命名道路
         courtesy: 感謝 %{link} 提供路線資訊
         exit_counts:
           first: 第 1
@@ -2480,4 +2500,9 @@ zh-TW:
       not_empty: 修訂尚未清空。請在銷毀前清除所有此修訂的版本。
       flash: 修訂已銷毀。
       error: 銷毀此修訂時發生錯誤。
+  validations:
+    leading_whitespace: 前頭有空白
+    trailing_whitespace: 後端有空白
+    invalid_characters: 包含無效字元
+    url_characters: 包含特定 URL 字元（%{characters}）
 ...

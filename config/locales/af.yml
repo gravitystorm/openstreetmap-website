@@ -207,7 +207,7 @@ af:
       introduction: Klik op die kaart om nabye bakens te ontdek.
       nearby: Nabye kenmerke
       enclosing: Omsluitende kenmerke
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Bladsy %{page}
       next: Volgende »
@@ -234,12 +234,12 @@ af:
     timeout:
       sorry: Jammer, die lys wysigingstelle wat u versoek het, neem lank om uit te
         haal.
-    rss:
-      title_all: OpenStreetMap bespreking oor wysigingstelle
-      commented_at_html: '%{when} gelede bygewerk'
+  changeset_comments:
+    comment:
       commented_at_by_html: '%{when} gelede deur %{user} bygewerk'
-      full: Volledige bespreking
-  diary_entry:
+    index:
+      title_all: OpenStreetMap bespreking oor wysigingstelle
+  diary_entries:
     new:
       title: Nuwe dagboekinskrywing
       publish_button: Publiseer
@@ -1273,7 +1273,7 @@ af:
       allow_write_api: wysig die kaart.
     not_found:
       sorry: Jammer, die %{type} blyk onverkrygbaar te wees.
-  user:
+  users:
     login:
       title: Meld aan
       heading: Meld aan
@@ -1570,11 +1570,9 @@ af:
         unhide_comment: bring weer aan die lig
     directions:
       engines:
+        fossgis_osrm_car: Kar (OSRM)
         graphhopper_bicycle: Fiets (GraphHopper)
         graphhopper_car: Kar (GraphHopper)
-        mapquest_bicycle: Fiets (MapQuest)
-        mapquest_car: Kar (MapQuest)
-        osrm_car: Kar (OSRM)
       time: Tyd
     query:
       node: Knooppunt

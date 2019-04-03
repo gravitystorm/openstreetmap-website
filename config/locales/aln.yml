@@ -127,7 +127,7 @@ aln:
         key: Pērshkrimi i wiki faqes pēr %{key} tag
         tag: Pērshkrimi i wiki faqes pēr %{key}=%{value} tag
       wikipedia_link: '%{page} artikulli nē Wikipedia'
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Tu e shfaq faqen %{page}
       next: Tjetra »
@@ -145,7 +145,7 @@ aln:
     index:
       title: Changesets
       title_user: Changesets nga %{user}
-  diary_entry:
+  diary_entries:
     new:
       title: Hyrja e re Ditari
     index:
@@ -793,6 +793,9 @@ aln:
             agjenci ose burim kryesor ka qenë i përfshirë në
             OpenStreetMap, ai mund të jetë e arsyeshme për kredi nga ana e tyre direkt
             riprodhimin e kreditit e tyre apo duke i lidhur me të në këtë faqe.
+        contributors_au_html: |-
+          <strong> Australi </ strong>: Përmban të dhëna të bazuara periferi
+             në Zyra Australiane e Statistikave të dhënave.
         contributors_ca_html: |-
           <strong> Kanada </ strong>: Përmban të dhëna nga
              GeoBase ®, GeoGratis (© Departamenti i Natyrore
@@ -1099,7 +1102,7 @@ aln:
       flash: Përditësuar më të dhënat e klientit me sukses
     destroy:
       flash: Shkatërruar kërkesë e klientit regjistrimit
-  user:
+  users:
     login:
       title: Kyçu
       heading: Kycu
@@ -1289,8 +1292,6 @@ aln:
     remove_friend:
       success: '%{name} u hek pi shokve tu'
       not_a_friend: '%{name} nuk osht njoni pi shokve tu.'
-    filter:
-      not_an_administrator: Ju duhet të jeni administrator për me kry kët veprim.
     index:
       title: Perdoruesit
       heading: Perdoruesit
@@ -1317,8 +1318,6 @@ aln:
         </p>
   user_role:
     filter:
-      not_an_administrator: Veç administratorat munen me pas rol të menaxhimit, dhe
-        ju nuk jeni administrator.
       not_a_role: Lidhja `%{role}' nuk asht rol valid.
       already_has_role: Shfrytzuesi tashmë ka ni rol %{role}.
       doesnt_have_role: Ky shfrytzeus nuk ka asni rrol %{role}

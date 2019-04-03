@@ -2,13 +2,16 @@
 # Exported from translatewiki.net
 # Export driver: phpyaml
 # Author: Drjpoudel
+# Author: Haribanshi
 # Author: Krish Dulal
 # Author: Nirajan pant
 # Author: Nirjal stha
 # Author: Njsubedi
 # Author: RajeshPandey
+# Author: पर्वत सुबेदी
 # Author: राम प्रसाद जोशी
 # Author: सरोज कुमार ढकाल
+# Author: हिमाल सुबेदी
 ---
 ne:
   html:
@@ -101,6 +104,10 @@ ne:
     remote:
       name: रिमोट कन्ट्रोल
       description: रिमोट कन्ट्रोल  (JOSM वा Merkaartor)
+  api:
+    notes:
+      entry:
+        comment: टिप्पणी
   browse:
     created: सृजना गरिएको
     closed: समापन भएको
@@ -230,12 +237,13 @@ ne:
         अगाडि</abbr> पुनःसक्रिय गरिएको
       hidden_by: '%{user}द्वारा <abbr title=''%{exact_time}''>%{when} अगाडि</abbr>
         लुकाइएको'
+      report: यस टिपोटलाई उजुरी गर्नुहोस्
     query:
       title: क्वेरी गुणहरू
       introduction: नजिकैका फिचरहरू भेटाउन नक्सामा क्लिक गर्नुहोस्
       nearby: नजिकैका फिचरहरू
       enclosing: यसभित्र रहेका फिचरहरू
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: पृष्ठ %{page}
       next: अर्को »
@@ -265,16 +273,16 @@ ne:
     timeout:
       sorry: माफ गर्नुहोला, तपाईंले खोज्नुभएको परिवर्तनहरूको सूची प्राप्त गर्न निकै
         समय लाग्यो ।
-    rss:
+  changeset_comments:
+    comment:
+      comment: ' %{author}द्वारा #%{changeset_id}मा नयाँ टिप्पणी'
+      commented_at_by_html: ' %{user}  द्वारा  %{when} पहिले अद्यावधिक गरिएको'
+    index:
       title_all: OpenStreetMap परिवर्वतन सूची छलफल
       title_particular: 'OpenStreetMap परिवर्तन सूची #%{changeset_id} छलफल'
-      comment: ' %{author}द्वारा #%{changeset_id}मा नयाँ टिप्पणी'
-      commented_at_html: ' %{when} पहिले अद्यावधि गरिएको'
-      commented_at_by_html: ' %{user}  द्वारा  %{when} पहिले अद्यावधिक गरिएको'
-      full: पूरा वार्तालाप
-  diary_entry:
+  diary_entries:
     new:
-      title: नयाँ दैनिकी
+      title: नयाँ दैनिकी प्रविष्टी
       publish_button: प्रकाशन गर्नुहोस्
     index:
       title: प्रयोगकर्ताका डायरीहरू
@@ -322,6 +330,7 @@ ne:
       edit_link: यो प्रविष्टी सम्पादन गर्ने
       hide_link: यो प्रविष्टी लुकाउने
       confirm: निश्चित गर्ने
+      report: यो प्रविष्टीको उजुरी गर्ने
     diary_comment:
       comment_from: '%{link_user}द्वारा %{comment_created_at}मा गरिएको टिप्पणी'
       hide_link: यो टिप्पणी लुकाउनुहोस्
@@ -372,6 +381,7 @@ ne:
           aerodrome: हवाईड्रोम
           apron: तटबन्द
           gate: ढोका
+          hangar: ह्याङ्गर
           helipad: हेलिकप्टर बस्ने ठाउँ
           runway: रनवे
           taxiway: ट्याक्सीको बाटो
@@ -494,6 +504,7 @@ ne:
           defibrillator: डिफिब्रिलेटर
           landing_site: आकस्मिक अवतरण क्षेत्र
           phone: आकस्मिक फोन
+          "yes": आकस्मिक
         highway:
           abandoned: छोडिएको राजमार्ग
           bus_stop: बस बिसौनी
@@ -508,6 +519,7 @@ ne:
           motorway_link: मोटरमार्ग सडक
           path: पथ
           pedestrian: पैदल मार्ग
+          platform: मञ्च
           primary: प्राथमिक सडक
           primary_link: प्राथमिक सडक
           proposed: प्रस्तावित सडक
@@ -520,13 +532,18 @@ ne:
           service: सर्भिस सडक
           speed_camera: गति क्यामेरा
           steps: खुट्किलाहरू
+          stop: रोक्ने चिह्न
           street_lamp: सडक बत्ती
           track: ट्रयाक
+          traffic_signals: ट्राफिक चिह्नहरू
           trail: गोरेटो बाटो
           "yes": सडक
         historic:
           bunker: बङ्कर
           castle: गढी
+          church: गिर्जाघर
+          city_gate: सहर प्रवेशद्वार
+          citywalls: सहरी पर्खाल
           fort: किल्ला
           heritage: सम्पादा क्षेत्र
           house: घर
@@ -538,29 +555,39 @@ ne:
           stone: पत्थर
           tomb: चिहान
           tower: टावर
+          "yes": ऐतिहासिक स्थल
         landuse:
           basin: बेसिन
           commercial: व्यवसायिक क्षेत्र
+          conservation: संरक्षण
+          construction: निर्माण
           farm: खेती
           farmland: खेतीयोग्य जमिन
+          farmyard: खेत
           forest: वन
           garages: ग्यारेजहरू
           grass: घाँस
           industrial: औद्योगिक क्षेत्र
           landfill: ल्यान्डफिल
+          meadow: घाँसेमैदान
           military: सैनिक इलाका
           mine: खानी
           railway: रेलमार्ग
+          reservoir: जलाशय
           residential: आवासीय क्षेत्र
           retail: खुद्रा
           road: सडक क्षेत्र
+          vineyard: अङ्गुर-बगैँचा
+          "yes": भू-उपयोग
         leisure:
           garden: बगैँचा
           park: उद्यान
+          playground: खेलमैदान
           resort: रिसोर्ट
           sauna: सौना
           stadium: रङ्गाशाला
           swimming_pool: पौली पोखरी
+          "yes": फुर्सद
         man_made:
           bridge: पुल
           bunker_silo: बङ्कर
@@ -585,10 +612,12 @@ ne:
           forest: वन
           glacier: हिमनदी
           grassland: घाँसेमैदान
+          heath: स्वास्थ्य
           hill: डाँडा
           island: द्विप
           land: जमिन
           marsh: धाप
+          mud: हिलो मााटो
           peak: शिखर
           point: बिन्दु
           rock: रक
@@ -732,10 +761,13 @@ ne:
     results:
       no_results: कुनै नतिजाहरू भेटिएनन्
       more_results: थप नतिजाहरू
+  issues:
+    show:
+      new_reports: नयाँ प्रतिवेदनहरू
   layouts:
     logo:
       alt_text: OpenStreetMap लोगो
-    logout: लग आउट गर्नुहोस्
+    logout: निर्गमन
     log_in: लग इन
     sign_up: साइन अप
     start_mapping: म्यापिङ गर्न सुरु गर्नुहोस्
@@ -948,6 +980,7 @@ ne:
           track: ट्रयाक
           cycleway: साइकल मार्ग
           rail: रेलमार्ग
+          subway: सबवे
           cable:
           - केबल कार
           - कुर्सी लिफ्ट
@@ -1072,7 +1105,7 @@ ne:
     form:
       name: नाम
       required: आवश्यक पर्दछ
-  user:
+  users:
     login:
       title: प्रवेश
       heading: प्रवेश
@@ -1127,11 +1160,18 @@ ne:
       my profile: मेरो प्रोफाइल
       my settings: मेरो सेटिङहरू
       my comments: मेरा टिप्पणीहरू
+      edits: सम्पादनहरू
       traces: ट्रेसहरू
+      add as friend: साथी जोड्नुहोस्
       status: 'स्थिति:'
       description: वर्णन
+      settings_link_text: सेटिङ्गहरू
+      my friends: मेरा साथीहरू
+      no friends: तपाईं कुनै साथीहरूलाई जोड्नु भएको छैन
       km away: '%{count}किमि टाढा'
       m away: '%{count} मि टाढा'
+      role:
+        administrator: यी प्रयोगकर्ता प्रबन्धक हुनुहुन्छ
       comments: टिप्पणी
       confirm: निश्चित गर्ने
     popup:
@@ -1180,15 +1220,11 @@ ne:
       already_a_friend: '%{name} सँग तपाईंले पहिले नै मित्रता गरिसक्नु भएको छ ।'
     remove_friend:
       button: साथीबाट हटाउने
-    filter:
-      not_an_administrator: यो कार्य गर्न तपाईं प्रबन्धक हुनुपर्छ .
     index:
       title: प्रयोगकर्ताहरू
       heading: प्रयोगकर्ताहरू
   user_role:
     filter:
-      not_an_administrator: प्रबन्धकहरूले भूमिका व्यवस्थापन गर्न सक्छन् र तपाईं प्रबन्धक
-        हैन ।
       not_a_role: '`%{role}''  मान्य भूमिका हैन ।'
       already_has_role: प्रयोगकर्ता सँग %{role} भूमिका पहिले देखि नै छ।
       doesnt_have_role: प्रयोगर्ताको %{role}को भूमिका छैन
@@ -1225,8 +1261,6 @@ ne:
       next: अर्को »
       previous: « अघिल्लो
   notes:
-    entry:
-      comment: टिप्पणी
     mine:
       id: आईडी
       creator: सर्जक
@@ -1262,11 +1296,27 @@ ne:
         hide: लुकाउनुहोस्
         comment: टिप्पणी
     directions:
+      instructions:
+        exit_counts:
+          first: प्रथम
+          second: द्वितीय
+          third: तेस्रो
+          fourth: चौँथो
+          fifth: ५अौँ
+          sixth: छैटौँ
+          seventh: ७अौँ
+          eighth: ८अौँ
+          ninth: ९अौँ
+          tenth: १०अौँ
       time: समय
     query:
       node: नोड
       way: बाटो
       relation: रिलेशन
+    context:
+      directions_from: यहाँबाट दिशा सुरु
+      add_note: यहाँ एउटा टिपोट थप्नुहोस्
+      show_address: ठेगाना देखाउनुहोस्
   redactions:
     edit:
       description: वर्णन

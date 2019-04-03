@@ -13,13 +13,15 @@ Lint/AssignmentInCondition:
     - 'app/controllers/application_controller.rb'
     - 'app/controllers/geocoder_controller.rb'
     - 'app/controllers/notes_controller.rb'
+    - 'app/controllers/api/traces_controller.rb'
     - 'app/controllers/traces_controller.rb'
-    - 'app/controllers/user_controller.rb'
-    - 'app/controllers/user_preferences_controller.rb'
+    - 'app/controllers/users_controller.rb'
+    - 'app/controllers/api/user_preferences_controller.rb'
     - 'app/helpers/application_helper.rb'
     - 'app/helpers/browse_helper.rb'
+    - 'app/helpers/browse_tags_helper.rb'
     - 'app/models/client_application.rb'
-    - 'app/models/notifier.rb'
+    - 'app/mailers/notifier.rb'
     - 'lib/nominatim.rb'
     - 'lib/osm.rb'
     - 'script/deliver-message'
@@ -27,18 +29,18 @@ Lint/AssignmentInCondition:
 # Offense count: 4
 Lint/HandleExceptions:
   Exclude:
-    - 'app/controllers/amf_controller.rb'
-    - 'app/controllers/user_controller.rb'
+    - 'app/controllers/api/amf_controller.rb'
+    - 'app/controllers/users_controller.rb'
 
 # Offense count: 692
 Metrics/AbcSize:
-  Max: 280
+  Max: 283
 
 # Offense count: 40
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
 Metrics/BlockLength:
-  Max: 259
+  Max: 262
 
 # Offense count: 11
 # Configuration parameters: CountBlocks.
@@ -139,9 +141,9 @@ Rails/NotNullColumn:
 # Offense count: 20
 Rails/OutputSafety:
   Exclude:
-    - 'app/controllers/user_controller.rb'
+    - 'app/controllers/users_controller.rb'
     - 'app/helpers/application_helper.rb'
-    - 'app/helpers/changeset_helper.rb'
+    - 'app/helpers/changesets_helper.rb'
     - 'app/helpers/geocoder_helper.rb'
     - 'app/helpers/note_helper.rb'
     - 'app/helpers/open_graph_helper.rb'
@@ -177,7 +179,7 @@ Style/FrozenStringLiteralComment:
 # Cop supports --auto-correct.
 Style/IfUnlessModifier:
   Exclude:
-    - 'app/controllers/way_controller.rb'
+    - 'app/controllers/api/ways_controller.rb'
 
 # Offense count: 70
 # Cop supports --auto-correct.

@@ -1,7 +1,10 @@
 # Messages for Simplified Chinese (中文（简体）‎)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: A Chinese Wikipedian
+# Author: Abijeet Patro
 # Author: Anakmalaysia
+# Author: Angrydog001
 # Author: Assoc
 # Author: Boyuan Yang
 # Author: David S. Hwang
@@ -26,11 +29,15 @@
 # Author: RyRubyy
 # Author: Shizhao
 # Author: StephDC
+# Author: TianyinLee
 # Author: WQL
 # Author: Wong128cn
 # Author: Xiaomingyan
 # Author: Yfdyh000
+# Author: Zazzzz
 # Author: 乌拉跨氪
+# Author: 夢蝶葬花
+# Author: 水獭很懒
 # Author: 阿pp
 # Author: 아라
 ---
@@ -42,19 +49,23 @@ zh-CN:
       friendly: '%Y 年%B %e 日 %H:%M'
       blog: '%Y年%B%e日'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: 看起来不是有效的电子邮件地址
+        email_address_not_routable: 不能路由
     models:
       acl: 访问控制列表
-      changeset: 修改集合
-      changeset_tag: 修改集合标签
+      changeset: 变更集
+      changeset_tag: 变更集标签
       country: 国家
       diary_comment: 日记评论
-      diary_entry: 日记文章
+      diary_entry: 日记条目
       friend: 朋友
       language: 语言
-      message: 信息
+      message: 消息
       node: 节点
       node_tag: 节点标签
-      notifier: 通知者
+      notifier: 通知
       old_node: 旧节点
       old_node_tag: 旧节点标签
       old_relation: 旧关系
@@ -71,7 +82,7 @@ zh-CN:
       tracepoint: 轨迹点
       tracetag: 轨迹标签
       user: 用户
-      user_preference: 用户首选项
+      user_preference: 用户参数设置
       user_token: 用户密钥
       way: 路径
       way_node: 路径节点
@@ -111,6 +122,7 @@ zh-CN:
         pass_crypt: 密码
   printable_name:
     with_version: '%{id}，版本 %{version}'
+    with_name_html: '%{name}%{id}'
   editor:
     default: 默认（目前为 %{name}）
     potlatch:
@@ -125,6 +137,29 @@ zh-CN:
     remote:
       name: 远程控制
       description: 远程控制 (JOSM 或 Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: 于 %{when} 前创建
+        opened_at_by_html: '%{user} 于 %{when} 前创建'
+        commented_at_html: 于 %{when} 前更新
+        commented_at_by_html: '%{user} 于 %{when} 前更新'
+        closed_at_html: 于 %{when} 前解决
+        closed_at_by_html: '%{user} 于 %{when} 前解决'
+        reopened_at_html: 于 %{when} 前重新激活
+        reopened_at_by_html: '%{user} 于 %{when} 前重新激活'
+      rss:
+        title: OpenStreetMap 笔记
+        description_area: 在您的区域 [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+          报告、开放或关闭的笔记列表
+        description_item: 笔记 %{id} 的 RSS feed
+        opened: 新笔记(靠近 %{place})
+        commented: 新评论(靠近 %{place})
+        closed: 关闭的笔记(靠近 %{place})
+        reopened: 重新激活的笔记(靠近 %{place})
+      entry:
+        comment: 评论
+        full: 完整笔记
   browse:
     created: 创建于
     closed: 关闭于
@@ -244,7 +279,7 @@ zh-CN:
       introduction: 点击地图以查找附近要素。
       nearby: 附近特征
       enclosing: 封闭要素
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: 第 %{page} 页
       next: 下一页 »
@@ -257,7 +292,7 @@ zh-CN:
       id: ID
       saved_at: 保存于
       user: 用户
-      comment: 注解
+      comment: 注释
       area: 区域
     index:
       title: 修改集合
@@ -270,17 +305,21 @@ zh-CN:
       no_more: 没有找到更多修改集合。
       no_more_area: 该区域内没有更多修改集合。
       no_more_user: 没有该用户的更多修改集合。
-      load_more: 载入更多
+      load_more: 加载更多
     timeout:
-      sorry: 对不起，检索您请求的修改集合的列表时间过长。
-    rss:
+      sorry: 对不起，您所请求的更改集列表检索太长了。
+  changeset_comments:
+    comment:
+      comment: '%{author}对修改集合%{changeset_id}的新评论'
+      commented_at_by_html: 由 %{user} 更新于 %{when} 前
+    comments:
+      comment: '%{author}对修改集合%{changeset_id}的新评论'
+    index:
       title_all: OpenStreetMap 修改集合讨论
       title_particular: 'OpenStreetMap 修改集合 #%{changeset_id} 讨论'
-      comment: '%{author} 对修改集合 #%{changeset_id} 的新评论'
-      commented_at_html: 更新于 %{when} 前
-      commented_at_by_html: 由 %{user} 更新于 %{when} 前
-      full: 完整讨论
-  diary_entry:
+    timeout:
+      sorry: 对不起，您所请求的修改集合评论时间区间过长。
+  diary_entries:
     new:
       title: 新日记文章
       publish_button: 发布
@@ -294,8 +333,8 @@ zh-CN:
       new_title: 在我的用户日记中撰写新文章
       no_entries: 没有日记文章
       recent_entries: 最近的日记文章
-      older_entries: 更老的文章
-      newer_entries: 更新的文章
+      older_entries: 较新的文章
+      newer_entries: 较新的文章
     edit:
       title: 编辑日记文章
       subject: 主题：
@@ -351,7 +390,7 @@ zh-CN:
         description: 最近的 OpenStreetMap 用户日记文章
     comments:
       has_commented_on: '%{display_name} 已评论以下日记文章'
-      post: 帖子
+      post: 发布
       when: 时间
       comment: 评论
       ago: '%{ago} 前'
@@ -806,14 +845,14 @@ zh-CN:
           tram: 电车轨道
           tram_stop: 有轨电车站
         shop:
-          alcohol: 无许可证
+          alcohol: 政府许可酒类店
           antiques: 古玩店
           art: 艺术品店
           bakery: 面包店
           beauty: 美容店
           beverages: 饮料店
           bicycle: 自行车店
-          bookmaker: 著作家
+          bookmaker: 赌博业者
           books: 书店
           boutique: 精品店
           butcher: 肉店
@@ -836,7 +875,7 @@ zh-CN:
           dry_cleaning: 干洗店
           electronics: 电子产品店
           estate_agent: 地产代理
-          farm: 农家店
+          farm: 农产品店
           fashion: 时装店
           fish: 鱼店
           florist: 花店
@@ -875,13 +914,13 @@ zh-CN:
           pharmacy: 药店
           photo: 照相馆
           seafood: 海鲜
-          second_hand: 二手商品商店
+          second_hand: 二手商品店
           shoes: 鞋店
           sports: 体育用品店
           stationery: 文具店
           supermarket: 超市
           tailor: 裁缝店
-          ticket: 门票商店
+          ticket: 售票处
           tobacco: 烟草店
           toys: 玩具店
           travel_agency: 旅行社
@@ -893,7 +932,7 @@ zh-CN:
           "yes": 商店
         tourism:
           alpine_hut: 高山小屋
-          apartment: 公寓
+          apartment: 假日公寓
           artwork: 艺术品
           attraction: 景点
           bed_and_breakfast: 家庭旅馆
@@ -901,7 +940,7 @@ zh-CN:
           camp_site: 宿营地
           caravan_site: 房车宿营地
           chalet: 小屋
-          gallery: 图库
+          gallery: 画廊
           guest_house: 旅馆
           hostel: 招待所
           hotel: 酒店
@@ -1086,9 +1125,8 @@ zh-CN:
     intro_header: 欢迎访问 OpenStreetMap！
     intro_text: OpenStreetMap 是一个世界地图，由像您一样的人们所构筑，可依据开放许可协议自由使用。
     intro_2_create_account: 创建用户账户
-    partners_html: 主机由%{ucl}、%{bytemark}、%{ic}，以及其他%{partners}所支持。
+    hosting_partners_html: 主机由%{ucl}、%{bytemark}，以及其他%{partners}所支持。
     partners_ucl: 伦敦大学学院
-    partners_ic: 伦敦帝国学院
     partners_bytemark: Bytemark主机
     partners_partners: 合作伙伴
     osm_offline: 由于正在进行基本的数据库维护工作，OpenStreetMap 数据库目前处于脱机状态。
@@ -1135,7 +1173,7 @@ zh-CN:
         failed_to_import: 导入失败。下面是错误信息：
         more_info_1: 更多有关 GPX 导入失败的详细信息，以及如何避免
         more_info_2: 它们的信息可以在这里找到：
-        import_failures_url: http://wiki.openstreetmap.org/wiki/GPX_Import_Failures
+        import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       success:
         subject: '[OpenStreetMap] GPX 导入成功'
         loaded_successfully: 成功载入可能 %{possible_points} 点中的 %{trace_points} 点。
@@ -1332,6 +1370,9 @@ zh-CN:
           BY</a>协议)、<a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land
           Vorarlberg</a>及 Land Tirol (修订的 <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY
           AT</a>协议)的数据。
+        contributors_au_html: |-
+          <strong>澳大利亚</strong>：包含来自
+          <a href="https://www.psma.com.au/psma-data-copyright-and-disclaimer">PSMA 澳大利亚有限公司是</a>的资料，依据<a href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">CC BY 4.0 国际</a>澳大利亚联邦条款授权。
         contributors_ca_html: <strong>加拿大</strong>：含有来自 GeoBase&reg;，GeoGratis(&copy;
           加拿大自然资源部)，CanVec (&copy; 加拿大自然资源部)和StatCan (加拿大统计局地理处)的数据。
         contributors_fi_html: <strong>芬兰</strong>：包含来自芬兰国家测绘局地形数据库和其他测绘机构的数据，依据 <a
@@ -1466,6 +1507,10 @@ zh-CN:
       switch2osm:
         title: switch2osm
         description: 协助公司与组织改用 OpenStreetMap 为基础的地图与相关服务。
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: 对于组织
+        description: 想跟一个组织为OpenStreetMap制订计划？在欢迎席上找到你需要知道的东西。
       wiki:
         url: https://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1557,7 +1602,7 @@ zh-CN:
       edit: 编辑
       preview: 预览
     markdown_help:
-      title_html: 使用 <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: 使用 <a href="https://daringfireball.net/projects/markdown/">kramdown</a>
         解析
       headings: 标题
       heading: 标题
@@ -1592,7 +1637,8 @@ zh-CN:
       questions:
         title: 还有疑问吗？
         paragraph_1_html: OpenStreetMap 有若干资源用于学习该项目，提问和回答问题，以及讨论与制作地图相关的话题并且撰写相关文档。<a
-          href='%{help_url}'>点此获取帮助</a>。
+          href='%{help_url}'>点此获取帮助</a>。要以组织机构身份来为 OpenStreetMap制作计划吗？清查看<a href='https://welcome.openstreetmap.org/'>Welcome
+          Mat</a>。
       start_mapping: 开始绘制地图
       add_a_note:
         title: 没有时间编辑？添加笔记！
@@ -1620,6 +1666,7 @@ zh-CN:
     create:
       upload_trace: 上传 GPS 轨迹
       trace_uploaded: 您的 GPX 文件已经被上传，正等待被输入数据库。这通常在半小时之内，当上传结束后会发邮件通知您。
+      upload_failed: 抱歉，GPX上传失败。管理员已收到错误警报。请再试一次
       traces_waiting: 您有 %{count} 条轨迹正等待上传，请在上传更多轨迹前等待这些传完，以确保不会给其他用户造成队列拥堵。
     edit:
       title: 编辑轨迹 %{name}
@@ -1639,6 +1686,8 @@ zh-CN:
       visibility: 可见性：
       visibility_help: 这是什么意思？
       visibility_help_url: http://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
+    update:
+      updated: 地点已更新！
     trace_optionals:
       tags: 标签
     show:
@@ -1709,14 +1758,11 @@ zh-CN:
         other: 来自 %{user} 的带 %{count} 点的GPX文件
       description_without_count: 来自 %{user} 的 GPX 文件
   application:
+    permission_denied: 您没有权限来执行此操作
     require_cookies:
       cookies_needed: 您似乎停用了 cookie - 请在继续操作前启用您的浏览器 cookie。
     require_admin:
       not_an_admin: 您需要成为管理员以执行该操作。
-    require_moderator:
-      not_a_moderator: 必须为管理员才能执行该操作。
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: 您需要成为版主或管理员以执行该操作
     setup_user_auth:
       blocked_zero_hour: 您在OpenStreetMap网站有一条紧急消息。在您可以保存您的编辑之前，您需要阅读这条消息。
       blocked: 您对 API 的访问已经被阻挡了。请登录到网站以了解更多信息。
@@ -1805,7 +1851,7 @@ zh-CN:
       flash: 更新客户端信息成功
     destroy:
       flash: 已破坏此客户端应用程序注册
-  user:
+  users:
     login:
       title: 登录
       heading: 登录
@@ -2080,8 +2126,6 @@ zh-CN:
       button: 删除朋友
       success: '%{name} 已从您的朋友中删除。'
       not_a_friend: '%{name} 不是您的朋友。'
-    filter:
-      not_an_administrator: 您必须是管理员才能执行该操作。
     index:
       title: 用户
       heading: 用户
@@ -2118,7 +2162,6 @@ zh-CN:
       option_2: 如果您已拥有一个账户，您可以使用您的用户名和密码登录您的账户，然后在您的用户设置中将账户与您的ID相关联。
   user_role:
     filter:
-      not_an_administrator: 只有管理员可以执行用户角色管理，而您不是管理员。
       not_a_role: 字串 '%{role}' 不是有效的角色。
       already_has_role: 这个用户已经有角色 %{role}。
       doesnt_have_role: 这个用户没有角色 %{role}。
@@ -2230,31 +2273,10 @@ zh-CN:
       next: 下一页 »
       previous: « 上一页
   notes:
-    comment:
-      opened_at_html: 于 %{when} 前创建
-      opened_at_by_html: '%{user} 于 %{when} 前创建'
-      commented_at_html: 于 %{when} 前更新
-      commented_at_by_html: '%{user} 于 %{when} 前更新'
-      closed_at_html: 于 %{when} 前解决
-      closed_at_by_html: '%{user} 于 %{when} 前解决'
-      reopened_at_html: 于 %{when} 前重新激活
-      reopened_at_by_html: '%{user} 于 %{when} 前重新激活'
-    rss:
-      title: OpenStreetMap 笔记
-      description_area: 在您的区域 [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-        报告、开放或关闭的笔记列表
-      description_item: 笔记 %{id} 的 RSS feed
-      opened: 新笔记(靠近 %{place})
-      commented: 新评论(靠近 %{place})
-      closed: 关闭的笔记(靠近 %{place})
-      reopened: 重新激活的笔记(靠近 %{place})
-    entry:
-      comment: 评论
-      full: 完整笔记
     mine:
       title: '%{user} 提交或评论的笔记'
       heading: '%{user} 的笔记'
-      subheading: '%{user} 提交或评论的笔记'
+      subheading_html: '%{user} 提交或评论的笔记'
       id: ID
       creator: 创建者
       description: 描述
@@ -2342,13 +2364,11 @@ zh-CN:
     directions:
       ascend: 上升
       engines:
+        fossgis_osrm_bike: 自行车（OSRM）
+        fossgis_osrm_car: 汽车（OSRM）
         graphhopper_bicycle: 自行车（GraphHopper）
         graphhopper_car: 汽车（GraphHopper）
         graphhopper_foot: 步行（GraphHopper）
-        mapquest_bicycle: 自行车（MapQuest）
-        mapquest_car: 汽车（MapQuest）
-        mapquest_foot: 步行（MapQuest）
-        osrm_car: 汽车（OSRM）
       descend: 下降
       directions: 方向
       distance: 距离
@@ -2467,4 +2487,9 @@ zh-CN:
       not_empty: 修订非空。请在销毁该修订前清除所有属于它的版本。
       flash: 修订已销毁。
       error: 销毁该修订时出错。
+  validations:
+    leading_whitespace: 具有领先的空白
+    trailing_whitespace: 具有尾随空白
+    invalid_characters: 包含无效字符
+    url_characters: 包含特殊URL字符 （%{characters}）
 ...

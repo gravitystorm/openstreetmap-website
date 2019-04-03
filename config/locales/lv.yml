@@ -1,6 +1,7 @@
 # Messages for Latvian (latviešu)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Admresdeserv.
 # Author: Baisulis
 # Author: Bbot22
@@ -105,6 +106,29 @@ lv:
     remote:
       name: Attālinātā palaišana
       description: Attālinātā palaišana  (JOSM vai Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Izveidots %{when} atpakaļ
+        opened_at_by_html: Izveidoja %{user} %{when} atpakaļ
+        commented_at_html: Atjaunots %{when} atpakaļ
+        commented_at_by_html: '%{user} atjaunoja %{when} atpakaļ'
+        closed_at_html: Atrisināts %{when} atpakaļ
+        closed_at_by_html: '%{user} atrisināja %{when} atpakaļ'
+        reopened_at_html: Atkal aktivizēts %{when} atpakaļ
+        reopened_at_by_html: '%{user} atkal aktivizēja %{when} atpakaļ'
+      rss:
+        title: OpenStreetMap Piezīmes
+        description_area: Piezīmju saraksts, kuras noziņotas, komentētas vai atrisinātas
+          tavā apvidū [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: RSS barotne piezīmei %{id}
+        opened: jauna piezīme (tuvu %{place})
+        commented: jauns komentārs (tuvu %{place})
+        closed: aizvērta piezīme (netālu no %{place})
+        reopened: atkal aktivizēta piezīme (tuvu %{place})
+      entry:
+        comment: Komentārs
+        full: Pilna piezīme
   browse:
     created: Izveidots
     closed: Aizvērts
@@ -222,14 +246,15 @@ lv:
       reopened_by_anonymous: Atkal aktivizēja anonīms <abbr title='%{exact_time}'>%{when}
         atpakaļ</abbr>
       hidden_by: Paslēpa %{user} <abbr title='%{exact_time}'>%{when} atpakaļ</abbr>
+      report: Ziņot par šo piezīmi
     query:
       title: Vaicājuma funkcijas
       introduction: Noklikšķiniet uz kartes, lai atrastu tuvumā esošos objektus.
       nearby: Tuvējie objekti
       enclosing: Ietvertās funkcijas
-  changeset:
+  changesets:
     changeset_paging_nav:
-      showing_page: Rāda lapu %{page}
+      showing_page: '%{page}. lapa'
       next: Nākamā »
       previous: « Iepriekšējā
     changeset:
@@ -257,14 +282,14 @@ lv:
     timeout:
       sorry: Atvainojiet, jūsu pieprasīto izmaiņu kopu ielāde prasīja pārāk daudz
         laika.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Jauni komentāri par autora: %{author} pārmaiņām %{changeset_id}'
+      commented_at_by_html: '%{user} atjaunoja %{when} atpakaļ'
+    index:
       title_all: Diskusija par izmaiņām OpenStreetMap
       title_particular: 'Diskusija par OpenStreetMap izmaiņām #%{changeset_id}'
-      comment: 'Jauni komentāri par autora: %{author} pārmaiņām %{changeset_id}'
-      commented_at_html: Atjaunots %{when} atpakaļ
-      commented_at_by_html: '%{user} atjaunoja %{when} atpakaļ'
-      full: Pilna diskusija
-  diary_entry:
+  diary_entries:
     new:
       title: Jauns dienasgrāmatas ieraksts
       publish_button: Publicēt
@@ -623,7 +648,9 @@ lv:
           bridge: Tilts
           bunker_silo: Bunkurs
           chimney: Skurstenis
+          flagpole: Karoga masts
           lighthouse: Bāka
+          mine: Raktuves
           pipeline: Cauruļvads
           tower: Tornis
           watermill: Ūdens dzirnavas
@@ -791,6 +818,7 @@ lv:
           lottery: Loterija
           mall: Tirdzniecības centrs
           market: Tirgus
+          massage: Masāža
           mobile_phone: Mobilo telefonu veikals
           motorcycle: Motociklu veikals
           music: Mūzikas veikals
@@ -798,9 +826,11 @@ lv:
           optician: Optikas veikals
           organic: Bioloģiskās pārtikas veikals
           outdoor: Ārtelpu Veikals
+          paint: Krāsas veikals
           pet: Zooveikals
           pharmacy: Aptieka
           photo: Fotoveikals
+          seafood: Jūras veltes
           second_hand: Lietoto preču veikals
           shoes: Apavu veikals
           sports: Sporta veikals
@@ -879,6 +909,7 @@ lv:
     index:
       search: Meklēt
       status: Statuss
+      reports: Ziņojumi
       states:
         ignored: Ignorēts
         open: Atvērt
@@ -909,9 +940,7 @@ lv:
     intro_text: OpenStreetMap ir pasaules karte, kuru veido cilvēki kā tu, un tā ir
       bezmaksas lietošanai zem atvērtas licences.
     intro_2_create_account: Izveidot lietotāja kontu
-    partners_html: Servera vietu atbalsta %{ucl}, %{ic} un %{bytemark}, un citi %{partners}.
     partners_ucl: UCL
-    partners_ic: Londonas Imperiālā Koledža
     partners_bytemark: Bytemark Hosting
     partners_partners: partneri
     osm_offline: OpenStreetMap datubāze šobrīd nav pieejama, tiek veikti svarīgi datubāzes
@@ -1215,6 +1244,9 @@ lv:
           <strong>Austrija</strong>: Ietver datus no
               <a href="http://data.wien.gv.at/">Stadt Wien</a> (zem
               <a href="http://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>).
+        contributors_au_html: |-
+          <strong>Austrālija</strong>: Ietver pilsētu datus no
+              Australian Bureau of Statistics data.
         contributors_ca_html: |-
           <strong>Kanāda</strong>: Ietver datus no
               GeoBase&reg;, GeoGratis (&copy; Department of Natural
@@ -1400,6 +1432,8 @@ lv:
         title: switch2osm
         description: Palīdzība uzņēmumiem un organizācijām, kuras pāriet uz OpenStreetMap
           balstītajām kartēm un citiem pakalpojumiem.
+      welcomemat:
+        title: Organizācijām
       wiki:
         url: http://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1666,8 +1700,6 @@ lv:
     require_cookies:
       cookies_needed: Izskatā, ka jums cookies ir atslēgti, pirms turpināt, lūdzu,
         ieslēdziet tos savā pārlūkprogrammā.
-    require_moderator:
-      not_a_moderator: Tev nepieciešams būt moderatoram, lai izpildītu šo darbību.
     setup_user_auth:
       blocked_zero_hour: Jums ir pienākusi svarīga ziņa tīmekļa vietnē OpenStreetMap.
         Jums ir jāizlasa ziņa pirms jūs saglabāsiet savas izmaiņas.
@@ -1763,7 +1795,7 @@ lv:
       flash: Klienta informācija atjaunināta veiksmīgi
     destroy:
       flash: Iznīcināja klienta aplikācijas reģistrāciju
-  user:
+  users:
     login:
       title: Pieslēgties
       heading: Pieslēgties
@@ -2070,8 +2102,6 @@ lv:
       button: Atcelt draudzību
       success: '%{name} tika izņemts no jūsu draugiem.'
       not_a_friend: '%{name} nav no jūsu draugs.'
-    filter:
-      not_an_administrator: Jums jābūt administratoram, lai veiktu šo darbību.
     index:
       title: Lietotāji
       heading: Lietotāji
@@ -2110,8 +2140,6 @@ lv:
         un paroli un tad sasaistīt savu kontu ar jūsu ID lietotāja iestatījumos.
   user_role:
     filter:
-      not_an_administrator: Tikai administratori var veikt lietotāju lomu pārvaldi,
-        un tu neesi administrators.
       not_a_role: Virkne `%{role}' nav derīga kā loma.
       already_has_role: Lietotājam jau ir loma %{role}.
       doesnt_have_role: Lietotājam nav loma %{role}.
@@ -2234,31 +2262,10 @@ lv:
       next: Nākamais »
       previous: « Iepriekšējais
   notes:
-    comment:
-      opened_at_html: Izveidots %{when} atpakaļ
-      opened_at_by_html: Izveidoja %{user} %{when} atpakaļ
-      commented_at_html: Atjaunots %{when} atpakaļ
-      commented_at_by_html: '%{user} atjaunoja %{when} atpakaļ'
-      closed_at_html: Atrisināts %{when} atpakaļ
-      closed_at_by_html: '%{user} atrisināja %{when} atpakaļ'
-      reopened_at_html: Atkal aktivizēts %{when} atpakaļ
-      reopened_at_by_html: '%{user} atkal aktivizēja %{when} atpakaļ'
-    rss:
-      title: OpenStreetMap Piezīmes
-      description_area: Piezīmju saraksts, kuras noziņotas, komentētas vai atrisinātas
-        tavā apvidū [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: RSS barotne piezīmei %{id}
-      opened: jauna piezīme (tuvu %{place})
-      commented: jauns komentārs (tuvu %{place})
-      closed: aizvērta piezīme (netālu no %{place})
-      reopened: atkal aktivizēta piezīme (tuvu %{place})
-    entry:
-      comment: Komentārs
-      full: Pilna piezīme
     mine:
       title: Piezīmes, kuras veidojis vai komentējis %{user}
       heading: '%{user} piezīmes'
-      subheading: Piezīmes, kuras veidojis vai komentējis %{user}
+      subheading_html: Piezīmes, kuras veidojis vai komentējis %{user}
       id: Id
       creator: Veidotājs
       description: Apraksts
@@ -2349,12 +2356,9 @@ lv:
     edit_help: Pārvieto karti un pietuvini vietai, kuru vēlies labot, tad spied šeit.
     directions:
       engines:
+        fossgis_osrm_car: Ar mašīnu (OSRM)
         graphhopper_bicycle: Ar velosipēdu (GraphHopper)
         graphhopper_foot: Ar kājām (GraphHopper)
-        mapquest_bicycle: Ar velosipēdu (MapQuest)
-        mapquest_car: Ar mašīnu (MapQuest)
-        mapquest_foot: Ar kājām (MapQuest)
-        osrm_car: Ar mašīnu (OSRM)
       directions: Norādes
       distance: Attālums
       errors:

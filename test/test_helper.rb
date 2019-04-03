@@ -1,6 +1,21 @@
 require "coveralls"
 Coveralls.wear!("rails")
 
+# Override the simplecov output message, since it is mostly unwanted noise
+module SimpleCov
+  module Formatter
+    class HTMLFormatter
+      def output_message(_result); end
+    end
+  end
+end
+
+# Output both the local simplecov html and the coveralls report
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [SimpleCov::Formatter::HTMLFormatter,
+   Coveralls::SimpleCov::Formatter]
+)
+
 ENV["RAILS_ENV"] = "test"
 require_relative "../config/environment"
 require "rails/test_help"
@@ -11,6 +26,7 @@ WebMock.disable_net_connect!(:allow_localhost => true)
 module ActiveSupport
   class TestCase
     include FactoryBot::Syntax::Methods
+    include ActiveJob::TestHelper
 
     ##
     # takes a block which is executed in the context of a different
@@ -91,12 +107,6 @@ module ActiveSupport
     # set request readers to ask for a particular error format
     def error_format(format)
       @request.env["HTTP_X_ERROR_FORMAT"] = format
-    end
-
-    ##
-    # set the raw body to be sent with a POST request
-    def content(c)
-      @request.env["RAW_POST_DATA"] = c.to_s
     end
 
     ##

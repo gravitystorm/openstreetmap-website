@@ -1,6 +1,7 @@
 # Messages for Greek (Ελληνικά)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Aitolos
 # Author: Auslaender
 # Author: Consta
@@ -10,6 +11,7 @@
 # Author: Geraki
 # Author: Glavkos
 # Author: KATRINE1992
+# Author: KATRINE1993
 # Author: Kiriakos
 # Author: Kongr43gpen
 # Author: Logictheo
@@ -117,6 +119,29 @@ el:
     remote:
       name: Εξωτερικό πρόγραμμα
       description: Εξωτερικό πρόγραμμα (JOSM ή Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Δημιουργήθηκε %{when} πριν
+        opened_at_by_html: Δημιουργήθηκε %{when} πριν από τον %{user}
+        commented_at_html: Ενημερώθηκε %{when} πριν
+        commented_at_by_html: Ενημερώθηκε %{when} πριν από τον %{user}
+        closed_at_html: Επιλύθηκε %{when} πριν
+        closed_at_by_html: Επιλύθηκε %{when} πριν από τον %{user}
+        reopened_at_html: Επανενεργοποιήθηκε %{when} πριν
+        reopened_at_by_html: Επανενεργοποιήθηκε %{when} πριν από τον %{user}
+      rss:
+        title: Σημειώσεις OpenStreetMap
+        description_area: Μια λίστα με σημειώσεις, που αναφέρθηκαν, σχολιάστηκαν ή
+          επιλύθηκαν στην περιοχή σας [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Μια τροφοδοσία rss για τη σημείωση %{id}
+        opened: νέα σημείωση (κοντά στο %{place})
+        commented: νέο σχόλιο (κοντά στο %{place})
+        closed: κλείσιμο σημείωσης (κοντα στο %{place})
+        reopened: επανενεργοποίηση σημείωσης (κοντά στο %{place})
+      entry:
+        comment: Σχόλιο
+        full: Πλήρης σημείωση
   browse:
     created: Δημιουργήθηκε
     closed: Έκλεισε
@@ -254,7 +279,7 @@ el:
       introduction: Κάντε κλικ στον χάρτη για να βρείτε κοντινά χαρακτηριστικά.
       nearby: Κοντινά χαρακτηριστικά
       enclosing: Περικλείει τα χαρακτηριστικά
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Σελίδα %{page}
       next: Επόμενη »
@@ -284,14 +309,16 @@ el:
     timeout:
       sorry: Λυπάμαι, ο κατάλογος των ομάδων αλλαγών που ζήτησες χρειάστηκε πολύ χρόνο
         για να ανακτηθεί.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Νέο σχόλιο σχετικά με την ομάδα αλλαγών #%{changeset_id} από τον %{author}'
+      commented_at_by_html: Ενημερώθηκε %{when} πριν από τον %{user}
+    comments:
+      comment: 'Νέο σχόλιο σχετικά με την ομάδα αλλαγών #%{changeset_id} από τον %{author}'
+    index:
       title_all: OpenStreetMap συζήτηση ομάδας αλλαγών
       title_particular: 'OpenStreetMap συζήτηση ομάδας αλλαγών #%{changeset_id}'
-      comment: 'Νέο σχόλιο σχετικά με την ομάδα αλλαγών #%{changeset_id} από τον %{author}'
-      commented_at_html: Ενημερώθηκε %{when} πριν
-      commented_at_by_html: Ενημερώθηκε %{when} πριν από τον %{user}
-      full: Πλήρης συζήτηση
-  diary_entry:
+  diary_entries:
     new:
       title: Νέα καταχώρηση ημερολογίου
       publish_button: Δημοσίευση
@@ -1108,10 +1135,7 @@ el:
     intro_text: Το OpenStreetMap είναι χάρτης του κόσμου, που δημιουργήθηκε από ανθρώπους
       σαν κι εσάς και είναι δωρεάν, υπό άδεια ελεύθερης χρήσης.
     intro_2_create_account: Δημιουργήστε ένα λογαριασμό χρήστη
-    partners_html: Η λειτουργία υποστηρίζεται από το %{ucl}, %{bytemark}, %{ic}, και
-      άλλους %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College του Λονδίνου
     partners_bytemark: Bytemark Hosting
     partners_partners: συνεργάτες
     osm_offline: Η βάση δεδομένων του OpenStreetMap είναι προσωρινά εκτός λειτουργίας
@@ -1619,6 +1643,11 @@ el:
         title: switch2osm
         description: Βοήθεια για εταιρείες και οργανισμούς για μετάβαση σε χάρτες
           που βασίζονται στο OpenStreetMap και άλλες υπηρεσίες.
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: Για τις Οργανώσεις
+        description: Για μια οργάνωση που κάνει σχέδια για το OpenStreetMap? Βρέστε
+          ό,τι χρειάζεστε να ξέρετε στο  Welcome Mat.
       wiki:
         url: https://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1763,8 +1792,8 @@ el:
       questions:
         title: Ερωτήσεις;
         paragraph_1_html: |-
-          Το OpenStreetMap έχει πολλαπλούς πόρους για να μάθετε για το εγχείρημα, να κάνετε
-          ερωτήσεις και να συζητάτε και να τεκμηριώνετε θέματα χαρτογράφησης συνεργατικά.
+          Το OpenStreetMap έχει πολλούς πόρους για να μάθετε για το εγχείρημα, να κάνετε
+          ερωτήσεις και να συζητάτε και να τεκμηριώνετε θέματα χαρτογράφησης με συνεργασία.
           <a href='%{help_url}'>Λάβετε βοήθεια εδώ</a>.
       start_mapping: Ξεκινήστε τη Χαρτογράφηση
       add_a_note:
@@ -1902,12 +1931,6 @@ el:
         ενεργοποιήστε τα cookies στο πρόγραμμα περιήγησής σας πριν συνεχίσετε.
     require_admin:
       not_an_admin: Πρέπει να είστε διαχειριστής για να το κάνετε αυτή την ενέργεια.
-    require_moderator:
-      not_a_moderator: Θα πρέπει να είστε συντονιστής για να εκτελέσετε αυτήν την
-        ενέργεια.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Θα πρέπει να είστε συντονιστής ή διαχειριστής για
-        να εκτελέσετε αυτήν την ενέργεια.
     setup_user_auth:
       blocked_zero_hour: Έχετε ένα επείγον μήνυμα στον ιστότοπο του OpenStreetMap.
         Θα πρέπει να διαβάσετε το μήνυμα πριν να μπορείτε να αποθηκεύσετε τις αλλαγές
@@ -2007,7 +2030,7 @@ el:
       flash: Οι πληροφορίες του πελάτη ενημερώθηκαν με επιτυχία
     destroy:
       flash: Η εισαγωγή του προγράμματος του πελάτη χάλασε
-  user:
+  users:
     login:
       title: Σύνδεση
       heading: Σύνδεση
@@ -2334,8 +2357,6 @@ el:
       button: Αφαίρεση φίλου
       success: Ο χρήστης %{name} αφαιρέθηκε από φίλος.
       not_a_friend: Ο χρήστης %{name} δεν είναι ένας από τους φίλους σας.
-    filter:
-      not_an_administrator: Πρέπει να είστε διαχειριστής για να το κάνετε αυτό.
     index:
       title: Χρήστες
       heading: Χρήστες
@@ -2376,8 +2397,6 @@ el:
         να συσχετίσετε τον λογαριασμό με το ID σας στις ρυθμίσεις χρήστη.
   user_role:
     filter:
-      not_an_administrator: Μόνο οι διαχειριστές μπορούν να εκτελέσουν διαχείριση
-        ρόλων χρηστών και δεν είστε διαχειριστής.
       not_a_role: Το αλφαριθμητικό `%{role}' δεν είναι ένας έγκυρος ρόλος.
       already_has_role: Ο χρήστης έχει ήδη ρόλο %{role}.
       doesnt_have_role: Ο χρήστης δεν έχει ρόλο %{role}.
@@ -2509,31 +2528,10 @@ el:
       next: Επόμενη »
       previous: « Προηγούμενη
   notes:
-    comment:
-      opened_at_html: Δημιουργήθηκε %{when} πριν
-      opened_at_by_html: Δημιουργήθηκε %{when} πριν από τον %{user}
-      commented_at_html: Ενημερώθηκε %{when} πριν
-      commented_at_by_html: Ενημερώθηκε %{when} πριν από τον %{user}
-      closed_at_html: Επιλύθηκε %{when} πριν
-      closed_at_by_html: Επιλύθηκε %{when} πριν από τον %{user}
-      reopened_at_html: Επανενεργοποιήθηκε %{when} πριν
-      reopened_at_by_html: Επανενεργοποιήθηκε %{when} πριν από τον %{user}
-    rss:
-      title: Σημειώσεις OpenStreetMap
-      description_area: Μια λίστα με σημειώσεις, που αναφέρθηκαν, σχολιάστηκαν ή επιλύθηκαν
-        στην περιοχή σας [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Μια τροφοδοσία rss για τη σημείωση %{id}
-      opened: νέα σημείωση (κοντά στο %{place})
-      commented: νέο σχόλιο (κοντά στο %{place})
-      closed: κλείσιμο σημείωσης (κοντα στο %{place})
-      reopened: επανενεργοποίηση σημείωσης (κοντά στο %{place})
-    entry:
-      comment: Σχόλιο
-      full: Πλήρης σημείωση
     mine:
       title: Σημειώσεις που υποβλήθηκαν ή σχολιάστηκαν από τον %{user}
       heading: σημειώσεις του %{user}
-      subheading: Σημειώσεις που υποβλήθηκαν ή σχολιάστηκαν από τον %{user}
+      subheading_html: Σημειώσεις που υποβλήθηκαν ή σχολιάστηκαν από τον %{user}
       id: Αναγνωριστικό
       creator: Δημιουργός
       description: Περιγραφή
@@ -2629,13 +2627,10 @@ el:
     directions:
       ascend: Ανάβαση
       engines:
+        fossgis_osrm_car: Αυτοκίνητο (OSRM)
         graphhopper_bicycle: Ποδήλατο (GraphHopper)
         graphhopper_car: Με τα πόδια (GraphHopper)
         graphhopper_foot: Με τα πόδια (GraphHopper)
-        mapquest_bicycle: Ποδήλατο (MapQuest)
-        mapquest_car: Αυτοκίνητο (MapQuest)
-        mapquest_foot: Με τα πόδια (MapQuest)
-        osrm_car: Αυτοκίνητο (OSRM)
       descend: Κατάβαση
       directions: Οδηγίες
       distance: Απόσταση
@@ -2767,4 +2762,6 @@ el:
         σε αυτή τη σύνταξη πριν την καταστρέψετε.
       flash: Η παράληψη καταστραφεί.
       error: Εμφανίστηκε ένα σφάλμα που καταστρέφει αυτή τη σύνταξη.
+  validations:
+    invalid_characters: περιέχει μη έγκυρους χαρακτήρες
 ...

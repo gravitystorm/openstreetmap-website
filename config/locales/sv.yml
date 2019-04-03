@@ -3,6 +3,7 @@
 # Export driver: phpyaml
 # Author: Aaoo
 # Author: Abbedabb
+# Author: Abijeet Patro
 # Author: Adrianod
 # Author: Ainali
 # Author: Balp
@@ -46,6 +47,10 @@ sv:
     formats:
       friendly: '%e %B %Y kl. %H:%M'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: verkar inte vara en giltig e-postadress.
+        email_address_not_routable: kan inte ruttas
     models:
       acl: Tillgångskontrollista (ACL)
       changeset: Ändringsset
@@ -129,6 +134,29 @@ sv:
     remote:
       name: Fjärrstyrning
       description: Fjärrstyrning (JOSM eller Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Skapades för %{when} sedan
+        opened_at_by_html: Skapades för %{when} sedan av %{user}
+        commented_at_html: Uppdaterades för %{when} sedan
+        commented_at_by_html: Uppdaterades för %{when} sedan av %{user}
+        closed_at_html: Löstes för %{when} sedan
+        closed_at_by_html: Löstes för %{when} sedan av %{user}
+        reopened_at_html: Återaktiverades för %{when} sedan
+        reopened_at_by_html: Återaktiverades för %{when} sedan av %{user}
+      rss:
+        title: OpenStreetMap-anteckningar
+        description_area: En lista med anteckningar som rapporterats, kommenterats
+          eller avklarats i närheten av ditt område [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Ett rss-flöde för anteckning %{id}
+        opened: ny anteckning (nära %{place})
+        commented: ny kommentar (nära %{place})
+        closed: stängde anteckning (nära %{place})
+        reopened: återaktiverade anteckningar (nära %{place})
+      entry:
+        comment: Kommentar
+        full: Hela anteckningen
   browse:
     created: Skapad
     closed: Stängd
@@ -258,7 +286,7 @@ sv:
       introduction: Klicka på kartan för att hitta funktioner i närheten.
       nearby: Finns i närheten
       enclosing: Omgivande kartobjekt
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Sida %{page}
       next: Nästa »
@@ -266,36 +294,41 @@ sv:
     changeset:
       anonymous: Anonym
       no_edits: (inga redigeringar)
-      view_changeset_details: Visa detaljer om ändringsset
+      view_changeset_details: Visa detaljer om ändringsuppsättning
     changesets:
       id: ID
-      saved_at: Sparad
+      saved_at: Sparades den
       user: Användare
       comment: Kommentar
       area: Område
     index:
-      title: Ändringsset
-      title_user: Ändringsset av %{user}
-      title_friend: Ändringsset av mina vänner
-      title_nearby: Ändringsset av närbelägna användare
-      empty: Inga ändringsset hittades.
-      empty_area: Inga ändringsset i det här området.
-      empty_user: Inga ändringsset av den här användaren.
-      no_more: Inga fler ändringsset hittades.
-      no_more_area: Inga fler ändringsset i det här området.
-      no_more_user: Inga fler ändringsset av den här användaren.
+      title: Ändringsuppsättningar
+      title_user: Ändringsuppsättningar av %{user}
+      title_friend: Ändringsuppsättningar av mina vänner
+      title_nearby: Ändringsuppsättningar av närbelägna användare
+      empty: Inga ändringsuppsättningar hittades.
+      empty_area: Inga ändringsuppsättningar i det här området.
+      empty_user: Inga ändringsuppsättningar av den här användaren.
+      no_more: Inga fler ändringsuppsättningar hittades.
+      no_more_area: Inga fler ändringsuppsättningar i det här området.
+      no_more_user: Inga fler ändringsuppsättningar av den här användaren.
       load_more: Läs in fler
     timeout:
-      sorry: Kunde tyvärr inte lista begärda ändringsset. Begäran tog för lång tid
-        att hämta.
-    rss:
-      title_all: Diskussion om OpenStreetMaps ändringsset
-      title_particular: Diskussion nummer %{changeset_id} om OpenStreetMaps ändringsset
+      sorry: Kunde tyvärr inte lista begärda ändringsuppsättningar. Begäran tog för
+        lång tid att hämta.
+  changeset_comments:
+    comment:
       comment: Ny kommentar på ändringsset nummer %{changeset_id} av %{author}
-      commented_at_html: Uppdaterades för %{when} sedan
       commented_at_by_html: Uppdaterades för %{when} sedan av %{user}
-      full: Fullständig diskussion
-  diary_entry:
+    comments:
+      comment: 'Ny kommentar på ändringssätt #%{changeset_id} av %{author}'
+    index:
+      title_all: Diskussion om OpenStreetMaps ändringsset
+      title_particular: Diskussions om OpenStreetMaps ändringsset nummer %{changeset_id}
+    timeout:
+      sorry: Tyvärr, listan med ändringssetskommentar du begärde kunde inte hämtas
+        då begäran tog för lång tid.
+  diary_entries:
     new:
       title: Nytt dagboksinlägg
       publish_button: Publicera
@@ -313,8 +346,8 @@ sv:
       newer_entries: Nyare inlägg
     edit:
       title: Redigera dagboksinlägg
-      subject: 'Ärende:'
-      body: 'Meddelandetext:'
+      subject: 'Ämne:'
+      body: 'Brödtext:'
       language: 'Språk:'
       location: 'Plats:'
       latitude: 'Latitud:'
@@ -347,7 +380,7 @@ sv:
       confirm: Bekräfta
       report: Rapportera detta inlägg
     diary_comment:
-      comment_from: Kommentar från %{link_user}, %{comment_created_at}
+      comment_from: Kommentar från %{link_user} på %{comment_created_at}
       hide_link: Dölj denna kommentar
       confirm: Bekräfta
       report: Rapportera denna kommentar
@@ -357,16 +390,16 @@ sv:
       edit: Redigera
     feed:
       user:
-        title: OpenStreetMap-dagboksinlägg för användaren %{user}
+        title: OpenStreetMap-dagboksinlägg för %{user}
         description: Senaste dagboksinlägg på OpenStreetMap från %{user}
       language:
-        title: Openstreetmap-dagboksinlägg på %{language_name}
+        title: OpenStreetMap-dagboksinlägg på %{language_name}
         description: Senaste dagboksinlägg från användare av OpenStreetMap på %{language_name}
       all:
         title: OpenStreetMap-dagboksinlägg
         description: Senaste dagboksinlägg från användare av OpenStreetMap
     comments:
-      has_commented_on: '%{display_name} har kommenterat följande dagboksinlägg'
+      has_commented_on: '%{display_name} har kommenterat på följande dagboksinlägg'
       post: Inlägg
       when: När
       comment: Kommentar
@@ -910,7 +943,7 @@ sv:
           "yes": Affär
         tourism:
           alpine_hut: Fjällstuga
-          apartment: Lägenhet
+          apartment: Semesterlägenhet
           artwork: Konstverk
           attraction: Attraktion
           bed_and_breakfast: Bed and breakfast
@@ -1106,9 +1139,8 @@ sv:
     intro_text: OpenStreetMap är en karta över världen, skapad av människor som du
       och fri att använda under en öppen licens.
     intro_2_create_account: Skapa ett användarkonto
-    partners_html: Drivs via %{ucl}, %{ic}, %{bytemark}, %{ic} och andra %{partners}.
+    hosting_partners_html: Drivs via %{ucl}, %{bytemark} och andra %{partners}.
     partners_ucl: University College London
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partners
     osm_offline: OpenStreetMap-databasen är inte tillgänglig just nu, då nödvändigt
@@ -1427,6 +1459,9 @@ sv:
           <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>),
           <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> och
           Land Tirol (under licensen <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT med tillägg</a>).
+        contributors_au_html: |-
+          <strong>Australia</strong>: Innehåller förortsdata baserad
+             på data från Australian Bureau of Statistics.
         contributors_ca_html: |-
           <strong>Kanada</strong>: Innehåller data från
              GeoBase&reg;, GeoGratis (&copy; Department of Natural
@@ -1611,6 +1646,11 @@ sv:
         title: switch2osm
         description: Hjälp för företag och organisationer att byta till OpenStreetMap-baserade
           kartor och andra tjänster.
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: För organisationer
+        description: Är du i en organisation som har planer med OpenStreetMap? Ta
+          reda på vad du behöver veta i välkomstmattan.
       wiki:
         url: https://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1702,7 +1742,7 @@ sv:
       edit: Redigera
       preview: Förhandsgranska
     markdown_help:
-      title_html: Tolkat med <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Tolkat med <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Rubriker
       heading: Rubrik
       subheading: Underrubrik
@@ -1754,7 +1794,7 @@ sv:
         title: Några frågor?
         paragraph_1_html: |-
           OpenStreetMap har flera resurser som hjälper dig att lära dig om projektet, för att ställa och svara på frågor, och tillsammans diskutera och dokumentera frågor gällande kartering.
-          <a href='%{help_url}'>Få hjälp här</a>.
+          <a href='%{help_url}'>Få hjälp här</a>. Är du i en organisation som har planer med OpenStreetMap? <a href='https://welcome.openstreetmap.org/'>Besök välkomstmattan</a>.
       start_mapping: Börja kartlägga
       add_a_note:
         title: Ingen tid att redigera? Lägg till en kommentar!
@@ -1885,16 +1925,12 @@ sv:
         other: GPX-fil med %{count} punkter från %{user}
       description_without_count: GPX-fil från %{user}
   application:
+    permission_denied: Du har inte behörighet för denna åtgärd
     require_cookies:
       cookies_needed: Du verkar ha inaktiverat kakor - aktivera kakor i din webbläsare
         innan du fortsätter.
     require_admin:
       not_an_admin: Du måste vara administratör för att utföra denna åtgärd.
-    require_moderator:
-      not_a_moderator: Du måste vara administratör för att utföra åtgärden.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Du måste vara en moderator eller administratör för
-        att utföra denna åtgärd
     setup_user_auth:
       blocked_zero_hour: Du har ett brådskande meddelande väntande på hemsidan för
         OpenStreetMap. Du behöver läsa meddelandet innan du ges möjlighet att spara
@@ -1993,7 +2029,7 @@ sv:
       flash: Uppdaterade klientinformationen framgångsrikt
     destroy:
       flash: Annullerade registreringen av klientprogrammet
-  user:
+  users:
     login:
       title: Logga in
       heading: Logga in
@@ -2100,6 +2136,7 @@ sv:
         kartan!
       terms declined: Vi beklagar att du bestämt dig för att inte acceptera de nya
         användarvillkoren. För mer information, se <a href="%{url}">denna wikisida</a>.
+      terms declined url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     terms:
       title: Villkor för deltagare
       heading: Villkor för deltagare
@@ -2109,9 +2146,11 @@ sv:
       consider_pd: Utöver ovan nämnda avtal, anser jag att mina bidrag är inom Public
         Domain.
       consider_pd_why: vad är det här?
+      consider_pd_why_url: https://www.osmfoundation.org/wiki/License/Why_would_I_want_my_contributions_to_be_public_domain
       guidance: 'Information som hjälper dig förstå dessa termer: en <a href="%{summary}">lättläst
         sammanfattning</a> och några <a href="%{translations}">informella översättningar</a>'
       agree: Jag godkänner
+      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Avslå
       you need to accept or decline: Läs igenom och Godkänn eller Avböj de nya bidragsvillkoren
         för att fortsätta.
@@ -2234,6 +2273,7 @@ sv:
           de nya bidragsvillkoren.
         agreed_with_pd: Du har också förklarat att du anser att dina redigeringar
           är inom Public Domain.
+        link: https://www.osmfoundation.org/wiki/License/Contributor_Terms
         link text: vad är detta?
       profile description: 'Profilbeskrivning:'
       preferred languages: 'Föredraget språk:'
@@ -2241,6 +2281,7 @@ sv:
       image: 'Bild:'
       gravatar:
         gravatar: Använd Gravatar
+        link: https://wiki.openstreetmap.org/wiki/Gravatar
         link text: vad är detta?
         disabled: Gravatar har inaktiverats.
         enabled: Din Gravatar har aktiverats.
@@ -2302,8 +2343,6 @@ sv:
       button: Ta bort som vän
       success: '%{name} togs bort från dina vänner.'
       not_a_friend: '%{name} är inte en av dina vänner.'
-    filter:
-      not_an_administrator: Du måste vara administratör för att få göra det.
     index:
       title: Användare
       heading: Användare
@@ -2345,8 +2384,6 @@ sv:
         med ditt ID i dina användarinställningar.
   user_role:
     filter:
-      not_an_administrator: Endast adminstratörer kan ändra användares roller och
-        du är inte administratör.
       not_a_role: Strängen `%{role}' är inte en korrekt roll.
       already_has_role: Användaren har redan rollen %{role}.
       doesnt_have_role: Användaren har inte rollen %{role}.
@@ -2474,31 +2511,10 @@ sv:
       next: Nästa »
       previous: « Föregående
   notes:
-    comment:
-      opened_at_html: Skapades för %{when} sedan
-      opened_at_by_html: Skapades för %{when} sedan av %{user}
-      commented_at_html: Uppdaterades för %{when} sedan
-      commented_at_by_html: Uppdaterades för %{when} sedan av %{user}
-      closed_at_html: Löstes för %{when} sedan
-      closed_at_by_html: Löstes för %{when} sedan av %{user}
-      reopened_at_html: Återaktiverades för %{when} sedan
-      reopened_at_by_html: Återaktiverades för %{when} sedan av %{user}
-    rss:
-      title: OpenStreetMap-anteckningar
-      description_area: En lista med anteckningar som rapporterats, kommenterats eller
-        avklarats i närheten av ditt område [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Ett rss-flöde för anteckning %{id}
-      opened: ny anteckning (nära %{place})
-      commented: ny kommentar (nära %{place})
-      closed: stängde anteckning (nära %{place})
-      reopened: återaktiverade anteckningar (nära %{place})
-    entry:
-      comment: Kommentar
-      full: Hela anteckningen
     mine:
       title: Anteckningar skapade eller kommenterade av %{user}
       heading: '%{user}s anteckningar'
-      subheading: Anteckningar skapade eller kommenterade av %{user}
+      subheading_html: Anteckningar skapade eller kommenterade av %{user}
       id: Id
       creator: Skapare
       description: Beskrivning
@@ -2592,13 +2608,12 @@ sv:
     directions:
       ascend: Stigande
       engines:
+        fossgis_osrm_bike: Cykel (OSRM)
+        fossgis_osrm_car: Bil (OSRM)
+        fossgis_osrm_foot: Till fots (OSRM)
         graphhopper_bicycle: Cykel (GraphHopper)
         graphhopper_car: Bil (GraphHopper)
         graphhopper_foot: Gående (GraphHopper)
-        mapquest_bicycle: Cykel (MapQuest)
-        mapquest_car: Bil (MapQuest)
-        mapquest_foot: Gående (MapQuest)
-        osrm_car: Bil (OSRM)
       descend: Fallande
       directions: Vägbeskrivning
       distance: Avstånd
@@ -2723,4 +2738,9 @@ sv:
         denna redaktering innan den förstörs.
       flash: Redaktering förstörd.
       error: Det uppstod ett fel när redakteringen skulle förstöras.
+  validations:
+    leading_whitespace: har ett inledande mellanslag
+    trailing_whitespace: har ett avslutande mellanslag
+    invalid_characters: innehåller ogiltiga tecken
+    url_characters: innehåller speciella URL-tecken (%{characters})
 ...

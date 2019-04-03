@@ -103,6 +103,15 @@ tl:
     remote:
       name: Pangmalayong Pantaban
       description: Pangmalayong Pantaban (JOSM o Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Nilikha %{when} ang nakaraan
+        opened_at_by_html: Nilikha %{when} ang nakaraan ni %{user}
+        closed_at_html: Nalutas %{when} ang nakaraan
+        closed_at_by_html: Nalutas %{when} ang nakaraan ni %{user}
+      rss:
+        commented: bagong puna (malapit sa %{place})
   browse:
     created: Nilikha
     closed: Isinara
@@ -197,7 +206,7 @@ tl:
       hidden_by: Itinago ni %{user} <abbr title='%{exact_time}'>%{when} ang nakaraan</abbr>
     query:
       nearby: Mga kalapit na tampok
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Ika-%{page} na pahina
       next: Kasunod »
@@ -227,9 +236,10 @@ tl:
     timeout:
       sorry: Paumanhin, ang talaan ng mga pangkat ng pagbabagong hiniling mo ay naging
         napakatagal bago nakuhang muli.
-    rss:
+  changeset_comments:
+    comment:
       comment: 'Bagong puna sa pangkat ng pagbabago #%{changeset_id} ni %{author}'
-  diary_entry:
+  diary_entries:
     new:
       title: Bagong Pagpapasok sa Talaarawan
       publish_button: Ilathala
@@ -816,10 +826,7 @@ tl:
     intro_text: Ang OpenStreetMap ay isang mapa ng mundo na nilikha ng mga taong katulad
       mo at malayang gamitin sa ilalim ng isang bukas na lisensya.
     intro_2_create_account: Lumikha ng isang akawnt ng tagagamit
-    partners_html: Ang pagpapasinaya ay sinusuportahan ng %{ucl}, %{bytemark}, %{ic},
-      at iba pang %{partners}.
     partners_ucl: UCL
-    partners_ic: Dalubhasaang Pang-imperyo Londres
     partners_bytemark: Pagpapasinaya ng Bytemark
     partners_partners: mga kawaksi
     osm_offline: Ang kalipunan ng dato ng OpenStreetMap ay pangkasalukuyang nakapatay
@@ -1093,6 +1100,9 @@ tl:
           BY</a>),\n<a href=\"http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm\">Land
           Vorarlberg</a> at ng\nLand Tirol (na nasa ilalim ng <a href=\"http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/\">CC
           BY AT na mayroong mga susog</a>)."
+        contributors_au_html: |-
+          <strong>Australiya</strong>: Naglalaman ng datong sub-urbano na nakabatay
+          sa dato ng Tanggapan ng Estadistika ng Australiya.
         contributors_ca_html: "<strong>Canada</strong>: Naglalaman ng dato mula sa\nGeoBase&reg;,
           GeoGratis (&copy; Kagawaran ng Likas na Yaman ng \nCanada), CanVec (&copy;
           Kagawaran ng Likas na Yaman ng Canada), at StatCan \n(Dibisyon ng Heograpiya,
@@ -1429,9 +1439,6 @@ tl:
     require_cookies:
       cookies_needed: Tila mayroon kang hindi pinagaganang mga otap - mangyaring paganahin
         ang mga otap sa loob ng pantingin-tingin mo bago magpatuloy.
-    require_moderator:
-      not_a_moderator: Kailangan mong maging isang tagapamagitan upang maisagawa ang
-        galaw na iyan.
     setup_user_auth:
       blocked_zero_hour: Mayroon kang isang importanteng mensahe sa websayt ng OpenStreetMap.
         Kailangan mong basahin ang mensahe bago mo masagip ang iyong mga pagbabago.
@@ -1517,7 +1524,7 @@ tl:
       flash: Matagumpay na naisapanhon ang kabatiran sa kliyente
     destroy:
       flash: Winasak ang pagpapatala ng aplikasyon ng kliyente
-  user:
+  users:
     login:
       title: Lumagda
       heading: Lumagda
@@ -1795,9 +1802,6 @@ tl:
       button: Tanggalin bilang kaibigan
       success: Si %{name} ay tinanggal mula sa mga kaibigan mo.
       not_a_friend: Si %{name} ay hindi isa sa mga kaibigan mo.
-    filter:
-      not_an_administrator: Kailangan mong maging isang tagapangasiwa upang maisagawa
-        ang galaw na iyan.
     index:
       title: Mga tagagamit
       heading: Mga tagagamit
@@ -1824,8 +1828,6 @@ tl:
         </p>
   user_role:
     filter:
-      not_an_administrator: Tanging mga tagapangasiwa lamang ang makapagsasagawa ng
-        pamamahala ng gampanin ng tagagamit, at hindi ka isang tagapangasiwa.
       not_a_role: Ang bagting na `%{role}' ay hindi isang tanggap na gampanin.
       already_has_role: Ang tagagamit ay may gampanin nang %{role}.
       doesnt_have_role: Ang tagagamit ay walang gampaning %{role}.
@@ -1960,13 +1962,6 @@ tl:
       next: Susunod »
       previous: « Nakaraan
   notes:
-    comment:
-      opened_at_html: Nilikha %{when} ang nakaraan
-      opened_at_by_html: Nilikha %{when} ang nakaraan ni %{user}
-      closed_at_html: Nalutas %{when} ang nakaraan
-      closed_at_by_html: Nalutas %{when} ang nakaraan ni %{user}
-    rss:
-      commented: bagong puna (malapit sa %{place})
     mine:
       heading: mga tala ni %{user}
       id: Id
@@ -2012,11 +2007,9 @@ tl:
         comment_and_resolve: Pumuna at Lutasin
     directions:
       engines:
+        fossgis_osrm_car: Kotse (OSRM)
         graphhopper_bicycle: Bisikleta (GraphHopper)
         graphhopper_car: Kotse (GraphHopper)
-        mapquest_bicycle: Bisikleta (MapQuest)
-        mapquest_car: Kotse (MapQuest)
-        osrm_car: Kotse (OSRM)
       directions: Mga Direksyon
       distance: Layo
       instructions:

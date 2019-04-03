@@ -1,6 +1,7 @@
 # Messages for Czech (čeština)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Bilbo
 # Author: Chmee2
 # Author: Cvanca
@@ -35,6 +36,7 @@
 # Author: Urbanecm
 # Author: Veritaslibero
 # Author: Walter Klosse
+# Author: Zbycz
 ---
 cs:
   time:
@@ -42,6 +44,10 @@ cs:
       friendly: '%e. %m. %Y v %H:%M'
       blog: '%e. %L. %Y'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: nevypadá jako platná emailová adresa
+        email_address_not_routable: není routovatelná
     models:
       acl: Seznam přístupových práv
       changeset: Sada změn
@@ -123,6 +129,29 @@ cs:
     remote:
       name: Dálkové ovládání
       description: Dálkové ovládání (JOSM nebo Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Vytvořeno před %{when}
+        opened_at_by_html: Vytvořeno před %{when} uživatelem %{user}
+        commented_at_html: Aktualizováno před %{when}
+        commented_at_by_html: Aktualizováno před %{when} uživatelem %{user}
+        closed_at_html: Vyřešeno před %{when}
+        closed_at_by_html: Vyřešeno před %{when} uživatelem %{user}
+        reopened_at_html: Reaktivováno před %{when}
+        reopened_at_by_html: Reaktivováno před %{when} uživatelem %{user}
+      rss:
+        title: Poznámky OpenStreetMap
+        description_area: Seznam poznámek hlášených, komentovaných nebo uzavřených
+          ve vaší oblasti [(%{min_lat}|%{min_lon}) – (%{max_lat}|%{max_lon})]
+        description_item: RSS kanál k poznámce %{id}
+        opened: nová poznámka (poblíž %{place})
+        commented: nový komentář (poblíž %{place})
+        closed: poznámka uzavřena (poblíž %{place})
+        reopened: reaktivovaná poznámka (poblíž %{place})
+      entry:
+        comment: Komentář
+        full: Celá poznámka
   browse:
     created: Vytvořeno
     closed: Uzavřeno
@@ -255,7 +284,7 @@ cs:
       introduction: Pro nalezení okolních prvků klikněte na mapu.
       nearby: Okolní prvky
       enclosing: Umístění prvku
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Stránka %{page}
       next: Následující »
@@ -273,7 +302,7 @@ cs:
     index:
       title: Sady změn
       title_user: Sady změn uživatele %{user}
-      title_friend: Sady změn podle mých přátel
+      title_friend: Sady změn mých přátel
       title_nearby: Sady změn uživatelů poblíž
       empty: Nebyly nalezeny žádné sady změn.
       empty_area: Pro tuto oblast neexistují žádné sady změn.
@@ -284,14 +313,19 @@ cs:
       load_more: Načíst další
     timeout:
       sorry: Omlouváme se, ale vámi požadovaný seznam sad změn se načítal příliš dlouho.
-    rss:
+  changeset_comments:
+    comment:
+      comment: '%{author} napsal nový komentář k sadě změn #%{changeset_id}'
+      commented_at_by_html: Aktualizováno před %{when} uživatelem %{user}
+    comments:
+      comment: '%{author} napsal nový komentář k sadě změn #%{changeset_id}'
+    index:
       title_all: Diskuse k sadě změn na OpenStreetMap
       title_particular: 'Diskuse k sadě změn #%{changeset_id} na OpenStreetMap'
-      comment: '%{author} napsal nový komentář k sadě změn #%{changeset_id}'
-      commented_at_html: Aktualizováno před %{when}
-      commented_at_by_html: Aktualizováno před %{when} uživatelem %{user}
-      full: Celá diskuse
-  diary_entry:
+    timeout:
+      sorry: Omlouváme se, ale vámi požadované komentáře k sadě změn se načítaly příliš
+        dlouho.
+  diary_entries:
     new:
       title: Nový záznam do deníku
       publish_button: Publikovat
@@ -342,7 +376,7 @@ cs:
       edit_link: Upravit tento záznam
       hide_link: Skrýt tento záznam
       confirm: Potvrdit
-      report: Nahlásit závadnou položku
+      report: Nahlásit závadný záznam
     diary_comment:
       comment_from: Komentář od %{link_user} z %{comment_created_at}
       hide_link: Skrýt tento komentář
@@ -1089,17 +1123,16 @@ cs:
     export_data: Export dat
     gps_traces: GPS stopy
     gps_traces_tooltip: Spravovat GPS stopy
-    user_diaries: Deníčky
-    user_diaries_tooltip: Zobrazit deníčky uživatelů
+    user_diaries: Deníky uživatelů
+    user_diaries_tooltip: Zobrazit deníky uživatelů
     edit_with: Upravit pomocí %{editor}
     tag_line: Otevřená wiki-mapa světa
     intro_header: Vítejte v OpenStreetMap!
     intro_text: OpenStreetMap je mapa světa, vytvořená lidmi jako vy a volně využitelná
       pod otevřenou licencí.
     intro_2_create_account: Vytvořit uživatelský účet
-    partners_html: Hosting podporují %{ucl}, %{bytemark}, %{ic} a další %{partners}.
+    hosting_partners_html: Hosting podporují %{ucl}, %{bytemark}, a další %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partneři
     osm_offline: Databáze OpenStreetMap je momentálně kvůli probíhající neodkladné
@@ -1122,9 +1155,9 @@ cs:
     more: Další
   notifier:
     diary_comment_notification:
-      subject: '[OpenStreetMap] %{user} okomentoval deníčkový záznam'
+      subject: '[OpenStreetMap] %{user} okomentoval záznam v deníku'
       hi: Ahoj, uživateli %{to_user},
-      header: '%{from_user} okomentoval záznam v deníčku na OpenStreetMap s předmětem
+      header: '%{from_user} okomentoval záznam v deníku na OpenStreetMap s předmětem
         %{subject}:'
       footer: Také si můžete komentář přečíst na %{readurl}, komentovat na %{commenturl}
         nebo odpovědět na %{replyurl}
@@ -1319,8 +1352,8 @@ cs:
     about:
       next: Další
       copyright_html: <span>&copy;</span>přispěvatelé<br>OpenStreetMap
-      used_by: Díky %{name} fungují mapová data na tisících webových stránek, mobilních
-        aplikací a hardwarových zařízení
+      used_by: Díky %{name} vidíte mapová data na tisících webových stránek, aplikací
+        i GPSkách
       lede_text: OpenStreetMap tvoří komunita uživatelů, kteří přidávají a udržují
         data o silnicích, cestách, kavárnách, železničních stanicích a mnohém dalším
         po celém světě.
@@ -1331,7 +1364,7 @@ cs:
       community_driven_title: Řízeno komunitou
       community_driven_html: |-
         Komunita OpenStreetMap je různorodá, vášnivá a každý den se rozrůstá. Mezi našimi přispěvateli najdete amatérské kreslíře map, profesionály z oblasti GIS, techniky spravující servery OSM, humanitární pracovníky mapující oblasti zasažené neštěstím a mnohé další.
-        Pokud se chcete o komunitě dozvědět více, prohlédněte si <a href='https://blog.openstreetmap.org'>blog OpenStreetMap</a>, <a href='%{diary_path}'>uživatelské deníčky</a>, <a href='https://blogs.openstreetmap.org/'>komunitní blogy</a> a webovou stránku <a href='https://www.osmfoundation.org/'>nadace OSM Foundation</a>.
+        Pokud se chcete o komunitě dozvědět více, prohlédněte si <a href='https://blog.openstreetmap.org'>blog OpenStreetMap</a>, <a href='%{diary_path}'>uživatelské deníky</a>, <a href='https://blogs.openstreetmap.org/'>komunitní blogy</a> a webovou stránku <a href='https://www.osmfoundation.org/'>nadace OSM Foundation</a>.
       open_data_title: Otevřená data
       open_data_html: 'OpenStreetMap tvoří <i>otevřená data</i>: smíte je užívat pro
         libovolný účel, pokud uvádíte autorství OpenStreetMap a jeho přispěvatelů.
@@ -1399,6 +1432,8 @@ cs:
           BY</a>), <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">země
           Vorarlbersko</a> a země Tyrolsko (pod <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC
           BY AT s dodatky</a>).'
+        contributors_au_html: '<strong>Austrálie</strong>: Obsahuje data předměstí
+          založená na datech Australského statistického úřadu.'
         contributors_ca_html: '<strong>Kanada</strong>: Obsahuje data z GeoBase&reg;,
           GeoGratis (&copy; Department of Natural Resources Canada), CanVec (&copy;
           Department of Natural Resources Canada) a StatCan (Geography Division, Statistics
@@ -1417,11 +1452,16 @@ cs:
         contributors_si_html: '<strong>Slovinsko</strong>: Obsahuje data <a href="http://www.gu.gov.si/">Zeměměřického
           a mapovacího úřadu</a> a <a href="http://www.mkgp.gov.si/">Ministerstva
           zemědělství, lesnictví a potravin</a> (veřejné informace o Slovinsku).'
+        contributors_es_html: '<strong>Španělsko</strong>: Obsahuje data od španělského
+          Národního geografického institutu (<a href="http://www.ign.es/">IGN</a>
+          a Národního kartografického systému (<a href="http://www.scne.es/">SCNE</a>),
+          licencovaná pod <a href="https://creativecommons.org/licenses/by/4.0/deed.cs">CC
+          BY 4.0</a>.'
         contributors_za_html: |-
           <strong>Jihoafrická republika</strong>: Obsahuje data pocházející z <a href="http://www.ngi.gov.za/">Chief Directorate:
           National Geo-Spatial Information</a>, State copyright reserved.
         contributors_gb_html: '<strong>Spojené království</strong>: Obsahuje data
-          Ordnance Survey &copy; Crown copyright a právo k databázi 2010–12.'
+          Ordnance Survey &copy; Crown copyright a právo k databázi 2010–19.'
         contributors_footer_1_html: |-
           Další podrobnosti o těchto a dalších zdrojích, které se používaly pro vylepšení OpenStreetMap, najdete na <a
           href="https://wiki.openstreetmap.org/wiki/Contributors">stránce Contributors</a> na wiki OpenStreetMap.
@@ -1569,6 +1609,10 @@ cs:
         title: switch2osm
         description: Pomoc společnostem a organizacím s přechodem na mapy a další
           služby založené na OpenStreetMap.
+      welcomemat:
+        title: Pro organizace
+        description: Jste u organizace, která má plány s OpenStreetMap? Podívejte
+          se na uvítací průvodce.
       wiki:
         url: https://wiki.openstreetmap.org/wiki/Cs:Main_Page?uselang=cs
         title: wiki.openstreetmap.org
@@ -1660,7 +1704,7 @@ cs:
       edit: Upravit
       preview: Náhled
     markdown_help:
-      title_html: Zpracovává se <a href="https://daringfireball.net/projects/markdown/">Markdownem</a>
+      title_html: Zpracovává se <a href="https://kramdown.gettalong.org/quickref.html">Kramdownem</a>
       headings: Nadpisy
       heading: Nadpis
       subheading: Podnadpis
@@ -1710,7 +1754,7 @@ cs:
         title: Nějaké dotazy?
         paragraph_1_html: |-
           OpenStreetMap nabízí několik zdrojů pro informace o projektu, otázky a odpovědi a kolaborativní diskuse a dokumentace mapových témat.
-          <a href='%{help_url}'>Zde můžete získat pomoc.</a>
+          <a href='%{help_url}'>Zde můžete získat pomoc.</a> Jste u organizace, která má plány s OpenStreetMap? <a href='https://welcome.openstreetmap.org/'>Podívejte se na uvítací průvodce.</a>
       start_mapping: Začít mapovat
       add_a_note:
         title: Nemáte čas editovat? Přidejte poznámku!
@@ -1846,15 +1890,12 @@ cs:
         other: GPX soubor s %{count} body od uživatele %{user}
       description_without_count: GPX soubor od uživatele %{user}
   application:
+    permission_denied: Pro přístup k této akci nemáte oprávnění
     require_cookies:
       cookies_needed: Vypadá to, že máte zakázány cookies – před pokračováním si je
         v prohlížeči zapněte.
     require_admin:
       not_an_admin: Tuto akci může provést jen administrátor.
-    require_moderator:
-      not_a_moderator: K provedení této akce musíte být moderátor.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Tuto akci může provést pouze moderátor nebo administrátor.
     setup_user_auth:
       blocked_zero_hour: Na webu OpenStreetMap máte urgentní zprávu. Tuto zprávu si
         musíte přečíst, než budete moci ukládat své editace.
@@ -1872,7 +1913,7 @@ cs:
       allow_to: 'Umožnit klientské aplikaci:'
       allow_read_prefs: číst vaše uživatelské nastavení.
       allow_write_prefs: měnit vaše uživatelské nastavení.
-      allow_write_diary: vytvářet deníčkové záznamy, komentovat a navazovat přátelství.
+      allow_write_diary: vytvářet deníkové záznamy, komentovat a navazovat přátelství.
       allow_write_api: upravovat mapu.
       allow_read_gpx: číst vaše soukromé GPS stopy.
       allow_write_gpx: nahrávat GPS stopy.
@@ -1911,7 +1952,7 @@ cs:
       requests: 'Uživatelé se žádají o následující oprávnění:'
       allow_read_prefs: číst jejich uživatelské nastavení.
       allow_write_prefs: měnit jejich uživatelské nastavení.
-      allow_write_diary: vytvářet deníčkové záznamy, komentovat a navazovat přátelství.
+      allow_write_diary: vytvářet deníkové záznamy, komentovat a navazovat přátelství.
       allow_write_api: upravovat mapu.
       allow_read_gpx: číst jejich soukromé GPS stopy.
       allow_write_gpx: nahrávat GPS stopy.
@@ -1938,7 +1979,7 @@ cs:
       requests: 'Žádat uživatele o následující oprávnění:'
       allow_read_prefs: číst jejich uživatelské nastavení.
       allow_write_prefs: měnit jejich uživatelské nastavení.
-      allow_write_diary: vytvářet deníčkové záznamy, komentovat a navazovat přátelství.
+      allow_write_diary: vytvářet deníkové záznamy, komentovat a navazovat přátelství.
       allow_write_api: upravovat mapu.
       allow_read_gpx: číst jejich soukromé GPS stopy.
       allow_write_gpx: nahrávat GPS stopy.
@@ -1951,7 +1992,7 @@ cs:
       flash: Klientské informace úspěšně aktualizovány
     destroy:
       flash: Registrace klientské aplikace zrušena
-  user:
+  users:
     login:
       title: Přihlásit se
       heading: Přihlášení
@@ -2068,6 +2109,7 @@ cs:
         i budoucí příspěvky.
       consider_pd: Navíc k výše uvedené dohodě považuji své příspěvky za volné dílo.
       consider_pd_why: co to znamená?
+      consider_pd_why_url: https://www.osmfoundation.org/wiki/License/Why_would_I_want_my_contributions_to_be_public_domain
       guidance: 'Informace, které pomohou tyto podmínky pochopit: <a href="%{summary}">lidsky
         čitelné shrnutí</a> a nějaké <a href="%{translations}">neoficiální překlady</a>'
       agree: Souhlasím
@@ -2087,8 +2129,8 @@ cs:
         jste možná klikli na chybný odkaz.
       deleted: smazán
     show:
-      my diary: Můj deníček
-      new diary entry: nový záznam do deníčku
+      my diary: Můj deník
+      new diary entry: nový záznam do deníku
       my edits: Moje úpravy
       my traces: Moje stopy
       my notes: Moje poznámky k mapě
@@ -2100,7 +2142,7 @@ cs:
       blocks on me: Moje zablokování
       blocks by me: Zablokování mnou
       send message: Poslat zprávu
-      diary: Deníček
+      diary: Deník
       edits: Úpravy
       traces: Stopy
       notes: Poznámky k mapě
@@ -2150,9 +2192,9 @@ cs:
       delete_user: Odstranit tohoto uživatele
       confirm: Potvrdit
       friends_changesets: sady změn přátel
-      friends_diaries: záznamy v deníčcích přátel
+      friends_diaries: záznamy v denících přátel
       nearby_changesets: sady změn uživatelů poblíž
-      nearby_diaries: záznamy v deníčcích uživatelů poblíž
+      nearby_diaries: záznamy v denících uživatelů poblíž
       report: Nahlásit tohoto uživatele
     popup:
       your location: Vaše poloha
@@ -2263,8 +2305,6 @@ cs:
       button: Odebrat z přátel
       success: '%{name} byl odstraněn z vašich přátel.'
       not_a_friend: '%{name} není mezi vašimi přáteli.'
-    filter:
-      not_an_administrator: K provedení této akce musíte být správce.
     index:
       title: Uživatelé
       heading: Uživatelé
@@ -2302,8 +2342,6 @@ cs:
         jména a hesla a poté v uživatelském nastavení účet propojit s vaším ID.
   user_role:
     filter:
-      not_an_administrator: Spravovat role mohou pouze administrátoři. Vy administrátor
-        nejste.
       not_a_role: Řetězec „%{role}“ neoznačuje platnou roli.
       already_has_role: Uživatel již roli %{role} má.
       doesnt_have_role: Uživatel nemá roli %{role}.
@@ -2427,31 +2465,10 @@ cs:
       next: Následující »
       previous: « Předchozí
   notes:
-    comment:
-      opened_at_html: Vytvořeno před %{when}
-      opened_at_by_html: Vytvořeno před %{when} uživatelem %{user}
-      commented_at_html: Aktualizováno před %{when}
-      commented_at_by_html: Aktualizováno před %{when} uživatelem %{user}
-      closed_at_html: Vyřešeno před %{when}
-      closed_at_by_html: Vyřešeno před %{when} uživatelem %{user}
-      reopened_at_html: Reaktivováno před %{when}
-      reopened_at_by_html: Reaktivováno před %{when} uživatelem %{user}
-    rss:
-      title: Poznámky OpenStreetMap
-      description_area: Seznam poznámek hlášených, komentovaných nebo uzavřených ve
-        vaší oblasti [(%{min_lat}|%{min_lon}) – (%{max_lat}|%{max_lon})]
-      description_item: RSS kanál k poznámce %{id}
-      opened: nová poznámka (poblíž %{place})
-      commented: nový komentář (poblíž %{place})
-      closed: poznámka uzavřena (poblíž %{place})
-      reopened: reaktivovaná poznámka (poblíž %{place})
-    entry:
-      comment: Komentář
-      full: Celá poznámka
     mine:
       title: Poznámky vytvořené nebo okomentované uživatelem %{user}
       heading: Poznámky uživatele %{user}
-      subheading: Poznámky vytvořené nebo okomentované uživatelem %{user}
+      subheading_html: Poznámky vytvořené nebo okomentované uživatelem %{user}
       id: ID
       creator: Autor
       description: Popis
@@ -2544,13 +2561,12 @@ cs:
     directions:
       ascend: Vystupte
       engines:
+        fossgis_osrm_bike: Na kole (OSRM)
+        fossgis_osrm_car: Autem (OSRM)
+        fossgis_osrm_foot: Pěšky (OSRM)
         graphhopper_bicycle: Na kole (GraphHopper)
         graphhopper_car: Autem (GraphHopper)
         graphhopper_foot: Pěšky (GraphHopper)
-        mapquest_bicycle: Na kole (MapQuest)
-        mapquest_car: Autem (MapQuest)
-        mapquest_foot: Pěšky (MapQuest)
-        osrm_car: Autem (OSRM)
       descend: Sestupte
       directions: Pokyny
       distance: Vzdálenost
@@ -2679,4 +2695,9 @@ cs:
         verzí patřících do této redakce.
       flash: Redakce zničena.
       error: Došlo k chybě při ničení této redakce.
+  validations:
+    leading_whitespace: začíná bílými znaky
+    trailing_whitespace: končí bílými znaky
+    invalid_characters: obsahuje neplatné znaky
+    url_characters: obsahuje zvláštní znaky pro URL (%{characters})
 ...

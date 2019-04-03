@@ -88,19 +88,18 @@ class User < ActiveRecord::Base
                     :default_url => "/assets/:class/:attachment/:style.png",
                     :styles => { :large => "100x100>", :small => "50x50>" }
 
-  validates :display_name, :presence => true, :allow_nil => true, :length => 3..255,
+  validates :display_name, :presence => true, :length => 3..255,
                            :exclusion => %w[new terms save confirm confirm-email go_public reset-password forgot-password suspended]
   validates :display_name, :if => proc { |u| u.display_name_changed? },
                            :uniqueness => { :case_sensitive => false }
   validates :display_name, :if => proc { |u| u.display_name_changed? },
-                           :format => { :with => %r{\A[^\x00-\x1f\x7f\ufffe\uffff/;.,?%#]*\z} }
-  validates :display_name, :if => proc { |u| u.display_name_changed? },
-                           :format => { :with => /\A\S/, :message => "has leading whitespace" }
-  validates :display_name, :if => proc { |u| u.display_name_changed? },
-                           :format => { :with => /\S\z/, :message => "has trailing whitespace" }
-  validates :email, :presence => true, :confirmation => true
+                           :characters => { :url_safe => true },
+                           :whitespace => { :leading => false, :trailing => false }
+  validates :email, :presence => true, :confirmation => true, :characters => true
   validates :email, :if => proc { |u| u.email_changed? },
                     :uniqueness => { :case_sensitive => false }
+  validates :email, :if => proc { |u| u.email_changed? },
+                    :whitespace => { :leading => false, :trailing => false }
   validates :pass_crypt, :confirmation => true, :length => 8..255
   validates :home_lat, :allow_nil => true, :numericality => true, :inclusion => { :in => -90..90 }
   validates :home_lon, :allow_nil => true, :numericality => true, :inclusion => { :in => -180..180 }
@@ -125,10 +124,10 @@ class User < ActiveRecord::Base
 
   def self.authenticate(options)
     if options[:username] && options[:password]
-      user = find_by("email = ? OR display_name = ?", options[:username], options[:username])
+      user = find_by("email = ? OR display_name = ?", options[:username].strip, options[:username])
 
       if user.nil?
-        users = where("LOWER(email) = LOWER(?) OR LOWER(display_name) = LOWER(?)", options[:username], options[:username])
+        users = where("LOWER(email) = LOWER(?) OR LOWER(display_name) = LOWER(?)", options[:username].strip, options[:username])
 
         user = users.first if users.count == 1
       end
@@ -202,7 +201,7 @@ class User < ActiveRecord::Base
     @preferred_languages = nil
   end
 
-  def nearby(radius = NEARBY_RADIUS, num = NEARBY_USERS)
+  def nearby(radius = Settings.nearby_radius, num = Settings.nearby_users)
     if home_lon && home_lat
       gc = OSM::GreatCircle.new(home_lat, home_lon)
       sql_for_area = QuadTile.sql_for_area(gc.bounds(radius), "home_")
@@ -301,7 +300,7 @@ class User < ActiveRecord::Base
   ##
   # perform a spam check on a user
   def spam_check
-    update(:status => "suspended") if status == "active" && spam_score > SPAM_THRESHOLD
+    update(:status => "suspended") if status == "active" && spam_score > Settings.spam_threshold
   end
 
   ##

@@ -25,20 +25,20 @@ class MessagesControllerTest < ActionController::TestCase
       { :controller => "messages", :action => "show", :id => "1" }
     )
     assert_routing(
-      { :path => "/message/mark/1", :method => :post },
+      { :path => "/messages/1/mark", :method => :post },
       { :controller => "messages", :action => "mark", :message_id => "1" }
     )
     assert_routing(
-      { :path => "/message/reply/1", :method => :get },
+      { :path => "/messages/1/reply", :method => :get },
       { :controller => "messages", :action => "reply", :message_id => "1" }
     )
     assert_routing(
-      { :path => "/message/reply/1", :method => :post },
+      { :path => "/messages/1/reply", :method => :post },
       { :controller => "messages", :action => "reply", :message_id => "1" }
     )
     assert_routing(
-      { :path => "/message/delete/1", :method => :post },
-      { :controller => "messages", :action => "destroy", :message_id => "1" }
+      { :path => "/messages/1", :method => :delete },
+      { :controller => "messages", :action => "destroy", :id => "1" }
     )
   end
 
@@ -83,9 +83,11 @@ class MessagesControllerTest < ActionController::TestCase
     # Check that we can't send a message from a GET request
     assert_difference "ActionMailer::Base.deliveries.size", 0 do
       assert_difference "Message.count", 0 do
-        get :new,
-            :params => { :display_name => recipient_user.display_name,
-                         :message => { :title => "Test Message", :body => "Test message body" } }
+        perform_enqueued_jobs do
+          get :new,
+              :params => { :display_name => recipient_user.display_name,
+                           :message => { :title => "Test Message", :body => "Test message body" } }
+        end
       end
     end
     assert_response :success
@@ -112,9 +114,11 @@ class MessagesControllerTest < ActionController::TestCase
     # Check that the subject is preserved over errors
     assert_difference "ActionMailer::Base.deliveries.size", 0 do
       assert_difference "Message.count", 0 do
-        post :new,
-             :params => { :display_name => recipient_user.display_name,
-                          :message => { :title => "Test Message", :body => "" } }
+        perform_enqueued_jobs do
+          post :new,
+               :params => { :display_name => recipient_user.display_name,
+                            :message => { :title => "Test Message", :body => "" } }
+        end
       end
     end
     assert_response :success
@@ -141,9 +145,11 @@ class MessagesControllerTest < ActionController::TestCase
     # Check that the body text is preserved over errors
     assert_difference "ActionMailer::Base.deliveries.size", 0 do
       assert_difference "Message.count", 0 do
-        post :new,
-             :params => { :display_name => recipient_user.display_name,
-                          :message => { :title => "", :body => "Test message body" } }
+        perform_enqueued_jobs do
+          post :new,
+               :params => { :display_name => recipient_user.display_name,
+                            :message => { :title => "", :body => "Test message body" } }
+        end
       end
     end
     assert_response :success
@@ -170,9 +176,11 @@ class MessagesControllerTest < ActionController::TestCase
     # Check that sending a message works
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       assert_difference "Message.count", 1 do
-        post :create,
-             :params => { :display_name => recipient_user.display_name,
-                          :message => { :title => "Test Message", :body => "Test message body" } }
+        perform_enqueued_jobs do
+          post :create,
+               :params => { :display_name => recipient_user.display_name,
+                            :message => { :title => "Test Message", :body => "Test message body" } }
+        end
       end
     end
     assert_redirected_to inbox_messages_path
@@ -182,7 +190,7 @@ class MessagesControllerTest < ActionController::TestCase
     assert_equal "[OpenStreetMap] Test Message", e.subject
     assert_match(/Test message body/, e.text_part.decoded)
     assert_match(/Test message body/, e.html_part.decoded)
-    assert_match %r{#{SERVER_URL}/messages/[0-9]+}, e.text_part.decoded
+    assert_match %r{#{Settings.server_url}/messages/[0-9]+}, e.text_part.decoded
     ActionMailer::Base.deliveries.clear
     m = Message.last
     assert_equal user.id, m.from_user_id
@@ -195,7 +203,7 @@ class MessagesControllerTest < ActionController::TestCase
     # Asking to send a message with a bogus user name should fail
     get :new, :params => { :display_name => "non_existent_user" }
     assert_response :not_found
-    assert_template "user/no_such_user"
+    assert_template "users/no_such_user"
     assert_select "h1", "The user non_existent_user does not exist"
   end
 
@@ -211,12 +219,14 @@ class MessagesControllerTest < ActionController::TestCase
     assert_no_difference "ActionMailer::Base.deliveries.size" do
       assert_no_difference "Message.count" do
         with_message_limit(0) do
-          post :create,
-               :params => { :display_name => recipient_user.display_name,
-                            :message => { :title => "Test Message", :body => "Test message body" } }
-          assert_response :success
-          assert_template "new"
-          assert_select ".error", /wait a while/
+          perform_enqueued_jobs do
+            post :create,
+                 :params => { :display_name => recipient_user.display_name,
+                              :message => { :title => "Test Message", :body => "Test message body" } }
+            assert_response :success
+            assert_template "new"
+            assert_select ".error", /wait a while/
+          end
         end
       end
     end
@@ -232,14 +242,14 @@ class MessagesControllerTest < ActionController::TestCase
 
     # Check that the message reply page requires us to login
     get :reply, :params => { :message_id => unread_message.id }
-    assert_redirected_to login_path(:referer => reply_message_path(:message_id => unread_message.id))
+    assert_redirected_to login_path(:referer => message_reply_path(:message_id => unread_message.id))
 
     # Login as the wrong user
     session[:user] = other_user.id
 
     # Check that we can't reply to somebody else's message
     get :reply, :params => { :message_id => unread_message.id }
-    assert_redirected_to login_path(:referer => reply_message_path(:message_id => unread_message.id))
+    assert_redirected_to login_path(:referer => message_reply_path(:message_id => unread_message.id))
     assert_equal "You are logged in as `#{other_user.display_name}' but the message you have asked to reply to was not sent to that user. Please login as the correct user in order to reply.", flash[:notice]
 
     # Login as the right user
@@ -429,14 +439,14 @@ class MessagesControllerTest < ActionController::TestCase
     sent_message = create(:message, :unread, :recipient => second_user, :sender => user)
 
     # Check that destroying a message requires us to login
-    post :destroy, :params => { :message_id => read_message.id }
+    delete :destroy, :params => { :id => read_message.id }
     assert_response :forbidden
 
     # Login as a user with no messages
     session[:user] = other_user.id
 
     # Check that destroying a message we didn't send or receive fails
-    post :destroy, :params => { :message_id => read_message.id }
+    delete :destroy, :params => { :id => read_message.id }
     assert_response :not_found
     assert_template "no_such_message"
 
@@ -444,7 +454,7 @@ class MessagesControllerTest < ActionController::TestCase
     session[:user] = user.id
 
     # Check that the destroy a received message works
-    post :destroy, :params => { :message_id => read_message.id }
+    delete :destroy, :params => { :id => read_message.id }
     assert_redirected_to inbox_messages_path
     assert_equal "Message deleted", flash[:notice]
     m = Message.find(read_message.id)
@@ -452,7 +462,7 @@ class MessagesControllerTest < ActionController::TestCase
     assert_equal false, m.to_user_visible
 
     # Check that the destroying a sent message works
-    post :destroy, :params => { :message_id => sent_message.id, :referer => outbox_messages_path }
+    delete :destroy, :params => { :id => sent_message.id, :referer => outbox_messages_path }
     assert_redirected_to outbox_messages_path
     assert_equal "Message deleted", flash[:notice]
     m = Message.find(sent_message.id)
@@ -465,7 +475,7 @@ class MessagesControllerTest < ActionController::TestCase
     end
 
     # Asking to destroy a message with a bogus ID should fail
-    post :destroy, :params => { :message_id => 99999 }
+    delete :destroy, :params => { :id => 99999 }
     assert_response :not_found
     assert_template "no_such_message"
   end
@@ -473,12 +483,11 @@ class MessagesControllerTest < ActionController::TestCase
   private
 
   def with_message_limit(value)
-    max_messages_per_hour = Object.send("remove_const", "MAX_MESSAGES_PER_HOUR")
-    Object.const_set("MAX_MESSAGES_PER_HOUR", value)
+    max_messages_per_hour = Settings.max_messages_per_hour
+    Settings.max_messages_per_hour = value
 
     yield
 
-    Object.send("remove_const", "MAX_MESSAGES_PER_HOUR")
-    Object.const_set("MAX_MESSAGES_PER_HOUR", max_messages_per_hour)
+    Settings.max_messages_per_hour = max_messages_per_hour
   end
 end

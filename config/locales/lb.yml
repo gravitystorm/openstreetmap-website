@@ -9,7 +9,7 @@
 lb:
   time:
     formats:
-      friendly: '%e %B %Y ëm %H:%M'
+      friendly: '%e %B %Y um %H:%M'
   activerecord:
     models:
       changeset: Set vun Ännerungen
@@ -64,6 +64,12 @@ lb:
       name: iD
     potlatch2:
       name: Potlatch 2
+  api:
+    notes:
+      rss:
+        title: OpenStreetMap Notizen
+      entry:
+        comment: Bemierkung
   browse:
     created: Ugeluecht
     closed: Zou
@@ -169,7 +175,7 @@ lb:
       reopened_by_anonymous: Reaktivéiert vun engem Anonymen <abbr title='%{exact_time}'>
         viru(n) %{when}</abbr>
       hidden_by: Verstoppt vum %{user} <abbr title='%{exact_time}'>viru(n) %{when}</abbr>
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Säit %{page}
       next: Nächst »
@@ -195,11 +201,10 @@ lb:
       no_more_area: Keng weider Sette vun Ännerungen an dëser Géigend.
       no_more_user: Keng weider Sette vun Ännerunge vun dësem Benotzer.
       load_more: Méi lueden
-    rss:
-      commented_at_html: Viru(n) %{when} aktualiséiert
+  changeset_comments:
+    comment:
       commented_at_by_html: Viru(n) %{when} vum %{user} aktualiséiert
-      full: Komplett Diskussioun
-  diary_entry:
+  diary_entries:
     new:
       publish_button: Verëffentlechen
     index:
@@ -210,7 +215,7 @@ lb:
       language: 'Sprooch:'
       location: 'Plaz:'
       latitude: 'Breedegrad:'
-      longitude: 'Längtegrad:'
+      longitude: 'Längegrad:'
       use_map_link: Kaart benotzen
       save_button: Späicheren
     show:
@@ -570,7 +575,7 @@ lb:
           wine: Vinothéik
           "yes": Geschäft
         tourism:
-          apartment: Appartement
+          apartment: Vakanzen-Appartement
           artwork: Konschtwierk
           attraction: Attraktioun
           cabin: Hütt
@@ -845,6 +850,8 @@ lb:
         title: Forumen
       irc:
         title: IRC
+      welcomemat:
+        title: Fir Organisatiounen
       wiki:
         url: https://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -903,8 +910,8 @@ lb:
       headings: Iwwerschrëften
       heading: Iwwerschrëft
       subheading: Ënneriwwerschrëft
-      unordered: Net-numeréiert Lëscht
-      ordered: Numeréiert Lëscht
+      unordered: Net-nummeréiert Lëscht
+      ordered: Nummeréiert Lëscht
       first: Éischt Element
       second: Zweet Element
       link: Link
@@ -1003,7 +1010,7 @@ lb:
       name: Numm
       required: Obligatoresch
       allow_write_api: Kaart änneren
-  user:
+  users:
     login:
       title: Umellen
       heading: Umellen
@@ -1197,9 +1204,6 @@ lb:
     remove_friend:
       success: '%{name} gouf als Äre Frënd ewechgeholl.'
       not_a_friend: '%{name} ass kee vun Äre Frënn.'
-    filter:
-      not_an_administrator: Dir musst Administrateur si fir déi Aktioun maachen ze
-        kënnen.
     index:
       title: Benotzer
       heading: Benotzer
@@ -1215,8 +1219,6 @@ lb:
         un andeem Dir de Formulaire hei drënner benotzt.
   user_role:
     filter:
-      not_an_administrator: Nëmmen Administrateure kënnen d'Gestioun vun de Rolle
-        maachen, an Dir sidd net Administrateur.
       not_a_role: D'Zeechen '%{role}' ass keng valabel Roll.
       already_has_role: De Benotzer huet d'Roll %{role} schonn.
       doesnt_have_role: De Benotzer huet d'Roll %{role} net.
@@ -1290,10 +1292,6 @@ lb:
       next: Nächst »
       previous: « Vireg
   notes:
-    rss:
-      title: OpenStreetMap Notizen
-    entry:
-      comment: Bemierkung
     mine:
       description: Beschreiwung
       last_changed: Lescht Ännerung
@@ -1347,7 +1345,9 @@ lb:
     directions:
       ascend: Vu kleng op grouss
       engines:
-        osrm_car: Auto (OSRM)
+        fossgis_osrm_bike: Mam Vëlo (OSRM)
+        fossgis_osrm_car: Auto (OSRM)
+        fossgis_osrm_foot: Zu Fouss (OSRM)
       descend: Vu grouss op kleng
       directions: Richtungen
       distance: Distanz
@@ -1407,4 +1407,7 @@ lb:
       confirm: Sidd Dir sécher?
     update:
       flash: Ännerunge gespäichert.
+  validations:
+    leading_whitespace: huet en Espace am Ufank
+    invalid_characters: huet net valabel Zeechen
 ...

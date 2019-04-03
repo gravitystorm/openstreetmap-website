@@ -8,6 +8,7 @@
 # Author: Ricordo.tenerissimo
 # Author: ShockD
 # Author: StanProg
+# Author: Vlad5250
 # Author: Vodnokon4e
 # Author: АдмиралАнимЕ
 ---
@@ -16,6 +17,9 @@ bg:
     formats:
       friendly: '%e %B %Y в %H:%M'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: не представлява валидна е-поща
     models:
       changeset: Списък с промени
       country: Държава
@@ -84,6 +88,12 @@ bg:
     remote:
       name: Дистанционно управление
       description: Дистанционно управление (JOSM или Merkaartor)
+  api:
+    notes:
+      rss:
+        closed: закрита бележка (около %{place})
+      entry:
+        comment: Коментар
   browse:
     created: Създаден
     closed: Затворен
@@ -173,9 +183,12 @@ bg:
       description: Описание
       hidden_title: 'Скрита бележка #%{note_name}'
       open_by: Създадено от %{user} <abbr title='%{exact_time}'>преди %{when}</abbr>
+      report: Докладвайте тази бележка
     query:
       title: Търсене на особености
-  changeset:
+      introduction: Кликнете на картата за да намерите неща наоколо.
+      nearby: Елементи в близост
+  changesets:
     changeset_paging_nav:
       showing_page: Страница %{page}
       next: Следващ »
@@ -185,7 +198,7 @@ bg:
       no_edits: (без промяна)
       view_changeset_details: Подробности за списъка с промени
     changesets:
-      id: Номер
+      id: ID
       saved_at: Записан на
       user: Потребител
       comment: Коментар
@@ -201,11 +214,10 @@ bg:
       no_more: Не са намерени повече списъци с промени.
       no_more_area: Няма повече списъци с промени за този район.
       load_more: Зареждане на още
-    rss:
-      commented_at_html: Обновено преди %{when}
+  changeset_comments:
+    comment:
       commented_at_by_html: Обновено преди %{when} от %{user}
-      full: Пълно обсъждане
-  diary_entry:
+  diary_entries:
     new:
       title: Нов запис в дневника
       publish_button: Публикуване
@@ -214,11 +226,15 @@ bg:
       title_friends: Дневници на приятели
       title_nearby: Дневници на потребители наблизо
       user_title: Дневник на %{user}
+      in_language_title: Записи на %{language} в дневника
       new: Нов запис в дневника
+      new_title: Създаване на нов запис в моя потребителски дневник
       no_entries: Няма записи в дневника
+      recent_entries: Последни записи в дневника
       older_entries: По-стари записи
       newer_entries: По-нови записи
     edit:
+      title: Редактиране на запис в дневника
       subject: 'Тема:'
       body: 'Текст:'
       language: 'Език:'
@@ -362,6 +378,7 @@ bg:
           veterinary: Ветеринарна клиника
           village_hall: Кметство
           waste_basket: Кошче за боклук
+          waste_disposal: Контейнер за отпадъци
           water_point: Вода за животни
           youth_centre: Младежки център
         boundary:
@@ -404,7 +421,9 @@ bg:
           ford: Брод
           milestone: Километричен камък
           motorway: Магистрала
+          motorway_junction: Магистрален възел
           motorway_link: Скоростен път
+          passing_place: Място за преминаване
           path: Пътека
           pedestrian: Пешеходна пътека
           platform: Платформа
@@ -422,6 +441,7 @@ bg:
           steps: Стълбище
           stop: Знак Стоп
           street_lamp: Улична лампа
+          tertiary: Третокласен път
           track: Селски път
           traffic_signals: Светофар
           trunk: Междуградски път
@@ -509,11 +529,13 @@ bg:
           pier: Пирс
           silo: Силоз
           tower: Кула
+          water_well: Кладенец
           works: Фабрика
         military:
           airfield: Военно летище
           barracks: Казарма
           bunker: Бункер
+          "yes": Военен
         mountain_pass:
           "yes": Планински проход
         natural:
@@ -602,6 +624,7 @@ bg:
           beauty: Салон за красота
           beverages: Магазин за напитки
           bicycle: Магазин за велосипеди
+          bookmaker: Букмейкър
           books: Книжарница
           boutique: Бутик
           butcher: Месар
@@ -612,7 +635,11 @@ bg:
           clothes: Магазин за дрехи
           deli: Деликатесен магазин
           department_store: Универсален магазин
+          doityourself: Направи сам
           dry_cleaning: Химическо чистене
+          electronics: Магазин за електроника
+          estate_agent: Недвижими имоти
+          farm: Фермерски магазин
           fish: Рибен магазин
           florist: Цветарски магазин
           food: Хранителни стоки
@@ -628,6 +655,7 @@ bg:
           laundry: Пералня
           mall: Търговски център
           market: Пазар
+          massage: Масаж
           mobile_phone: Магазин за мобилни телефони
           music: Музикален магазин
           optician: Оптика
@@ -886,6 +914,11 @@ bg:
         title: IRC
       switch2osm:
         title: switch2osm
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: За организации
+        description: Вие сте от организация, която иска да работи с OpenStreetMap?
+          Ще получите необходимата информация на началната страница.
       wiki:
         url: http://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1058,7 +1091,7 @@ bg:
     form:
       name: Име
       allow_write_api: промяна на картата.
-  user:
+  users:
     login:
       title: Вписване
       heading: Вписване
@@ -1228,10 +1261,6 @@ bg:
       status: Статут
       showing_page: Страница %{page}
   notes:
-    rss:
-      closed: закрита бележка (около %{place})
-    entry:
-      comment: Коментар
     mine:
       creator: Автор
       ago_html: преди %{when}
@@ -1290,12 +1319,9 @@ bg:
         comment: Коментар
     directions:
       engines:
+        fossgis_osrm_car: Кола (OSRM)
         graphhopper_bicycle: Велосипед (GraphHopper)
         graphhopper_foot: Пеша (GraphHopper)
-        mapquest_bicycle: Велосипед (MapQuest)
-        mapquest_car: Кола (MapQuest)
-        mapquest_foot: Пеша (MapQuest)
-        osrm_car: Кола (OSRM)
       directions: Насоки
       distance: Разстояние
       instructions:

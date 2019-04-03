@@ -69,6 +69,11 @@ te:
         pass_crypt: సంకేతపదం
   editor:
     default: అప్రమేయం (ప్రస్తుతం %{name})
+  api:
+    notes:
+      entry:
+        comment: వ్యాఖ్య
+        full: పూర్తి గమనిక
   browse:
     created: 'సృష్టించబడినది:'
     closed: 'మూసివేయబడింది:'
@@ -132,7 +137,7 @@ te:
       description: వివరణ
     query:
       nearby: దగ్గర్లోని విశేషాలు
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: పేజీ %{page}
       next: తదుపరి »
@@ -149,9 +154,7 @@ te:
     index:
       title_user: '%{user} చేసిన మార్పులు'
       load_more: మరిన్ని చూపించు
-    rss:
-      full: పూర్తి చర్చ
-  diary_entry:
+  diary_entries:
     new:
       title: కొత్త దినచర్య పద్దు
       publish_button: ప్రచురించు
@@ -658,7 +661,7 @@ te:
     form:
       name: పేరు
       required: తప్పనిసరి
-  user:
+  users:
     login:
       title: ప్రవేశం
       heading: ప్రవేశం
@@ -840,9 +843,6 @@ te:
       next: తదుపరి »
       previous: « మునుపటి
   notes:
-    entry:
-      comment: వ్యాఖ్య
-      full: పూర్తి గమనిక
     mine:
       heading: '%{user} గమనికలు'
       description: వివరణ

@@ -38,12 +38,12 @@ OSM.History = function(map) {
   };
 
   function highlightChangeset(id) {
-    group.getLayer(id).setStyle({fillOpacity: 0.3});
+    group.getLayer(id).setStyle({fillOpacity: 0.3, color: "#FF6600", weight: 3});
     $("#changeset_" + id).addClass("selected");
   }
 
   function unHighlightChangeset(id) {
-    group.getLayer(id).setStyle({fillOpacity: 0});
+    group.getLayer(id).setStyle({fillOpacity: 0, color: "#FF9500", weight: 2});
     $("#changeset_" + id).removeClass("selected");
   }
 
@@ -89,19 +89,30 @@ OSM.History = function(map) {
     });
   }
 
-  function updateMap() {
+  var changesets = [];
+
+  function updateBounds() {
     group.clearLayers();
 
-    var changesets = [];
+    changesets.forEach(function(changeset) {
+      var bottomLeft = map.project(L.latLng(changeset.bbox.minlat, changeset.bbox.minlon)),
+          topRight = map.project(L.latLng(changeset.bbox.maxlat, changeset.bbox.maxlon)),
+          width = topRight.x - bottomLeft.x,
+          height = bottomLeft.y - topRight.y,
+          minSize = 20;  // Min width/height of changeset in pixels
 
-    $("[data-changeset]").each(function () {
-      var changeset = $(this).data('changeset');
-      if (changeset.bbox) {
-        changeset.bounds = L.latLngBounds(
-          [changeset.bbox.minlat, changeset.bbox.minlon],
-          [changeset.bbox.maxlat, changeset.bbox.maxlon]);
-        changesets.push(changeset);
+      if (width < minSize) {
+        bottomLeft.x -= ((minSize - width) / 2);
+        topRight.x += ((minSize - width) / 2);
       }
+
+      if (height < minSize) {
+        bottomLeft.y += ((minSize - height) / 2);
+        topRight.y -= ((minSize - height) / 2);
+      }
+
+      changeset.bounds = L.latLngBounds(map.unproject(bottomLeft),
+                                        map.unproject(topRight));
     });
 
     changesets.sort(function (a, b) {
@@ -111,10 +122,20 @@ OSM.History = function(map) {
     for (var i = 0; i < changesets.length; ++i) {
       var changeset = changesets[i],
         rect = L.rectangle(changeset.bounds,
-          {weight: 2, color: "#FF9500", opacity: 1, fillColor: "#FFFFBF", fillOpacity: 0});
+          {weight: 2, color: "#FF9500", opacity: 1, fillColor: "#FFFFAF", fillOpacity: 0});
       rect.id = changeset.id;
       rect.addTo(group);
     }
+  }
+
+  function updateMap() {
+    changesets = $("[data-changeset]").map(function (index,element) {
+      return $(element).data('changeset');
+    }).get().filter(function (changeset) {
+      return changeset.bbox;
+    });
+
+    updateBounds();
 
     if (window.location.pathname !== '/history') {
       var bounds = group.getBounds();
@@ -133,6 +154,8 @@ OSM.History = function(map) {
     if (window.location.pathname === '/history') {
       map.on("moveend", update);
     }
+
+    map.on("zoomend", updateBounds);
 
     update();
   };

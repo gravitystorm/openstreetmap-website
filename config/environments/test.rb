@@ -41,6 +41,12 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  # Export translations automatically
+  config.middleware.use I18n::JS::Middleware
+
   # Raises error for missing translations
   config.action_view.raise_on_missing_translations = true
+
+  # Use the test adapter for ActiveJob during testing
+  config.active_job.queue_adapter = :test
 end

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Require rails
-gem "rails", "5.2.0"
+gem "rails", "5.2.3"
 
 # Require things which have moved to gems in ruby 1.9
 gem "bigdecimal", "~> 1.1.0", :platforms => :ruby_19
@@ -45,7 +45,12 @@ gem "image_optim_rails"
 
 # Load rails plugins
 gem "actionpack-page_caching"
-gem "composite_primary_keys", "~> 11.0.0"
+gem "active_record_union"
+gem "activerecord-import"
+gem "cancancan"
+gem "composite_primary_keys", "~> 11.1.0"
+gem "config"
+gem "delayed_job_active_record"
 gem "dynamic_form"
 gem "http_accept_language", "~> 2.0.0"
 gem "i18n-js", ">= 3.0.0"
@@ -55,7 +60,7 @@ gem "paperclip", "~> 5.2"
 gem "rack-cors"
 gem "rails-i18n", "~> 4.0.0"
 gem "record_tag_helper"
-gem "rinku", ">= 1.2.2", :require => "rails_rinku"
+gem "rinku", "= 2.0.4", :require => "rails_rinku"
 gem "validates_email_format_of", ">= 1.5.1"
 
 # Native OSM extensions
@@ -68,13 +73,13 @@ gem "rack-uri_sanitizer"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-github"
-gem "omniauth-google-oauth2", ">= 0.2.7"
-gem "omniauth-mediawiki", ">= 0.0.3"
+gem "omniauth-google-oauth2", ">= 0.6.0"
+gem "omniauth-mediawiki", ">= 0.0.4"
 gem "omniauth-openid"
 gem "omniauth-windowslive"
 
 # Markdown formatting support
-gem "redcarpet"
+gem "kramdown"
 
 # For status transitions of Issues
 gem "aasm"
@@ -111,8 +116,11 @@ gem "canonical-rails"
 # Used to generate logstash friendly log files
 gem "logstasher"
 
-# Bulk import
-gem "activerecord-import"
+# Used to generate images for traces
+gem "gd2-ffij"
+
+# Used for browser detection
+gem "browser"
 
 # Gems useful for development
 group :development do
@@ -125,6 +133,7 @@ end
 
 # Gems needed for running tests
 group :test do
+  gem "fakefs", :require => "fakefs/safe"
   gem "minitest", "~> 5.1", :platforms => [:ruby_19, :ruby_20]
   gem "rails-controller-testing"
   gem "rubocop"
@@ -135,6 +144,7 @@ end
 group :development, :test do
   gem "capybara", "~> 2.13"
   gem "coveralls", :require => false
+  gem "erb_lint", :require => false
   gem "factory_bot_rails"
   gem "jshint"
   gem "poltergeist"

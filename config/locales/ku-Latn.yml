@@ -1,6 +1,7 @@
 # Messages for Kurdish (Latin script) (kurdî (latînî)‎)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Bikarhêner
 # Author: George Animal
 # Author: Ghybu
@@ -96,6 +97,29 @@ ku-Latn:
     remote:
       name: Ji Dûr Ve Îdarekirin
       description: Ji dûr ve kontrol (JOSM yan jî Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Berî %{when} hate çêkirin
+        opened_at_by_html: Berî %{when} ji aliyê %{user} ve hate çêkirin
+        commented_at_html: Berî %{when} hate nûkirin
+        commented_at_by_html: Berî %{when} ji aliyê %{user} ve hate rojanekirin
+        closed_at_html: Berî %{when} hatte çareserkirin
+        closed_at_by_html: Berî %{when} ji aliyê %{user} ve hate çareserkirin
+        reopened_at_html: Berî %{when} jinûve hate aktîvkirin
+        reopened_at_by_html: Berî %{when} ji aliyê %{user} ve jinûve hate aktîvkirin
+      rss:
+        title: Notên OpenStreetMapê
+        description_area: Lîsteya notên herêma te yên ku hatine raporkirin, şirovekirin
+          an jî girtin [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Ji bo nota %{id} xwedîkirina rss'ê
+        opened: notê nû (nêzîkê %{place})
+        commented: şiroveyê nû (nêzîkê %{place})
+        closed: notê girtî (nêzikê %{place})
+        reopened: nota jinûve aktîvkirî (nêzî %{place})
+      entry:
+        comment: Şîrove
+        full: Temamiya notê
   browse:
     created: Hate çêkirin
     closed: Hate girtin
@@ -233,7 +257,7 @@ ku-Latn:
         ser xerîteyê.
       nearby: Xisûsiyetên nêz
       enclosing: Taybetmendiyên muhtewa
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Rûpel %{page}
       next: Pêşve »
@@ -263,15 +287,15 @@ ku-Latn:
     timeout:
       sorry: Bibore, bidestxistina lîsteya desteyên guhertinan ê ku te xwest demeke
         dirêj girt.
-    rss:
-      title_all: Gotûbêja qeyda guhertinên OpenStreetMapê
-      title_particular: Gotûbêja qeyda guhertinan a %{changeset_id} yê OpenStreetMapê
+  changeset_comments:
+    comment:
       comment: Şîroveya nû yê li ser qeyda guhertinan a %{changeset_id} yê ji alî
         %{author} ve
-      commented_at_html: Berî %{when} hate rojanekirin
       commented_at_by_html: Berî %{when} ji aliyê %{user} ve hate rojanekirin
-      full: Temamiya Gotûbêjê
-  diary_entry:
+    index:
+      title_all: Gotûbêja qeyda guhertinên OpenStreetMapê
+      title_particular: Gotûbêja qeyda guhertinan a %{changeset_id} yê OpenStreetMapê
+  diary_entries:
     new:
       title: Nivîsa nû yê rojane
       publish_button: Biweșîne
@@ -354,11 +378,13 @@ ku-Latn:
     search:
       title:
         latlon: Encamên ji <a href="https://openstreetmap.org/"></a>
-        ca_postcode: Netîceyên ji <a href="https://geocoder.ca/"></a>
-        osm_nominatim: Netîceyên ji <a href="https://nominatim.openstreetmap.org/"></a>
-        geonames: Netîceyên ji <a href="http://www.geonames.org/"></a>
-        osm_nominatim_reverse: Netîceyên ji <a href="https://nominatim.openstreetmap.org/"></a>
-        geonames_reverse: Netîceyên ji <a href="http://www.geonames.org/"></a>
+        ca_postcode: Netîceyên ji <a href="https://geocoder.ca/">Geocoder.CA</a>
+        osm_nominatim: Netîceyên ji <a href="https://nominatim.openstreetmap.org/">OpenStreetMap
+          Nominatim</a>
+        geonames: Netîceyên ji <a href="http://www.geonames.org/">GeoNames</a>
+        osm_nominatim_reverse: Netîceyên ji <a href="https://nominatim.openstreetmap.org/">OpenStreetMap
+          Nominatim</a>
+        geonames_reverse: Netîceyên ji <a href="http://www.geonames.org/">GeoNames</a>
     search_osm_nominatim:
       prefix:
         aerialway:
@@ -1078,10 +1104,7 @@ ku-Latn:
     intro_text: OpenStreetMap xerîteyekî dinyayê ye ku ji aliyê kesên wek te ve tê
       çêkirin û emilandina we belaş e û di bin lîsansa azad de ye.
     intro_2_create_account: Ji xwe re hesabekî çêbike
-    partners_html: Pêşkêşkirina bernameyê ji alî %{ucl}, %{bytemark}, %{ic} û %{partners}
-      ve tê piştgirîkirin.
     partners_ucl: University College London
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: şirîkên me
     osm_offline: Databasa OpenStreetMapê vê gavê offline e ji ber ku niha xebatên
@@ -1868,11 +1891,6 @@ ku-Latn:
         kûkiyan di geroka xwe de aktîv bike.
     require_admin:
       not_an_admin: Ji bo ku tu vê kiryarê bikî divê tu bibî rêvebirek.
-    require_moderator:
-      not_a_moderator: Ji bo ku tu vê kiryarê bikî divê tu bibî moderatorek.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Ji bo ku tu vê kiryarê bikî divê tu ya bibî moderatorekî
-        ya jî rêvebirekî
     setup_user_auth:
       blocked_zero_hour: Li ser malpera OpenStreetMapê ji te re peyamek acîl heye.
         Berî ku tu guherandinên xwe qeyd bikî divê tu wê peyamê bixwînî.
@@ -1969,7 +1987,7 @@ ku-Latn:
       flash: Agahiyên mişteriyê bi serkeftinî hate nûkirin.
     destroy:
       flash: Sepana telebkar qeyda xwe ji holê rakir
-  user:
+  users:
     login:
       title: Têkeve
       heading: Têkeve
@@ -2291,8 +2309,6 @@ ku-Latn:
       button: Ji hevaltiyê derxe
       success: '%{name} ji hevalên te hate derxistin.'
       not_a_friend: '%{name} ne hevalê te ye.'
-    filter:
-      not_an_administrator: Ji bo ku tu vê kiryarê bikî divê tu bibî rêvebirek.
     index:
       title: Bikarhêner
       heading: Bikarhêner
@@ -2327,8 +2343,6 @@ ku-Latn:
         (ID'ya) xwe bi hesabê xwe ve girê bidî.
   user_role:
     filter:
-      not_an_administrator: Tenê rêvebir dikarin rêvebirina rola bikarhênerê bi cih
-        bînin, û tu ne rêvebirek î.
       not_a_role: '`%{role}'' ne rolek muteber e.'
       already_has_role: Bikarhêner jixwe xwediyê rola %{role} ye.
       doesnt_have_role: Bikahêner ne xwediyê rola %{role} ye.
@@ -2458,31 +2472,10 @@ ku-Latn:
       next: Pêşve »
       previous: « Paşve
   notes:
-    comment:
-      opened_at_html: Berî %{when} hate çêkirin
-      opened_at_by_html: Berî %{when} ji aliyê %{user} ve hate çêkirin
-      commented_at_html: Berî %{when} hate nûkirin
-      commented_at_by_html: Berî %{when} ji aliyê %{user} ve hate rojanekirin
-      closed_at_html: Berî %{when} hatte çareserkirin
-      closed_at_by_html: Berî %{when} ji aliyê %{user} ve hate çareserkirin
-      reopened_at_html: Berî %{when} jinûve hate aktîvkirin
-      reopened_at_by_html: Berî %{when} ji aliyê %{user} ve jinûve hate aktîvkirin
-    rss:
-      title: Notên OpenStreetMapê
-      description_area: Lîsteya notên herêma te yên ku hatine raporkirin, şirovekirin
-        an jî girtin [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Ji bo nota %{id} xwedîkirina rss'ê
-      opened: notê nû (nêzîkê %{place})
-      commented: şiroveyê nû (nêzîkê %{place})
-      closed: notê girtî (nêzikê %{place})
-      reopened: nota jinûve aktîvkirî (nêzî %{place})
-    entry:
-      comment: Şîrove
-      full: Temamiya notê
     mine:
       title: Notên ku ji aliyê %{user} ve hatine şandin an jî şirovekirin
       heading: Notên %{user}
-      subheading: Notên ku ji aliyê %{user} ve hatine şandin an jî şirovekirin
+      subheading_html: Notên ku ji aliyê %{user} ve hatine şandin an jî şirovekirin
       id: Id
       creator: Çêker
       description: Danasîn
@@ -2576,13 +2569,10 @@ ku-Latn:
     directions:
       ascend: Bilind bike
       engines:
+        fossgis_osrm_car: Erebe (OSRM)
         graphhopper_bicycle: Bisiklêt (GraphHopper)
         graphhopper_car: Erebe (GraphHopper)
         graphhopper_foot: Peyade (GraphHopper)
-        mapquest_bicycle: Bi bisiklêtê (MapQuest)
-        mapquest_car: Bi erebeyê (MapQuest)
-        mapquest_foot: Bi peyade (MapQuest)
-        osrm_car: Erebe (OSRM)
       descend: Nizm bûn
       directions: Îstiqametên rotayê
       distance: Mesafe

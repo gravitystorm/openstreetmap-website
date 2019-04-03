@@ -1,6 +1,7 @@
 # Messages for Scottish Gaelic (Gàidhlig)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Akerbeltz
 # Author: GunChleoc
 # Author: Macofe
@@ -97,6 +98,29 @@ gd:
     remote:
       name: Inneal-smachd cèin
       description: Inneal-smachd cèin (JOSM no Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Air a chruthachadh o chionn %{when}
+        opened_at_by_html: Air a chruthachadh o chionn %{when} le %{user}
+        commented_at_html: Air ùrachadh o chionn %{when}
+        commented_at_by_html: Air ùrachadh o chionn %{when} le %{user}
+        closed_at_html: Air fhuasgladh o chionn %{when}
+        closed_at_by_html: Air fhuasgladh o chionn %{when} le %{user}
+        reopened_at_html: Air ath-ghnìomhachadh o chionn %{when}
+        reopened_at_by_html: Air ath-ghnìomhachadh o chionn %{when} le %{user}
+      rss:
+        title: Nòtaichean OpenStreetMap
+        description_area: Liosta de nòtaichean a chaidh aithris, beachd a chur riutha
+          no a dhùnadh san raon agad [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Inbhir rss airson an nòta %{id}
+        opened: nòta ùr (faisg air %{place})
+        commented: beachd ùr (faisg air %{place})
+        closed: nòta dùinte (faisg air %{place})
+        reopened: nòta air ath-ghnìomhachadh (faisg air %{place})
+      entry:
+        comment: Beachd
+        full: Nòta slàn
   browse:
     created: Air a chruthachadh
     closed: Dùinte
@@ -229,7 +253,7 @@ gd:
       introduction: Briog air a' mhapa gus feartan faisg air a lorg.
       nearby: Feartan am fagas
       enclosing: Feartan timcheall air
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Duilleag %{page}
       next: Air adhart »
@@ -260,15 +284,15 @@ gd:
     timeout:
       sorry: Duilich ach thug e ro fhada gus an seata atharraichean a dh'iarr thu
         fhaighinn.
-    rss:
-      title_all: Deasbaireachd air seataichean atharraichean OpenStreetMap
-      title_particular: Deasbaireachd air seata atharraichean OpenStreetMap %{changeset_id}
+  changeset_comments:
+    comment:
       comment: Beachd ùr air seata atharraichean OpenStreetMap %{changeset_id} le
         %{author}
-      commented_at_html: Air ùrachadh o chionn %{when}
       commented_at_by_html: Air ùrachadh o chionn %{when} le %{user}
-      full: An deasbaireachd shlàn
-  diary_entry:
+    index:
+      title_all: Deasbaireachd air seataichean atharraichean OpenStreetMap
+      title_particular: Deasbaireachd air seata atharraichean OpenStreetMap %{changeset_id}
+  diary_entries:
     new:
       title: Clàr ùr an leabhair-latha
       publish_button: Foillsich
@@ -901,10 +925,7 @@ gd:
     intro_text: '''S e mapa an t-saoghail a tha san OpenStreetMap a chaidh a chruthachadh
       le daoine mar thu fhèin ''s a tha saor fo cheadachas fhosgailte.'
     intro_2_create_account: Cruthaich cunntas cleachdaiche
-    partners_html: Cuiridh an %{ucl}, an %{ic}, %{bytemark} agus %{partners} eile
-      taic ris an òstadh.
     partners_ucl: UCL VR Centre
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: com-pàirtichean eile
     osm_offline: Tha an stòr-dàta aig OpenStreetMap far loidhńe an-dràsta on a tha
@@ -1672,8 +1693,6 @@ gd:
     require_cookies:
       cookies_needed: Tha coltas gun do chuir thu briosgaidean à comas - feuch an
         cuir thu briosgaidean an comas sa bhrabhsair agad mus lean thu air adhart.
-    require_moderator:
-      not_a_moderator: Feumaidh tu bhith 'nad mhaor gus an gnìomh seo a dhèanamh.
     setup_user_auth:
       blocked: Chaidh an inntrigeadh agad dhan API a bhacadh. Feuch an clàraich thu
         a-steach gus am faigh an eadar-aghaidh-lìn barrachd fiosrachaidh dhut.
@@ -1773,7 +1792,7 @@ gd:
       flash: Chaidh fiosrachadh a' chliant ùrachadh gu soirbheachail
     destroy:
       flash: Chaidh clàradh na h-aplacaid cliant a mhilleadh
-  user:
+  users:
     login:
       title: Clàraich a-steach
       heading: Clàraich a-steach
@@ -2100,8 +2119,6 @@ gd:
       button: Thoir an càirdeas air falbh
       success: Chaidh %{name} a thoirt air falbh o na caraidean agad.
       not_a_friend: Chan eil càirdeas eadar thu fhèin agus %{name}.
-    filter:
-      not_an_administrator: Feumaidh tu bhith 'nad rianaire gus an gnìomh seo a dhèanamh.
     index:
       title: Cleachdaichean
       heading: Cleachdaichean
@@ -2129,8 +2146,6 @@ gd:
       invalid_credentials: Tha an dàta-dearbhaidh mì-dhligheach
   user_role:
     filter:
-      not_an_administrator: Chan fhaod ach rianairean dreuchdan nan cleachdaichean
-        a stiùireadh agus chan eil thu 'nad rianaire.
       not_a_role: Chan eil an dreuchd "%{role}" 'na dreuchd dhligheach.
       already_has_role: Tha an dreuchd "%{role}" aig a' chleachdaiche mar-thà.
       doesnt_have_role: Chan eil an dreuchd "%{role}" aig a' chleachdaiche.
@@ -2265,31 +2280,11 @@ gd:
       next: Air adhart »
       previous: « Air ais
   notes:
-    comment:
-      opened_at_html: Air a chruthachadh o chionn %{when}
-      opened_at_by_html: Air a chruthachadh o chionn %{when} le %{user}
-      commented_at_html: Air ùrachadh o chionn %{when}
-      commented_at_by_html: Air ùrachadh o chionn %{when} le %{user}
-      closed_at_html: Air fhuasgladh o chionn %{when}
-      closed_at_by_html: Air fhuasgladh o chionn %{when} le %{user}
-      reopened_at_html: Air ath-ghnìomhachadh o chionn %{when}
-      reopened_at_by_html: Air ath-ghnìomhachadh o chionn %{when} le %{user}
-    rss:
-      title: Nòtaichean OpenStreetMap
-      description_area: Liosta de nòtaichean a chaidh aithris, beachd a chur riutha
-        no a dhùnadh san raon agad [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Inbhir rss airson an nòta %{id}
-      opened: nòta ùr (faisg air %{place})
-      commented: beachd ùr (faisg air %{place})
-      closed: nòta dùinte (faisg air %{place})
-      reopened: nòta air ath-ghnìomhachadh (faisg air %{place})
-    entry:
-      comment: Beachd
-      full: Nòta slàn
     mine:
       title: Nòtaichean a chuir %{user} a-null no a thug %{user} beachd dhaibh
       heading: nòtaichean aig %{user}
-      subheading: Nòtaichean a chuir %{user} a-null no a thug %{user} beachd dhaibh
+      subheading_html: Nòtaichean a chuir %{user} a-null no a thug %{user} beachd
+        dhaibh
       id: Id
       creator: Cruthadair
       description: Tuairisgeul
@@ -2378,12 +2373,9 @@ gd:
       Briog an-seo an uairsin.
     directions:
       engines:
+        fossgis_osrm_car: Càr (OSRM)
         graphhopper_bicycle: Baidhseagal (GraphHopper)
         graphhopper_foot: Coiseachd (GraphHopper)
-        mapquest_bicycle: Baidhseagal (MapQuest)
-        mapquest_car: Càr (MapQuest)
-        mapquest_foot: Coiseachd (MapQuest)
-        osrm_car: Càr (OSRM)
       directions: Seòlaidhean
       distance: Astar
       errors:

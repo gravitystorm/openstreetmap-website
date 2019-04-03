@@ -157,7 +157,7 @@ be-Tarask:
       wikipedia_link: Артыкул %{page} у Вікіпэдыі
     note:
       title: 'Нататка: %{id}'
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Старонка %{page}
       next: Наступная »
@@ -180,7 +180,7 @@ be-Tarask:
     timeout:
       sorry: Прабачце, сьпіс набораў зьменаў, які Вы запыталі, занадта вялікі для
         атрыманьня.
-  diary_entry:
+  diary_entries:
     new:
       title: Новы запіс у дзёньніку
     index:
@@ -667,9 +667,7 @@ be-Tarask:
     edit_with: Рэдагаваць праз %{editor}
     tag_line: Вольная Wiki-мапа сьвету
     intro_2_create_account: Стварыце рахунак
-    partners_html: Гостынг падтрымліваецца %{ucl}, %{bytemark}, %{ic} і іншымі %{partners}.
     partners_ucl: UCL
-    partners_ic: Лёнданскім імпэрскім каледжам
     osm_offline: База зьвестак OpenStreetMap у цяперашні момант недаступная, таму
       што праводзяцца неабходныя тэхнічныя работы.
     osm_read_only: База зьвестак OpenStreetMap у цяперашні момант даступная толькі
@@ -870,6 +868,9 @@ be-Tarask:
           <strong>Аўстрыя</strong>: утрымлівае зьвесткі <a href="https://data.wien.gv.at/">гораду Вены</a> (на ўмовах
           <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>), а таксама земляў <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Форарльбэрг</a> і
           Тыроль (на ўмовах <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT з дапаўненьнямі</a>).
+        contributors_au_html: |-
+          <strong>Аўстралія</strong>: Утрымлівае зьвесткі пра прыгарады ад
+          Аўстралійскага бюро статыстыкі.
         contributors_ca_html: |-
           <strong>Канада</strong>: Утрымлівае зьвесткі
           GeoBase&reg;, GeoGratis (&copy; Дэпартамэнта прыродных рэсурсаў
@@ -882,10 +883,9 @@ be-Tarask:
           з <a href="https://data.linz.govt.nz/">LINZ Data Service</a> і ліцэнзаваныя
           для паўторнага выкарыстаньня паводле <a href="https://creativecommons.org/licenses/by/4.0/">CC
           BY 4.0</a>.'
-        contributors_gb_html: |-
-          <strong>Вялікабрытанія</strong>: Утрымлівае зьвесткі Ordnance
-          Survey &copy; Crown copyright and database right
-          2010—2012.
+        contributors_gb_html: '<strong>Вялікабрытанія</strong>: утрымлівае зьвесткі
+          апытаньня Ordnance &copy; Каралеўскія аўтарскія правы і правы на базу зьвестак
+          2010—2019.'
         contributors_footer_2_html: |-
           Уключэньне зьвестак у OpenStreetMap не азначае, што пастаўшчыкі пачатковых зьвестак
           якім-небудзь чынам падтрымліваюць OpenStreetMap, прадстаўляюць гарантыі, ці
@@ -1212,7 +1212,7 @@ be-Tarask:
       flash: Кліенцкая інфармацыя была абноўленая пасьпяхова
     destroy:
       flash: Зьнішчаная рэгістрацыя кліенцкага дастасаваньня
-  user:
+  users:
     login:
       title: Увайсьці
       heading: Уваход
@@ -1468,9 +1468,6 @@ be-Tarask:
     remove_friend:
       success: '%{name} быў выдалены з Вашага сьпісу сяброў.'
       not_a_friend: '%{name} не зьяўляецца Вашым сябрам.'
-    filter:
-      not_an_administrator: Вам неабходна быць адміністратарам, каб выканаць гэтае
-        дзеяньне.
     index:
       title: Удзельнікі
       heading: Карыстальнікі
@@ -1492,8 +1489,6 @@ be-Tarask:
         абмеркаваць.\n</p>"
   user_role:
     filter:
-      not_an_administrator: Толькі адміністратары могуць кіраваць ролямі карыстальнікаў,
-        а Вы не зьяўляецеся адміністратарам.
       not_a_role: Радок «%{role}» не зьяўляецца слушнай роляй.
       already_has_role: Карыстальнік ужо мае ролю %{role}.
       doesnt_have_role: Карыстальнік ня мае ролі %{role}.

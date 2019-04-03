@@ -9,6 +9,7 @@
 # Author: Kumkumuk
 # Author: Marmase
 # Author: Mirzali
+# Author: Orbot707
 ---
 diq:
   time:
@@ -36,7 +37,7 @@ diq:
       old_way: Raya Verên
       old_way_node: Raya Verên Qedyin
       old_way_tag: Etiketê Rayda Verên
-      relation: Eleqe
+      relation: Elaqe
       relation_member: Ezayê Têkıliye
       relation_tag: Etiketê Têkıliye
       session: Ronıştış
@@ -51,7 +52,7 @@ diq:
       way_tag: Etikete ray
     attributes:
       diary_comment:
-        body: Vêrey mesaci
+        body: Metın
       diary_entry:
         user: Karber
         title: Mewzu
@@ -73,7 +74,7 @@ diq:
       message:
         sender: Rıster
         title: Mewzu
-        body: Mesac
+        body: Metın
         recipient: Grotker
       user:
         email: E-posta
@@ -96,9 +97,13 @@ diq:
     remote:
       name: Duri da qontrol
       description: Duri ra Qonrtol (JOSM yana  Merkaartor)
+  api:
+    notes:
+      entry:
+        comment: Mışewre
   browse:
-    created: Vıraziye
-    closed: Racneya
+    created: Vıraziya
+    closed: Kerd kip
     created_html: Verê <abbr title='%{title}'>%{time} de</abbr> vıraziyo
     closed_html: Verê <abbr title='%{title}'>%{time} de</abbr> kılid biyo
     version: Versiyon
@@ -107,7 +112,7 @@ diq:
     no_comment: (be vatış)
     part_of: Letey
     download_xml: XML ron
-    view_history: Tarixi Bıvêne
+    view_history: Verênan bıvêne
     view_details: Teferuatan Bıvêne
     location: 'Lokasyon:'
     changeset:
@@ -117,8 +122,8 @@ diq:
       node_paginated: pero piya (%{x}-%{y} - %{count}) noqtey
       way: '%{count} ray'
       way_paginated: Ray (%{x}-%{y} - pêro piya  %{count})
-      relation: Eleqey %{count}
-      relation_paginated: Eleqey %{x}-%{y} pêro piya %{count}
+      relation: Elaqeyi %{count}
+      relation_paginated: Elaqeyi %{x}-%{y} pêro piya %{count}
       comment: Mışewreyi (%{count})
       changesetxml: Vurnayışê peyênê XML
       osmchangexml: OsmVurnayışê XML
@@ -137,7 +142,7 @@ diq:
         one: letey ray %{related_ways}
         other: letey rayer %{related_ways}
     relation:
-      title: Eleqe:%{name}
+      title: 'Elaqe: %{name}'
       history_title: 'Verorê eleqey: %{name}'
       members: Ezay
     relation_member:
@@ -145,23 +150,23 @@ diq:
       type:
         node: Qedyin
         way: Ray
-        relation: Eleqe
+        relation: Elaqe
     containing_relation:
-      entry: Eleqe %{relation_name}
+      entry: Elaqe %{relation_name}
       entry_role: Eleqe %{relation_name} (%{relation_role} deye)
     not_found:
       sorry: 'Qısur mewni,  #%{id} numreya %{type} nêvine yê.'
       type:
         node: qedyin
         way: ray
-        relation: eleqe
+        relation: elaqe
         changeset: Qeydê Vurnayışan
         note: Not
     timeout:
       type:
         node: qedyin
         way: ray
-        relation: eleqe
+        relation: elaqe
         changeset: Qeydê Vurnayışan
         note: Not
     redacted:
@@ -169,7 +174,7 @@ diq:
       type:
         node: qedyin
         way: ray
-        relation: eleqe
+        relation: elaqe
     start_rjs:
       load_data: Malumat Barke
       loading: Bar beno...
@@ -185,7 +190,7 @@ diq:
       introduction: Xısusiyetanê nezdiyan vinayışi rê xeriter sero bıploğnê
       nearby: Nezdıra xısusiyeti
       enclosing: Muhtewa xısusiyeti
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Pele %{page}
       next: Peyên »
@@ -206,32 +211,39 @@ diq:
       title_friend: Qeydê vurnayışê embazan
       title_nearby: Nezdıra vurriyayışê setê karberi
       load_more: Dehana vêşi
-    rss:
-      full: Heme werênayış
-  diary_entry:
+  diary_entries:
     new:
       publish_button: Vıla ke
     index:
       user_title: '%{user} (Rocek)'
     edit:
       subject: 'Mewzu:'
-      body: 'Vêrey mesaci:'
+      body: 'Metın:'
       language: 'Zıwan:'
-      location: Lokasyon
+      location: 'Lokasyon:'
       latitude: 'Verıniye:'
       longitude: 'Derganiye:'
+      use_map_link: xerita bıgurene
       save_button: Qeyd ke
+      marker_text: Lokasyonê rocekê cıkewtışi
     show:
+      leave_a_comment: Yew mışewre bınuse
+      login_to_leave_a_comment: Seba mışewreyi rê %{login_link}
       login: Cıkewtış
       save_button: Qeyd ke
+    no_such_entry:
+      title: Rocekê cıkewtışanê wınasiyan çıniyo
     diary_entry:
-      edit_link: Nê dekewti bıvurne
-      hide_link: Nê dekewti bınımne
+      edit_link: Nê cıkewtışi bıvurne
+      hide_link: Nê cıkewtışi bınımne
       confirm: Tesdiq ke
+      report: Nê cıkewtışi rapor ke
     diary_comment:
+      hide_link: Nê mışewreyi bınımne
       confirm: Tesdiq ke
+      report: Nê mışewreyi rapor ke
     location:
-      location: 'Herun:'
+      location: 'Lokasyon:'
       view: Bıvêne
       edit: Bıvurne
     comments:
@@ -652,10 +664,10 @@ diq:
         towns: Bacari
         places: Cayi
   layouts:
-    logout: veciyayış
-    log_in: cı kewe
-    sign_up: qeyd be
-    edit: Bıvırne
+    logout: Bıveciye
+    log_in: Cı kewe
+    sign_up: Qeyd be
+    edit: Bıvurne
     history: Tarix
     export: Teberdayış
     data: Melumati
@@ -663,6 +675,7 @@ diq:
     copyright: Heqa telıfi
     community: Cemaet
     community_blogs: Blogê Cemaeti
+    learn_more: Tayêna bımuse
   notifier:
     diary_comment_notification:
       hi: Merheba %{to_user},
@@ -687,9 +700,9 @@ diq:
       title: Ameyan
       my_inbox: Amayenê mı
       outbox: Rışteyan
-      from: Kêra
+      from: Rıştoğ
       subject: Mewzu
-      date: Dem
+      date: Tarix
     message_summary:
       reply_button: Cewab bıde
       destroy_button: Bestere
@@ -704,9 +717,9 @@ diq:
       outbox: Rışteyan
       to: Kêrê
       subject: Mewzu
-      date: Dem
+      date: Tarix
     show:
-      title: Mesaci bıwanê
+      title: Mesaci bıwane
       subject: Mewzu
       date: Dem
       reply_button: Cewab bıde
@@ -752,10 +765,11 @@ diq:
       output: Vıcyaen
       export_button: Teberdayış
     sidebar:
-      search_results: Neticeyê geyrayışi
-      close: Racnê
+      search_results: Peyniya cıgeyrayışi
+      close: Kip ke
     search:
       search: Cı geyre
+      from: Rıştoğ
       where_am_i: Edo kotideya?
       submit_text: Şo
     key:
@@ -794,7 +808,7 @@ diq:
       link: Gıre
       text: Metın
       image: Resım
-      url: GRE
+      url: URL
     welcome:
       title: Xeyr amey!
   traces:
@@ -805,17 +819,17 @@ diq:
       help: Peşti
     edit:
       filename: 'Namey dosya:'
-      download: ron
+      download: biya war
       uploaded_at: 'Bar biyo:'
       points: 'Dawte:'
       map: xerite
       edit: bıvurne
       owner: 'Wayir:'
-      description: 'Şınasiyen:'
+      description: 'Şınasnayış:'
       tags: 'Etiketi:'
       visibility: Vinayîşî
     trace_optionals:
-      tags: Etiketan
+      tags: Etiketi
     show:
       title: Rêça %{name} mocnêyêna
       heading: Rêça %{name} mocnêyêna
@@ -828,7 +842,7 @@ diq:
       map: xerite
       edit: bıvırne
       owner: 'Wayir:'
-      description: 'Şınasiyen:'
+      description: 'Şınasnayış:'
       tags: 'Etiketi:'
       none: Çıniyo
     trace_paging_nav:
@@ -867,7 +881,7 @@ diq:
     form:
       name: Name
       required: Mecburiyo
-  user:
+  users:
     login:
       title: Cıkewtış
       heading: Cıkewtış
@@ -904,7 +918,7 @@ diq:
       continue: Qeyd be
     terms:
       consider_pd_why: no çıko?
-      agree: Qebul kena
+      agree: Qebul ke
       decline: Red kerê
       legale_names:
         france: Fransa
@@ -1067,7 +1081,7 @@ diq:
     block:
       not_revoked: (nê terkiyayo)
       show: Bımocne
-      edit: Bıvırne
+      edit: Bıvurne
       revoke: Terkne!
     blocks:
       display_name: Karberê kılitbiyayey
@@ -1078,13 +1092,19 @@ diq:
       next: Peyên »
       previous: « Verên
   notes:
-    entry:
-      comment: Mışewre
+    mine:
+      description: Şınasnayış
   javascripts:
+    close: Kip ke
     share:
+      title: Vıla ke
       cancel: Bıtexelne
       image: Resım
+      download: Biya war
     map:
+      zoom:
+        in: Nêzdi ke
+        out: Dûri fiye
       base:
         standard: Standard
         cycle_map: Xeritay Topoğrafiki
@@ -1095,18 +1115,25 @@ diq:
       show:
         comment: Mışewre
         hide_comment: bınımne
+        unhide_comment: menımne
     notes:
       show:
+        hide: Bınımne
         comment: Mışewre
     directions:
+      engines:
+        fossgis_osrm_bike: Bisiklet (OSRM)
+        fossgis_osrm_foot: Lınge (OSRM)
       time: Zeman
+    query:
+      relation: Elaqe
   redactions:
     edit:
       description: Şınasnayış
     new:
       description: Şınasnayış
     show:
-      description: 'Şınasiyen:'
+      description: 'Şınasnayış:'
       user: Vıraştoğ
       confirm: Vac welay?
 ...

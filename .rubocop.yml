@@ -1,7 +1,7 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.5
 
 Rails:
   Enabled: true
@@ -45,7 +45,7 @@ Rails/InverseOf:
 Rails/SkipsModelValidations:
   Exclude:
     - 'db/migrate/*.rb'
-    - 'app/controllers/user_controller.rb'
+    - 'app/controllers/users_controller.rb'
 
 Style/BracesAroundHashParameters:
   EnforcedStyle: context_dependent
@@ -55,10 +55,6 @@ Style/FormatStringToken:
 
 Style/IfInsideElse:
   Enabled: false
-
-Style/GlobalVars:
-  Exclude:
-    - 'lib/quad_tile/extconf.rb'
 
 Style/GuardClause:
   Enabled: false

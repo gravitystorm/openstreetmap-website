@@ -57,7 +57,7 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different log path in production.
-  config.paths["log"] = LOG_PATH if defined?(LOG_PATH)
+  config.paths["log"] = Settings.log_path if Settings.key?(:log_path)
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -95,8 +95,11 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false unless STATUS == :database_offline
+  config.active_record.dump_schema_after_migration = false unless Settings.status == "database_offline"
 
   # Enable autoloading of dependencies.
   config.enable_dependency_loading = true
+
+  # Use delayed job to queue jobs in production.
+  config.active_job.queue_adapter = :delayed_job
 end

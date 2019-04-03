@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: phpyaml
 # Author: 0x010C
+# Author: Abijeet Patro
 # Author: Alno
 # Author: Boniface
 # Author: Cquoi
@@ -15,6 +16,7 @@
 # Author: Eruedin
 # Author: EtienneChove
 # Author: F.rodrigo
+# Author: Florimondable
 # Author: Framafan
 # Author: Freak2fast4u
 # Author: Frigory
@@ -64,12 +66,17 @@
 # Author: Wladek92
 # Author: Yodaspirine
 # Author: Yvecai
+# Author: Zarisi
 ---
 fr:
   time:
     formats:
       friendly: '%e %B %Y à %-Hh%M'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: ne semble pas être une adresse de courriel valide
+        email_address_not_routable: n'est pas routable
     models:
       acl: Liste de contrôle d’accès
       changeset: Groupe de modifications
@@ -153,6 +160,29 @@ fr:
     remote:
       name: Éditeur externe
       description: Éditeur externe (JOSM ou Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Créé il y a %{when}
+        opened_at_by_html: Créé il y a %{when} par « %{user} »
+        commented_at_html: Mis à jour il y a %{when}
+        commented_at_by_html: Mis à jour il y a %{when} par « %{user} »
+        closed_at_html: Résolu il y a %{when}
+        closed_at_by_html: Résolu il y a %{when} par « %{user} »
+        reopened_at_html: Réactivé il y a %{when}
+        reopened_at_by_html: Réactivé il y a %{when} par « %{user} »
+      rss:
+        title: Notes OpenStreetMap
+        description_area: Une liste de notes, signalées, commentées ou fermées dans
+          votre zone [(%{min_lat}, %{min_lon}) – (%{max_lat}, %{max_lon})]
+        description_item: Un fil RSS pour la note %{id}
+        opened: nouvelle note (près de %{place})
+        commented: nouveau commentaire (près de %{place})
+        closed: note fermée (près de %{place})
+        reopened: note réactivée (près de %{place})
+      entry:
+        comment: Commentaire
+        full: Note complète
   browse:
     created: Créé
     closed: Fermé
@@ -279,7 +309,7 @@ fr:
       introduction: Cliquer sur la carte pour trouver les objets à proximité.
       nearby: Objets à proximité
       enclosing: Objets englobants
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Page %{page}
       next: Suivant »
@@ -289,7 +319,7 @@ fr:
       no_edits: (aucune modification)
       view_changeset_details: Afficher les détails du groupe de modifications
     changesets:
-      id: Identifiant
+      id: ID
       saved_at: Enregistré le
       user: Utilisateur
       comment: Commentaire
@@ -309,16 +339,22 @@ fr:
     timeout:
       sorry: Désolé, la liste des groupes de modifications que vous avez demandée
         met trop de temps pour être chargée.
-    rss:
+  changeset_comments:
+    comment:
+      comment: Nouveau commentaire sur le groupe de modifications nº %{changeset_id}
+        par %{author}
+      commented_at_by_html: Mis à jour il y a %{when} par %{user}
+    comments:
+      comment: Nouveau commentaire sur le groupe de modifications n° %{changeset_id}
+        par %{author}
+    index:
       title_all: Discussion sur le groupe de modifications OpenStreetMap
       title_particular: Discussion sur le groupe de modifications OpenStreetMap nº
         %{changeset_id}
-      comment: Nouveau commentaire sur le groupe de modifications nº %{changeset_id}
-        par %{author}
-      commented_at_html: Mis à jour il y a %{when}
-      commented_at_by_html: Mis à jour il y a %{when} par %{user}
-      full: Discussion complète
-  diary_entry:
+    timeout:
+      sorry: Désolé, la liste des commentaires d’ensembles de modifications que vous
+        avez demandée est trop longue à récupérer.
+  diary_entries:
     new:
       title: Nouvelle entrée du journal
       publish_button: Publier
@@ -330,8 +366,8 @@ fr:
       in_language_title: Entrées du journal en %{language}
       new: Nouvelle entrée du journal
       new_title: Écrire une nouvelle entrée dans mon journal utilisateur
-      no_entries: Aucun article de journal
-      recent_entries: Articles récents du journal
+      no_entries: Aucune entrée de journal
+      recent_entries: Entrées récentes du journal
       older_entries: Entrées plus anciennes
       newer_entries: Entrées plus récentes
     edit:
@@ -350,18 +386,18 @@ fr:
       user_title: Journal de %{user}
       leave_a_comment: Laisser un commentaire
       login_to_leave_a_comment: '%{login_link} pour laisser un commentaire'
-      login: Utilisateur
+      login: Se connecter
       save_button: Enregistrer
     no_such_entry:
-      title: Aucune entrée du journal n’a été trouvée
+      title: Pas d’entrée du journal correspondante
       heading: 'Aucune entrée avec l’id : %{id}'
-      body: Desolé, il n’y a aucune entrée dans le journal ni aucun commentaire avec
-        l’id %{id}. Veuillez vérifier votre orthographe ou la validité du lien que
-        vous avez cliqué.
+      body: Désolé, il n’y a aucune entrée ou commentaire dans le journal avec l’id
+        %{id}. Veuillez vérifier votre orthographe ou la validité du lien que vous
+        avez cliqué.
     diary_entry:
       posted_by: Publié par %{link_user} à %{created} en %{language_link}
       comment_link: Commenter cette entrée
-      reply_link: Répondre à cet article
+      reply_link: Répondre à cette entrée
       comment_count:
         zero: Aucun commentaire
         one: '%{count} commentaire'
@@ -381,15 +417,15 @@ fr:
       edit: Modifier
     feed:
       user:
-        title: Articles du journal OpenStreetMap de %{user}
-        description: Articles récents du journal OpenStreetMap de %{user}
+        title: Entrées du journal OpenStreetMap de %{user}
+        description: Entrées récentes du journal OpenStreetMap de %{user}
       language:
-        title: Articles de journaux OpenStreetMap en %{language_name}
-        description: Articles récents des journaux d’utilisateurs d’OpenStreetMap
+        title: Entrées du journal OpenStreetMap en %{language_name}
+        description: Entrées récentes des journaux d’utilisateurs d’OpenStreetMap
           en %{language_name}
       all:
-        title: Articles des journaux OpenStreetMap
-        description: Articles récents des journaux d’utilisateurs OpenStreetMap
+        title: Entrées des journaux OpenStreetMap
+        description: Entrées récentes des journaux d’utilisateurs de OpenStreetMap
     comments:
       has_commented_on: '%{display_name} a commenté les entrées de journal suivantes'
       post: Article
@@ -709,7 +745,7 @@ fr:
           embankment: Talus
           flagpole: Mât de drapeau
           gasometer: Gazomètre
-          groyne: Épi de plage
+          groyne: Épi
           kiln: Four
           lighthouse: Phare
           mast: Mât / pylône
@@ -933,7 +969,7 @@ fr:
           "yes": Boutique
         tourism:
           alpine_hut: Refuge
-          apartment: Meublé de tourisme
+          apartment: Appartement de vacances
           artwork: Œuvre d’art
           attraction: Attraction
           bed_and_breakfast: Gîte
@@ -1096,7 +1132,7 @@ fr:
           other_label: Autre
         note:
           spam_label: Cette note est du pourriel
-          personal_label: Ce note contient des données personnelles
+          personal_label: Cette note contient des données personnelles
           abusive_label: Cette note est injurieuse
           other_label: Autre
     create:
@@ -1128,10 +1164,9 @@ fr:
     intro_text: OpenStreetMap est une carte du monde, créée par des gens comme vous
       et libre d’utilisation sous licence libre.
     intro_2_create_account: Créez un compte d’utilisateur
-    partners_html: L’hébergement est pris en charge par %{ucl}, %{bytemark}, %{ic}
+    hosting_partners_html: L’hébergement est pris en charge par %{ucl}, %{bytemark},
       et d’autres %{partners}.
     partners_ucl: L’University College de Londres
-    partners_ic: le Collège impérial de Londres
     partners_bytemark: l'hébergeur Bytemark
     partners_partners: partenaires
     osm_offline: La base de données OpenStreetMap est actuellement hors ligne ; une
@@ -1450,6 +1485,10 @@ fr:
           la <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">région
           du Vorarlberg</a> et la région du Tyrol (sous licence <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC
           BY AT avec amendements</a>).'
+        contributors_au_html: "<strong>Australie</strong> : contient des données source
+          de \n<a href=\"https://www.psma.com.au/psma-data-copyright-and-disclaimer\">PSMA
+          Australia Limited</a>\ndont la licence appartient au Commonwealth d'Australie
+          sous \n<a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a>."
         contributors_ca_html: '<strong>Canada</strong> : contient des données de <em>GeoBase</em>®,
           <em>GeoGratis</em> (© Département des Ressources naturelles du Canada),
           <em>CanVec</em> (© Département des Ressources naturelles du Canada) et <em>StatCan</em>
@@ -1471,12 +1510,17 @@ fr:
           l’<a href="http://www.gu.gov.si/en/">Autorité de Planification et de Cartographie</a>
           et du <a href="http://www.mkgp.gov.si/en/">Ministère de l’Agriculture, de
           la Forêt et de l’Alimentation</a> (information publique de la Slovénie).'
+        contributors_es_html: '<strong>Espagne</strong>: contient des données fournies
+          par l''Institut Géographique National Espagnol (<a href="http://www.ign.es/">IGN</a>)
+          et le Système Cartographique National (<a href="http://www.scne.es/">SCNE</a>)
+          sous licence <a href="https://creativecommons.org/licenses/by/4.0/">CC BY
+          4.0</a> pour la réutilisation .'
         contributors_za_html: |-
           <strong>Afrique du Sud</strong> : contient des données issues de la <a href="http://www.ngi.gov.za/">Direction principale des
           Informations Géospatiales Nationales</a>, copyright de l’État réservé.
         contributors_gb_html: '<strong>Royaume-Uni</strong> : contient des données
-          issues de l’<em>Ordnance Survey</em> © 2010-2012 Droits d’auteurs et de
-          la base de données de la Couronne.'
+          issues de l’<em>Ordnance Survey</em> &copy; 2010-2019 Droits d’auteurs et
+          de la base de données de la Couronne.'
         contributors_footer_1_html: Pour plus de détails sur celles-ci et sur les
           autres sources utilisées pour aider à améliorer OpenStreetMap, consultez
           la page des <a href="https://wiki.openstreetmap.org/wiki/Contributors">contributeurs</a>
@@ -1637,6 +1681,11 @@ fr:
         title: switch2osm
         description: Aide pour les entreprises et les organisations de commutation
           à OpenStreetMap, en fonction des cartes et d’autres services.
+      welcomemat:
+        url: https://wiki.openstreetmap.org/wiki/FR:Page_principale
+        title: Pour les organisations
+        description: Dans une organisation qui fait des plans pour OpenStreetMap ?
+          Trouvez ce que vous avez besoin de savoir dans le tapis d’accueil.
       wiki:
         url: https://wiki.openstreetmap.org/wiki/FR:Page_principale
         title: wiki.openstreetmap.org
@@ -1665,11 +1714,11 @@ fr:
           unclassified: Route non classifiée
           track: Piste
           bridleway: Sentier équestre
-          cycleway: Voie cyclable
-          cycleway_national: Piste cyclable nationale
-          cycleway_regional: Piste cyclable régionale
-          cycleway_local: Piste cyclable locale
-          footway: Voie piétonne
+          cycleway: Piste cyclable
+          cycleway_national: Itinéraire cyclable national
+          cycleway_regional: Itinéraire cyclable régional
+          cycleway_local: Itinéraire cyclable local
+          footway: Chemin piéton
           rail: Voie de chemin de fer
           subway: Ligne de métro
           tram:
@@ -1728,7 +1777,7 @@ fr:
       edit: Modifier
       preview: Aperçu
     markdown_help:
-      title_html: Analysé avec <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Analysé avec <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Titres
       heading: Titre
       subheading: Sous-titre
@@ -1783,7 +1832,7 @@ fr:
         title: Des questions ?
         paragraph_1_html: |-
           OpenStreetMap propose plusieurs ressources pour apprendre à travailler dans le projet, pour poser des questions et y répondre, et pour discuter et documenter les sujets de cartographie en collaboration avec d’autres utilisateurs.
-          <a href='%{help_url}'>Trouvez de l’aide ici</a>.
+          <a href='%{help_url}'>Trouver de l’aide ici</a>. Dans une organisation qui fait des plans pour OpenStreetMap ? <a href='https://welcome.openstreetmap.org/'>Vérifiez votre tapis d’accueil</a>.
       start_mapping: Commencer à cartographier
       add_a_note:
         title: Pas le temps d’effectuer les modifications ? Ajoutez une note !
@@ -1919,16 +1968,12 @@ fr:
         other: Fichier GPX avec %{count} points de %{user}
       description_without_count: Fichier GPX de %{user}
   application:
+    permission_denied: Vous n'avez pas la permission d’accéder à cette action
     require_cookies:
       cookies_needed: Il semble que les témoins (cookies) soient désactivés sur votre
         navigateur. Veuillez les activer avant de continuer.
     require_admin:
       not_an_admin: Vous devez être un administrateur pour effectuer cette action.
-    require_moderator:
-      not_a_moderator: Vous devez être modérateur pour effectuer cette action.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Vous devez être un modérateur ou un administrateur
-        pour effectuer cette action
     setup_user_auth:
       blocked_zero_hour: Vous avez un message urgent sur le site web OpenStreetMap.
         Vous devez lire le message avant de pouvoir enregistrer vos modifications.
@@ -2031,7 +2076,7 @@ fr:
       flash: Informations du client enregistrées avec succès
     destroy:
       flash: Enregistrement de l’application cliente supprimé
-  user:
+  users:
     login:
       title: Se connecter
       heading: Connexion
@@ -2155,9 +2200,11 @@ fr:
       consider_pd: En plus de l’accord ci-dessus, je considère mes contributions comme
         étant dans le domaine public
       consider_pd_why: qu’est-ce que ceci ?
+      consider_pd_why_url: https://www.osmfoundation.org/wiki/License/Why_would_I_want_my_contributions_to_be_public_domain
       guidance: 'Pour plus d''information sur ces termes : un <a href="%{summary}">résumé
         lisible</a> et quelques <a href="%{translations}">traductions informelles</a>'
       agree: J’accepte
+      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Décliner
       you need to accept or decline: Veuillez lire et ensuite soit accepter ou refuser
         les nouvelles conditions de contributeur pour continuer.
@@ -2358,8 +2405,6 @@ fr:
       button: Supprimer en tant qu’ami
       success: '%{name} a été retiré de vos amis.'
       not_a_friend: '%{name} n’est pas parmi vos amis.'
-    filter:
-      not_an_administrator: Vous devez être administrateur pour effectuer cette action.
     index:
       title: Utilisateurs
       heading: Utilisateurs
@@ -2398,8 +2443,6 @@ fr:
         votre ID dans vos préférences utilisateur.
   user_role:
     filter:
-      not_an_administrator: Seuls les administrateurs peuvent gérer les rôles mais
-        vous n’êtes pas administrateur.
       not_a_role: La chaîne « %{role} » n’est pas un rôle valide.
       already_has_role: L’utilisateur possède déjà le rôle « %{role} ».
       doesnt_have_role: L’utilisateur n’a pas le rôle « %{role} ».
@@ -2530,31 +2573,10 @@ fr:
       next: Suivant »
       previous: « Précédent
   notes:
-    comment:
-      opened_at_html: Créé il y a %{when}
-      opened_at_by_html: Créé il y a %{when} par « %{user} »
-      commented_at_html: Mis à jour il y a %{when}
-      commented_at_by_html: Mis à jour il y a %{when} par « %{user} »
-      closed_at_html: Résolu il y a %{when}
-      closed_at_by_html: Résolu il y a %{when} par « %{user} »
-      reopened_at_html: Réactivé il y a %{when}
-      reopened_at_by_html: Réactivé il y a %{when} par « %{user} »
-    rss:
-      title: Notes OpenStreetMap
-      description_area: Une liste de notes, signalées, commentées ou fermées dans
-        votre zone [(%{min_lat}, %{min_lon}) – (%{max_lat}, %{max_lon})]
-      description_item: Un fil RSS pour la note %{id}
-      opened: nouvelle note (près de %{place})
-      commented: nouveau commentaire (près de %{place})
-      closed: note fermée (près de %{place})
-      reopened: note réactivée (près de %{place})
-    entry:
-      comment: Commentaire
-      full: Note complète
     mine:
       title: Notes soumises ou commentées par « %{user} »
       heading: Notes de « %{user} »
-      subheading: Notes soumises ou commentées par « %{user} »
+      subheading_html: Notes soumises ou commentées par « %{user} »
       id: Identifiant
       creator: Créateur
       description: Description
@@ -2648,13 +2670,12 @@ fr:
     directions:
       ascend: Croissant
       engines:
+        fossgis_osrm_bike: À bicyclette (OSRM)
+        fossgis_osrm_car: En voiture (<i>OSRM</i>)
+        fossgis_osrm_foot: À pied (OSRM)
         graphhopper_bicycle: À vélo (<i>GraphHopper</i>)
         graphhopper_car: En voiture (GraphHopper)
         graphhopper_foot: À pied (<i>GraphHopper</i>)
-        mapquest_bicycle: À vélo (<i>MapQuest</i>)
-        mapquest_car: En voiture (<i>MapQuest</i>)
-        mapquest_foot: À pied (<i>MapQuest</i>)
-        osrm_car: En voiture (<i>OSRM</i>)
       descend: Décroissant
       directions: Itinéraire
       distance: Distance
@@ -2785,4 +2806,9 @@ fr:
         appartenant à ce masquage avant de le supprimer.
       flash: Masquage supprimé.
       error: Une erreur est survenue lors de la suppression de ce masquage.
+  validations:
+    leading_whitespace: a des espaces au début
+    trailing_whitespace: a des espaces à la fin
+    invalid_characters: contient des caractères non valides
+    url_characters: contient des caractères d’URL spéciaux (%{characters})
 ...

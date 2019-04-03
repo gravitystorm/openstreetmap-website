@@ -1,20 +1,15 @@
 class TracesController < ApplicationController
   layout "site", :except => :georss
 
-  skip_before_action :verify_authenticity_token, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
   before_action :authorize_web
   before_action :set_locale
-  before_action :require_user, :only => [:mine, :new, :create, :edit, :delete]
-  before_action :authorize, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
-  before_action :check_database_readable, :except => [:api_read, :api_data]
-  before_action :check_database_writable, :only => [:new, :create, :edit, :delete, :api_create, :api_update, :api_delete]
-  before_action :check_api_readable, :only => [:api_read, :api_data]
-  before_action :check_api_writable, :only => [:api_create, :api_update, :api_delete]
-  before_action :require_allow_read_gpx, :only => [:api_read, :api_data]
-  before_action :require_allow_write_gpx, :only => [:api_create, :api_update, :api_delete]
+  before_action :check_database_readable
+
+  authorize_resource
+
+  before_action :check_database_writable, :only => [:new, :create, :edit, :delete]
   before_action :offline_warning, :only => [:mine, :show]
-  before_action :offline_redirect, :only => [:new, :create, :edit, :delete, :data, :api_create, :api_delete, :api_data]
-  around_action :api_call_handle_error, :only => [:api_create, :api_read, :api_update, :api_delete, :api_data]
+  before_action :offline_redirect, :only => [:new, :create, :edit, :delete, :data]
 
   # Counts and selects pages of GPX traces for various criteria (by user, tags, public etc.).
   #  target_user - if set, specifies the user to fetch traces for.  if not set will fetch all traces
@@ -126,6 +121,7 @@ class TracesController < ApplicationController
         flash[:notice] = t ".trace_uploaded"
         flash[:warning] = t ".traces_waiting", :count => current_user.traces.where(:inserted => false).count if current_user.traces.where(:inserted => false).count > 4
 
+        TraceImporterJob.perform_later(@trace) if Settings.trace_use_job_queue
         redirect_to :action => :index, :display_name => current_user.display_name
       else
         flash[:error] = t("traces.create.upload_failed") if @trace.valid?
@@ -209,6 +205,7 @@ class TracesController < ApplicationController
       trace.visible = false
       trace.save
       flash[:notice] = t ".scheduled_for_deletion"
+      TraceDestroyerJob.perform_later(trace) if Settings.trace_use_job_queue
       redirect_to :action => :index, :display_name => trace.user.display_name
     end
   rescue ActiveRecord::RecordNotFound
@@ -258,86 +255,6 @@ class TracesController < ApplicationController
     end
   rescue ActiveRecord::RecordNotFound
     head :not_found
-  end
-
-  def api_read
-    trace = Trace.visible.find(params[:id])
-
-    if trace.public? || trace.user == current_user
-      render :xml => trace.to_xml.to_s
-    else
-      head :forbidden
-    end
-  end
-
-  def api_update
-    trace = Trace.visible.find(params[:id])
-
-    if trace.user == current_user
-      trace.update_from_xml(request.raw_post)
-      trace.save!
-
-      head :ok
-    else
-      head :forbidden
-    end
-  end
-
-  def api_delete
-    trace = Trace.visible.find(params[:id])
-
-    if trace.user == current_user
-      trace.visible = false
-      trace.save!
-
-      head :ok
-    else
-      head :forbidden
-    end
-  end
-
-  def api_data
-    trace = Trace.visible.find(params[:id])
-
-    if trace.public? || trace.user == current_user
-      if request.format == Mime[:xml]
-        send_data(trace.xml_file.read, :filename => "#{trace.id}.xml", :type => request.format.to_s, :disposition => "attachment")
-      elsif request.format == Mime[:gpx]
-        send_data(trace.xml_file.read, :filename => "#{trace.id}.gpx", :type => request.format.to_s, :disposition => "attachment")
-      else
-        send_file(trace.trace_name, :filename => "#{trace.id}#{trace.extension_name}", :type => trace.mime_type, :disposition => "attachment")
-      end
-    else
-      head :forbidden
-    end
-  end
-
-  def api_create
-    tags = params[:tags] || ""
-    description = params[:description] || ""
-    visibility = params[:visibility]
-
-    if visibility.nil?
-      visibility = if params[:public]&.to_i&.nonzero?
-                     "public"
-                   else
-                     "private"
-                   end
-    end
-
-    if params[:file].respond_to?(:read)
-      trace = do_create(params[:file], tags, description, visibility)
-
-      if trace.id
-        render :plain => trace.id.to_s
-      elsif trace.valid?
-        head :internal_server_error
-      else
-        head :bad_request
-      end
-    else
-      head :bad_request
-    end
   end
 
   private
@@ -406,11 +323,11 @@ class TracesController < ApplicationController
   end
 
   def offline_warning
-    flash.now[:warning] = t "traces.offline_warning.message" if STATUS == :gpx_offline
+    flash.now[:warning] = t "traces.offline_warning.message" if Settings.status == "gpx_offline"
   end
 
   def offline_redirect
-    redirect_to :action => :offline if STATUS == :gpx_offline
+    redirect_to :action => :offline if Settings.status == "gpx_offline"
   end
 
   def default_visibility

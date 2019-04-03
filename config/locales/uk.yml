@@ -2,8 +2,10 @@
 # Exported from translatewiki.net
 # Export driver: phpyaml
 # Author: AS
+# Author: Abijeet Patro
 # Author: Alex Blokha
 # Author: Alex Khimich
+# Author: Andrew J.Kurbiko
 # Author: Andriykopanytsia
 # Author: Andygol
 # Author: Arturyatsko
@@ -16,6 +18,7 @@
 # Author: Dubyk
 # Author: Dudka
 # Author: Green Zero
+# Author: Gzhegozh
 # Author: KEL
 # Author: Macofe
 # Author: Movses
@@ -29,6 +32,7 @@
 # Author: Sev
 # Author: Shirayuki
 # Author: SteveR
+# Author: Vlad5250
 # Author: Ypryima
 # Author: Yurkoy
 # Author: Ата
@@ -39,6 +43,10 @@ uk:
     formats:
       friendly: '%e %B %Y в %H:%M'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: не схоже на коректну адресу електронної пошти
+        email_address_not_routable: не маршрутизований
     models:
       acl: Перелік обмеження доступу
       changeset: Набір змін
@@ -120,6 +128,29 @@ uk:
     remote:
       name: Дистанційне керування
       description: Дистанційне керування (JOSM або Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Створено %{when} тому
+        opened_at_by_html: Створено %{when} тому користувачем %{user}
+        commented_at_html: Оновлено %{when} тому
+        commented_at_by_html: Оновлено %{when} тому користувачем %{user}
+        closed_at_html: Опрацьовано %{when} тому
+        closed_at_by_html: Розв’язано %{when} тому користувачем %{user}
+        reopened_at_html: Відновлено %{when} тому
+        reopened_at_by_html: Відновлено %{when} тому користувачем %{user}
+      rss:
+        title: Нотатки OpenStreetMap
+        description_area: Перелік нотаток, створених, прокоментованих чи закритих
+          біля вас [(%{min_lat}|%{min_lon}) — (%{max_lat}|%{max_lon})]
+        description_item: Rss-канал нотаток %{id}
+        opened: нова нотатка (біля %{place})
+        commented: новий коментар (біля %{place})
+        closed: закрита нотатка (біля %{place})
+        reopened: поновлена нотатка (біля %{place})
+      entry:
+        comment: Коментар
+        full: Повний текст
   browse:
     created: Створено
     closed: Закрито
@@ -247,19 +278,20 @@ uk:
       reopened_by_anonymous: Відновлено анонімом <abbr title='%{exact_time}'>%{when}
         тому</abbr>
       hidden_by: Приховано учасником %{user} <abbr title='%{exact_time}'>%{when} тому</abbr>
+      report: Повідомити про цю примітку
     query:
       title: Отримати об’єкти
       introduction: Клацніть на мапі, щоб отримати дані про об’єкти поруч.
       nearby: Об’єкти поруч
       enclosing: Оточуючі об’єкти
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Сторінка %{page}
       next: Наступна →
       previous: ← Попередня
     changeset:
       anonymous: Анонім
-      no_edits: (без виправлень)
+      no_edits: (редагувань немаэ)
       view_changeset_details: Подивитися подробиці набору змін
     changesets:
       id: ID
@@ -268,7 +300,7 @@ uk:
       comment: Коментар
       area: Ділянка
     index:
-      title: Набір змін
+      title: Набори змін
       title_user: Набори змін від %{user}
       title_friend: Набори змін моїх друзів
       title_nearby: Набори змін користувачів поряд з вами
@@ -277,34 +309,39 @@ uk:
       empty_user: Немає наборів змін від цього учасника.
       no_more: Наборів змін більше не знайдено.
       no_more_area: Наборів змін на цій ділянці більше немає.
-      no_more_user: Немає більше наборів змін від цього учасника.
+      no_more_user: Наборів редагувань від цього учасника більше немає.
       load_more: Завантажити ще
     timeout:
       sorry: На жаль, список наборів змін, який ви запросили, потребує забагато часу
         для завантаження.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Новий коментар до набору змін #%{changeset_id} від %{author}'
+      commented_at_by_html: Оновлено %{when} тому користувачем %{user}
+    comments:
+      comment: 'Новий коментар до набору змін #%{changeset_id} від %{author}'
+    index:
       title_all: Обговорення наборів змін в OpenStreetMap
       title_particular: 'Обговорення набору змін OpenStreetMap #%{changeset_id}'
-      comment: 'Новий коментар до набору змін #%{changeset_id} від %{author}'
-      commented_at_html: Оновлено %{when} тому
-      commented_at_by_html: Оновлено %{when} тому користувачем %{user}
-      full: Все обговорення
-  diary_entry:
+    timeout:
+      sorry: На жаль, список наборів змін, який ви запросили, потребує забагато часу
+        для завантаження.
+  diary_entries:
     new:
       title: Створити новий запис у щоденнику
-      publish_button: Опублікувати
+      publish_button: Оприлюднити
     index:
-      title: Щоденник користувача
+      title: Щоденники користувачів
       title_friends: Щоденники друзів
       title_nearby: Щоденники користувачів поряд з вами
       user_title: Щоденник користувача %{user}
       in_language_title: Записи щоденника мовою %{language}
       new: Нова нотатка у щоденнику
       new_title: Зробити новий запис у моєму щоденнику
-      no_entries: В щоденнику немає записів
+      no_entries: У щоденнику немає записів
       recent_entries: Останні записи в щоденнику
-      older_entries: Старі записи
-      newer_entries: Нові записи
+      older_entries: Старіші записи
+      newer_entries: Новіші записи
     edit:
       title: Редагувати нотатку
       subject: 'Тема:'
@@ -320,11 +357,11 @@ uk:
       title: Щоденник користувача %{user} | %{title}
       user_title: Щоденник користувача %{user}
       leave_a_comment: Лишити коментар
-      login_to_leave_a_comment: '%{login_link}, щоб залишити коментар'
-      login: Ввійдіть
+      login_to_leave_a_comment: '%{login_link}, аби залишити коментар'
+      login: Увійти
       save_button: Зберегти
     no_such_entry:
-      title: Немає такого запису в щоденнику
+      title: Нема такого запису в щоденнику
       heading: Немає запису з id %{id}
       body: На жаль, запис чи коментар з id %{id} не знайдені. Перевірте правильність
         введення адреси. Можливо, посилання, на яке ви перейшли, хибне.
@@ -388,6 +425,7 @@ uk:
           aerodrome: Аеродром
           apron: Перон
           gate: Вихід на посадку
+          hangar: Ангар
           helipad: Вертолітний майданчик
           runway: Злітна смуга
           taxiway: Руліжна доріжка
@@ -641,6 +679,7 @@ uk:
           water_park: Аквапарк
           "yes": Дозвілля
         man_made:
+          bunker_silo: Бункер
           lighthouse: Маяк
           pipeline: Трубопровід
           tower: Вежа
@@ -888,6 +927,10 @@ uk:
     results:
       no_results: Нічого не знайдено
       more_results: Більше результатів
+  issues:
+    show:
+      ignore: Ігнорувати
+      reopen: Повторно відкрити
   layouts:
     logo:
       alt_text: Логотип OpenStreetMap
@@ -913,10 +956,7 @@ uk:
     intro_text: OpenStreetMap — мапа світу, створена такими ж людьми, як і ви, для
       вільного використання під відкритою ліцензією.
     intro_2_create_account: Створіть обліковий запис
-    partners_html: Хостинг підтримується %{ucl}, %{ic} та %{bytemark}, а також іншими
-      %{partners}.
     partners_ucl: UCL
-    partners_ic: Імперський коледж Лондона
     partners_bytemark: Bytemark Hosting
     partners_partners: партнерами
     osm_offline: База даних OpenStreetMap в даний момент недоступна, бо саме проводиться
@@ -941,7 +981,7 @@ uk:
     diary_comment_notification:
       subject: '[OpenStreetMap] %{user} залишив коментар у вашому щоденнику'
       hi: Привіт, %{to_user},
-      header: '%{from_user}  прокоментував ваш запис у щоденнику у OpenStreetMap з
+      header: '%{from_user} прокоментував ваш запис у щоденнику у OpenStreetMap з
         темою %{subject}:'
       footer: Ви можете також прочитати коментар — %{readurl}, залишити свій — %{commenturl}
         або відповісти — %{replyurl}
@@ -1225,6 +1265,8 @@ uk:
           <strong>Австрія</strong>: дані від
              <a href="http://data.wien.gv.at/">Stadt Wien</a> (на умовах ліцензії
              <a href="http://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>), <a href="http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> та Земля Тіроль (на умовах <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY AT з виправленнями</a>).
+        contributors_au_html: '<strong>Австралія</strong>: дані передмість від Австралійського
+          Бюро Статистики.'
         contributors_ca_html: '<strong>Канада</strong>: дані від GeoBase&reg;, GeoGratis
           (&copy; Департамент природних ресурсів Канади), CanVec (&copy; Департамент
           природних ресурсів Канади), та StatCan (Відділ Географії, Статистичне відомство
@@ -1670,8 +1712,6 @@ uk:
     require_cookies:
       cookies_needed: Схоже, що у вас вимкнені куки. Будь ласка, увімкніть куки у
         вашому оглядачі, перш ніж продовжити.
-    require_moderator:
-      not_a_moderator: Ви повинні бути модератором для виконання цієї дії.
     setup_user_auth:
       blocked_zero_hour: У вас є нагальне повідомлення на веб-сайті OpenStreetMap.
         Вам потрібно прочитати повідомлення, перш ніж ви зможете зберегти ваші зміни.
@@ -1768,7 +1808,7 @@ uk:
       flash: Інформацію клієнта успішно оновлено
     destroy:
       flash: Знищено реєстрацію клієнтського застосунку
-  user:
+  users:
     login:
       title: Ласкаво просимо
       heading: Ласкаво просимо
@@ -1848,8 +1888,8 @@ uk:
       flash token bad: Неможливо знайти такий код підтвердження, перевірте посилання.
     new:
       title: Реєстрація
-      no_auto_account_create: На жаль, ми в даний час не в змозі створити для вас
-        обліковий запис автоматично.
+      no_auto_account_create: На жаль, наразі ми не в змозі створити для вас обліковий
+        запис автоматично.
       contact_webmaster: Будь ласка, зверніться до <a href="%{webmaster}">вебмайстра</a>
         з проханням створити подібний обліковий запис. Ми спробуємо це зробити та
         відповісти настільки швидко, наскільки це можливо.
@@ -1911,7 +1951,7 @@ uk:
     show:
       my diary: Мій щоденник
       new diary entry: новий запис
-      my edits: Мої правки
+      my edits: Мої редагування
       my traces: Мої треки
       my notes: Мої нотатки
       my messages: Повідомлення
@@ -1923,7 +1963,7 @@ uk:
       blocks by me: Заблоковано мною
       send message: Надіслати повідомлення
       diary: Щоденник
-      edits: Правки
+      edits: Редагування
       traces: Треки
       notes: Нотатки
       remove as friend: Вилучити із списку друзів
@@ -2087,8 +2127,6 @@ uk:
       button: Вилучити із списку друзів
       success: '%{name} вилучений з вашого списку друзів.'
       not_a_friend: '%{name} не є вашим другом.'
-    filter:
-      not_an_administrator: Тільки адміністратор може виконати цю дію.
     index:
       title: Користувачі
       heading: Користувачі
@@ -2123,8 +2161,6 @@ uk:
         ID користувача у налаштуваннях.
   user_role:
     filter:
-      not_an_administrator: Тільки адміністратори можуть керувати ролями користувачів,
-        а ви не є адміністратором.
       not_a_role: Рядок «%{role}» не є припустимою роллю.
       already_has_role: Користувач вже має роль — %{role}.
       doesnt_have_role: Користувач не має ролі %{role}.
@@ -2256,31 +2292,10 @@ uk:
       next: Наступна →
       previous: ← Попередня
   notes:
-    comment:
-      opened_at_html: Створено %{when} тому
-      opened_at_by_html: Створено %{when} тому користувачем %{user}
-      commented_at_html: Оновлено %{when} тому
-      commented_at_by_html: Оновлено %{when} тому користувачем %{user}
-      closed_at_html: Опрацьовано %{when} тому
-      closed_at_by_html: Розв’язано %{when} тому користувачем %{user}
-      reopened_at_html: Відновлено %{when} тому
-      reopened_at_by_html: Відновлено %{when} тому користувачем %{user}
-    rss:
-      title: Нотатки OpenStreetMap
-      description_area: Перелік нотаток, створених, прокоментованих чи закритих біля
-        вас [(%{min_lat}|%{min_lon}) — (%{max_lat}|%{max_lon})]
-      description_item: Rss-канал нотаток %{id}
-      opened: нова нотатка (біля %{place})
-      commented: новий коментар (біля %{place})
-      closed: закрита нотатка (біля %{place})
-      reopened: поновлена нотатка (біля %{place})
-    entry:
-      comment: Коментар
-      full: Повний текст
     mine:
       title: Нотатки створені чи прокоментовані користувачем %{user}
       heading: Нотатки користувача %{user}
-      subheading: Нотатки, створені чи прокоментовані користувачем %{user}
+      subheading_html: Нотатки, створені чи прокоментовані користувачем %{user}
       id: Номер
       creator: Автор
       description: Опис
@@ -2373,13 +2388,10 @@ uk:
     directions:
       ascend: Вгору
       engines:
+        fossgis_osrm_car: Машина (OSRM)
         graphhopper_bicycle: Велосипед (GraphHopper)
         graphhopper_car: Автівкою (GraphHopper)
         graphhopper_foot: Пішки (GraphHopper)
-        mapquest_bicycle: Велосипед (MapQuest)
-        mapquest_car: Машина (MapQuest)
-        mapquest_foot: Пішки (MapQuest)
-        osrm_car: Машина (OSRM)
       descend: Вниз
       directions: Маршрут
       distance: Відстань

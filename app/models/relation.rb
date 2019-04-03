@@ -546,7 +546,9 @@ class Relation < ActiveRecord::Base
       # materially change the rest of the relation.
       any_relations = Relation.any_relations?(changed_members)
 
-      update_members = if tags_changed || any_relations
+      # if the relation is being deleted tags_changed will be true and members empty
+      # so we need to use changed_members to create a correct bounding box
+      update_members = if visible && (tags_changed || any_relations)
                          # add all non-relation bounding boxes to the changeset
                          # FIXME: check for tag changes along with element deletions and
                          # make sure that the deleted element's bounding box is hit.

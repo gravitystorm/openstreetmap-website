@@ -1,6 +1,7 @@
 # Messages for Hebrew (עברית)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Amire80
 # Author: Aude
 # Author: Dekel E
@@ -30,6 +31,10 @@ he:
     formats:
       friendly: '%e ב%B %Y בשעה %H:%M'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: זאת אינה כתובת דוא״ל תקנית
+        email_address_not_routable: אין אפשרות לטוות מסלול
     models:
       acl: רשימת בקרת גישה
       changeset: ערכת שינויים
@@ -113,6 +118,29 @@ he:
     remote:
       name: שליטה מרחוק
       description: שליטה מרחוק (JOSM או Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: נוצרה לפני %{when}
+        opened_at_by_html: נוצרה לפני %{when} על־ידי %{user}
+        commented_at_html: עודכנה לפני %{when}
+        commented_at_by_html: עודכנה לפני %{when} על־ידי %{user}
+        closed_at_html: נפתרה לפני %{when}
+        closed_at_by_html: נפתרה לפני %{when} על־ידי %{user}
+        reopened_at_html: הופעלה מחדש לפני %{when}
+        reopened_at_by_html: הופעלה מחדש לפני %{when} על־ידי %{user}
+      rss:
+        title: הערות של OpenStreetMap
+        description_area: רשימת הערות שהוספו, שהתקבלו עליהן הערות ושנדבגרו באזור שלך
+          [(%{min_lat}|%{min_lon}) – (%{max_lat}|%{max_lon})]
+        description_item: הזנת rss עבור ההערה %{id}
+        opened: הערה חדשה (ליד %{place})
+        commented: תגובה חדשה (ליד %{place})
+        closed: הערה סגורה (ליד %{place})
+        reopened: הערה שהופעלה מחדש (ליד %{place})
+      entry:
+        comment: תגובה
+        full: הערה מלאה
   browse:
     created: נוצר
     closed: נסגר
@@ -236,7 +264,7 @@ he:
       introduction: יש ללחוץ עלהמפה כדי למצוא ישויות בסביבה.
       nearby: ישויות בסביבה
       enclosing: ישויות סובבות
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: הדף %{page}
       next: הבא »
@@ -247,32 +275,37 @@ he:
       view_changeset_details: הצגת פרטי ערכת שינויים
     changesets:
       id: מזהה
-      saved_at: 'נשמרו ב:'
+      saved_at: נשמרו תחת
       user: משתמש
       comment: הערה
       area: שטח
     index:
       title: ערכות שינויים
-      title_user: ערכות שינויים של %{user}
+      title_user: ערכות שינויים מאת %{user}
       title_friend: ערכות שינויים של החברים שלי
       title_nearby: ערכות שינויים של משתמשים בסביבה
-      empty: לא נמצאה שום ערכת שינויים.
+      empty: לא נמצאה אף ערכת שינויים.
       empty_area: אין ערכות שינויים באזור הזה.
-      empty_user: אין ערכות שינויים מאת המשתמש הזה.
-      no_more: לא נמצאו עוד ערכות שינויים.
+      empty_user: המשתמש הזה לא ערך ערכות שינויים.
+      no_more: לא נמצאו ערכות שינויים נוספות.
       no_more_area: אין עוד ערכות שינויים באזור הזה.
-      no_more_user: אין עוד ערכות שינויים מאת המשתמש הזה.
+      no_more_user: אין ערכות שינויים נוספות מאת המשתמש הזה.
       load_more: לטעון עוד
     timeout:
-      sorry: סליחה, לוקח יותר מדי זמן לאחזר על רשימת ערכות השינויים שביקשת.
-    rss:
-      title_all: דיון בערכת שינויים של OpenStreetMap
-      title_particular: דיון בערכת שינויים מס' %{changeset_id} של OpenStreetMap
-      comment: הערה חדשה על בערכת שינויים מס' %{changeset_id} מאת %{author}
-      commented_at_html: עודכן לפני %{when}
+      sorry: קבלת רשימת ערכות השינויים שביקשת אורכת זמן רב מדי, עמך הסליחה.
+  changeset_comments:
+    comment:
+      comment: הערה חדשה על ערכת שינויים מס׳ %{changeset_id} מאת %{author}
       commented_at_by_html: עודכן לפני %{when} על־ידי %{user}
-      full: דיון מלא
-  diary_entry:
+    comments:
+      comment: הערה חדשה בערכת שינויים מס׳ %{changeset_id} מאת %{author}
+    index:
+      title_all: דיון בערכת שינויים של OpenStreetMap
+      title_particular: דיון בערכת שינויים מס׳ %{changeset_id} של OpenStreetMap
+    timeout:
+      sorry: הזמן שלקח לרשימת ההערות על ערכת השינויים שביקשת להתקבל ארוך מדי, עמך
+        הסליחה.
+  diary_entries:
     new:
       title: רשומת יומן חדשה
       publish_button: פרסום
@@ -300,8 +333,8 @@ he:
       save_button: שמירה
       marker_text: מיקום רשומת היומן
     show:
-      title: היומן של %{user}&rlm; | %{title}
-      user_title: היומן של %{user}‏
+      title: היומן של%{user} &rlm; | %{title}
+      user_title: היומן של %{user}
       leave_a_comment: הוספת תגובה
       login_to_leave_a_comment: נא %{login_link} כדי להשאיר תגובה
       login: להיכנס
@@ -319,12 +352,12 @@ he:
         one: תגובה אחת
         zero: אין תגובות
         other: '%{count} תגובות'
-      edit_link: עריכת רשומה
-      hide_link: הסתרת רשומה
+      edit_link: עריכת רשומה זו
+      hide_link: הסתרת רשומה זו
       confirm: אישור
       report: לדווח על הרשומה הזאת
     diary_comment:
-      comment_from: תגובה מ־%{link_user} ב־%{comment_created_at}
+      comment_from: תגובה מאת %{link_user} על %{comment_created_at}
       hide_link: הסתרת הערה זו
       confirm: אישור
       report: לדווח על ההערה הזאת
@@ -347,7 +380,7 @@ he:
       post: רשומה
       when: מתי
       comment: הערה
-      ago: לפי %{ago}
+      ago: לפני %{ago}
       newer_comments: הערות חדשות
       older_comments: הערות ישנות
   geocoder:
@@ -952,6 +985,69 @@ he:
       title: בעיות
       select_status: לבחור מצב
       select_type: בחר סוג
+      select_last_updated_by: בחירת העדכון האחרון לפי
+      reported_user: משתמש מדווח
+      not_updated: לא עדכני
+      search: חיפוש
+      search_guidance: 'תקלות חיפוש:'
+      user_not_found: המשתמש לא קיים
+      issues_not_found: לא נמצאו תקלות כאלה
+      status: מצב
+      reports: דיווחים
+      last_updated: עדכון אחרון
+      last_updated_time_html: <abbr title='%{title}'>לפני %{time}</abbr>
+      last_updated_time_user_html: <abbr title='%{title}'>לפני %{time} ago</abbr>
+        מאת %{user}
+      link_to_reports: הצגת דיווחים
+      reports_count:
+        one: דיווח אחד
+        other: '%{count} דיווחים'
+      reported_item: פריט שדווח
+      states:
+        open: פתוחה
+        resolved: נפתרה
+    update:
+      new_report: הדוח שלך נרשם בהצלחה
+      successful_update: הדיווח שלך עודכן בהצלחה
+      provide_details: נא לספק את הפרטים הנדרשים
+    show:
+      ignore: התעלמות
+      reopen: פתיחה מחדש
+      new_reports: דיווחים חדשים
+    comments:
+      created_at: ב־%{datetime}
+    reports:
+      updated_at: ב־%{datetime}
+      reported_by_html: דווח בתור %{category} על ידי %{user}
+  reports:
+    new:
+      missing_params: לא ניתן ליצור דיווח חדש
+      details: נא לספק פרטים על הבעיה (נדרש).
+      select: 'נא לבחור את סיבת הדיווח:'
+      disclaimer:
+        intro: 'בטרם שליחת הדיווח למפקחי האתר, נא לוודא כי:'
+        not_just_mistake: למיטב ידיעתך הבעיה היא לא סתם טעות
+        unable_to_fix: אין לך אפשרות לתקן את הבעיה בעצמך או בעזרת חבריך לקהילה
+        resolve_with_user: כבר ניסית לפתור את הבעיה עם שאר המעורבים
+      categories:
+        diary_entry:
+          spam_label: רשומת יומן זו היא/מכילה ספאם
+          offensive_label: רשומת יומן זו בוטה/פוגענית
+          threat_label: רשומת יומן זו מכילה איום
+          other_label: אחר
+        diary_comment:
+          other_label: אחר
+        user:
+          spam_label: פרופיל משתמש זה הוא/מכיל ספאם
+          offensive_label: פרופיל משתמש זה בוטה/פוגעני
+          threat_label: פרופיל משתמש זה מכיל איום
+          vandal_label: משתמש זה משחית
+          other_label: אחר
+        note:
+          other_label: אחר
+    create:
+      successful_report: הדוח שלך נרשם בהצלחה
+      provide_details: נא לספק את הפרטים הנדרשים
   layouts:
     logo:
       alt_text: הלוגו של OpenStreetMap
@@ -965,6 +1061,7 @@ he:
     edit: עריכה
     history: היסטוריה
     export: ייצוא
+    issues: תקלות
     data: נתונים
     export_data: ייצוא נתונים
     gps_traces: מסלולי GPS
@@ -977,9 +1074,8 @@ he:
     intro_text: OpenStreetMap היא מפה של העולם, שנוצרת על־ידי אנשים כמוך, וחופשית
       לשימוש תחת רישיון פתוח.
     intro_2_create_account: נא ליצור חשבון משתמש
-    partners_html: האירוח נתמך על־ידי  %{ucl}‏, %{bytemark}, %{ic}, ו%{partners} אחרים
+    hosting_partners_html: האירוח בתמיכת %{ucl}, %{bytemark} ו%{partners} נוספים.
     partners_ucl: UCL
-    partners_ic: המכללה המלכותית של לונדון
     partners_bytemark: Bytemark Hosting
     partners_partners: שותפים
     osm_offline: מסד הנתונים של אתר OpenStreetMap אינו מקוון כעת בשל עבודות תחזוקה
@@ -1280,6 +1376,9 @@ he:
           <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>,
           מ<a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">מדינת פורארלברג</a>
           וממדינת טירול (לפי <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY AT עם תיקונים</a>).
+        contributors_au_html: |-
+          <strong>אוסטרליה</strong>: מכיל מנתוני פרוורים המבוססים על
+          נתוני הלשכה האוסטרלית לסטטיסטיקה (Australian Bureau of Statistics).
         contributors_ca_html: |-
           <strong>קנדה</strong>: מכיל נתונים
           מ־GeoBase&reg;&rlm;, GeoGratis&rlm; (&copy;&rlm; Department of Natural
@@ -1454,6 +1553,11 @@ he:
       switch2osm:
         title: switch2osm
         description: עזרה לחברות וארגונים שעוברים למפות ושירותים אחרים של OpenStreetMap.
+      welcomemat:
+        url: https://welcome.openstreetmap.org/
+        title: לארגונים
+        description: הארגון שלך מתכנן תכניות על OpenStreetMap? כל המידע הנחוץ לך נמצא
+          במחצלת הכניסה.
       wiki:
         url: https://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
@@ -1545,7 +1649,7 @@ he:
       edit: עריכה
       preview: תצוגה מקדימה
     markdown_help:
-      title_html: מפוענח עם <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: פוענח בעזרת <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: כותרות
       heading: כותרת
       subheading: כותרת משנה
@@ -1609,6 +1713,7 @@ he:
       identifiable: בר זיהוי (מוצג ברשימת המסלולים וכמזוהה, נקודות סדורות עם חותמי
         זמן)
     new:
+      upload_trace: העלאת מסלול GPS
       upload_gpx: 'העלאת קובץ GPX:'
       description: 'תיאור:'
       tags: 'תגים:'
@@ -1621,6 +1726,8 @@ he:
       upload_trace: העלאת מסלול GPS
       trace_uploaded: קובץ ה־GPX שלך הועלה ומחכה להכנסה אל מסד הנתונים. זה בדרך כלל
         יקרה בתוך חצי שעה ויישלח לך מכתב עם השלמת הפעולה.
+      upload_failed: העלאת ה־GPX נכשלה. אחד המנהלים קיבל הודעה על השגיאה. נא לנסות
+        שוב.
       traces_waiting:
         other: יש לך מסלול שמחכה להעלאה. נא לשקול לחכות עד סיום העלאתו לפני העלאת
           מסלולים נוספים, כדי לא לחסום את התור למשתמשים אחרים.
@@ -1641,6 +1748,8 @@ he:
       save_button: שמירת שינויים
       visibility: 'נִראוּת:'
       visibility_help: מה זה אומר?
+    update:
+      updated: המסלול עודכן
     trace_optionals:
       tags: תגים
     show:
@@ -1712,11 +1821,12 @@ he:
         other: קובץ GPS עם %{count} נקודות מאת %{user}
       description_without_count: קובץ GPS מאת %{user}
   application:
+    permission_denied: אין לך הרשאה לגשת לפעולה הזאת
     require_cookies:
       cookies_needed: נראה שהעוגיות כבויות אצלך – נא להפעיל עוגיות בדפדפן שלך כדי
         להמשיך.
-    require_moderator:
-      not_a_moderator: צריל להיות מנחה כדי לבצע את הפעולה הזאת.
+    require_admin:
+      not_an_admin: עליך להחזיק בהרשאות ניהול כדי לבצע את הפעולה הזאת.
     setup_user_auth:
       blocked_zero_hour: יש לך מסר דחוף באתר OpenStreetMap. עליך לקרוא את ההודעה לפני
         שמירת העריכות שלך.
@@ -1810,7 +1920,7 @@ he:
       flash: מידע הלקוח עודכן בהצלחה
     destroy:
       flash: רישום יישום הלקוח נהרס
-  user:
+  users:
     login:
       title: כניסה
       heading: כניסה
@@ -1914,6 +2024,7 @@ he:
       terms accepted: תודה על קבלת תנאי התרומה החדשים!
       terms declined: אנחנו מצטערים שהחלטת לא לקבל את תנאי התרומה החדשים. למידע נוסף
         ר׳ <a href="%{url}">דף הוויקי הזה</a>.
+      terms declined url: https://wiki.openstreetmap.org/wiki/He:Contributor_Terms_Declined
     terms:
       title: תנאי תרומה
       heading: תנאי תרומה
@@ -2003,6 +2114,7 @@ he:
       friends_diaries: רשומות יומן של חברים
       nearby_changesets: ערכות השינויים של משתמשים בסביבה
       nearby_diaries: רשומות יומן של משתמשים בסביבה
+      report: דיווח על המשתמש
     popup:
       your location: מיקומך
       nearby mapper: ממפה סמוך
@@ -2108,8 +2220,6 @@ he:
       button: להסיר מרשימת החברים
       success: '%{name} הוסר מרשימת החברים שלך.'
       not_a_friend: '%{name} לא אחד מהחברים שלך.'
-    filter:
-      not_an_administrator: צריך להיות מנהל כדי לבצע את הפעולה הזאת.
     index:
       title: משתמשים
       heading: משתמשים
@@ -2148,7 +2258,6 @@ he:
         שלך ואז לשייך את החשבון שלך למזהה מהגדרות המשתמש שלך.
   user_role:
     filter:
-      not_an_administrator: רק מפעילים יכולים לבצע ניהול תפקידים ואין לך הרשאת מפעיל.
       not_a_role: המחרוזת „%{role}” אינה תפקיד תקין.
       already_has_role: למשתמש כבר יש תפקיד %{role}.
       doesnt_have_role: למשתמש אין תפקיד %{role}.
@@ -2266,31 +2375,10 @@ he:
       next: הבא »
       previous: « הקודם
   notes:
-    comment:
-      opened_at_html: נוצרה לפני %{when}
-      opened_at_by_html: נוצרה לפני %{when} על־ידי %{user}
-      commented_at_html: עודכנה לפני %{when}
-      commented_at_by_html: עודכנה לפני %{when} על־ידי %{user}
-      closed_at_html: נפתרה לפני %{when}
-      closed_at_by_html: נפתרה לפני %{when} על־ידי %{user}
-      reopened_at_html: הופעלה מחדש לפני %{when}
-      reopened_at_by_html: הופעלה מחדש לפני %{when} על־ידי %{user}
-    rss:
-      title: הערות של OpenStreetMap
-      description_area: רשימת הערות שהוספו, שהתקבלו עליהן הערות ושנדבגרו באזור שלך
-        [(%{min_lat}|%{min_lon}) – (%{max_lat}|%{max_lon})]
-      description_item: הזנת rss עבור ההערה %{id}
-      opened: הערה חדשה (ליד %{place})
-      commented: תגובה חדשה (ליד %{place})
-      closed: הערה סגורה (ליד %{place})
-      reopened: הערה שהופעלה מחדש (ליד %{place})
-    entry:
-      comment: תגובה
-      full: הערה מלאה
     mine:
       title: הערות ותגובות של %{user}
       heading: הערות של %{user}
-      subheading: הערות ותגובות של %{user}
+      subheading_html: הערות ותגובות של %{user}
       id: מזהה
       creator: יוצר
       description: תיאור
@@ -2380,13 +2468,12 @@ he:
     directions:
       ascend: מעלה
       engines:
+        fossgis_osrm_bike: אופניים (OSRM)
+        fossgis_osrm_car: במכונית (ORSM)
+        fossgis_osrm_foot: ברגל (OSRM)
         graphhopper_bicycle: באופניים (GraphHopper)
         graphhopper_car: במכונית (GraphHopper)
         graphhopper_foot: ברגל (GraphHopper)
-        mapquest_bicycle: באופניים (MapQuest)
-        mapquest_car: במכונית (MapQuest)
-        mapquest_foot: ברגל (MapQuest)
-        osrm_car: במכונית (ORSM)
       descend: מטה
       directions: כיוונים
       distance: מרחק
@@ -2412,6 +2499,8 @@ he:
         turn_left_without_exit: פנייה שמאלה אל %{name}
         offramp_left_with_name: לעלות שמאלה אל %{name}
         onramp_left_without_exit: לפנות שמאלה לעלייה אל %{name}
+        onramp_left_without_directions: להיצמד לשמאל
+        onramp_left: להיצמד לימין
         endofroad_left_without_exit: בסוף הדרך לפנות שמאלה אל %{name}
         merge_left_without_exit: להתמזג שמאלה אל %{name}
         fork_left_without_exit: בהתפצלות לפנות שמאלה אל %{name}
@@ -2426,8 +2515,21 @@ he:
         against_oneway_without_exit: לנסוע נגד כיוון התנועה על %{name}
         end_oneway_without_exit: סוף החד־סטרי על %{name}
         roundabout_with_exit: בכיכר צא ביציאה %{exit} אל %{name}
+        roundabout_with_exit_ordinal: בכיכר עליך לצאת ביציאה ה%{exit} לעבר %{name}
+        exit_roundabout: בכיכר עליך לצאת אל %{name}
         unnamed: ללא שם
         courtesy: הכיוונים באדיבות %{link}
+        exit_counts:
+          first: ראשונה
+          second: שנייה
+          third: שלישית
+          fourth: רביעית
+          fifth: חמישית
+          sixth: שישית
+          seventh: שביעית
+          eighth: שמינית
+          ninth: תשיעית
+          tenth: עשירית
       time: זמן
     query:
       node: צומת
@@ -2475,4 +2577,9 @@ he:
         לפני הריסתו.
       flash: החיתוך נהרס.
       error: אירעה שגיאה בעת הריסת החיתוך הזה.
+  validations:
+    leading_whitespace: יש רווח בהתחלה
+    trailing_whitespace: יש רווח בסוף
+    invalid_characters: מכיל תווים שגויים
+    url_characters: מכיל תווי כתובת מיוחדים (%{characters})
 ...

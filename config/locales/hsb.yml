@@ -1,6 +1,7 @@
 # Messages for Upper Sorbian (hornjoserbsce)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: J budissin
 # Author: Macofe
 # Author: Michawiki
@@ -92,6 +93,29 @@ hsb:
     remote:
       name: Dalokowodźenje
       description: Dalokowodźenje (JOSM abo Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Před %{when} wutworjeny
+        opened_at_by_html: Před %{when} wot %{user} wutworjeny
+        commented_at_html: Před %{when} zaktualizowany
+        commented_at_by_html: Před %{when} wot %{user} zaktualizowany
+        closed_at_html: Před %{when} rozrisany
+        closed_at_by_html: Před %{when} wot %{user} rozrisany
+        reopened_at_html: Před %{when} znowa aktiwizowany
+        reopened_at_by_html: Před %{when} wot %{user} znowa aktiwizowany
+      rss:
+        title: Pokazki OpenStreetMap
+        description_area: Lisćina pokazkow, kotrež su so za twój wobwod [(%{min_lat}|%{min_lon})
+          -- (%{max_lat}|%{max_lon})] zdźělili, komentowali abo sčinili
+        description_item: RSS-kanal za pokazku %{id}
+        opened: nowa pokazka (blisko %{place})
+        commented: nowy komentar (blisko %{place})
+        closed: začinjena pokazka (blisko %{place})
+        reopened: reaktiwizowana pokazka (blisko %{place})
+      entry:
+        comment: Komentar
+        full: Dospołna pokazka
   browse:
     created: Wutworjeny
     closed: 'Začinjeny:'
@@ -217,7 +241,7 @@ hsb:
       introduction: Klikń na kartu, zo by susodne objekty namakał(a).
       nearby: Objekty w bliskosći
       enclosing: Wobdawace funkcije
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Strona %{page}
       next: Dale »
@@ -246,14 +270,14 @@ hsb:
       load_more: Wjace začitać
     timeout:
       sorry: Bohužel je předołho trało, skupiny změny, kotrež sy požadał, wotwołać.
-    rss:
+  changeset_comments:
+    comment:
+      comment: Nowy komentar k sadźbje změnow čo. %{changeset_id} wot %{author}
+      commented_at_by_html: Před %{when} wot %{user} nahraty
+    index:
       title_all: Diskusija wo sadźbje změnow OpenStreetMap
       title_particular: Diskusija wo sadźbje změnow čo. %{changeset_id} OpenStreetMap
-      comment: Nowy komentar k sadźbje změnow čo. %{changeset_id} wot %{author}
-      commented_at_html: Zaktualizowane před %{when}
-      commented_at_by_html: Před %{when} wot %{user} nahraty
-      full: Dospołna diskusija
-  diary_entry:
+  diary_entries:
     new:
       title: Nowy dźenikowy zapisk
       publish_button: Wozjewić
@@ -884,10 +908,7 @@ hsb:
     intro_text: OpenStreetMap je karta swěta, wutworjena wot ludźi kaž tebje a hodźi
       so swobodnje pod wotewrjenej licencu wužiwać.
     intro_2_create_account: Załož wužiwarske konto
-    partners_html: Hostowanje so wot %{ucl}, %{ic}, %{bytemark} a druhich %{partners}
-      podpěruje.
     partners_ucl: z UCL VR Centre
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partnerow
     osm_offline: Datowa banka OpenStreetMap je tuchwilu offline, dokelž so wažne wobhladowankse
@@ -1186,6 +1207,9 @@ hsb:
           BY</a>), <a href="http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land
           Vorarlberg</a> a Land Tirol (pod <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY
           AT ze změnami</a>).'
+        contributors_au_html: '<strong>Awstralska</strong>: Wobsahuje předměšćanske
+          daty na zakładźe datow Awstralskeho  zarjada za statistiku (Australian Bureau
+          of Statistics).'
         contributors_ca_html: '<strong>Kanada</strong>: Wobsahuje daty z GeoBase&reg;,
           GeoGratis (&copy; Department of Natural Resources Canada), CanVec (&copy;
           Department of Natural Resources Canada), a StatCan (Geography Division,
@@ -1624,8 +1648,6 @@ hsb:
     require_cookies:
       cookies_needed: Zda so, zo maš placki znjemóžnjene - prošu zmóžń placki w swojim
         wobhladowaku, prjedy hač pokročuješ.
-    require_moderator:
-      not_a_moderator: Dyrbiš moderator być, zo by móhł tutu akciju wuwjesć.
     setup_user_auth:
       blocked: Twój přistup k API je so blokował. Prošu přizjew so do webpowjercha,
         zo by wjace zhonił.
@@ -1718,7 +1740,7 @@ hsb:
       flash: Klientowe informacije wuspěšnje zaktualizowane
     destroy:
       flash: Registrowanje klientoweje aplikacije bu zničene
-  user:
+  users:
     login:
       title: Přizjewjenje
       heading: Přizjewjenje
@@ -2020,8 +2042,6 @@ hsb:
       button: Přećela wotstronić
       success: '%{name} je so jako přećel wotstronił.'
       not_a_friend: '%{name} twój přećel njeje.'
-    filter:
-      not_an_administrator: Dyrbiš administrator być, zo by tutu akciju wuwjedł.
     index:
       title: Wužiwarjo
       heading: Wužiwarjo
@@ -2059,8 +2079,6 @@ hsb:
         wužiwarskich nastajenjach zwjazać.
   user_role:
     filter:
-      not_an_administrator: Jenož administratorojo móžeja wužiwarske róle zrjadować,
-        a ty njejsy administrator.
       not_a_role: Znamješkowy rjećazk "%{role}" płaćiwa róla njeje.
       already_has_role: Wužiwar hižo ma rólu %{role}.
       doesnt_have_role: Wužiwar nima rólu %{role}.
@@ -2184,31 +2202,10 @@ hsb:
       next: Přichodny »
       previous: « Předchadny
   notes:
-    comment:
-      opened_at_html: Před %{when} wutworjeny
-      opened_at_by_html: Před %{when} wot %{user} wutworjeny
-      commented_at_html: Před %{when} zaktualizowany
-      commented_at_by_html: Před %{when} wot %{user} zaktualizowany
-      closed_at_html: Před %{when} rozrisany
-      closed_at_by_html: Před %{when} wot %{user} rozrisany
-      reopened_at_html: Před %{when} znowa aktiwizowany
-      reopened_at_by_html: Před %{when} wot %{user} znowa aktiwizowany
-    rss:
-      title: Pokazki OpenStreetMap
-      description_area: Lisćina pokazkow, kotrež su so za twój wobwod [(%{min_lat}|%{min_lon})
-        -- (%{max_lat}|%{max_lon})] zdźělili, komentowali abo sčinili
-      description_item: RSS-kanal za pokazku %{id}
-      opened: nowa pokazka (blisko %{place})
-      commented: nowy komentar (blisko %{place})
-      closed: začinjena pokazka (blisko %{place})
-      reopened: reaktiwizowana pokazka (blisko %{place})
-    entry:
-      comment: Komentar
-      full: Dospołna pokazka
     mine:
       title: Pokazki, kotrež su so wot %{user} dali abo komentowali
       heading: Pokazki wužiwarja %{user}
-      subheading: Pokazki, kotrež su so wot %{user} dali abo komentowali
+      subheading_html: Pokazki, kotrež su so wot %{user} dali abo komentowali
       id: ID
       creator: Tworićel
       description: Wopisanje
@@ -2298,12 +2295,9 @@ hsb:
       potom tu.
     directions:
       engines:
+        fossgis_osrm_car: Awto (OSRM)
         graphhopper_bicycle: Koleso (GraphHopper)
         graphhopper_foot: Pěši (GraphHopper)
-        mapquest_bicycle: Koleso (MapQuest)
-        mapquest_car: Awto (MapQuest)
-        mapquest_foot: Pěši (MapQuest)
-        osrm_car: Awto (OSRM)
       directions: Směry
       distance: Zdalenosć
       errors:

@@ -30,8 +30,6 @@
 #  client_applications_user_id_fkey  (user_id => users.id)
 #
 
-require "oauth"
-
 class ClientApplication < ActiveRecord::Base
   belongs_to :user
   has_many :tokens, :class_name => "OauthToken", :dependent => :delete_all
@@ -69,7 +67,7 @@ class ClientApplication < ActiveRecord::Base
   end
 
   def oauth_server
-    @oauth_server ||= OAuth::Server.new("https://" + SERVER_URL)
+    @oauth_server ||= OAuth::Server.new("https://" + Settings.server_url)
   end
 
   def credentials

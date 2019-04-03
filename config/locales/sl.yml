@@ -1,6 +1,7 @@
 # Messages for Slovenian (slovenščina)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Damjang
 # Author: Dbc334
 # Author: Eleassar
@@ -103,10 +104,33 @@ sl:
     remote:
       name: Zunanji urejevalnik
       description: Zunanji urejevalnik (JOSM ali Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Ustvarjeno %{when} nazaj
+        opened_at_by_html: Ustvarjeno %{when} nazaj od %{user}
+        commented_at_html: Posodobljeno %{when} nazaj
+        commented_at_by_html: Posodobljeno %{when} nazaj od %{user}
+        closed_at_html: Rešeno %{when} nazaj
+        closed_at_by_html: Rešeno %{when} nazaj od %{user}
+        reopened_at_html: Zopet aktivirano %{when} nazaj
+        reopened_at_by_html: Zopet aktivirano %{when} nazaj od %{user}
+      rss:
+        title: OpenStreetMap opombe
+        description_area: Seznam opomb, prijavljenih, komentiranih ali zaprtih na
+          vašem območju [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: RSS vir za opombo %{id}
+        opened: Nova opomba (v bližini %{place})
+        commented: Nov komentar (v bližini %{place})
+        closed: Zaprta opomba (v bližini %{place})
+        reopened: Zopet aktivirana opomba (v bližini %{place})
+      entry:
+        comment: Komentar
+        full: Celotna opomba
   browse:
     created: Ustvarjeno
     closed: Zaprto
-    created_html: Ustvarjeno <abbr title='%{title}'>%{time} nazas</abbr>
+    created_html: Ustvarjeno <abbr title='%{title}'>%{time} nazaj</abbr>
     closed_html: Zaprto <abbr title='%{title}'>%{time} nazaj</abbr>
     created_by_html: Ustvaril %{user} <abbr title='%{title}'>%{time} nazaj</abbr>
     deleted_by_html: Izbrisal %{user} <abbr title='%{title}'>%{time} nazaj</abbr>
@@ -230,7 +254,7 @@ sl:
       introduction: Kliknite na zemljevid za iskanje bližnjih značilnosti.
       nearby: Značilnosti v neposredni bližini
       enclosing: Vsebujoče značilnosti
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Stran %{page}
       next: Naslednja »
@@ -259,14 +283,14 @@ sl:
       load_more: Naloži več
     timeout:
       sorry: Žal je seznam zahtevanih sprememb predolg za prenos.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Nov komentar o paketu sprememb #%{changeset_id} uporabnika %{author}'
+      commented_at_by_html: Posodobil %{user} %{when} nazaj
+    index:
       title_all: Razprava o paketu sprememb OpenStreetMap
       title_particular: 'Razprava o paketu sprememb OpenStreetMap #%{changeset_id}'
-      comment: 'Nov komentar o paketu sprememb #%{changeset_id} uporabnika %{author}'
-      commented_at_html: Posodobljeno %{when} nazaj
-      commented_at_by_html: Posodobil %{user} %{when} nazaj
-      full: Celoten pogovor
-  diary_entry:
+  diary_entries:
     new:
       title: Nov zapis v dnevnik uporabnikov
       publish_button: Objavi
@@ -846,7 +870,7 @@ sl:
           "yes": Trgovina
         tourism:
           alpine_hut: Koča
-          apartment: Apartma
+          apartment: Počitniški apartma
           artwork: Umetnina
           attraction: Zanimivost
           bed_and_breakfast: Nočitev z zajtrkom
@@ -947,9 +971,7 @@ sl:
     intro_text: OpenStreetMap je zemljevid sveta, ki ga ustvarjajo ljudje kot ste
       vi, brezplačen za uporabo z odprto licenco.
     intro_2_create_account: Ustvarite uporabniški račun
-    partners_html: Gostovanje podpira %{ucl}, %{bytemark} in %{ic}, ter ostali %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College v Londonu
     partners_bytemark: Bytemark Hosting
     partners_partners: partnerji
     osm_offline: Baza OpenStreetMap zaradi izvajanja nujnih vzdrževalnih del trenutno
@@ -1397,7 +1419,7 @@ sl:
       edit: Uredi
       preview: Predogled
     markdown_help:
-      title_html: Obdelano z <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Obdelano z <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Poglavja
       heading: Poglavje
       subheading: Podpoglavje
@@ -1574,8 +1596,6 @@ sl:
     require_cookies:
       cookies_needed: Izgleda imate onemogočene piškotke - prosim omogočite jih v
         vašem brskalniku preden nadaljujete.
-    require_moderator:
-      not_a_moderator: Morate biti moderator za izvedbo tega dejanja.
     setup_user_auth:
       blocked: Vaš dostop do API je bil blokiran. Prosimo, prijavite se na spletno
         stran, če želite izvedeti več.
@@ -1670,7 +1690,7 @@ sl:
       flash: Informacije odjemalca uspešno posodobljene
     destroy:
       flash: Registracija odjemalske aplikacije uničena
-  user:
+  users:
     login:
       title: Prijava
       heading: Prijava
@@ -1983,8 +2003,6 @@ sl:
       button: Odstrani prijatelja
       success: Uporabnika %{name} ste odstranili izmed svojih prijateljev.
       not_a_friend: Uporabnika %{name} ni med vašimi prijatelji.
-    filter:
-      not_an_administrator: Morate biti administrator za izvedbo tega dejanja.
     index:
       title: Uporabniki
       heading: Uporabniki
@@ -2017,8 +2035,6 @@ sl:
         in geslom in račun v nastavitvah povežete s svojim ID-jem.
   user_role:
     filter:
-      not_an_administrator: Samo skrbniki lahko upravljajo vlogo uporabnika, vi pa
-        niste skrbnik.
       not_a_role: Besedilo `%{role}' ni pravilna vloga.
       already_has_role: Uporabnik že ima vlogo %{role}.
       doesnt_have_role: Uporabnik nima vloge %{role}.
@@ -2142,31 +2158,10 @@ sl:
       next: Naslednja »
       previous: « Prejšnja
   notes:
-    comment:
-      opened_at_html: Ustvarjeno %{when} nazaj
-      opened_at_by_html: Ustvarjeno %{when} nazaj od %{user}
-      commented_at_html: Posodobljeno %{when} nazaj
-      commented_at_by_html: Posodobljeno %{when} nazaj od %{user}
-      closed_at_html: Rešeno %{when} nazaj
-      closed_at_by_html: Rešeno %{when} nazaj od %{user}
-      reopened_at_html: Zopet aktivirano %{when} nazaj
-      reopened_at_by_html: Zopet aktivirano %{when} nazaj od %{user}
-    rss:
-      title: OpenStreetMap opombe
-      description_area: Seznam opomb, prijavljenih, komentiranih ali zaprtih na vašem
-        območju [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: RSS vir za opombo %{id}
-      opened: Nova opomba (v bližini %{place})
-      commented: Nov komentar (v bližini %{place})
-      closed: Zaprta opomba (v bližini %{place})
-      reopened: Zopet aktivirana opomba (v bližini %{place})
-    entry:
-      comment: Komentar
-      full: Celotna opomba
     mine:
       title: Opombe, ki jih je posredoval/-a ali komentiral/-a %{user}
       heading: Opombe uporabnika %{user}
-      subheading: Opombe, ki jih je posredoval/-a ali komentiral/-a %{user}
+      subheading_html: Opombe, ki jih je posredoval/-a ali komentiral/-a %{user}
       id: Id
       creator: Ustvarjalec
       description: Opis
@@ -2260,13 +2255,10 @@ sl:
     directions:
       ascend: Vzpon
       engines:
+        fossgis_osrm_car: Avto (OSRM)
         graphhopper_bicycle: Kolo (GraphHopper)
         graphhopper_car: Avto (GraphHopper)
         graphhopper_foot: Hoja (GraphHopper)
-        mapquest_bicycle: Kolo (MapQuest)
-        mapquest_car: Avto (MapQuest)
-        mapquest_foot: Hoja (MapQuest)
-        osrm_car: Avto (OSRM)
       descend: Spust
       directions: Navodila
       distance: Razdalja

@@ -1,6 +1,7 @@
 # Messages for Lithuanian (lietuvių)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Aurimas
 # Author: Cyklopas
 # Author: Eitvys200
@@ -103,6 +104,29 @@ lt:
     remote:
       name: nuotoliniu valdymu
       description: nuotolinį valdymą (JOSM arba Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Sukurta prieš %{when}
+        opened_at_by_html: Prieš %{when} sukūrė %{user}
+        commented_at_html: Atnaujinta prieš %{when}
+        commented_at_by_html: Prieš %{when} atnaujino %{user}
+        closed_at_html: Išspręsta prieš %{when}\
+        closed_at_by_html: Prieš %{when} išsprendė %{user}
+        reopened_at_html: Iš naujo suaktyvinta prieš %{when}
+        reopened_at_by_html: Prieš %{when} iš naujo suaktyvino %{user}
+      rss:
+        title: OpenStreetMap pastabos
+        description_area: sąrašas pastabų, pranešta, pakomentuota arba uždaryta jūsų
+          srityje (%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Rss kanalas pastabai %{id}
+        opened: nauja pastaba (netoli %{place})
+        commented: naujas komentaras (netoli %{place})
+        closed: uždaryta pastaba (netoli %{place})
+        reopened: aktyvuota pastaba (netoli %{place})
+      entry:
+        comment: Komentaras
+        full: Pilna pastaba
   browse:
     created: Sukurtas
     closed: Uždarytas
@@ -232,7 +256,7 @@ lt:
       introduction: Spauskite ant žemėlapio, norėdami rasti gretimus objektus
       nearby: Artimi objektai
       enclosing: Gaubiantys objektai
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Puslapis %{page}
       next: Kitas »
@@ -261,14 +285,14 @@ lt:
       load_more: Įkelti daugiau
     timeout:
       sorry: Atsiprašome, bet jūsų prašytų pakeitimų ištraukimas užtruko per ilgai.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Naujas pakeitimo #%{changeset_id} komentaras, parašytas %{author}'
+      commented_at_by_html: '%{user} pakeitė prieš %{when}'
+    index:
       title_all: OpenStreetMap pakeitimo aptarimas
       title_particular: 'OpenStreetMap pakeitimo #%{changeset_id} aptarimas'
-      comment: 'Naujas pakeitimo #%{changeset_id} komentaras, parašytas %{author}'
-      commented_at_html: Pakeista prieš %{when}
-      commented_at_by_html: '%{user} pakeitė prieš %{when}'
-      full: Pilnas aptarimas
-  diary_entry:
+  diary_entries:
     new:
       title: Naujas dienoraščio įrašas
       publish_button: Publikuoti
@@ -935,9 +959,7 @@ lt:
     intro_text: OpenStreetMap yra pasaulio žemėlapis, kuriamas žmonių, tokių kaip
       jūs. Jis atviras ir laisvas - naudojamas pagal atvirą licenciją.
     intro_2_create_account: sukurti naudotojo paskyrą
-    partners_html: Serveris palaikomas %{ucl}, %{bytemark}, %{ic} ir kiti %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark serveris
     partners_partners: partneriai
     osm_offline: Šiuo metu OpenStreetMap duomenų bazė išjungta, nes vykdomi svarbūs
@@ -1690,8 +1712,6 @@ lt:
     require_cookies:
       cookies_needed: Panašu, kad išjungėte slapukus. Prieš tęsdami, įjunkite savo
         naršyklėje slapukus.
-    require_moderator:
-      not_a_moderator: Norėdami atlikti šį veiksmą, turite būti administratoriumi.
     setup_user_auth:
       blocked_zero_hour: Turite skubų pranešimą OpenStreetMap puslapyje. Jums reikia
         perskaityti šį pranešimą prieš galint išsaugoti pakeitimus.
@@ -1786,7 +1806,7 @@ lt:
       flash: Kliento informacija sėkmingai atnaujinta
     destroy:
       flash: Panaikinta kliento programos registracija
-  user:
+  users:
     login:
       title: Prisijungti
       heading: Prisijungti
@@ -2099,8 +2119,6 @@ lt:
       button: Nebedraugauti
       success: '%{name} pašalintas iš jūsų draugų sąrašo.'
       not_a_friend: '%{name} nėra jūsų draugas.'
-    filter:
-      not_an_administrator: Norėdami atlikti šį veiksmą, turite būti administratoriumi.
     index:
       title: Naudotojai
       heading: Naudotojai
@@ -2136,8 +2154,6 @@ lt:
         su savo ID, savo vartotojo nustatymuose.
   user_role:
     filter:
-      not_an_administrator: Tik administratoriai gali valdyti roles, o jūs nesate
-        administratorius.
       not_a_role: Eilutė „%{role}“ nėra tinkama rolė.
       already_has_role: Naudotojas jau turi rolę „%{role}“.
       doesnt_have_role: Naudotojas neturi rolės „%{role}“.
@@ -2262,31 +2278,10 @@ lt:
       next: Kitas »
       previous: « Ankstesnis
   notes:
-    comment:
-      opened_at_html: Sukurta prieš %{when}
-      opened_at_by_html: Prieš %{when} sukūrė %{user}
-      commented_at_html: Atnaujinta prieš %{when}
-      commented_at_by_html: Prieš %{when} atnaujino %{user}
-      closed_at_html: Išspręsta prieš %{when}\
-      closed_at_by_html: Prieš %{when} išsprendė %{user}
-      reopened_at_html: Iš naujo suaktyvinta prieš %{when}
-      reopened_at_by_html: Prieš %{when} iš naujo suaktyvino %{user}
-    rss:
-      title: OpenStreetMap pastabos
-      description_area: sąrašas pastabų, pranešta, pakomentuota arba uždaryta jūsų
-        srityje (%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Rss kanalas pastabai %{id}
-      opened: nauja pastaba (netoli %{place})
-      commented: naujas komentaras (netoli %{place})
-      closed: uždaryta pastaba (netoli %{place})
-      reopened: aktyvuota pastaba (netoli %{place})
-    entry:
-      comment: Komentaras
-      full: Pilna pastaba
     mine:
       title: Pastabas pateikė arba komentavo %{user}
       heading: '%{user} pastabos'
-      subheading: Pastabas pateikė arba komentavo %{user}
+      subheading_html: Pastabas pateikė arba komentavo %{user}
       id: Id
       creator: Kūrėjas
       description: Aprašymas
@@ -2378,12 +2373,9 @@ lt:
       spauskite čia.
     directions:
       engines:
+        fossgis_osrm_car: Mašina (OSRM)
         graphhopper_bicycle: Dviračiu (GraphHopper)
         graphhopper_foot: Pėsčiomis (GraphHopper)
-        mapquest_bicycle: Dviračiu (MapQuest)
-        mapquest_car: Mašina (MapQuest)
-        mapquest_foot: Pėsčiomis (MapQuest)
-        osrm_car: Mašina (OSRM)
       directions: Nurodymai
       distance: Atstumas
       errors:

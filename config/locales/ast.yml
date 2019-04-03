@@ -1,6 +1,7 @@
 # Messages for Asturian (asturianu)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Enolp
 # Author: Fitoschido
 # Author: Macofe
@@ -92,6 +93,29 @@ ast:
     remote:
       name: Control remotu
       description: Control remotu (JOSM o Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Creada hai %{when}
+        opened_at_by_html: Creada hai %{when} por %{user}
+        commented_at_html: Anovada hai %{when}
+        commented_at_by_html: Anovada hai %{when} por %{user}
+        closed_at_html: Resuelta hai %{when}
+        closed_at_by_html: Resuelta hai %{when} por %{user}
+        reopened_at_html: Reactivada hai %{when}
+        reopened_at_by_html: Reactivada hai %{when} por %{user}
+      rss:
+        title: Notes d'OpenStreetMap
+        description_area: Llista de notes, escrites, comentaes o zarraes en so área
+          [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Una canal rss pa la nota %{id}
+        opened: nota nueva (cerca de %{place})
+        commented: comentariu nuevu (cerca de %{place})
+        closed: nota zarrada (cerca de %{place})
+        reopened: nota reactivada (cerca de %{place})
+      entry:
+        comment: Comentariu
+        full: Nota completa
   browse:
     created: Creáu
     closed: Zarráu
@@ -218,7 +242,7 @@ ast:
       introduction: Fai clic nel mapa p'alcontrar entidaes cercanes.
       nearby: Entidaes cercanes
       enclosing: Entidaes envolventes
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Páxina %{page}
       next: Siguiente »
@@ -247,15 +271,15 @@ ast:
       load_more: Cargar más
     timeout:
       sorry: Llevó demasiao tiempu baxar la llista de conxuntos de cambeos que pidisti.
-    rss:
-      title_all: Alderique del conxuntu de cambeos d'OpenStreetMap
-      title_particular: 'Alderique del conxuntu de cambeos #%{changeset_id} d''OpenStreetMap'
+  changeset_comments:
+    comment:
       comment: 'Comentariu nuevu sobro''l conxuntu de cambios #%{changeset_id} de
         %{author}'
-      commented_at_html: Anovao hai %{when}
       commented_at_by_html: Anovao hai %{when} por %{user}
-      full: Alderique completu
-  diary_entry:
+    index:
+      title_all: Alderique del conxuntu de cambeos d'OpenStreetMap
+      title_particular: 'Alderique del conxuntu de cambeos #%{changeset_id} d''OpenStreetMap'
+  diary_entries:
     new:
       title: Nueva entrada del diariu
       publish_button: Espublizar
@@ -1061,10 +1085,7 @@ ast:
     intro_text: OpenStreetMap ye un mapa del mundu, creáu por persones como tu y d'usu
       llibre baxo una llicencia abierta.
     intro_2_create_account: Crear una cuenta d'usuariu
-    partners_html: L'agospiamientu tien l'encontu de %{ucl}, %{bytemark}, %{ic}, y
-      otros %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College de Londres
     partners_bytemark: Bytemark Hosting
     partners_partners: asociaos
     osm_offline: La base de datos d'OpenStreetMap anguaño ta desconectada mentanto
@@ -1365,6 +1386,9 @@ ast:
           <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>),
           <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> y
           Land Tirol (baxo <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT con enmiendes</a>).
+        contributors_au_html: |-
+          <strong>Australia</strong>: Contien datos de barrios basaos en datos de Australian Bureau of
+          Statistics.
         contributors_ca_html: |-
           <strong>Canadá</strong>: Contien datos de GeoBase&reg;, GeoGratis (&copy; Department of Natural
           Resources Canada), CanVec (&copy; Department of Natural
@@ -1831,11 +1855,6 @@ ast:
         nel restolador enantes de siguir.
     require_admin:
       not_an_admin: Has de ser alministrador pa facer esa aición.
-    require_moderator:
-      not_a_moderator: Has de ser moderador pa facer esa aición.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Has de ser moderador o alministrador pa facer esa
-        aición.
     setup_user_auth:
       blocked_zero_hour: Tienes un mensaxe urxente nel sitiu web d'OpenStreetMap.
         Tienes de lleer el mensaxe antes de que puedas guardar les ediciones.
@@ -1932,7 +1951,7 @@ ast:
       flash: S'anovó la información del cliente correutamente
     destroy:
       flash: Se destruyó'l rexistru de l'aplicación cliente
-  user:
+  users:
     login:
       title: Entrar
       heading: Entrar
@@ -2246,8 +2265,6 @@ ast:
       button: Desaniciar como amigu
       success: '%{name} desanicióse de los tos amigos.'
       not_a_friend: '%{name} nun ye unu de los tos amigos.'
-    filter:
-      not_an_administrator: Has de ser alministrador pa facer esa aición.
     index:
       title: Usuarios
       heading: Usuarios
@@ -2289,8 +2306,6 @@ ast:
         la cuenta cola ID nes preferencies d'usuariu.
   user_role:
     filter:
-      not_an_administrator: Namái los alministradores pueden xestionar los roles,
-        y nun yes alministrador.
       not_a_role: La cadena «%{role}» nun ye un rol válidu.
       already_has_role: L'usuariu yá tien el rol %{role}.
       doesnt_have_role: L'usuariu nun tien el rol %{role}.
@@ -2416,31 +2431,10 @@ ast:
       next: Siguiente »
       previous: « Anterior
   notes:
-    comment:
-      opened_at_html: Creada hai %{when}
-      opened_at_by_html: Creada hai %{when} por %{user}
-      commented_at_html: Anovada hai %{when}
-      commented_at_by_html: Anovada hai %{when} por %{user}
-      closed_at_html: Resuelta hai %{when}
-      closed_at_by_html: Resuelta hai %{when} por %{user}
-      reopened_at_html: Reactivada hai %{when}
-      reopened_at_by_html: Reactivada hai %{when} por %{user}
-    rss:
-      title: Notes d'OpenStreetMap
-      description_area: Llista de notes, escrites, comentaes o zarraes en so área
-        [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Una canal rss pa la nota %{id}
-      opened: nota nueva (cerca de %{place})
-      commented: comentariu nuevu (cerca de %{place})
-      closed: nota zarrada (cerca de %{place})
-      reopened: nota reactivada (cerca de %{place})
-    entry:
-      comment: Comentariu
-      full: Nota completa
     mine:
       title: Notes unviaes o comentaes por %{user}
       heading: notes de %{user}
-      subheading: Notes unviaes o comentaes por %{user}
+      subheading_html: Notes unviaes o comentaes por %{user}
       id: Id
       creator: Creador
       description: Descripción
@@ -2533,13 +2527,10 @@ ast:
     directions:
       ascend: Ascender
       engines:
+        fossgis_osrm_car: En coche (OSRM)
         graphhopper_bicycle: Bicicleta  (GraphHopper)
         graphhopper_car: En coche (GraphHopper)
         graphhopper_foot: A pie (GraphHopper)
-        mapquest_bicycle: Bicicleta (MapQuest)
-        mapquest_car: Coche (MapQuest)
-        mapquest_foot: A pie (MapQuest)
-        osrm_car: En coche (OSRM)
       descend: Descender
       directions: Indicaciones
       distance: Distancia

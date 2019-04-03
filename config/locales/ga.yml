@@ -88,6 +88,18 @@ ga:
     remote:
       name: Cianrialú
       description: Cianrialú (JOSM nó Merkaartor)
+  api:
+    notes:
+      rss:
+        title: Nótaí OpenStreetMap
+        description_item: Fotha RSS don nóta %{id}
+        opened: 'nóta nua (gar do: %{place})'
+        commented: 'nóta tráchta nua (gar do: %{place})'
+        closed: 'nóta dúnta (gar do: %{place})'
+        reopened: 'nóta athoscailte (gar do: %{place})'
+      entry:
+        comment: Nóta tráchta
+        full: An nóta iomlán
   browse:
     created: Cruthaithe ag
     closed: Dúnta ag
@@ -213,7 +225,7 @@ ga:
       introduction: Cliceáil ar an léarscáil chun gnéithe in aice láimhe a aimsiú.
       nearby: Gnéithe in aice láimhe
       enclosing: Gnéithe thart timpeall air
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Leathanach %{page}
       next: Ar aghaidh »
@@ -243,14 +255,14 @@ ga:
     timeout:
       sorry: Ár leithscéil, thóg sé rófhada an liosta de na tacair athruithe a d'iarr
         tú a aisghabháil.
-    rss:
+  changeset_comments:
+    comment:
+      comment: Nóta tráchta nua ar thacar athruithe %{changeset_id} ó %{author}
+      commented_at_by_html: Nuashonraithe %{when} ó shin ag %{user}
+    index:
       title_all: Plé ar thacair athruithe OpenStreetMap
       title_particular: Plé ar thacar athruithe %{changeset_id} de chuid OpenStreetMap
-      comment: Nóta tráchta nua ar thacar athruithe %{changeset_id} ó %{author}
-      commented_at_html: Nuashonraithe %{when} ó shin
-      commented_at_by_html: Nuashonraithe %{when} ó shin ag %{user}
-      full: An plé iomlán
-  diary_entry:
+  diary_entries:
     new:
       title: Iontráil Nua Dialainne
       publish_button: Foilsigh
@@ -915,6 +927,74 @@ ga:
     results:
       no_results: Gan torthaí
       more_results: Tuilleadh torthaí
+  issues:
+    index:
+      title: Fadhbanna
+      select_status: Roghnaigh stádas
+    show:
+      title: '%{status} Fadhb #%{issue_id}'
+      reports:
+        zero: Tuairisc ar bith
+        one: Tuairisc amháin
+        other: '%{count} tuairisc'
+      report_created_at: Tuairiscíodh den chéad uair ag %{datetime}
+      last_resolved_at: Réitithe den uair dheirineach ag %{datetime}
+      last_updated_at: Rinne %{displayname} an nuashonrú is déanaí ag %{datetime}
+      resolve: Réitigh
+      ignore: Tabhair neamhaird air
+      reopen: Athoscail
+      reports_of_this_issue: Tuairiscí faoin bhFadhb seo
+      read_reports: Tuairiscí a Léamh
+      new_reports: Tuairiscí Nua
+      other_issues_against_this_user: Fadhbanna eile i leith an úsáideora seo
+      no_other_issues: Níl aon fhadhb eile i leith an úsáideora seo.
+      comments_on_this_issue: Nótaí tráchta faoin bhfadhb
+    resolve:
+      resolved: Stádas na faidhbe socraithe go 'Réitithe'
+    ignore:
+      ignored: Stádas na faidhbe socraithe go 'Neamhaird'
+    reopen:
+      reopened: Stádas na faidhbe socraithe go 'Oscailte'
+    comments:
+      created_at: Ar an %{datetime}
+      reassign_param: Athshann an Fhadhb?
+    reports:
+      updated_at: Ar an %{datetime}
+  reports:
+    new:
+      select: 'Roghnaigh cúis don tuairisc uait:'
+      disclaimer:
+        intro: 'Sula gcuire tú do thuairisc chuig modhnóirí an tsuímh, déan cinnte:'
+        not_just_mistake: Go bhfuil tú deimhin de nach díreach botún atá san fhadhb
+        unable_to_fix: Nach féidir leat an fhadhb a cheartú tú féin nó le cabhair
+          ó na baill eile den phobal
+        resolve_with_user: Go ndearna tú iarracht cheana féin an fhadhb a réiteach
+          leis an úsáideoir atá i gceist
+      categories:
+        diary_entry:
+          spam_label: Is turscar atá san iontráil dialainne seo nó atá i gcuid de
+          offensive_label: Tá an iontráil dialainne seo gáirsiúil/graosta/gránna
+          threat_label: Tá bagairt san iontráil dialainne seo
+          other_label: Eile
+        diary_comment:
+          spam_label: Is turscar atá san iontráil dialainne seo nó atá i gcuid de
+          offensive_label: Tá an iontráil dialainne seo gáirsiúil/graosta/gránna
+          threat_label: Tá bagairt san iontráil dialainne seo
+          other_label: Eile
+        user:
+          spam_label: Is turscar atá sa phróifíl úsáideora seo nó atá i gcuid de
+          offensive_label: Tá an phróifíl úsáideora seo gáirsiúil/graosta/gránna
+          threat_label: Tá bagairt sa phróifíl den phróifíl úsáideora seo
+          vandal_label: Is loitiméir é an t-úsáideoir seo
+          other_label: Eile
+        note:
+          spam_label: Is turscar atá sa nóta seo
+          personal_label: Tá sonraí pearsanta sa nóta seo
+          abusive_label: Tá an nóta seo maslach
+          other_label: Eile
+    create:
+      successful_report: Cláraíodh an tuairisc uait
+      provide_details: Tabhair na sonraí is gá le do thoil
   layouts:
     logo:
       alt_text: Lógó OpenStreetMap
@@ -928,6 +1008,7 @@ ga:
     edit: Cuir in Eagar
     history: Stair
     export: Easpórtáil
+    issues: Fadhbanna
     data: Sonraí
     export_data: Easpórtáil Sonraí
     gps_traces: Loirg GPS
@@ -940,10 +1021,9 @@ ga:
     intro_text: Is léarscáil den domhan é OpenStreetMap, a chruthaigh daoine cosúil
       leatsa agus atá saor in aisce le húsáid faoi cheadúnas oscailte.
     intro_2_create_account: Cruthaigh cuntas úsáideora
-    partners_html: Tugann %{ucl}, %{bytemark}, %{ic} agus %{partners} eile tacaíocht
-      don óstáil.
+    hosting_partners_html: Tacaíonn %{ucl}, %{bytemark} agus %{partners} eile leis
+      an óstáil.
     partners_ucl: UCL
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: comhpháirtithe
     osm_offline: Tá bunachar sonraí OpenStreetMap as líne faoi láthair fad agus atá
@@ -1089,6 +1169,8 @@ ga:
           ag gabháil leis
         partial_changeset_without_comment: nach bhfuil nóta tráchta ag gabháil leis
       details: Tá tuilleadh sonraí faoin tacar athruithe ar fáil ag %{url}.
+      unsubscribe: Le díliostáil ó nuashonruithe a dhéanfar ar an tacar athruithe
+        seo, tabhair cuairt ar %{url} agus cliceáil ar "Díoliostáil".
   messages:
     inbox:
       title: Bosca isteach
@@ -1649,8 +1731,6 @@ ga:
     require_cookies:
       cookies_needed: Is cosúil go bhfuil fianáin díchumasaithe agat - cumasaigh fianáin
         i do bhrabhsálaí roimh duit leanúint ar aghaidh.
-    require_moderator:
-      not_a_moderator: Is gá duit a bheith i do mhodhnóir chun an gníomh sin a dhéanamh.
     setup_user_auth:
       blocked_zero_hour: Tá teachtaireacht phráinneach againn duit ar shuíomh gréasáin
         OpenStreetMap. Ní mór duit an teachtaireacht a léamh sula mbeidh tú in ann
@@ -1751,7 +1831,7 @@ ga:
       flash: Tugadh an fhaisnéis faoin gcliant cothrom le dáta
     destroy:
       flash: Scriosadh clárú an chliant-fheidhmchláir
-  user:
+  users:
     login:
       title: Logáil isteach
       heading: Logáil isteach
@@ -2011,16 +2091,6 @@ ga:
       next: Ar aghaidh »
       previous: « Roimhe
   notes:
-    rss:
-      title: Nótaí OpenStreetMap
-      description_item: Fotha RSS don nóta %{id}
-      opened: 'nóta nua (gar do: %{place})'
-      commented: 'nóta tráchta nua (gar do: %{place})'
-      closed: 'nóta dúnta (gar do: %{place})'
-      reopened: 'nóta athoscailte (gar do: %{place})'
-    entry:
-      comment: Nóta tráchta
-      full: An nóta iomlán
     mine:
       id: ID
       last_changed: Athrú deireanach
@@ -2090,13 +2160,10 @@ ga:
     directions:
       ascend: Dul suas
       engines:
+        fossgis_osrm_car: Carr (OSRM)
         graphhopper_bicycle: Rothar (GraphHopper)
         graphhopper_car: Carr (GraphHopper)
         graphhopper_foot: Ag Siúl (GraphHopper)
-        mapquest_bicycle: Rothar (MapQuest)
-        mapquest_car: Carr (MapQuest)
-        mapquest_foot: Ag Siúl (MapQuest)
-        osrm_car: Carr (OSRM)
       descend: Dul síos
       directions: Treoracha
       distance: Fad

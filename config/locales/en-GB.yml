@@ -1,6 +1,7 @@
 # Messages for British English (British English)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Andibing
 # Author: Bpfhjquevaps
 # Author: Bruce89
@@ -113,6 +114,29 @@ en-GB:
     remote:
       name: Remote Control
       description: Remote Control (JOSM or Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Created %{when} ago
+        opened_at_by_html: Created %{when} ago by %{user}
+        commented_at_html: Updated %{when} ago
+        commented_at_by_html: Updated %{when} ago by %{user}
+        closed_at_html: Resolved %{when} ago
+        closed_at_by_html: Resolved %{when} ago by %{user}
+        reopened_at_html: Reactivated %{when} ago
+        reopened_at_by_html: Reactivated %{when} ago by %{user}
+      rss:
+        title: OpenStreetMap Notes
+        description_area: A list of notes, reported, commented on or closed in your
+          area [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: An rss feed for note %{id}
+        opened: new note (near %{place})
+        commented: new comment (near %{place})
+        closed: closed note (near %{place})
+        reopened: reactivated note (near %{place})
+      entry:
+        comment: Comment
+        full: Full note
   browse:
     created: Created
     closed: Closed
@@ -232,12 +256,13 @@ en-GB:
       reopened_by_anonymous: Reactivated by anonymous <abbr title='%{exact_time}'>%{when}
         ago</abbr>
       hidden_by: Hidden by %{user} <abbr title='%{exact_time}'>%{when} ago</abbr>
+      report: Report this note
     query:
       title: Query Features
       introduction: Click on the map to find nearby features.
       nearby: Nearby features
       enclosing: Enclosing features
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Page %{page}
       next: Next »
@@ -266,14 +291,14 @@ en-GB:
       load_more: Load more
     timeout:
       sorry: Sorry, the list of changesets you requested took too long to retrieve.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'New comment on changeset #%{changeset_id} by %{author}'
+      commented_at_by_html: Updated %{when} ago by %{user}
+    index:
       title_all: OpenStreetMap changeset discussion
       title_particular: 'OpenStreetMap changeset #%{changeset_id} discussion'
-      comment: 'New comment on changeset #%{changeset_id} by %{author}'
-      commented_at_html: Updated %{when} ago
-      commented_at_by_html: Updated %{when} ago by %{user}
-      full: Full discussion
-  diary_entry:
+  diary_entries:
     new:
       title: New Diary Entry
       publish_button: Publish
@@ -903,10 +928,7 @@ en-GB:
     intro_text: OpenStreetMap is a map of the world, created by people like you and
       free to use under an open licence.
     intro_2_create_account: Create a user account
-    partners_html: Hosting is supported by %{ucl}, %{ic} and %{bytemark}, and other
-      %{partners}.
     partners_ucl: UCL
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: partners
     osm_offline: The OpenStreetMap database is currently offline while essential database
@@ -1672,8 +1694,6 @@ en-GB:
     require_cookies:
       cookies_needed: You appear to have cookies disabled - please enable cookies
         in your browser before continuing.
-    require_moderator:
-      not_a_moderator: You need to be a moderator to perform that action.
     setup_user_auth:
       blocked_zero_hour: You have an urgent message on the OpenStreetMap web site.
         You need to read the message before you will be able to save your edits.
@@ -1771,7 +1791,7 @@ en-GB:
       flash: Updated the client information successfully
     destroy:
       flash: Destroyed the client application registration
-  user:
+  users:
     login:
       title: Login
       heading: Login
@@ -2081,8 +2101,6 @@ en-GB:
       button: Unfriend
       success: '%{name} was removed from your friends.'
       not_a_friend: '%{name} is not one of your friends.'
-    filter:
-      not_an_administrator: You need to be an administrator to perform that action.
     index:
       title: Users
       heading: Users
@@ -2122,8 +2140,6 @@ en-GB:
         with your ID in your user settings.
   user_role:
     filter:
-      not_an_administrator: Only administrators can perform user role management,
-        and you are not an administrator.
       not_a_role: The string `%{role}' is not a valid role.
       already_has_role: The user already has role %{role}.
       doesnt_have_role: The user does not have role %{role}.
@@ -2248,31 +2264,10 @@ en-GB:
       next: Next »
       previous: « Previous
   notes:
-    comment:
-      opened_at_html: Created %{when} ago
-      opened_at_by_html: Created %{when} ago by %{user}
-      commented_at_html: Updated %{when} ago
-      commented_at_by_html: Updated %{when} ago by %{user}
-      closed_at_html: Resolved %{when} ago
-      closed_at_by_html: Resolved %{when} ago by %{user}
-      reopened_at_html: Reactivated %{when} ago
-      reopened_at_by_html: Reactivated %{when} ago by %{user}
-    rss:
-      title: OpenStreetMap Notes
-      description_area: A list of notes, reported, commented on or closed in your
-        area [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: An rss feed for note %{id}
-      opened: new note (near %{place})
-      commented: new comment (near %{place})
-      closed: closed note (near %{place})
-      reopened: reactivated note (near %{place})
-    entry:
-      comment: Comment
-      full: Full note
     mine:
       title: Notes submitted or commented on by %{user}
       heading: '%{user}''s notes'
-      subheading: Notes submitted or commented on by %{user}
+      subheading_html: Notes submitted or commented on by %{user}
       id: Id
       creator: Creator
       description: Description
@@ -2366,13 +2361,10 @@ en-GB:
     directions:
       ascend: Ascend
       engines:
+        fossgis_osrm_car: Car (OSRM)
         graphhopper_bicycle: Bicycle (GraphHopper)
         graphhopper_car: Car (GraphHopper)
         graphhopper_foot: Foot (GraphHopper)
-        mapquest_bicycle: Bicycle (MapQuest)
-        mapquest_car: Car (MapQuest)
-        mapquest_foot: Foot (MapQuest)
-        osrm_car: Car (OSRM)
       descend: Descend
       directions: Directions
       distance: Distance

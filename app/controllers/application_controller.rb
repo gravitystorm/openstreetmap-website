@@ -3,11 +3,16 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery :with => :exception
 
+  rescue_from CanCan::AccessDenied, :with => :deny_access
+  check_authorization
+
   before_action :fetch_body
   around_action :better_errors_allow_inline, :if => proc { Rails.env.development? }
 
   attr_accessor :current_user
   helper_method :current_user
+
+  private
 
   def authorize_web
     if session[:user]
@@ -17,16 +22,16 @@ class ApplicationController < ActionController::Base
         session.delete(:user)
         session_expires_automatically
 
-        redirect_to :controller => "user", :action => "suspended"
+        redirect_to :controller => "users", :action => "suspended"
 
       # don't allow access to any auth-requiring part of the site unless
       # the new CTs have been seen (and accept/decline chosen).
       elsif !current_user.terms_seen && flash[:skip_terms].nil?
-        flash[:notice] = t "user.terms.you need to accept or decline"
+        flash[:notice] = t "users.terms.you need to accept or decline"
         if params[:referer]
-          redirect_to :controller => "user", :action => "terms", :referer => params[:referer]
+          redirect_to :controller => "users", :action => "terms", :referer => params[:referer]
         else
-          redirect_to :controller => "user", :action => "terms", :referer => request.fullpath
+          redirect_to :controller => "users", :action => "terms", :referer => request.fullpath
         end
       end
     elsif session[:token]
@@ -41,7 +46,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       if request.get?
-        redirect_to :controller => "user", :action => "login", :referer => request.fullpath
+        redirect_to :controller => "users", :action => "login", :referer => request.fullpath
       else
         head :forbidden
       end
@@ -49,25 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_oauth
-    @oauth = current_user.access_token(OAUTH_KEY) if current_user && defined? OAUTH_KEY
-  end
-
-  ##
-  # requires the user to be logged in by the token or HTTP methods, or have an
-  # OAuth token with the right capability. this method is a bit of a pain to call
-  # directly, since it's cumbersome to call filters with arguments in rails. to
-  # make it easier to read and write the code, there are some utility methods
-  # below.
-  def require_capability(cap)
-    # when the current token is nil, it means the user logged in with a different
-    # method, otherwise an OAuth token was used, which has to be checked.
-    unless current_token.nil?
-      unless current_token.read_attribute(cap)
-        set_locale
-        report_error t("oauth.permissions.missing"), :forbidden
-        false
-      end
-    end
+    @oauth = current_user.access_token(Settings.oauth_key) if current_user && Settings.key?(:oauth_key)
   end
 
   ##
@@ -86,126 +73,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Utility methods to make the controller filter methods easier to read and write.
-  def require_allow_read_prefs
-    require_capability(:allow_read_prefs)
-  end
-
-  def require_allow_write_prefs
-    require_capability(:allow_write_prefs)
-  end
-
-  def require_allow_write_diary
-    require_capability(:allow_write_diary)
-  end
-
-  def require_allow_write_api
-    require_capability(:allow_write_api)
-
-    if REQUIRE_TERMS_AGREED && current_user.terms_agreed.nil?
-      report_error "You must accept the contributor terms before you can edit.", :forbidden
-      return false
-    end
-  end
-
-  def require_allow_read_gpx
-    require_capability(:allow_read_gpx)
-  end
-
-  def require_allow_write_gpx
-    require_capability(:allow_write_gpx)
-  end
-
-  def require_allow_write_notes
-    require_capability(:allow_write_notes)
-  end
-
-  ##
-  # require that the user is a moderator, or fill out a helpful error message
-  # and return them to the index for the controller this is wrapped from.
-  def require_moderator
-    unless current_user.moderator?
-      if request.get?
-        flash[:error] = t("application.require_moderator.not_a_moderator")
-        redirect_to :action => "index"
-      else
-        head :forbidden
-      end
-    end
-  end
-
-  ##
-  # sets up the current_user for use by other methods. this is mostly called
-  # from the authorize method, but can be called elsewhere if authorisation
-  # is optional.
-  def setup_user_auth
-    # try and setup using OAuth
-    unless Authenticator.new(self, [:token]).allow?
-      username, passwd = get_auth_data # parse from headers
-      # authenticate per-scheme
-      self.current_user = if username.nil?
-                            nil # no authentication provided - perhaps first connect (client should retry after 401)
-                          elsif username == "token"
-                            User.authenticate(:token => passwd) # preferred - random token for user from db, passed in basic auth
-                          else
-                            User.authenticate(:username => username, :password => passwd) # basic auth
-                          end
-    end
-
-    # have we identified the user?
-    if current_user
-      # check if the user has been banned
-      user_block = current_user.blocks.active.take
-      unless user_block.nil?
-        set_locale
-        if user_block.zero_hour?
-          report_error t("application.setup_user_auth.blocked_zero_hour"), :forbidden
-        else
-          report_error t("application.setup_user_auth.blocked"), :forbidden
-        end
-      end
-
-      # if the user hasn't seen the contributor terms then don't
-      # allow editing - they have to go to the web site and see
-      # (but can decline) the CTs to continue.
-      if REQUIRE_TERMS_SEEN && !current_user.terms_seen && flash[:skip_terms].nil?
-        set_locale
-        report_error t("application.setup_user_auth.need_to_see_terms"), :forbidden
-      end
-    end
-  end
-
-  def authorize(realm = "Web Password", errormessage = "Couldn't authenticate you")
-    # make the current_user object from any auth sources we have
-    setup_user_auth
-
-    # handle authenticate pass/fail
-    unless current_user
-      # no auth, the user does not exist or the password was wrong
-      response.headers["WWW-Authenticate"] = "Basic realm=\"#{realm}\""
-      render :plain => errormessage, :status => :unauthorized
-      return false
-    end
-  end
-
-  ##
-  # to be used as a before_filter *after* authorize. this checks that
-  # the user is a moderator and, if not, returns a forbidden error.
-  #
-  # NOTE: this isn't a very good way of doing it - it duplicates logic
-  # from require_moderator - but what we really need to do is a fairly
-  # drastic refactoring based on :format and respond_to? but not a
-  # good idea to do that in this branch.
-  def authorize_moderator(errormessage = "Access restricted to moderators")
-    # check user is a moderator
-    unless current_user.moderator?
-      render :plain => errormessage, :status => :forbidden
-      false
-    end
-  end
-
   def check_database_readable(need_api = false)
-    if STATUS == :database_offline || (need_api && STATUS == :api_offline)
+    if Settings.status == "database_offline" || (need_api && Settings.status == "api_offline")
       if request.xhr?
         report_error "Database offline for maintenance", :service_unavailable
       else
@@ -215,8 +84,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_database_writable(need_api = false)
-    if STATUS == :database_offline || STATUS == :database_readonly ||
-       (need_api && (STATUS == :api_offline || STATUS == :api_readonly))
+    if Settings.status == "database_offline" || Settings.status == "database_readonly" ||
+       (need_api && (Settings.status == "api_offline" || Settings.status == "api_readonly"))
       if request.xhr?
         report_error "Database offline for maintenance", :service_unavailable
       else
@@ -226,44 +95,38 @@ class ApplicationController < ActionController::Base
   end
 
   def check_api_readable
-    if api_status == :offline
+    if api_status == "offline"
       report_error "Database offline for maintenance", :service_unavailable
       false
     end
   end
 
   def check_api_writable
-    unless api_status == :online
+    unless api_status == "online"
       report_error "Database offline for maintenance", :service_unavailable
       false
     end
   end
 
   def database_status
-    if STATUS == :database_offline
-      :offline
-    elsif STATUS == :database_readonly
-      :readonly
+    if Settings.status == "database_offline"
+      "offline"
+    elsif Settings.status == "database_readonly"
+      "readonly"
     else
-      :online
+      "online"
     end
   end
 
   def api_status
     status = database_status
-    if status == :online
-      if STATUS == :api_offline
-        status = :offline
-      elsif STATUS == :api_readonly
-        status = :readonly
+    if status == "online"
+      if Settings.status == "api_offline"
+        status = "offline"
+      elsif Settings.status == "api_readonly"
+        status = "readonly"
       end
     end
-    status
-  end
-
-  def gpx_status
-    status = database_status
-    status = :offline if status == :online && STATUS == :gpx_offline
     status
   end
 
@@ -351,7 +214,7 @@ class ApplicationController < ActionController::Base
   ##
   # wrap an api call in a timeout
   def api_call_timeout
-    OSM::Timer.timeout(API_TIMEOUT, Timeout::Error) do
+    OSM::Timer.timeout(Settings.api_timeout, Timeout::Error) do
       yield
     end
   rescue Timeout::Error
@@ -361,7 +224,7 @@ class ApplicationController < ActionController::Base
   ##
   # wrap a web page in a timeout
   def web_timeout
-    OSM::Timer.timeout(WEB_TIMEOUT, Timeout::Error) do
+    OSM::Timer.timeout(Settings.web_timeout, Timeout::Error) do
       yield
     end
   rescue ActionView::Template::Error => ex
@@ -386,11 +249,11 @@ class ApplicationController < ActionController::Base
   ##
   # render a "no such user" page
   def render_unknown_user(name)
-    @title = t "user.no_such_user.title"
+    @title = t "users.no_such_user.title"
     @not_found_user = name
 
     respond_to do |format|
-      format.html { render :template => "user/no_such_user", :status => :not_found }
+      format.html { render :template => "users/no_such_user", :status => :not_found }
       format.all { head :not_found }
     end
   end
@@ -412,15 +275,14 @@ class ApplicationController < ActionController::Base
     append_content_security_policy_directives(
       :child_src => %w[http://127.0.0.1:8111 https://127.0.0.1:8112],
       :frame_src => %w[http://127.0.0.1:8111 https://127.0.0.1:8112],
-      :connect_src => %w[nominatim.openstreetmap.org overpass-api.de router.project-osrm.org graphhopper.com],
+      :connect_src => [Settings.nominatim_url, Settings.overpass_url, Settings.fossgis_osrm_url, Settings.graphhopper_url],
       :form_action => %w[render.openstreetmap.org],
-      :script_src => %w[open.mapquestapi.com],
-      :img_src => %w[developer.mapquest.com]
+      :style_src => %w['unsafe-inline']
     )
 
-    if STATUS == :database_offline || STATUS == :api_offline
+    if Settings.status == "database_offline" || Settings.status == "api_offline"
       flash.now[:warning] = t("layouts.osm_offline")
-    elsif STATUS == :database_readonly || STATUS == :api_readonly
+    elsif Settings.status == "database_readonly" || Settings.status == "api_readonly"
       flash.now[:warning] = t("layouts.osm_read_only")
     end
 
@@ -437,7 +299,7 @@ class ApplicationController < ActionController::Base
              elsif current_user&.preferred_editor
                current_user.preferred_editor
              else
-               DEFAULT_EDITOR
+               Settings.default_editor
              end
 
     editor
@@ -446,9 +308,9 @@ class ApplicationController < ActionController::Base
   helper_method :preferred_editor
 
   def update_totp
-    if defined?(TOTP_KEY)
+    if Settings.key?(:totp_key)
       cookies["_osm_totp_token"] = {
-        :value => ROTP::TOTP.new(TOTP_KEY, :interval => 3600).now,
+        :value => ROTP::TOTP.new(Settings.totp_key, :interval => 3600).now,
         :domain => "openstreetmap.org",
         :expires => 1.hour.from_now
       }
@@ -466,7 +328,29 @@ class ApplicationController < ActionController::Base
     raise
   end
 
-  private
+  def current_ability
+    Ability.new(current_user)
+  end
+
+  def deny_access(_exception)
+    if current_token
+      set_locale
+      report_error t("oauth.permissions.missing"), :forbidden
+    elsif current_user
+      set_locale
+      respond_to do |format|
+        format.html { redirect_to :controller => "errors", :action => "forbidden" }
+        format.any { report_error t("application.permission_denied"), :forbidden }
+      end
+    elsif request.get?
+      respond_to do |format|
+        format.html { redirect_to :controller => "users", :action => "login", :referer => request.fullpath }
+        format.any { head :forbidden }
+      end
+    else
+      head :forbidden
+    end
+  end
 
   # extract authorisation credentials from headers, returns user = nil if none
   def get_auth_data

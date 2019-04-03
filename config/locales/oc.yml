@@ -1,6 +1,7 @@
 # Messages for Occitan (occitan)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Cedric31
 # Author: Gasconoc
 # Author: Guilhelma
@@ -93,6 +94,29 @@ oc:
     remote:
       name: Editor extèrne
       description: Editor extèrne (JOSM o Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Creat fa %{when}
+        opened_at_by_html: Creat fa %{when} per %{user}
+        commented_at_html: Mes a jorn fa %{when}
+        commented_at_by_html: Mesa a jorn fa %{when} per %{user}
+        closed_at_html: Resolgut fa %{when}
+        closed_at_by_html: Resolgut fa %{when} per %{user}
+        reopened_at_html: Reactivat fa %{when}
+        reopened_at_by_html: Reactivat fa %{when} per %{user}
+      rss:
+        title: Nòtas d'OpenStreetMap
+        description_area: Una lista de nòtas, reportadas, comentadas o tampadas dins
+          vòstra zòna [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Un fial rss per la nòta %{id}
+        opened: novèla nòta (prèp de %{place})
+        commented: novèl comentari (prèp de %{place})
+        closed: nòta tampada (prèp de %{place})
+        reopened: nòta reactivada (prèp de %{place})
+      entry:
+        comment: Comentari
+        full: Nòta completa
   browse:
     created: Creat
     closed: Tampat
@@ -219,7 +243,7 @@ oc:
       introduction: Clicar sus la mapa per trobar los objèctes a proximitat.
       nearby: Objèctes a proximitat
       enclosing: Objèctes englobants
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Pagina %{page}
       next: Seguents »
@@ -249,14 +273,14 @@ oc:
     timeout:
       sorry: O planhèm, la lista dels gropes de modificacions qu'avètz demandada met
         tròp de temps per èsser recuperada.
-    rss:
+  changeset_comments:
+    comment:
+      comment: Comentari novèl sul grop de modificacions nº %{changeset_id} per %{author}
+      commented_at_by_html: Mes a jorn fa %{when} per %{user}
+    index:
       title_all: Discussion sul grop de modificacions OpenStreetMap
       title_particular: Discussion sul grop de modificacions OpenStreetMap nº %{changeset_id}
-      comment: Comentari novèl sul grop de modificacions nº %{changeset_id} per %{author}
-      commented_at_html: Mes a jorn fa %{when}
-      commented_at_by_html: Mes a jorn fa %{when} per %{user}
-      full: Discussion completa
-  diary_entry:
+  diary_entries:
     new:
       title: Novèla entrada del jornal
       publish_button: Publicar
@@ -956,10 +980,7 @@ oc:
     intro_text: OpenStreetMap es una mapa del mond, creada per de personas coma vos
       e liura d’utilizacion jos licéncia liura.
     intro_2_create_account: Creatz un compte d'utilizaire
-    partners_html: L'albergament es pres en carga per %{ucl}, %{ic} e %{bytemark},
-      e d'autres %{partners}.
     partners_ucl: UCL
-    partners_ic: lo Collègi Imperial de Londres
     partners_bytemark: Albergament Bytemark
     partners_partners: partenaris
     osm_offline: La basa de donadas de OpenStreetMap es actualament fòra linha; una
@@ -1608,9 +1629,6 @@ oc:
         one: Fichièr GPX file amb %{count} punt de %{user}
         other: Fichièr GPX amb %{count} punts de %{user}
       description_without_count: Fichièr GPX de %{user}
-  application:
-    require_moderator:
-      not_a_moderator: Vos cal èsser moderator per efectuar aquesta accion.
   oauth:
     authorize:
       title: Autorizar l’accès a vòstre compte
@@ -1695,7 +1713,7 @@ oc:
       flash: Informacions del client enregistradas amb succès
     destroy:
       flash: Enregistrament de l'aplicacion clienta suprimit
-  user:
+  users:
     login:
       title: Se connectar
       heading: Connexion
@@ -1949,8 +1967,6 @@ oc:
       button: Suprimir en tant qu'amic
       success: '%{name} es estat levat de vòstres amics.'
       not_a_friend: '%{name} es pas demest vòstres amics.'
-    filter:
-      not_an_administrator: Vos cal èsser administrator per efectuar aquesta accion.
     index:
       title: Utilizaires
       heading: Utilizaires
@@ -2086,31 +2102,10 @@ oc:
       next: Seguent »
       previous: « Precedent
   notes:
-    comment:
-      opened_at_html: Creat fa %{when}
-      opened_at_by_html: Creat fa %{when} per %{user}
-      commented_at_html: Mes a jorn fa %{when}
-      commented_at_by_html: Mesa a jorn fa %{when} per %{user}
-      closed_at_html: Resolgut fa %{when}
-      closed_at_by_html: Resolgut fa %{when} per %{user}
-      reopened_at_html: Reactivat fa %{when}
-      reopened_at_by_html: Reactivat fa %{when} per %{user}
-    rss:
-      title: Nòtas d'OpenStreetMap
-      description_area: Una lista de nòtas, reportadas, comentadas o tampadas dins
-        vòstra zòna [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Un fial rss per la nòta %{id}
-      opened: novèla nòta (prèp de %{place})
-      commented: novèl comentari (prèp de %{place})
-      closed: nòta tampada (prèp de %{place})
-      reopened: nòta reactivada (prèp de %{place})
-    entry:
-      comment: Comentari
-      full: Nòta completa
     mine:
       title: Nòtas somesas o comentadas per %{user}
       heading: Nòtas de %{user}
-      subheading: Nòtas somesas o comentadas per %{user}
+      subheading_html: Nòtas somesas o comentadas per %{user}
       id: Id
       creator: Creator
       description: Descripcion
@@ -2196,13 +2191,10 @@ oc:
     directions:
       ascend: Creissent
       engines:
+        fossgis_osrm_car: En veitura (OSRM)
         graphhopper_bicycle: A bicicleta (GraphHopper)
         graphhopper_car: En veitura (GraphHopper)
         graphhopper_foot: A pè (GraphHopper)
-        mapquest_bicycle: A bicicleta (MapQuest)
-        mapquest_car: En veitura (MapQuest)
-        mapquest_foot: A pè (MapQuest)
-        osrm_car: En veitura (OSRM)
       descend: Descreissent
       directions: Itineraris
       distance: Distància

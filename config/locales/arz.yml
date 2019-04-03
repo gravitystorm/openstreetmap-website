@@ -75,7 +75,7 @@ arz:
         pass_crypt: كلمه المرور
   browse:
     changeset:
-      title: حزمه التغييرات
+      title: 'حزمه التغييرات: %{id}'
       changesetxml: حزمه التغييرات إكس إم إل
       osmchangexml: osmChange XML
       feed:
@@ -101,10 +101,10 @@ arz:
       load_data: تحميل البيانات
       loading: تحميل...
     tag_details:
-      tags: 'الوسوم:'
-  changeset:
+      tags: الوسوم
+  changesets:
     changeset_paging_nav:
-      showing_page: إظهار الصفحه %{page}
+      showing_page: الصفحه %{page}
       next: التالى »
       previous: «السابق
     changeset:
@@ -120,7 +120,7 @@ arz:
     index:
       title: حزم التغييرات
       title_user: حزم التغييرات بواسطه %{user}
-  diary_entry:
+  diary_entries:
     new:
       title: مدخله يوميه جديدة
     index:
@@ -142,15 +142,15 @@ arz:
       latitude: 'خط العرض:'
       longitude: 'خط الطول:'
       use_map_link: استخدم الخريطة
-      save_button: احفظ
+      save_button: حفظ
       marker_text: موقع مدخله اليومية
     show:
       title: يوميات المستخدمين | %{user}
       user_title: يوميه %{user}
       leave_a_comment: اترك تعليقًا
       login_to_leave_a_comment: '%{login_link} لترك تعليق'
-      login: سجّل دخول
-      save_button: احفظ
+      login: تسجيل الدخول
+      save_button: حفظ
     no_such_entry:
       title: مدخله يوميه غير موجودة
       heading: 'لا يوجد مدخله بالمعرّف: %{id}'
@@ -526,17 +526,17 @@ arz:
   layouts:
     logo:
       alt_text: شعار خريطه الشارع المفتوحة
-    home: الصفحه الرئيسية
-    logout: اخرج
-    log_in: دخول
+    home: روح للصفحه الرئيسيه
+    logout: خروج
+    log_in: تسجيل الدخول
     log_in_tooltip: سجّل الدخول مع حساب موجود
-    sign_up: أنشئ حسابًا
+    sign_up: اعمل حساب
     sign_up_tooltip: أنشئ حسابًا كى تستطيع المساهمة
     edit: عدّل هذه الخريطة
     history: تاريخ
     export: صدِّر
     gps_traces: آثار جى بى أس
-    gps_traces_tooltip: عالج الآثار
+    gps_traces_tooltip: اتحكم فى اثار GPS
     user_diaries: يوميات المستخدمين
     user_diaries_tooltip: اعرض يوميات المستخدمين
     tag_line: ويكى خريطه العالم الحرة
@@ -581,7 +581,7 @@ arz:
         loaded_successfully: تم تحميل بنجاح %{trace_points} نقطه من أصل %{possible_points}
           نقطه ممكنه.
     signup_confirm:
-      subject: '[خريطه الشارع المفتوحة] أكّد عنوان بريدك الإلكتروني'
+      subject: '[خريطه الشارع المفتوحه] اهلا بيك فى اوبن ستريت ماب'
     email_confirm:
       subject: '[خريطه الشارع المفتوحة] أكّد عنوان بريدك الإلكتروني'
     email_confirm_plain:
@@ -700,7 +700,7 @@ arz:
       search_results: نتائج البحث
       close: أغلق
     search:
-      search: ابحث
+      search: بحث
       where_am_i: أين أنا؟
       where_am_i_title: صِف الموقع الحالى باستخدام محرك البحث
       submit_text: اذهب
@@ -766,7 +766,7 @@ arz:
       trackable: تعقبى (يظهر كمجهول الهويه ونقاط مرتبه زمنيًا)
       identifiable: محدد الهويه (يظهر فى قائمه الآثار محدد الهويه والنقاط مرتبه زمنيًا)
     new:
-      upload_gpx: ارفع ملف جى بى إكس
+      upload_gpx: 'ابلود فايل GPX:'
       description: الوصف
       tags: الوسوم
       tags_help: محدد بفواصل
@@ -794,7 +794,7 @@ arz:
       description: 'الوصف:'
       tags: 'الوسوم:'
       tags_help: محدد بفواصل
-      save_button: احفظ التغييرات
+      save_button: حفظ التغييرات
       visibility: 'الرؤية:'
       visibility_help: ماذا يعنى هذا؟
     trace_optionals:
@@ -863,7 +863,7 @@ arz:
       allow_write_diary: إنشاء مدخلات يوميه، تعليقات وإضافه أصدقاء.
       allow_write_api: يعدّل الخريطه.
       allow_read_gpx: قراءه آثار جى بى أس الخاصه بك.
-      allow_write_gpx: ارفع آثار جى بى أس.
+      allow_write_gpx: ارفع آثار GPS.
   oauth_clients:
     new:
       title: سجِّل تطبيق جديد
@@ -918,7 +918,7 @@ arz:
       flash: تم تحديث معلومات العميل بنجاح
     destroy:
       flash: دمّر تسجيل التطبيق
-  user:
+  users:
     login:
       title: ولوج
       heading: ولوج
@@ -948,7 +948,7 @@ arz:
       flash changed: كلمه المرور الخاصه بك قد تغيرت.
       flash token bad: لم تجد تلك المعلومات، تحقق من الرابط ربما؟
     new:
-      title: أنشئ حساب
+      title: اعمل حساب
       no_auto_account_create: للأسف نحن غير قادرين فى الوقت الحالى على إنشاء حساب
         لك تلقائيًا.
       contact_webmaster: يرجى الاتصال <a href="mailto:webmaster@openstreetmap.org">بمسؤول
@@ -1011,7 +1011,7 @@ arz:
           moderator: ابطل وصول وسيط
       block_history: اعرض العرقلات الواصلة
       moderator_history: اعرض العرقلات المعطات
-      create_block: امنع هذا المستخدم
+      create_block: منع هذا المستخدم
       activate_user: نشّط هذا المستخدم
       deactivate_user: احذف هذا المستخدم
       hide_user: اخفِ هذا المستخدم
@@ -1028,7 +1028,7 @@ arz:
       public editing:
         heading: 'تعديل عام:'
         enabled: مفعّل. غير مجهول ويمكنك تعديل البيانات.
-        enabled link: http://wiki.openstreetmap.org/wiki/Anonymous_edits
+        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: ما هذا؟
         disabled: مُعطل ولا يمكن تعديل البيانات، جميع التعديلات السابقه مجهوله الهويه.
         disabled link text: لماذا لا أستطيع التعديل؟
@@ -1047,14 +1047,14 @@ arz:
       latitude: 'خط العرض:'
       longitude: 'خط الطول:'
       update home location on click: حدّث موقع المنزل عندما أنقر على الخريطة؟
-      save changes button: احفظ التغييرات
+      save changes button: حفظ التغييرات
       make edits public button: اجعل جميع تعديلاتى عامة
       return to profile: العوده إلى الملف الشخصي
       flash update success confirm needed: تم تحديث معلومات المستخدم بنجاح. تحقق من
         بريدك الإلكترونى لمذكره تأكيد العنوان الإلكترونى الجديد.
       flash update success: تم تحديث معلومات المستخدم بنجاح.
     confirm:
-      heading: أكّد حساب المستخدم
+      heading: راجع ايميلك!
       press confirm button: اضغط على زر التأكيد أدناه لتنشيط حسابك.
       button: أكّد
       success: تم تأكيد حسابك، شكرًا للاشتراك!
@@ -1063,25 +1063,21 @@ arz:
       press confirm button: اضغط على زر تأكيد أدناه لتأكيد عنوان بريدك الإلكترونى
         الجديد.
       button: أكّد
-      success: تم تأكيد عنوان بريدك الإلكترونى، شكرًا للاشتراك!
+      success: تم تأكيد تغيير عنوان بريدك الإلكترونى!
       failure: عنوان بريد إلكترونى تم تفعيله مسبقًا بهذه البيانات.
     set_home:
       flash success: موقع المنزل حُفظ بنجاح
     go_public:
       flash success: جميع تعديلاتك الآن عامه، ومسموح لك بالتعديل الآن.
     make_friend:
-      success: '%{name} الآن صديقك.'
+      success: '%{name} الآن صديقك!'
       failed: عفوًا، تعذر إضافه %{name} كصديق.
       already_a_friend: حاليًا أنت و %{name} أصدقاء.
     remove_friend:
       success: تم إزاله %{name} من قائمه أصدقائك.
       not_a_friend: '%{name} ليس من أحد أصدقائك.'
-    filter:
-      not_an_administrator: عليك أن تكون إدارى لتنفيذ هذا الإجراء.
   user_role:
     filter:
-      not_an_administrator: يحق فقط للإداريين القيام بتغيير دور المستخدم، وأنت لست
-        إدارى.
       not_a_role: السلسله `%{role}' ليست دور صالح.
       already_has_role: لدى المستخدم الدور  %{role} سابقًا
       doesnt_have_role: ليس للمستخدم الدور %{role}.

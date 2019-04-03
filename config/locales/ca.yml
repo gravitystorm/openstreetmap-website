@@ -1,6 +1,7 @@
 # Messages for Catalan (català)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Aleator
 # Author: Alvaro Vidal-Abarca
 # Author: Amire80
@@ -125,6 +126,29 @@ ca:
     remote:
       name: Control Remot
       description: Control remot (JOSM o Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Creat fa %{when}
+        opened_at_by_html: Creat fa %{when} per %{user}
+        commented_at_html: Actualitzat fa %{when}
+        commented_at_by_html: Actualitzat fa %{when} per %{user}
+        closed_at_html: Resolt fa %{when}
+        closed_at_by_html: Resolt fa %{when} per %{user}
+        reopened_at_html: Reactivat fa %{when}
+        reopened_at_by_html: Reactivat fa %{when} per %{user}
+      rss:
+        title: Notes de OpenStreetMap
+        description_area: Una llista de notes, reportades, comentades o bé tancades
+          a la vostra àrea [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: Un canal rss per la nota %{id}
+        opened: Nota nova (a prop %{place})
+        commented: nou comentari (prop de %{place})
+        closed: nota tancada (aprop de %{place})
+        reopened: Nota reactivada (prop de %{place})
+      entry:
+        comment: Comentari
+        full: Nota sencera
   browse:
     created: Creat
     closed: Tancat
@@ -247,7 +271,7 @@ ca:
       introduction: Cliqueu al mapa per trobar característques properes.
       nearby: Característiques properes
       enclosing: Característiques adjuntes
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Pàgina %{page}
       next: Endavant »
@@ -277,14 +301,14 @@ ca:
     timeout:
       sorry: La llista de conjunt de canvis que heu sol·licitat ha trigat massa a
         recuperar-se.
-    rss:
+  changeset_comments:
+    comment:
+      comment: 'Nou comentari de %{author} al conjunt de canvis #%{changeset_id}'
+      commented_at_by_html: Actualitzat fa %{when} per %{user}
+    index:
       title_all: Discussió del conjunt de canvis d'OpenStreetMap
       title_particular: 'Discussió del conjunt de canvis #%{changeset_id} d''OpenStreetMap'
-      comment: 'Nou comentari de %{author} al conjunt de canvis #%{changeset_id}'
-      commented_at_html: Actualitzat fa %{when}
-      commented_at_by_html: Actualitzat fa %{when} per %{user}
-      full: Discussió sencera
-  diary_entry:
+  diary_entries:
     new:
       title: Entrada de diari nova
       publish_button: Publica
@@ -970,10 +994,7 @@ ca:
     intro_text: L'OpenStreetMap és un mapa del món, creat per persones com tu i d'ús
       lliure sota una llicència oberta.
     intro_2_create_account: Crea un compte d'usuari
-    partners_html: L'allotjament és a càrrec de %{ucl}, %{ic}, %{bytemark} i d'altres
-      %{partners}.
     partners_ucl: el Centre UCL VR
-    partners_ic: Imperial College Londres
     partners_bytemark: Allotjament Bytemark
     partners_partners: socis
     osm_offline: La base de dades OpenStreetMap és fora de línia, mentre es fan actuacions
@@ -1288,6 +1309,9 @@ ca:
           <strong>Àustria</strong>: conté dades de
               <a href="http://data.wien.gv.at/">Stadt Wien</a> sota
               <a href="http://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>.
+        contributors_au_html: |-
+          <strong>Austràlia</strong>: conté dades suburbi basats
+              en les dades d'Austràlia Oficina d'estadístiques.
         contributors_ca_html: |-
           <strong>Canadà</strong>: conté dades de
               GeoBase ®, GeoGratis (© Departament de Natural
@@ -1747,8 +1771,6 @@ ca:
     require_cookies:
       cookies_needed: Sembla que teniu les galetes inhabilitades - habiliteu les galetes
         al navegador abans de continuar.
-    require_moderator:
-      not_a_moderator: Heu de ser un moderador per dur a terme aquesta acció
     setup_user_auth:
       blocked: El vostre accés a l'API ha estat blocat. Si us plau, connecteu-vos
         a la interfície web per obtenir més informació.
@@ -1841,7 +1863,7 @@ ca:
       flash: La informació de client ha actualitzat correctament
     destroy:
       flash: S'ha destruït el registre de l'aplicació client
-  user:
+  users:
     login:
       title: Accés
       heading: Accés
@@ -2158,8 +2180,6 @@ ca:
       button: Suprimeix dels amics
       success: '%{name} s''ha suprimit dels teus amics.'
       not_a_friend: '%{name} no és un dels seus amics.'
-    filter:
-      not_an_administrator: Cal que sigueu administrador per dur a terme aquesta acció.
     index:
       title: Usuaris
       heading: Usuaris
@@ -2200,8 +2220,6 @@ ca:
         utilitzant el vostre nom d'usuari i contrasenya i, a continuació associar el compte amb el ID a la configuració d'usuari.
   user_role:
     filter:
-      not_an_administrator: Només els administradors poden realitzar l'administració
-        de rols de usuaris, i vosté no és un administrador.
       not_a_role: La cadena `%{role}' no és un rol vàlid.
       already_has_role: L'usuari ja té un rol %{role}.
       doesnt_have_role: L'usuari no té el rol %{role}.
@@ -2325,31 +2343,10 @@ ca:
       next: Endavant »
       previous: « Enrere
   notes:
-    comment:
-      opened_at_html: Creat fa %{when}
-      opened_at_by_html: Creat fa %{when} per %{user}
-      commented_at_html: Actualitzat fa %{when}
-      commented_at_by_html: Actualitzat fa %{when} per %{user}
-      closed_at_html: Resolt fa %{when}
-      closed_at_by_html: Resolt fa %{when} per %{user}
-      reopened_at_html: Reactivat fa %{when}
-      reopened_at_by_html: Reactivat fa %{when} per %{user}
-    rss:
-      title: Notes de OpenStreetMap
-      description_area: Una llista de notes, reportades, comentades o bé tancades
-        a la vostra àrea [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: Un canal rss per la nota %{id}
-      opened: Nota nova (a prop %{place})
-      commented: nou comentari (prop de %{place})
-      closed: nota tancada (aprop de %{place})
-      reopened: Nota reactivada (prop de %{place})
-    entry:
-      comment: Comentari
-      full: Nota sencera
     mine:
       title: Notes enviades o comentades per %{user}
       heading: notes de %{user}
-      subheading: Notes enviades o comentades per %{user}
+      subheading_html: Notes enviades o comentades per %{user}
       id: Id
       creator: Creador
       description: Descripció
@@ -2442,12 +2439,9 @@ ca:
       continuació, feu clic aquí.
     directions:
       engines:
+        fossgis_osrm_car: Cotxe (OSRM)
         graphhopper_bicycle: Bicicleta  (GraphHopper)
         graphhopper_foot: A peu (GraphHopper)
-        mapquest_bicycle: Bicicleta (MapQuest)
-        mapquest_car: Cotxe (MapQuest)
-        mapquest_foot: A peu (MapQuest)
-        osrm_car: Cotxe (OSRM)
       directions: Indicacions
       distance: Distància
       errors:

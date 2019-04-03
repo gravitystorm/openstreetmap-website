@@ -206,7 +206,7 @@ sco:
       reopened_by_anonymous: Reactivatit bi anonymous <abbr title='%{exact_time}'>%{when}
         ago</abbr>
       hidden_by: Hidden bi %{user} <abbr title='%{exact_time}'>%{when} ago</abbr>
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Page %{page}
       next: Next »
@@ -235,10 +235,10 @@ sco:
       load_more: Load mair
     timeout:
       sorry: Sorry, the leet o chyngesets ye requestit teuk too lang tae retrieve.
-    rss:
-      commented_at_html: Updatit %{when} ago
+  changeset_comments:
+    comment:
       commented_at_by_html: Updatit %{when} ago bi %{user}
-  diary_entry:
+  diary_entries:
     new:
       title: New Diary Entry
     index:
@@ -821,9 +821,7 @@ sco:
     intro_text: OpenStreetMap is a cairt o the warld, creatit bi fowk lik ye an free
       tae uise unner an open license.
     intro_2_create_account: Create a uiser accoont
-    partners_html: Hostin is supportit bi %{ucl}, %{ic} an %{bytemark}, an ither %{partners}.
     partners_ucl: the UCL VR Centre
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: pairtners
     osm_offline: The OpenStreetMap database is currently offline while essential database
@@ -1064,7 +1062,7 @@ sco:
   traces:
     create:
       upload_trace: Uplaid GPS Trace
-  user:
+  users:
     login:
       auth_providers:
         google:

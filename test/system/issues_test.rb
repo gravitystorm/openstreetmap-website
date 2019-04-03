@@ -5,14 +5,14 @@ class IssuesTest < ApplicationSystemTestCase
 
   def test_view_issues_not_logged_in
     visit issues_path
-    assert page.has_content?(I18n.t("user.login.title"))
+    assert page.has_content?(I18n.t("users.login.title"))
   end
 
   def test_view_issues_normal_user
     sign_in_as(create(:user))
 
     visit issues_path
-    assert page.has_content?(I18n.t("application.require_moderator_or_admin.not_a_moderator_or_admin"))
+    assert page.has_content?("Forbidden")
   end
 
   def test_view_no_issues

@@ -105,6 +105,10 @@ sk:
     remote:
       name: Diaľkové ovládanie
       description: Diaľkové ovládanie (JOSM alebo Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Vytvorené pred %{when}
   browse:
     created: Vytvorené
     closed: Uzavreté
@@ -217,7 +221,7 @@ sk:
       closed_by: Vyriešil %{user} <abbr title='%{exact_time}'>pred %{when}</abbr>
       closed_by_anonymous: Vyriešil anonym <abbr title='%{exact_time}'>pred %{when}</abbr>
       hidden_by: Skryl %{user} <abbr title='%{exact_time}'>pred %{when}</abbr>
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Stránka %{page}
       next: Ďalšia »
@@ -246,7 +250,7 @@ sk:
       load_more: Načítať ďalšie
     timeout:
       sorry: Ľutujeme, ale vami požadovaný zoznam sád zmien sa načítaval príliš dlho.
-  diary_entry:
+  diary_entries:
     new:
       title: Nový záznam denníka
     index:
@@ -825,6 +829,33 @@ sk:
     results:
       no_results: Neboli nájdené žiadne výsledky
       more_results: Viac výsledkov
+  reports:
+    new:
+      title_html: Nahlásiť %{link}
+      details: Prosím uveďte bližšie informácie o probléme (potrebné).
+      select: 'Uveďte dôvod nahlásenia:'
+      disclaimer:
+        intro: Pred nahlásením používateľa moderátorom sa prosím uistite, že
+        not_just_mistake: Ste si istý, že sa nejedná iba o omyl
+        unable_to_fix: Nedokážete problém vyriešiť svojpomocne ani s pomocou ostatných
+          používateľov
+        resolve_with_user: Pokúsili ste sa problém vyriešiť priamo s používateľom,
+          ktorého chcete nahlásiť.
+      categories:
+        diary_entry:
+          other_label: Iné
+        diary_comment:
+          other_label: Iné
+        user:
+          spam_label: Profil používateľa je alebo obsahuje spam
+          offensive_label: Profil používateľa je obscénny alebo urážlivý
+          threat_label: Používateľ sa v profile vyhráža
+          vandal_label: Používateľ je vandal
+          other_label: Iné
+        note:
+          other_label: Iné
+    create:
+      successful_report: Vaše hlásenie bolo prijaté
   layouts:
     logo:
       alt_text: Logo OpenStreetMap
@@ -850,9 +881,7 @@ sk:
     intro_text: OpenStreetMap je mapa sveta, vytvorené ľuďmi ako vy, voľne využiteľná
       pod slobodnou licenciou.
     intro_2_create_account: Založte si konto
-    partners_html: Prevádzku podporujú %{ucl}, %{ic}, %{bytemark} a iní %{partners}.
     partners_ucl: VR centrum UCL
-    partners_ic: Imperial College v Londýne
     partners_bytemark: Bytemark Hosting
     partners_partners: partneri
     osm_offline: OpenStreetMap databáza je teraz offline, zatiaľ čo potrebná údržba
@@ -1084,6 +1113,8 @@ sk:
           <a href="http://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>),
           <a href="http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">krajiny Vorarlberg</a> a
           krajiny Tirol (pod licenciou <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY AT s úpravami</a>).
+        contributors_au_html: '<strong>Austrália</strong>: Obsahuje dáta predmestí
+          založené na dátach Austrálskeho štatistického úradu.'
         contributors_ca_html: '<strong>Kanada</strong>: Obsahuje dáta z GeoBase ®,
           GeoGratis (© Department of Natural Resources Canada), CanVec (© Department
           of Natural Resources Canada) a StatCan (Geography Division, Statistics Canada).'
@@ -1450,8 +1481,6 @@ sk:
     require_cookies:
       cookies_needed: Zdá sa, že máte zakázané cookies – povoľte prosím cookies vo
         vašom prehliadači a následne pokračujte.
-    require_moderator:
-      not_a_moderator: Pre vykonanie tejto akcie musíte byť moderátor.
     setup_user_auth:
       blocked: Váš prístup do API bol zablokovaný. Prosím prihláste sa na webové rozhranie
         pre zistenie viac informácií.
@@ -1533,7 +1562,7 @@ sk:
       flash: Úspešne aktualizované informácie o klientovi
     destroy:
       flash: Registrácia klientskej aplikácie bola zrušená
-  user:
+  users:
     login:
       title: Prihlásiť sa
       heading: Prihlásenie
@@ -1719,6 +1748,7 @@ sk:
       friends_diaries: Prechádzať všetky denníkové záznamy priateľov
       nearby_changesets: Prechádzať všetky sady zmien používateľov v okolí
       nearby_diaries: Prechádzať všetky denníkové záznamy používateľov v okolí
+      report: Nahlásiť tohto používateľa
     popup:
       your location: Vaša poloha
       nearby mapper: Používateľ v okolí
@@ -1826,8 +1856,6 @@ sk:
       button: Odobrať z priateľov
       success: '%{name} bol z vašich priateľov vymazaný.'
       not_a_friend: '%{name} nie je nikto z vašich priateľov.'
-    filter:
-      not_an_administrator: Potrebujete byť administrátor na vykonanie tejto akcie.
     index:
       title: Používatelia
       heading: Používatelia
@@ -1853,8 +1881,6 @@ sk:
         </p>
   user_role:
     filter:
-      not_an_administrator: Iba administrátori môžu spravovať prístupové práva. Vy
-        administrátor nie ste.
       not_a_role: Reťazec `%{role}' nemá platnú úlohu.
       already_has_role: Používateľ už má úlohu %{role}.
       doesnt_have_role: Požívateľ nemá úlohu %{role}.
@@ -1978,8 +2004,6 @@ sk:
       next: Ďalšia stránka »
       previous: « Predchádzajúca stránka
   notes:
-    comment:
-      opened_at_html: Vytvorené pred %{when}
     mine:
       creator: Autor
       description: Popis
@@ -2052,12 +2076,9 @@ sk:
     directions:
       ascend: Stúpanie
       engines:
+        fossgis_osrm_car: Automobil (OSRM)
         graphhopper_bicycle: Bicykel (GraphHopper)
         graphhopper_foot: Pešo (GraphHopper)
-        mapquest_bicycle: Bicykel (MapQuest)
-        mapquest_car: Automobil (MapQuest)
-        mapquest_foot: Pešo (MapQuest)
-        osrm_car: Automobil (OSRM)
       descend: Klesanie
       directions: Trasa
       distance: Vzdialenosť

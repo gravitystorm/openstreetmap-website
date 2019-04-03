@@ -1,6 +1,7 @@
 # Messages for Esperanto (Esperanto)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Abijeet Patro
 # Author: Airon90
 # Author: Bwildenhain.BO
 # Author: Cfoucher
@@ -9,6 +10,7 @@
 # Author: Lucas
 # Author: Luckas
 # Author: LyzTyphone
+# Author: Marcellus
 # Author: Michawiki
 # Author: Objectivesea
 # Author: Petrus Adamus
@@ -18,12 +20,17 @@
 # Author: Tradukisto
 # Author: Umbert'
 # Author: Yekrats
+# Author: YvesNevelsteen
 ---
 eo:
   time:
     formats:
       friendly: '%e %B %Y je %H:%M'
   activerecord:
+    errors:
+      messages:
+        invalid_email_address: ŝajnas ne estas ĝusta retpoŝta adreso
+        email_address_not_routable: ne estas enkursigebla
     models:
       acl: Listo de kontrolo de akiroj
       changeset: Ŝanĝaro
@@ -105,6 +112,29 @@ eo:
     remote:
       name: ekstera redaktilo
       description: ekstera redaktilo (JOSM aŭ Merkaartor)
+  api:
+    notes:
+      comment:
+        opened_at_html: Kreita antaŭ %{when}
+        opened_at_by_html: Kreita antaŭ %{when} de %{user}
+        commented_at_html: Ĝisdatigita antaŭ %{when}
+        commented_at_by_html: Ĝisdatigita antaŭ %{when} de %{user}
+        closed_at_html: Solvita antaŭ %{when}
+        closed_at_by_html: Solvita antaŭ %{when} de %{user}
+        reopened_at_html: Remalfermita antaŭ %{when}
+        reopened_at_by_html: Remalfermita antaŭ %{when} de %{user}
+      rss:
+        title: OpenStreetMap-rimarkoj
+        description_area: Listo de rimarkoj raportitaj, komentitaj aŭ fermitaj en
+          via najbaraĵo [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+        description_item: RSS-fluo por rimarko %{id}
+        opened: nova rimarko (proksime de %{place})
+        commented: nova komento (proksime de %{place})
+        closed: fermita rimarko (proksime de %{place})
+        reopened: remalfermita rimarko (proksime de %{place})
+      entry:
+        comment: Komento
+        full: Tuta rimarko
   browse:
     created: Kreita
     closed: Fermita
@@ -117,7 +147,7 @@ eo:
     version: Versio
     in_changeset: Ŝanĝaro
     anonymous: anonimulo
-    no_comment: (nenia komento)
+    no_comment: (neniu komento)
     part_of: Parto de
     download_xml: Elŝuti XML
     view_history: Vidi historion
@@ -141,10 +171,10 @@ eo:
       feed:
         title: Ŝanĝaro %{id}
         title_comment: Ŝanĝaro %{id} - %{comment}
-      join_discussion: Ensalutu por diskuti
+      join_discussion: Ensalutu por aliĝi al la diskuto
       discussion: Diskuto
-      still_open: Ŝanĝaro plue malfermita - diskuto estos malfermita ekde ĝi estos
-        malfermita.
+      still_open: Ŝanĝaro plue malfermita - diskuto estos malfermita ekde kiam ĝi
+        estos malfermita.
     node:
       title: 'Nodo: %{name}'
       history_title: 'Historio de nodo: %{name}'
@@ -187,7 +217,7 @@ eo:
         note: rimarko
     redacted:
       redaction: Redakto %{id}
-      message_html: La versio %{version} de ĉi tiu %{type} ne montreblas, ĉar ĝi estis
+      message_html: La versio %{version} de ĉi tiu %{type} ne montreblas, ĉar ĝi estas
         redaktita. Vidu %{redaction_link} por pli da detaloj.
       type:
         node: nodo
@@ -231,17 +261,17 @@ eo:
       introduction: Alklaku la mapon por trovi proksimajn objektojn.
       nearby: Proksimaj objektoj
       enclosing: Ĉirkaŭaj objektoj
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: Paĝo %{page}
       next: Sekva »
       previous: « Antaŭa
     changeset:
       anonymous: Anonimulo
-      no_edits: (neniaj redaktoj)
-      view_changeset_details: Vidi detaloj pri ŝanĝaro
+      no_edits: (neniuj redaktoj)
+      view_changeset_details: Vidi detalojn pri ŝanĝaro
     changesets:
-      id: ID
+      id: Identigilo
       saved_at: Konservita je
       user: Uzanto
       comment: Komenti
@@ -251,26 +281,31 @@ eo:
       title_user: Ŝanĝaroj de %{user}
       title_friend: Ŝanĝaroj de miaj amikoj
       title_nearby: Ŝanĝaroj de proksimaj uzantoj
-      empty: Neniaj ŝanĝaroj trovitaj.
-      empty_area: Neniaj ŝanĝaroj en ĉi tiu areo.
-      empty_user: Neniaj ŝanĝaroj de ĉi tiu uzanto.
-      no_more: Neniaj pliaj ŝanĝaroj trovitaj.
-      no_more_area: Neniaj pliaj ŝanĝaroj en ĉi tiu areo.
-      no_more_user: Neniaj pliaj ŝanĝaroj de ĉi tiu uzanto.
-      load_more: Legi pli
+      empty: Neniuj trovitaj ŝanĝaroj.
+      empty_area: Neniuj ŝanĝaroj en tiu ĉi areo.
+      empty_user: Neniuj ŝanĝaroj de tiu ĉi uzanto.
+      no_more: Neniuj trovitaj pliaj ŝanĝaroj.
+      no_more_area: Neniuj pliaj ŝanĝaroj en tiu ĉi areo.
+      no_more_user: Neniaj pliaj ŝanĝaroj de tiu ĉi uzanto.
+      load_more: Pli
     timeout:
       sorry: Bedaŭrinde daŭris tro longe kompili la petitan liston de ŝanĝaroj.
-    rss:
-      title_all: Diskuto pri OpenStreetMap ŝanĝaro
-      title_particular: 'Diskuto pri ŝanĝaro #%{changeset_id}'
+  changeset_comments:
+    comment:
       comment: 'Nova komento de %{author} al ŝanĝaro #%{changeset_id}'
-      commented_at_html: Ĝisdatiga antaŭ %{when}
       commented_at_by_html: Ĝisdatigita antaŭ %{when} de %{user}
-      full: Tuta diskuto
-  diary_entry:
+    comments:
+      comment: 'Nova komento de %{author} al ŝanĝaro #%{changeset_id}'
+    index:
+      title_all: Diskuto pri OpenStreetMap-ŝanĝaro
+      title_particular: 'Diskuto pri ŝanĝaro #%{changeset_id}'
+    timeout:
+      sorry: Bedaŭrinde daŭris tro longe por akiri la petitan liston de komentoj pri
+        ŝanĝaro.
+  diary_entries:
     new:
       title: Nova taglibra afiŝo
-      publish_button: Publiki
+      publish_button: Publikigi
     index:
       title: Taglibroj de uzantoj
       title_friends: Taglibroj de amikoj
@@ -288,12 +323,12 @@ eo:
       subject: 'Temo:'
       body: 'Enhavo:'
       language: 'Lingvo:'
-      location: 'Loko:'
+      location: 'Pozicio:'
       latitude: 'Latitudo:'
       longitude: 'Longitudo:'
       use_map_link: uzi mapon
       save_button: Konservi
-      marker_text: Kie krei la afiŝon
+      marker_text: Kie krei afiŝon
     show:
       title: Taglibro de %{user} | %{title}
       user_title: Taglibro de %{user}
@@ -303,28 +338,28 @@ eo:
       save_button: Konservi
     no_such_entry:
       title: Ĉi tiu taglibra afiŝo ne ekzistas
-      heading: 'Nenia afiŝo kun la identigilo: %{id}'
+      heading: 'Neniu afiŝo kun la identigilo: %{id}'
       body: Bedaŭrinde ne ekzistas taglibra afiŝo kun la identigilo %{id}. Bonvolu
-        kontroli pri liter-eraroj aŭ eble vi alklakis mis-ligilon.
+        kontroli la literumadon, aŭ eble vi alklakis eraran ligilon.
     diary_entry:
       posted_by: Publikigita de %{link_user} je %{created} en %{language_link}
       comment_link: Komenti pri ĉi tiu afiŝo
       reply_link: Respondi al ĉi tiu afiŝo
       comment_count:
-        one: '%{count} komento'
         zero: Sen komentoj
+        one: '%{count} komento'
         other: '%{count} komentoj'
       edit_link: Redakti ĉi tiun enskribon
-      hide_link: Kaŝi ĉi tiu afiŝon
+      hide_link: Kaŝi ĉi tiun afiŝon
       confirm: Konfirmi
-      report: Raporti tiun ĉi afiŝon
+      report: Raporti ĉi tiun afiŝon
     diary_comment:
       comment_from: Komento de %{link_user} je %{comment_created_at}
-      hide_link: Kaŝi ĉi tiun komenton
+      hide_link: Kaŝi tiun komenton
       confirm: Konfirmi
-      report: Raporti tiun ĉi komenton
+      report: Raporti ĉi tiun komenton
     location:
-      location: 'Loko:'
+      location: 'Pozicio:'
       view: Montri
       edit: Redakti
     feed:
@@ -332,7 +367,7 @@ eo:
         title: OpenStreetMap taglibraj afiŝoj de %{user}
         description: Lastaj OpenStreetMap taglibraj afiŝoj de %{user}
       language:
-        title: OpenStreetMap-aj taglibraj afiŝoj en %{language_name}
+        title: OpenStreetMap taglibraj afiŝoj en %{language_name}
         description: Lastaj taglibraj afiŝoj de OpenStreetMap-uzantoj en %{language_name}
       all:
         title: OpenStreetMap taglibraj afiŝoj
@@ -343,8 +378,8 @@ eo:
       when: Kiam
       comment: Komenti
       ago: antaŭ %{ago}
-      newer_comments: Novaj komentoj
-      older_comments: Malnovaj komentoj
+      newer_comments: Pli novaj komentoj
+      older_comments: Pli malnovaj komentoj
   geocoder:
     search:
       title:
@@ -383,12 +418,12 @@ eo:
           animal_shelter: Azilo por bestoj
           arts_centre: Belart-centro
           atm: Bankaŭtomato
-          bank: Bankejo
-          bar: Drinkejo
-          bbq: Rostilo
+          bank: Banko
+          bar: Trinkejo
+          bbq: Kradrostilo
           bench: Benko
           bicycle_parking: Parkumejo bicikla
-          bicycle_rental: Bicikl-pruntejo
+          bicycle_rental: Biciklopruntejo
           biergarten: Bierĝardeno
           boat_rental: Boat-pruntejo
           brothel: Putinejo
@@ -402,11 +437,11 @@ eo:
           charging_station: Ŝargstacio
           childcare: Prizorgejo pri infanoj
           cinema: Kinejo
-          clinic: Kuracistejo
+          clinic: Kliniko
           clock: Horloĝo
           college: Postmezgrada lernejo
           community_centre: Komunuma centro
-          courthouse: Juĝdomo
+          courthouse: Juĝejo
           crematorium: Kadavro-bruligejo
           dentist: Dentistejo
           doctors: Kabineto de kuracisto
@@ -415,7 +450,7 @@ eo:
           embassy: Ambasadejo
           fast_food: Rapidmanĝejo
           ferry_terminal: Pramstacio
-          fire_station: Fajrobribadejo
+          fire_station: Fajrobrigadejo
           food_court: Manĝobazaro
           fountain: Fontano
           fuel: Benzinejo
@@ -435,7 +470,7 @@ eo:
           office: Oficejo
           parking: Parkumejo
           parking_entrance: Enveturejo al parkumejo
-          parking_space: Parkumeja pozicio
+          parking_space: Parkumeja loko
           pharmacy: Apoteko
           place_of_worship: Preĝejo
           police: Policejo
@@ -453,14 +488,14 @@ eo:
           shelter: Ŝirmejo
           shop: Vendejo
           shower: Duŝejo
-          social_centre: Centro de socio
+          social_centre: Socia centro
           social_club: Socia klubejo
           social_facility: Socia servejo
           studio: Studio
           swimming_pool: Naĝejo
           taxi: Taksistacio
           telephone: Publika telefono
-          theatre: Teatrejo
+          theatre: Teatro
           toilets: Necesejo
           townhall: Urbodomo
           university: Universitato
@@ -665,7 +700,7 @@ eo:
           monitoring_station: Observada stacio
           petroleum_well: Naftoŝakto
           pier: Marponto
-          pipeline: Tubolinio
+          pipeline: Konduktubo
           silo: Tur-stokejo
           storage_tank: Rezervujo
           surveillance: Supergardo
@@ -1072,10 +1107,9 @@ eo:
     intro_text: OpenStreetMap estas mapo de la mondo, kreata de homoj kiel vi, kaj
       libere uzebla laŭ malferma permesilo.
     intro_2_create_account: Krei konton
-    partners_html: Retgastigo estas liverata de %{ucl}, %{bytemark}, %{ic} kaj aliaj
+    hosting_partners_html: Retgastigo estas subtenata de %{ucl}, %{bytemark} kaj aliaj
       %{partners}.
     partners_ucl: University College London
-    partners_ic: Imperial College London
     partners_bytemark: Bytemark Hosting
     partners_partners: kunlaborantoj
     osm_offline: La OpenStreetMap-datumbazo estas nuntempe nealireabla pro necesaj
@@ -1094,7 +1128,7 @@ eo:
     make_a_donation:
       title: Subteni OpenStreetMap per mondonaco
       text: Donaci
-    learn_more: Lerni pli
+    learn_more: Ekscii pli
     more: Pli
   notifier:
     diary_comment_notification:
@@ -1134,8 +1168,8 @@ eo:
       subject: '[OpenStreetMap] Bonvenon al OpenStreetMap'
       greeting: Saluton!
       created: Iu (espereble vi) ĵus kreis konton je %{site_url}.
-      confirm: Unue devas konfirmi, ke tiu ĉi peto devenas de vi, do bonvolu alklaki
-        la ligilon sube por konfirmi vian konton.
+      confirm: Unue vi devas konfirmi, ke tiu ĉi peto devenas de vi. Alklaku la ligilon
+        sube por konfirmi vian konton.
       welcome: Post konfirmo de konto, ni liveros al vi pliajn informojn kiel komenci.
     email_confirm:
       subject: '[OpenStreetMap] Konfirmado de retpoŝtadreso'
@@ -1294,7 +1328,7 @@ eo:
         akurataj kaj ĝisdatigaj.
       community_driven_title: Kondukata de komunumo
       community_driven_html: |-
-        La komunumo de OpenStreetMap estas diversa, pasia kaj kreskas tagon post tago. Inter niaj kontribuantoj estas ŝatantoj de mapoj, profesiuloj de GIS, inĝenieroj prizorgantaj OSM-servilojn, helpistoj kiuj mapigas areojn tuŝitajn de katastrofoj kaj multaj aliaj. Por sciigi pli pri la komunumo, vidu <a href='https://blog.openstreetmap.org'>taglibron OpenStreetMap</a>, <a href='%{diary_path}'>taglibrojn de uzantoj</a>,
+        La komunumo de OpenStreetMap estas diversa, pasia kaj kreskas tagon post tago. Inter niaj kontribuantoj estas ŝatantoj de mapoj, profesiuloj de GIS, inĝenieroj prizorgantaj OSM-servilojn, helpistoj kiuj mapigas areojn tuŝitajn de katastrofoj kaj multaj aliaj. Por ekscii pli pri la komunumo, vidu <a href='https://blog.openstreetmap.org'>taglibron OpenStreetMap</a>, <a href='%{diary_path}'>taglibrojn de uzantoj</a>,
         <a href='https://blogs.openstreetmap.org/'>komunumajn taglibrojn</a> kaj la retpaĝon de la <a href='https://www.osmfoundation.org/'>Fondaĵo OSM</a>.
       open_data_title: Malfermaj datumoj
       open_data_html: 'OpenStreetMap estas <i>malfermaj datumoj</i>: vi povas uzi
@@ -1370,6 +1404,10 @@ eo:
           <strong>Aŭstrujo</strong>: enhavas datumojn el <a href="https://data.wien.gv.at/">Stadt Wien</a> (laŭ <a href="https://creativecommons.org/licenses/by/3.0/at/deed.eo">CC BY</a>),
           <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> kaj
           Land Tirol (laŭ <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT kun postaj ŝanĝoj</a>).
+        contributors_au_html: '<strong>Aŭstralio</strong>: enhavas datumojn el <a
+          href="https://www.psma.com.au/psma-data-copyright-and-disclaimer">PSMA Australia
+          Limited</a> kunhavigataj de Komunejo de Aŭstralio laŭ la permesilo <a href="https://creativecommons.org/licenses/by/4.0/deed.eo">CC
+          BY 4.0</a>.'
         contributors_ca_html: |-
           <strong>Kanado</strong>: enhavas datumojn el
           GeoBase&reg;, GeoGratis (&copy; Department of Natural
@@ -1379,7 +1417,7 @@ eo:
         contributors_fi_html: |-
           <strong>Suomujo</strong>: enhavas datumojn el
           National Land Survey of Finland's Topographic Database kaj aliaj fontoj, laŭ la <a href="https://www.maanmittauslaitos.fi/en/opendata-licence-version1">permesilo NLSFI</a>.
-        contributors_fr_html: '<strong>Francujo</strong>: enhavas datumojn ricevitajn
+        contributors_fr_html: '<strong>Francio</strong>: enhavas datumojn ricevitajn
           el ''Direction Générale des Impôts''.'
         contributors_nl_html: |-
           <strong>Nederlando</strong>: enhavas datumojn el &copy; AND, 2007
@@ -1392,13 +1430,18 @@ eo:
           <strong>Slovenujo</strong>: enhavas datumojn el <a href="http://www.gu.gov.si/">Ofico de Termezurado kaj Kartografio</a> kaj
           <a href="http://www.mkgp.gov.si/">Ministerio pri Terkulturo, Arbarkulturo kaj Proviantado</a>
           (publikaj informoj de Slovenujo).
+        contributors_es_html: '<strong>Hispanujo</strong>: enhavas datumojn el la
+          Hispana Nacia Geografia Instituto (<a href="http://www.ign.es/">IGN</a>
+          kaj Nacia Kartografia Sistemo (<a href="http://www.scne.es/">SCNE</a>) uzeblaj
+          laŭ la permesilo <a href="https://creativecommons.org/licenses/by/4.0/deed.eo">CC
+          BY 4.0</a>.'
         contributors_za_html: |-
           <strong>Sud-Afriko</strong>: enhavas datumojn ricevitajn el <a href="http://www.ngi.gov.za/">Chief Directorate:
           National Geo-Spatial Information</a>, landaj kopirajtoj rezervitaj.
         contributors_gb_html: |-
           <strong>Unuiĝinta Reĝlando</strong>: enhavas datumojn el 'Ordnance
           Survey' &copy; Crown copyright and database right
-          2010-12.
+          2010 - 2019.
         contributors_footer_1_html: |-
           Por pli da detaloj pri tiuj ĉi kaj aliaj fontoj uzitaj por plibonigi OpenStreetMap, bonvolu viziti la <a
           href="https://wiki.openstreetmap.org/wiki/Contributors">paĝon pri kontribuintoj</a> en la OpenStreetMap-vikio.
@@ -1544,6 +1587,10 @@ eo:
         title: switch2osm
         description: Helpi al firmaoj kaj organizaĵoj transiĝi al mapoj kaj aliaj
           servoj de OpenStreetMap.
+      welcomemat:
+        title: Por organizaĵoj
+        description: Ĉu via organizaĵo planas kunlabori kun OpenStreetMap? Trovu ĉiujn
+          necesajn informojn ĉe nia Welcome Mat.
       wiki:
         url: https://wiki.openstreetmap.org/wiki/Eo:Main_Page
         title: OpenStreetMap-vikio
@@ -1635,7 +1682,7 @@ eo:
       edit: Redakti
       preview: Antaŭvidi
     markdown_help:
-      title_html: Sintakse analizita per <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+      title_html: Sintakse analizita per <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Titoloj
       heading: Titolo
       subheading: Subtitolo
@@ -1684,9 +1731,11 @@ eo:
           redaktoj</a>."
       questions:
         title: Iaj demandoj?
-        paragraph_1_html: OpenStreetMap havas kelkajn ejojn por lerni pri la projekto,
+        paragraph_1_html: OpenStreetMap havas plurajn ejojn por lerni pri la projekto,
           por demandi pri ion ajn kaj kune diskuti kaj dokumenti pri mapigado. <a
-          href='%{help_url}'>Alklaku por ricevi helpon</a>.
+          href='%{help_url}'>Alklaku por ricevi helpon</a>. Ĉu via organizaĵo planas
+          kunlabori kun OpenStreetMap? Trovu pliajn informojn ĉe nia <a href='https://welcome.openstreetmap.org/'>Welcome
+          Mat</a>.
       start_mapping: Ekigi mapigadon
       add_a_note:
         title: Ĉu mankas al vi tempo por redakti? Aldonu rimarkon!
@@ -1793,7 +1842,7 @@ eo:
       description: Foliumi laste alŝutitajn GPS-spurojn
       tagged_with: etikedita kun %{tags}
       empty_html: Ankoraŭ nenio estas tie ĉi. <a href='%{upload_link}'>Alŝutu novan
-        spuron</a> aŭ sciigu pli pri GPS-spurado ĉe la <a href='https://wiki.openstreetmap.org/wiki/Beginners_Guide_1.2'>viki-paĝo</a>.
+        spuron</a> aŭ eksciu pli pri GPS-spurado ĉe la <a href='https://wiki.openstreetmap.org/wiki/Beginners_Guide_1.2'>viki-paĝo</a>.
       upload_trace: Alŝuti spuron
       see_all_traces: Vidi ĉiujn spurojn
       see_my_traces: Montri miajn spurojn
@@ -1814,16 +1863,12 @@ eo:
         other: GPX-dosiero kun %{count} punktoj de %{user}
       description_without_count: GPX-dosiero de %{user}
   application:
+    permission_denied: Vi ne rajtas fari tiun ĉi agon
     require_cookies:
       cookies_needed: Ŝajnas, ke vi malaktivigis 'kuketojn' - bonvolu aktivigi 'kuketojn'
         en via foliumilo por pluigi.
     require_admin:
       not_an_admin: Vi devas esti administranto por fari tion.
-    require_moderator:
-      not_a_moderator: Vi devas esti kontrolanto por fari ĉi tiun agon.
-    require_moderator_or_admin:
-      not_a_moderator_or_admin: Vi devas esti kontrolanto aŭ administranto por fari
-        tion.
     setup_user_auth:
       blocked_zero_hour: Vi havas urĝan mesaĝon en la OpenStreetMap retejo. Vi devas
         legi la mesaĝon antaŭ ol vi povos konservi viajn redaktojn.
@@ -1900,7 +1945,7 @@ eo:
       register_new: Registri vian aplikaĵon
     form:
       name: Nomo
-      required: nepra
+      required: deviga
       url: Retadreso de ĉefaplikaĵo
       callback_url: Revoka retadreso
       support_url: Subtena retadreso
@@ -1920,7 +1965,7 @@ eo:
       flash: Informoj pri kliento estas ĝisdatigitaj sukcese
     destroy:
       flash: La porklienta aplikaĵo forigita
-  user:
+  users:
     login:
       title: Ensaluti
       heading: Ensaluti
@@ -2045,7 +2090,7 @@ eo:
         novan interkonsenton pri uzado por pluigi.
       legale_select: 'Loĝlando:'
       legale_names:
-        france: Francujo
+        france: Francio
         italy: Italujo
         rest_of_world: Resto de la mondo
     no_such_user:
@@ -2227,8 +2272,6 @@ eo:
       button: Eksamikigi
       success: '%{name} estis forviŝita el viaj amikoj.'
       not_a_friend: '%{name} ne estas amiko via.'
-    filter:
-      not_an_administrator: Vi devas esti administranto por fari tion.
     index:
       title: Uzantoj
       heading: Uzantoj
@@ -2265,8 +2308,6 @@ eo:
         kaj poste kunligi la konton kun via identigilo en agordoj de uzanto.
   user_role:
     filter:
-      not_an_administrator: Nur administrantoj povas ŝanĝi uzant-rolojn, sed vi ne
-        estas administranto.
       not_a_role: La ĉeno `%{role}' ne estas valida rolo.
       already_has_role: La uzanto jam rolas %{role}.
       doesnt_have_role: La uzanto ne rolas %{role}.
@@ -2391,31 +2432,10 @@ eo:
       next: Sekva »
       previous: « Antaŭa
   notes:
-    comment:
-      opened_at_html: Kreita antaŭ %{when}
-      opened_at_by_html: Kreita antaŭ %{when} de %{user}
-      commented_at_html: Ĝisdatigita antaŭ %{when}
-      commented_at_by_html: Ĝisdatigita antaŭ %{when} de %{user}
-      closed_at_html: Solvita antaŭ %{when}
-      closed_at_by_html: Solvita antaŭ %{when} de %{user}
-      reopened_at_html: Remalfermita antaŭ %{when}
-      reopened_at_by_html: Remalfermita antaŭ %{when} de %{user}
-    rss:
-      title: OpenStreetMap-rimarkoj
-      description_area: Listo de rimarkoj raportitaj, komentitaj aŭ fermitaj en via
-        najbaraĵo [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
-      description_item: RSS-fluo por rimarko %{id}
-      opened: nova rimarko (proksime de %{place})
-      commented: nova komento (proksime de %{place})
-      closed: fermita rimarko (proksime de %{place})
-      reopened: remalfermita rimarko (proksime de %{place})
-    entry:
-      comment: Komento
-      full: Tuta rimarko
     mine:
       title: Rimarkoj kreitaj aŭ komentitaj de %{user}
       heading: Rimarkoj de %{user}
-      subheading: Rimarkoj kreitaj aŭ komentitaj de %{user}
+      subheading_html: Rimarkoj kreitaj aŭ komentitaj de %{user}
       id: Identigilo
       creator: Aŭtoro
       description: Priskribo
@@ -2509,13 +2529,12 @@ eo:
     directions:
       ascend: Supreniro
       engines:
+        fossgis_osrm_bike: Bicikle (OSRM)
+        fossgis_osrm_car: Aŭte (OSRM)
+        fossgis_osrm_foot: Piede (OSRM)
         graphhopper_bicycle: Bicikle (GraphHopper)
         graphhopper_car: Aŭte (GraphHopper)
         graphhopper_foot: Piede (GraphHopper)
-        mapquest_bicycle: Bicikle (MapQuest)
-        mapquest_car: Aŭte (MapQuest)
-        mapquest_foot: Piede (MapQuest)
-        osrm_car: Aŭte (OSRM)
       descend: Malsupreniro
       directions: Kurso
       distance: Distanco
@@ -2648,4 +2667,9 @@ eo:
         apartenas al ĉi tiu korekto, antaŭ vi forigos ĝin.
       flash: Korekto forigita.
       error: Okazis eraro dum forigado de ĉi tiu korekto.
+  validations:
+    leading_whitespace: enhavas blankspacon ĉe komenco
+    trailing_whitespace: enhavas blankspacon ĉe fino
+    invalid_characters: enhavas malpermesatajn signojn
+    url_characters: enhavas specialajn ligilajn (%{characters}) signojn
 ...

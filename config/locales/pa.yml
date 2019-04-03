@@ -84,6 +84,11 @@ pa:
       name: ਆਈਡੀ
     remote:
       name: ਰਿਮੋਟ ਕੰਟਰੋਲ
+  api:
+    notes:
+      entry:
+        comment: ਟਿੱਪਣੀ ਕਰੋ
+        full: ਪੂਰੀ ਟਿੱਪਣੀ
   browse:
     created: ਬਣਾਇਆ ਗਿਆ
     closed: ਬੰਦ ਹੋਇਆ
@@ -144,7 +149,7 @@ pa:
       title: 'ਟਿੱਪਣੀ: %{id}'
       new_note: ਨਵੀੰ ਟਿੱਪਣੀ
       description: ਵੇਰਵਾ
-  changeset:
+  changesets:
     changeset_paging_nav:
       showing_page: ਵਰਕਾ %{page}
       next: ਅਗਲਾ »
@@ -160,7 +165,7 @@ pa:
     index:
       title: ਤਬਦੀਲੀਆਂ
       load_more: ਹੋਰ ਲੋਡ ਕਰੋ
-  diary_entry:
+  diary_entries:
     new:
       publish_button: ਛਾਪੋ
     edit:
@@ -677,7 +682,6 @@ pa:
     export_data: ਸਮੱਗਰੀ ਬਰਾਮਦ ਕਰੋ
     edit_with: '%{editor} ਨਾਲ ਸੋਧੋ'
     intro_2_create_account: ਇੱਕ ਵਰਤੋਂਕਾਰ ਖਾਤਾ ਬਣਾਉ
-    partners_ic: ਇੰਪੀਰੀਅਲ ਕਾਲਜ ਲੰਡਨ
     partners_bytemark: ਬਾਈਟਮਾਰਕ ਹੋਸਟਿੰਗ
     partners_partners: ਜੋੜੀਦਾਰ
     help: ਮਦਦ
@@ -1004,7 +1008,7 @@ pa:
       name: ਨਾਂ
       required: ਲੋੜੀਂਦਾ
       support_url: ਮਦਦ URL
-  user:
+  users:
     login:
       title: ਦਾਖ਼ਲਾ
       heading: ਦਾਖ਼ਲਾ
@@ -1216,9 +1220,6 @@ pa:
       next: ਅਗਲਾ »
       previous: « ਪਿਛਲਾ
   notes:
-    entry:
-      comment: ਟਿੱਪਣੀ ਕਰੋ
-      full: ਪੂਰੀ ਟਿੱਪਣੀ
     mine:
       creator: ਸਿਰਜਣਹਾਰ
       description: ਵੇਰਵਾ
