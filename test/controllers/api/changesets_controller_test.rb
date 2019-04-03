@@ -1021,8 +1021,7 @@ CHANGESET
 CHANGESET
 
       # upload it
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :bad_request,
                       "shouldn't be able to re-use placeholder IDs"
     end
@@ -1046,8 +1045,7 @@ CHANGESET
 CHANGESET
 
       # upload it
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :bad_request,
                       "shouldn't refer elements behind it"
     end
@@ -1070,8 +1068,7 @@ CHANGESET
 CHANGESET
 
       # upload it
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :gone,
                       "transaction should be cancelled by second deletion"
 
@@ -1088,8 +1085,7 @@ CHANGESET
 CHANGESET
 
       # upload it
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_select "diffResult>node", 3
       assert_select "diffResult>node[old_id='-1']", 3
       assert_select "diffResult>node[new_version='1']", 1
@@ -1341,8 +1337,7 @@ CHANGESET
          </modify>
         </osmChange>
 CHANGESET
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :not_found
 
       # modify way
@@ -1353,8 +1348,7 @@ CHANGESET
          </modify>
         </osmChange>
 CHANGESET
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :not_found
 
       # modify relation
@@ -1365,8 +1359,7 @@ CHANGESET
          </modify>
         </osmChange>
 CHANGESET
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :not_found
 
       # delete node
@@ -1377,8 +1370,7 @@ CHANGESET
          </delete>
         </osmChange>
 CHANGESET
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :not_found
 
       # delete way
@@ -1389,8 +1381,7 @@ CHANGESET
          </delete>
         </osmChange>
 CHANGESET
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :not_found
 
       # delete relation
@@ -1401,8 +1392,7 @@ CHANGESET
          </delete>
         </osmChange>
 CHANGESET
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :not_found
     end
 
@@ -1432,8 +1422,7 @@ CHANGESET
           </create>
         </osmChange>
 CHANGESET
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :bad_request
       assert_equal "Placeholder Relation not found for reference -4 in relation -2.", response.body
     end
@@ -1457,8 +1446,7 @@ CHANGESET
           </delete>
         </osmChange>
 CHANGESET
-      content diff
-      post :upload, :params => { :id => changeset.id }
+      post :upload, :params => { :id => changeset.id }, :body => diff
       assert_response :precondition_failed
       assert_equal "Precondition failed: Node #{node.id} is still used by ways #{way.id}.", response.body
     end
