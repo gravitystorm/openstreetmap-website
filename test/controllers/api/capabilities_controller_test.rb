@@ -18,11 +18,11 @@ module Api
       all_api_versions_except(["0.6"]).each do |version|
         assert_recognizes(
           { :controller => "api/capabilities", :action => "show", :api_version => version },
-          { :path => "/api/capabilities", :method => :get }
+          { :path => "/api/#{version}/capabilities", :method => :get }
         )
       end
       assert_recognizes(
-        { :controller => "api/v06/capabilities", :action => "show", :api_version => version },
+        { :controller => "api/v06/capabilities", :action => "show", :api_version => "0.6" },
         { :path => "/api/0.6/capabilities", :method => :get }
       )
     end
