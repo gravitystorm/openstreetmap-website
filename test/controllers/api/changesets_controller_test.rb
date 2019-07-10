@@ -52,163 +52,177 @@ module Api
     # -----------------------
 
     def test_create
-      basic_authorization create(:user, :data_public => false).email, "test"
-      # Create the first user's changeset
-      xml = "<osm><changeset>" \
-            "<tag k='created_by' v='osm test suite checking changesets'/>" \
-            "</changeset></osm>"
-      put :create, :body => xml
-      assert_require_public_data
+      all_api_versions.each do |version|
+        basic_authorization create(:user, :data_public => false).email, "test"
+        # Create the first user's changeset
+        xml = "<osm><changeset>" \
+              "<tag k='created_by' v='osm test suite checking changesets'/>" \
+              "</changeset></osm>"
+        put :create, :body => xml, :params => { :api_version => version }
+        assert_require_public_data
 
-      basic_authorization create(:user).email, "test"
-      # Create the first user's changeset
-      xml = "<osm><changeset>" \
-            "<tag k='created_by' v='osm test suite checking changesets'/>" \
-            "</changeset></osm>"
-      put :create, :body => xml
+        basic_authorization create(:user).email, "test"
+        # Create the first user's changeset
+        xml = "<osm><changeset>" \
+              "<tag k='created_by' v='osm test suite checking changesets'/>" \
+              "</changeset></osm>"
+        put :create, :body => xml, :params => { :api_version => version }
 
-      assert_response :success, "Creation of changeset did not return sucess status"
-      newid = @response.body.to_i
+        assert_response :success, "Creation of changeset did not return sucess status"
+        newid = @response.body.to_i
 
-      # check end time, should be an hour ahead of creation time
-      cs = Changeset.find(newid)
-      duration = cs.closed_at - cs.created_at
-      # the difference can either be a rational, or a floating point number
-      # of seconds, depending on the code path taken :-(
-      if duration.class == Rational
-        assert_equal Rational(1, 24), duration, "initial idle timeout should be an hour (#{cs.created_at} -> #{cs.closed_at})"
-      else
-        # must be number of seconds...
-        assert_equal 3600, duration.round, "initial idle timeout should be an hour (#{cs.created_at} -> #{cs.closed_at})"
+        # check end time, should be an hour ahead of creation time
+        cs = Changeset.find(newid)
+        duration = cs.closed_at - cs.created_at
+        # the difference can either be a rational, or a floating point number
+        # of seconds, depending on the code path taken :-(
+        if duration.class == Rational
+          assert_equal Rational(1, 24), duration, "initial idle timeout should be an hour (#{cs.created_at} -> #{cs.closed_at})"
+        else
+          # must be number of seconds...
+          assert_equal 3600, duration.round, "initial idle timeout should be an hour (#{cs.created_at} -> #{cs.closed_at})"
+        end
+
+        # checks if uploader was subscribed
+        assert_equal 1, cs.subscribers.length
       end
-
-      # checks if uploader was subscribed
-      assert_equal 1, cs.subscribers.length
     end
 
     def test_create_invalid
-      basic_authorization create(:user, :data_public => false).email, "test"
-      xml = "<osm><changeset></osm>"
-      put :create, :body => xml
-      assert_require_public_data
+      all_api_versions.each do |version|
+        basic_authorization create(:user, :data_public => false).email, "test"
+        xml = "<osm><changeset></osm>"
+        put :create, :body => xml, :params => { :api_version => version }
+        assert_require_public_data
 
-      ## Try the public user
-      basic_authorization create(:user).email, "test"
-      xml = "<osm><changeset></osm>"
-      put :create, :body => xml
-      assert_response :bad_request, "creating a invalid changeset should fail"
+        ## Try the public user
+        basic_authorization create(:user).email, "test"
+        xml = "<osm><changeset></osm>"
+        put :create, :body => xml, :params => { :api_version => version }
+        assert_response :bad_request, "creating a invalid changeset should fail"
+      end
     end
 
     def test_create_invalid_no_content
-      ## First check with no auth
-      put :create
-      assert_response :unauthorized, "shouldn't be able to create a changeset with no auth"
+      all_api_versions.each do |version|
+        ## First check with no auth
+        put :create, :params => { :api_version => version }
+        assert_response :unauthorized, "shouldn't be able to create a changeset with no auth"
 
-      ## Now try to with a non-public user
-      basic_authorization create(:user, :data_public => false).email, "test"
-      put :create
-      assert_require_public_data
+        ## Now try to with a non-public user
+        basic_authorization create(:user, :data_public => false).email, "test"
+        put :create, :params => { :api_version => version }
+        assert_require_public_data
 
-      ## Try an inactive user
-      basic_authorization create(:user, :pending).email, "test"
-      put :create
-      assert_inactive_user
+        ## Try an inactive user
+        basic_authorization create(:user, :pending).email, "test"
+        put :create, :params => { :api_version => version }
+        assert_inactive_user
 
-      ## Now try to use a normal user
-      basic_authorization create(:user).email, "test"
-      put :create
-      assert_response :bad_request, "creating a changeset with no content should fail"
+        ## Now try to use a normal user
+        basic_authorization create(:user).email, "test"
+        put :create, :params => { :api_version => version }
+        assert_response :bad_request, "creating a changeset with no content should fail"
+      end
     end
 
     def test_create_wrong_method
-      basic_authorization create(:user).email, "test"
-      get :create
-      assert_response :method_not_allowed
-      post :create
-      assert_response :method_not_allowed
+      all_api_versions.each do |version|
+        basic_authorization create(:user).email, "test"
+        get :create, :params => { :api_version => version }
+        assert_response :method_not_allowed
+        post :create, :params => { :api_version => version }
+        assert_response :method_not_allowed
+      end
     end
 
     ##
     # check that the changeset can be shown and returns the correct
     # document structure.
     def test_show
-      changeset = create(:changeset)
+      all_api_versions.each do |version|
+        changeset = create(:changeset)
 
-      get :show, :params => { :id => changeset.id }
-      assert_response :success, "cannot get first changeset"
+        get :show, :params => { :id => changeset.id, :api_version => version }
+        assert_response :success, "cannot get first changeset"
 
-      assert_select "osm[version='0.6'][generator='OpenStreetMap server']", 1
-      assert_select "osm>changeset[id='#{changeset.id}']", 1
-      assert_select "osm>changeset>@open", "true"
-      assert_select "osm>changeset>@created_at", changeset.created_at.xmlschema
-      assert_select "osm>changeset>@closed_at", 0
-      assert_select "osm>changeset>discussion", 0
+        assert_select "osm[version='#{version}'][generator='OpenStreetMap server']", 1
+        assert_select "osm>changeset[id='#{changeset.id}']", 1
+        assert_select "osm>changeset>@open", "true"
+        assert_select "osm>changeset>@created_at", changeset.created_at.xmlschema
+        assert_select "osm>changeset>@closed_at", 0
+        assert_select "osm>changeset>discussion", 0
 
-      get :show, :params => { :id => changeset.id, :include_discussion => true }
-      assert_response :success, "cannot get first changeset with comments"
+        get :show, :params => { :id => changeset.id, :include_discussion => true, :api_version => version }
+        assert_response :success, "cannot get first changeset with comments"
 
-      assert_select "osm[version='0.6'][generator='OpenStreetMap server']", 1
-      assert_select "osm>changeset[id='#{changeset.id}']", 1
-      assert_select "osm>changeset>@open", "true"
-      assert_select "osm>changeset>@created_at", changeset.created_at.xmlschema
-      assert_select "osm>changeset>@closed_at", 0
-      assert_select "osm>changeset>discussion", 1
-      assert_select "osm>changeset>discussion>comment", 0
+        assert_select "osm[version='#{version}'][generator='OpenStreetMap server']", 1
+        assert_select "osm>changeset[id='#{changeset.id}']", 1
+        assert_select "osm>changeset>@open", "true"
+        assert_select "osm>changeset>@created_at", changeset.created_at.xmlschema
+        assert_select "osm>changeset>@closed_at", 0
+        assert_select "osm>changeset>discussion", 1
+        assert_select "osm>changeset>discussion>comment", 0
 
-      changeset = create(:changeset, :closed)
-      create_list(:changeset_comment, 3, :changeset_id => changeset.id)
+        changeset = create(:changeset, :closed)
+        create_list(:changeset_comment, 3, :changeset_id => changeset.id)
 
-      get :show, :params => { :id => changeset.id, :include_discussion => true }
-      assert_response :success, "cannot get closed changeset with comments"
+        get :show, :params => { :id => changeset.id, :include_discussion => true, :api_version => version }
+        assert_response :success, "cannot get closed changeset with comments"
 
-      assert_select "osm[version='0.6'][generator='OpenStreetMap server']", 1
-      assert_select "osm>changeset[id='#{changeset.id}']", 1
-      assert_select "osm>changeset>@open", "false"
-      assert_select "osm>changeset>@created_at", changeset.created_at.xmlschema
-      assert_select "osm>changeset>@closed_at", changeset.closed_at.xmlschema
-      assert_select "osm>changeset>discussion", 1
-      assert_select "osm>changeset>discussion>comment", 3
+        assert_select "osm[version='#{version}'][generator='OpenStreetMap server']", 1
+        assert_select "osm>changeset[id='#{changeset.id}']", 1
+        assert_select "osm>changeset>@open", "false"
+        assert_select "osm>changeset>@created_at", changeset.created_at.xmlschema
+        assert_select "osm>changeset>@closed_at", changeset.closed_at.xmlschema
+        assert_select "osm>changeset>discussion", 1
+        assert_select "osm>changeset>discussion>comment", 3
+      end
     end
 
     ##
     # check that a changeset that doesn't exist returns an appropriate message
     def test_show_not_found
-      [0, -32, 233455644, "afg", "213"].each do |id|
-        get :show, :params => { :id => id }
-        assert_response :not_found, "should get a not found"
-      rescue ActionController::UrlGenerationError => e
-        assert_match(/No route matches/, e.to_s)
+      all_api_versions.each do |version|
+        [0, -32, 233455644, "afg", "213"].each do |id|
+          get :show, :params => { :id => id, :api_version => version }
+          assert_response :not_found, "should get a not found"
+        rescue ActionController::UrlGenerationError => e
+          assert_match(/No route matches/, e.to_s)
+        end
       end
     end
 
     ##
     # test that the user who opened a change can close it
     def test_close
-      private_user = create(:user, :data_public => false)
-      private_changeset = create(:changeset, :user => private_user)
-      user = create(:user)
-      changeset = create(:changeset, :user => user)
+      all_api_versions.each do |version|
+        private_user = create(:user, :data_public => false)
+        private_changeset = create(:changeset, :user => private_user)
+        user = create(:user)
+        changeset = create(:changeset, :user => user)
 
-      ## Try without authentication
-      put :close, :params => { :id => changeset.id }
-      assert_response :unauthorized
+        ## Try without authentication
+        put :close, :params => { :id => changeset.id, :api_version => version }
+        assert_response :unauthorized
 
-      ## Try using the non-public user
-      basic_authorization private_user.email, "test"
-      put :close, :params => { :id => private_changeset.id }
-      assert_require_public_data
+        ## Try using the non-public user
+        basic_authorization private_user.email, "test"
+        put :close, :params => { :id => private_changeset.id, :api_version => version }
+        assert_require_public_data
 
-      ## The try with the public user
-      basic_authorization user.email, "test"
+        ## The try with the public user
+        basic_authorization user.email, "test"
 
-      cs_id = changeset.id
-      put :close, :params => { :id => cs_id }
-      assert_response :success
+        cs_id = changeset.id
+        put :close, :params => { :id => cs_id, :api_version => version }
+        assert_response :success
 
-      # test that it really is closed now
-      cs = Changeset.find(cs_id)
-      assert_not(cs.is_open?,
-                 "changeset should be closed now (#{cs.closed_at} > #{Time.now.getutc}.")
+        # test that it really is closed now
+        cs = Changeset.find(cs_id)
+        assert_not(cs.is_open?,
+                   "changeset should be closed now (#{cs.closed_at} > #{Time.now.getutc}.")
+      end
     end
 
     ##
