@@ -95,15 +95,18 @@ class ApiController < ApplicationController
   def setup_user_auth
     # try and setup using OAuth
     unless Authenticator.new(self, [:token]).allow?
-      username, passwd = get_auth_data # parse from headers
-      # authenticate per-scheme
-      self.current_user = if username.nil?
-                            nil # no authentication provided - perhaps first connect (client should retry after 401)
-                          elsif username == "token"
-                            User.authenticate(:token => passwd) # preferred - random token for user from db, passed in basic auth
-                          else
-                            User.authenticate(:username => username, :password => passwd) # basic auth
-                          end
+      # User.authenticate might try to update the saved password
+      ActiveRecord::Base.connected_to(:role => :writing) do
+        username, passwd = get_auth_data # parse from headers
+        # authenticate per-scheme
+        self.current_user = if username.nil?
+                              nil # no authentication provided - perhaps first connect (client should retry after 401)
+                            elsif username == "token"
+                              User.authenticate(:token => passwd) # preferred - random token for user from db, passed in basic auth
+                            else
+                              User.authenticate(:username => username, :password => passwd) # basic auth
+                            end
+      end
     end
 
     # have we identified the user?

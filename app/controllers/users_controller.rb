@@ -262,7 +262,9 @@ class UsersController < ApplicationController
 
     if params[:username].present? && params[:password].present?
       session[:remember_me] ||= params[:remember_me]
-      password_authentication(params[:username], params[:password])
+      ActiveRecord::Base.connected_to(:role => :writing) do
+        password_authentication(params[:username], params[:password])
+      end
     end
   end
 
@@ -335,7 +337,9 @@ class UsersController < ApplicationController
     if user.nil? || token.nil? || token.user != user
       flash[:error] = t "users.confirm_resend.failure", :name => params[:display_name]
     else
-      Notifier.signup_confirm(user, user.tokens.create).deliver_later
+      ActiveRecord::Base.connected_to(:role => :writing) do
+        Notifier.signup_confirm(user, user.tokens.create).deliver_later
+      end
       flash[:notice] = t("users.confirm_resend.success", :email => user.email, :sender => Settings.support_email).html_safe
     end
 
@@ -464,7 +468,9 @@ class UsersController < ApplicationController
       if user.nil? && provider == "google"
         openid_url = auth_info[:extra][:id_info]["openid_id"]
         user = User.find_by(:auth_provider => "openid", :auth_uid => openid_url) if openid_url
-        user&.update(:auth_provider => provider, :auth_uid => uid)
+        ActiveRecord::Base.connected_to(:role => :writing) do
+          user&.update(:auth_provider => provider, :auth_uid => uid)
+        end
       end
 
       if user

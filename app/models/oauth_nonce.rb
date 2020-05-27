@@ -21,10 +21,13 @@ class OauthNonce < ApplicationRecord
 
   # Remembers a nonce and it's associated timestamp. It returns false if it has already been used
   def self.remember(nonce, timestamp)
-    return false if Time.now.to_i - timestamp.to_i > 86400
+    oauth_nonce = nil
+    ActiveRecord::Base.connected_to(:role => :writing) do
+      return false if Time.now.to_i - timestamp.to_i > 86400
 
-    oauth_nonce = OauthNonce.create(:nonce => nonce, :timestamp => timestamp.to_i)
-    return false if oauth_nonce.new_record?
+      oauth_nonce = OauthNonce.create(:nonce => nonce, :timestamp => timestamp.to_i)
+      return false if oauth_nonce.new_record?
+    end
 
     oauth_nonce
   end
