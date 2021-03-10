@@ -442,6 +442,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    squasher (0.6.2)
     strong_migrations (0.7.6)
       activerecord (>= 5)
     thor (1.1.0)
@@ -546,6 +547,7 @@ DEPENDENCIES
   selenium-webdriver
   simplecov
   simplecov-lcov
+  squasher
   strong_migrations
   uglifier (>= 1.3.0)
   validates_email_format_of (>= 1.5.1)
@@ -553,4 +555,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.1.4
+   2.2.8
