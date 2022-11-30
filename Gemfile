@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Require rails
-gem "rails", "~> 7.0.0"
+gem "rails", :github => "rails/rails", :branch => "main"
 
 # Require json for multi_json
 gem "json"
@@ -41,12 +41,12 @@ gem "sprockets-exporters_pack"
 
 # Load rails plugins
 gem "actionpack-page_caching", ">= 1.2.0"
-gem "activerecord-import"
+gem "activerecord-import", :github => "gravitystorm/activerecord-import", :branch => "playground"
 gem "active_record_union"
 gem "bootstrap", "~> 5.1.0"
 gem "bootstrap_form", "~> 5.0"
 gem "cancancan"
-gem "composite_primary_keys", "~> 14.0.0"
+gem "composite_primary_keys", :github => "gravitystorm/composite_primary_keys", :branch => "testing_rails_edge"
 gem "config"
 gem "delayed_job_active_record"
 gem "frozen_record"
