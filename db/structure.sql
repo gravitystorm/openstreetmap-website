@@ -17,6 +17,13 @@ CREATE EXTENSION IF NOT EXISTS btree_gist WITH SCHEMA public;
 
 
 --
+-- Name: EXTENSION btree_gist; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION btree_gist IS 'support for indexing common datatypes in GiST';
+
+
+--
 -- Name: format_enum; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -106,38 +113,6 @@ CREATE TYPE public.user_status_enum AS ENUM (
     'suspended',
     'deleted'
 );
-
-
---
--- Name: tile_for_point(integer, integer); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.tile_for_point(scaled_lat integer, scaled_lon integer) RETURNS bigint
-    LANGUAGE plpgsql IMMUTABLE
-    AS $$
-DECLARE
-  x int8; -- quantized x from lon,
-  y int8; -- quantized y from lat,
-BEGIN
-  x := round(((scaled_lon / 10000000.0) + 180.0) * 65535.0 / 360.0);
-  y := round(((scaled_lat / 10000000.0) +  90.0) * 65535.0 / 180.0);
-
-  -- these bit-masks are special numbers used in the bit interleaving algorithm.
-  -- see https://graphics.stanford.edu/~seander/bithacks.html#InterleaveBMN
-  -- for the original algorithm and more details.
-  x := (x | (x << 8)) &   16711935; -- 0x00FF00FF
-  x := (x | (x << 4)) &  252645135; -- 0x0F0F0F0F
-  x := (x | (x << 2)) &  858993459; -- 0x33333333
-  x := (x | (x << 1)) & 1431655765; -- 0x55555555
-
-  y := (y | (y << 8)) &   16711935; -- 0x00FF00FF
-  y := (y | (y << 4)) &  252645135; -- 0x0F0F0F0F
-  y := (y | (y << 2)) &  858993459; -- 0x33333333
-  y := (y | (y << 1)) & 1431655765; -- 0x55555555
-
-  RETURN (x << 1) | y;
-END;
-$$;
 
 
 SET default_tablespace = '';
@@ -283,8 +258,8 @@ ALTER SEQUENCE public.active_storage_variant_records_id_seq OWNED BY public.acti
 CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -307,7 +282,6 @@ CREATE TABLE public.changeset_comments (
 --
 
 CREATE SEQUENCE public.changeset_comments_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -409,7 +383,6 @@ CREATE TABLE public.client_applications (
 --
 
 CREATE SEQUENCE public.client_applications_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -835,7 +808,6 @@ CREATE TABLE public.issue_comments (
 --
 
 CREATE SEQUENCE public.issue_comments_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -875,7 +847,6 @@ CREATE TABLE public.issues (
 --
 
 CREATE SEQUENCE public.issues_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -988,7 +959,6 @@ CREATE TABLE public.note_comments (
 --
 
 CREATE SEQUENCE public.note_comments_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1024,7 +994,6 @@ CREATE TABLE public.notes (
 --
 
 CREATE SEQUENCE public.notes_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1170,7 +1139,6 @@ CREATE TABLE public.oauth_nonces (
 --
 
 CREATE SEQUENCE public.oauth_nonces_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1219,7 +1187,6 @@ CREATE TABLE public.oauth_tokens (
 --
 
 CREATE SEQUENCE public.oauth_tokens_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1254,7 +1221,6 @@ CREATE TABLE public.redactions (
 --
 
 CREATE SEQUENCE public.redactions_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1329,7 +1295,6 @@ CREATE TABLE public.reports (
 --
 
 CREATE SEQUENCE public.reports_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1376,7 +1341,6 @@ CREATE TABLE public.user_blocks (
 --
 
 CREATE SEQUENCE public.user_blocks_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1421,7 +1385,6 @@ CREATE TABLE public.user_roles (
 --
 
 CREATE SEQUENCE public.user_roles_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3358,60 +3321,6 @@ ALTER TABLE ONLY public.ways
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('1'),
-('10'),
-('11'),
-('12'),
-('13'),
-('14'),
-('15'),
-('16'),
-('17'),
-('18'),
-('19'),
-('2'),
-('20'),
-('20100513171259'),
-('20100516124737'),
-('20100910084426'),
-('20101114011429'),
-('20110322001319'),
-('20110508145337'),
-('20110521142405'),
-('20110925112722'),
-('20111116184519'),
-('20111212183945'),
-('20120123184321'),
-('20120208122334'),
-('20120208194454'),
-('20120214210114'),
-('20120219161649'),
-('20120318201948'),
-('20120328090602'),
-('20120404205604'),
-('20120808231205'),
-('20121005195010'),
-('20121012044047'),
-('20121119165817'),
-('20121202155309'),
-('20121203124841'),
-('20130328184137'),
-('20131212124700'),
-('20140115192822'),
-('20140117185510'),
-('20140210003018'),
-('20140507110937'),
-('20140519141742'),
-('20150110152606'),
-('20150111192335'),
-('20150222101847'),
-('20150818224516'),
-('20160822153055'),
-('20161002153425'),
-('20161011010929'),
-('20170222134109'),
-('20180204153242'),
-('20181020114000'),
 ('20181031113522'),
 ('20190518115041'),
 ('20190623093642'),
@@ -3428,49 +3337,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211216185316'),
 ('20220201183346'),
 ('20220223140543'),
-('21'),
-('22'),
-('23'),
-('24'),
-('25'),
-('26'),
-('27'),
-('28'),
-('29'),
-('3'),
-('30'),
-('31'),
-('32'),
-('33'),
-('34'),
-('35'),
-('36'),
-('37'),
-('38'),
-('39'),
-('4'),
-('40'),
-('41'),
-('42'),
-('43'),
-('44'),
-('45'),
-('46'),
-('47'),
-('48'),
-('49'),
-('5'),
-('50'),
-('51'),
-('52'),
-('53'),
-('54'),
-('55'),
-('56'),
-('57'),
-('6'),
-('7'),
-('8'),
-('9');
+('20221207115451');
 
 

@@ -138,6 +138,7 @@ group :development do
   gem "binding_of_caller"
   gem "debug_inspector"
   gem "listen"
+  gem "squasher"
   gem "vendorer"
 end
 
