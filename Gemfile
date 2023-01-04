@@ -163,3 +163,7 @@ group :test do
   gem "simplecov-lcov", :require => false
   gem "webmock"
 end
+
+group :development, :test do
+  gem "teaspoon-mocha", "~> 2.3"
+end
