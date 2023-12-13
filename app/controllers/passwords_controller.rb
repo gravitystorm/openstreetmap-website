@@ -1,4 +1,4 @@
-class PasswordsController < ApplicationController
+class PasswordsController < Devise::PasswordsController
   include SessionMethods
 
   layout "site"
@@ -13,6 +13,8 @@ class PasswordsController < ApplicationController
 
   def new
     @title = t ".title"
+
+    super
   end
 
   def edit
@@ -29,26 +31,6 @@ class PasswordsController < ApplicationController
       end
     else
       head :bad_request
-    end
-  end
-
-  def create
-    user = User.visible.find_by(:email => params[:email])
-
-    if user.nil?
-      users = User.visible.where("LOWER(email) = LOWER(?)", params[:email])
-
-      user = users.first if users.count == 1
-    end
-
-    if user
-      token = user.tokens.create
-      UserMailer.lost_password(user, token).deliver_later
-      flash[:notice] = t ".notice email on way"
-      redirect_to login_path
-    else
-      flash.now[:error] = t ".notice email cannot find"
-      render :new
     end
   end
 
@@ -81,5 +63,9 @@ class PasswordsController < ApplicationController
     else
       head :bad_request
     end
+  end
+
+  def new_session_path(_)
+    new_user_session_path
   end
 end

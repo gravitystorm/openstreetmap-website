@@ -2,49 +2,54 @@
 #
 # Table name: users
 #
-#  email               :string           not null
-#  id                  :bigint(8)        not null, primary key
-#  pass_crypt          :string           not null
-#  creation_time       :datetime         not null
-#  display_name        :string           default(""), not null
-#  data_public         :boolean          default(FALSE), not null
-#  description         :text             default(""), not null
-#  home_lat            :float
-#  home_lon            :float
-#  home_zoom           :integer          default(3)
-#  pass_salt           :string
-#  email_valid         :boolean          default(FALSE), not null
-#  new_email           :string
-#  creation_ip         :string
-#  languages           :string
-#  status              :enum             default("pending"), not null
-#  terms_agreed        :datetime
-#  consider_pd         :boolean          default(FALSE), not null
-#  auth_uid            :string
-#  preferred_editor    :string
-#  terms_seen          :boolean          default(FALSE), not null
-#  description_format  :enum             default("markdown"), not null
-#  changesets_count    :integer          default(0), not null
-#  traces_count        :integer          default(0), not null
-#  diary_entries_count :integer          default(0), not null
-#  image_use_gravatar  :boolean          default(FALSE), not null
-#  auth_provider       :string
-#  home_tile           :bigint(8)
-#  tou_agreed          :datetime
+#  email                  :string           not null
+#  id                     :bigint(8)        not null, primary key
+#  pass_crypt             :string           not null
+#  creation_time          :datetime         not null
+#  display_name           :string           default(""), not null
+#  data_public            :boolean          default(FALSE), not null
+#  description            :text             default(""), not null
+#  home_lat               :float
+#  home_lon               :float
+#  home_zoom              :integer          default(3)
+#  pass_salt              :string
+#  email_valid            :boolean          default(FALSE), not null
+#  new_email              :string
+#  creation_ip            :string
+#  languages              :string
+#  status                 :enum             default("pending"), not null
+#  terms_agreed           :datetime
+#  consider_pd            :boolean          default(FALSE), not null
+#  auth_uid               :string
+#  preferred_editor       :string
+#  terms_seen             :boolean          default(FALSE), not null
+#  description_format     :enum             default("markdown"), not null
+#  changesets_count       :integer          default(0), not null
+#  traces_count           :integer          default(0), not null
+#  diary_entries_count    :integer          default(0), not null
+#  image_use_gravatar     :boolean          default(FALSE), not null
+#  auth_provider          :string
+#  home_tile              :bigint(8)
+#  tou_agreed             :datetime
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
 #
 # Indexes
 #
-#  users_auth_idx                    (auth_provider,auth_uid) UNIQUE
-#  users_display_name_canonical_idx  (lower(NORMALIZE(display_name, NFKC)))
-#  users_display_name_idx            (display_name) UNIQUE
-#  users_email_idx                   (email) UNIQUE
-#  users_email_lower_idx             (lower((email)::text))
-#  users_home_idx                    (home_tile)
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  users_auth_idx                       (auth_provider,auth_uid) UNIQUE
+#  users_display_name_canonical_idx     (lower(NORMALIZE(display_name, NFKC)))
+#  users_display_name_idx               (display_name) UNIQUE
+#  users_email_idx                      (email) UNIQUE
+#  users_email_lower_idx                (lower((email)::text))
+#  users_home_idx                       (home_tile)
 #
 
 class User < ApplicationRecord
   require "digest"
   include AASM
+
+  devise :recoverable
 
   has_many :traces, -> { where(:visible => true) }
   has_many :diary_entries, -> { order(:created_at => :desc) }, :inverse_of => :user
