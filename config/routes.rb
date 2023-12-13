@@ -175,11 +175,15 @@ OpenStreetMap::Application.routes.draw do
   match "/user/confirm" => "confirmations#confirm", :via => [:get, :post]
   match "/user/confirm-email" => "confirmations#confirm_email", :via => [:get, :post]
   post "/user/go_public" => "users#go_public"
-  scope :user, :as => "user" do
-    get "forgot-password" => "passwords#new"
-    post "forgot-password" => "passwords#create"
-    get "reset-password" => "passwords#edit"
-    post "reset-password" => "passwords#update"
+
+  devise_for :users, :skip => :all
+  devise_scope :user do
+    scope :user, :as => "user" do
+      get "forgot-password" => "passwords#new"
+      post "forgot-password" => "passwords#create"
+      get "reset-password" => "passwords#edit"
+      post "reset-password" => "passwords#update"
+    end
   end
   get "/user/suspended" => "users#suspended"
 

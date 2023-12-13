@@ -46,6 +46,8 @@ class User < ApplicationRecord
   require "digest"
   include AASM
 
+  devise :recoverable
+
   has_many :traces, -> { where(:visible => true) }
   has_many :diary_entries, -> { order(:created_at => :desc) }, :inverse_of => :user
   has_many :diary_comments, -> { order(:created_at => :desc) }, :inverse_of => :user

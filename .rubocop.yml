@@ -45,6 +45,10 @@ Naming/FileName:
 Naming/MethodParameterName:
   Enabled: false
 
+# Not compatible with strong_migrations
+Rails/BulkChangeTable:
+  Enabled: false
+
 Rails/CreateTableWithTimestamps:
   Enabled: false
 
