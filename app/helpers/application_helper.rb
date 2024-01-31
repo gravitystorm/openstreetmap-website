@@ -75,4 +75,12 @@ module ApplicationHelper
   rescue StandardError
     flash.inspect if Rails.env.development?
   end
+
+  def new_session_path(_)
+    new_user_session_path
+  end
+
+  def edit_user_password_url
+    user_edit_password_url
+  end
 end

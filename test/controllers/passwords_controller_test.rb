@@ -22,7 +22,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
-  def test_lost_password
+  focus def test_lost_password
     # Test fetching the lost password page
     get user_forgot_password_path
     assert_response :success

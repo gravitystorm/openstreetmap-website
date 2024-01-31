@@ -5,6 +5,7 @@
 <p><%= t ".help_text" %></p>
 
 <%= bootstrap_form_tag do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
   <%= f.text_field :email, :label => t(".email address") %>
   <%= f.primary t(".new password button") %>
 <% end %>

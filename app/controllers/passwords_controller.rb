@@ -64,4 +64,10 @@ class PasswordsController < Devise::PasswordsController
       head :bad_request
     end
   end
+
+  private
+
+  def new_session_path(_)
+    new_user_session_path
+  end
 end

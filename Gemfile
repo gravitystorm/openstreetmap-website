@@ -155,6 +155,7 @@ group :test do
   gem "factory_bot_rails"
   gem "jwt"
   gem "minitest", "~> 5.1"
+  gem "minitest-focus"
   gem "puma", "~> 5.6"
   gem "rails-controller-testing"
   gem "rubocop"

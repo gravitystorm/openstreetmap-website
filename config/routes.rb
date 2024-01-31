@@ -159,7 +159,7 @@ OpenStreetMap::Application.routes.draw do
   get "/history/feed" => "changesets#feed", :defaults => { :format => :atom }
   get "/history/comments/feed" => "changeset_comments#index", :as => :changesets_comments_feed, :defaults => { :format => "rss" }
   get "/export" => "site#export"
-  get "/login" => "sessions#new"
+  get "/login" => "sessions#new", :as => :new_user_session
   post "/login" => "sessions#create"
   match "/logout" => "sessions#destroy", :via => [:get, :post]
   get "/offline" => "site#offline"
@@ -180,8 +180,8 @@ OpenStreetMap::Application.routes.draw do
   devise_scope :user do
     scope :user, :as => "user" do
       get "forgot-password" => "passwords#new"
-      post "forgot-password" => "passwords#create"
-      get "reset-password" => "passwords#edit"
+      post "forgot-password" => "passwords#create", :as => :password
+      get "reset-password" => "passwords#edit", :as => :edit_password
       post "reset-password" => "passwords#update"
     end
   end
