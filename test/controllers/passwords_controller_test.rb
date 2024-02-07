@@ -5,26 +5,34 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
   # test all routes which lead to this controller
   def test_routes
     assert_routing(
-      { :path => "/user/forgot-password", :method => :get },
+      { :path => "/users/password/new", :method => :get },
       { :controller => "passwords", :action => "new" }
     )
     assert_routing(
-      { :path => "/user/forgot-password", :method => :post },
+      { :path => "/users/password", :method => :post },
       { :controller => "passwords", :action => "create" }
     )
     assert_routing(
-      { :path => "/user/reset-password", :method => :get },
+      { :path => "/users/password/edit", :method => :get },
       { :controller => "passwords", :action => "edit" }
     )
     assert_routing(
-      { :path => "/user/reset-password", :method => :post },
+      { :path => "/users/password", :method => :patch },
       { :controller => "passwords", :action => "update" }
     )
   end
 
+  def test_redirects
+    get user_forgot_password_path
+    assert_redirected_to new_user_password_path
+
+    get user_reset_password_path
+    assert_redirected_to new_user_password_path
+  end
+
   def test_lost_password
     # Test fetching the lost password page
-    get user_forgot_password_path
+    get new_user_password_path
     assert_response :success
     assert_template :new
     assert_select "div#notice", false
@@ -37,7 +45,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # Resetting with GET should fail
     assert_no_difference "ActionMailer::Base.deliveries.size" do
       perform_enqueued_jobs do
-        get user_forgot_password_path, :params => { :email => user.email }
+        get new_user_password_path, :params => { :email => user.email }
       end
     end
     assert_response :success
@@ -46,7 +54,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # Resetting with POST should work
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       perform_enqueued_jobs do
-        post user_forgot_password_path, :params => { :email => user.email }
+        post new_user_password_path, :params => { :email => user.email }
       end
     end
     assert_response :redirect
@@ -61,7 +69,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # that has the same address in a different case
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       perform_enqueued_jobs do
-        post user_forgot_password_path, :params => { :email => user.email.upcase }
+        post new_user_password_path, :params => { :email => user.email.upcase }
       end
     end
     assert_response :redirect
@@ -76,7 +84,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # for more than one user but not an exact match for either
     assert_no_difference "ActionMailer::Base.deliveries.size" do
       perform_enqueued_jobs do
-        post user_forgot_password_path, :params => { :email => user.email.titlecase }
+        post new_user_password_path, :params => { :email => user.email.titlecase }
       end
     end
     assert_response :success
@@ -88,7 +96,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     third_user = create(:user)
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       perform_enqueued_jobs do
-        post user_forgot_password_path, :params => { :email => third_user.email }
+        post new_user_password_path, :params => { :email => third_user.email }
       end
     end
     assert_response :redirect
@@ -103,7 +111,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # same (case insensitively unique) address in a different case
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       perform_enqueued_jobs do
-        post user_forgot_password_path, :params => { :email => third_user.email.upcase }
+        post new_user_password_path, :params => { :email => third_user.email.upcase }
       end
     end
     assert_response :redirect

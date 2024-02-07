@@ -177,6 +177,8 @@ OpenStreetMap::Application.routes.draw do
   post "/user/go_public" => "users#go_public"
 
   devise_for :users, :only => :passwords, :controllers => { :passwords => "passwords" }
+  get "/user/forgot-password", :to => redirect(:path => "/users/password/new")
+  get "/user/reset-password", :to => redirect(:path => "/users/password/new") # todo flash message?
 
   get "/user/suspended" => "users#suspended"
 
