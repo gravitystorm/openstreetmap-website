@@ -45,7 +45,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # Resetting with GET should fail
     assert_no_difference "ActionMailer::Base.deliveries.size" do
       perform_enqueued_jobs do
-        get new_user_password_path, :params => { :email => user.email }
+        get new_user_password_path, :params => { :user => { :email => user.email } }
       end
     end
     assert_response :success
@@ -54,7 +54,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # Resetting with POST should work
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       perform_enqueued_jobs do
-        post new_user_password_path, :params => { :email => user.email }
+        post user_password_path, :params => { :user => { :email => user.email } }
       end
     end
     assert_response :redirect
@@ -69,7 +69,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # that has the same address in a different case
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       perform_enqueued_jobs do
-        post new_user_password_path, :params => { :email => user.email.upcase }
+        post user_password_path, :params => { :user => { :email => user.email.upcase } }
       end
     end
     assert_response :redirect
@@ -84,7 +84,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # for more than one user but not an exact match for either
     assert_no_difference "ActionMailer::Base.deliveries.size" do
       perform_enqueued_jobs do
-        post new_user_password_path, :params => { :email => user.email.titlecase }
+        post user_password_path, :params => { :user => { :email => user.email.titlecase } }
       end
     end
     assert_response :success
@@ -96,7 +96,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     third_user = create(:user)
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       perform_enqueued_jobs do
-        post new_user_password_path, :params => { :email => third_user.email }
+        post user_password_path, :params => { :user => { :email => third_user.email } }
       end
     end
     assert_response :redirect
@@ -111,7 +111,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     # same (case insensitively unique) address in a different case
     assert_difference "ActionMailer::Base.deliveries.size", 1 do
       perform_enqueued_jobs do
-        post new_user_password_path, :params => { :email => third_user.email.upcase }
+        post user_password_path, :params => { :user => { :email => third_user.email.upcase } }
       end
     end
     assert_response :redirect
