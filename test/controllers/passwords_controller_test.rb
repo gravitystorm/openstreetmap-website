@@ -59,7 +59,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :redirect
     assert_redirected_to login_path
-    assert_match(/^Sorry you lost it/, flash[:notice])
+    assert_match(/^If your email address exists/, flash[:notice])
     email = ActionMailer::Base.deliveries.first
     assert_equal 1, email.to.count
     assert_equal user.email, email.to.first
@@ -74,7 +74,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :redirect
     assert_redirected_to login_path
-    assert_match(/^Sorry you lost it/, flash[:notice])
+    assert_match(/^If your email address exists/, flash[:notice])
     email = ActionMailer::Base.deliveries.first
     assert_equal 1, email.to.count
     assert_equal uppercase_user.email, email.to.first
@@ -87,9 +87,9 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
         post user_password_path, :params => { :user => { :email => user.email.titlecase } }
       end
     end
-    assert_response :success
-    assert_template :new
-    assert_select ".alert.alert-danger", /^Could not find that email address/
+    assert_response :redirect
+    assert_redirected_to login_path
+    assert_match(/^If your email address exists/, flash[:notice])
 
     # Test resetting using the address as recorded for a user that has an
     # address which is case insensitively unique
@@ -101,7 +101,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :redirect
     assert_redirected_to login_path
-    assert_match(/^Sorry you lost it/, flash[:notice])
+    assert_match(/^If your email address exists/, flash[:notice])
     email = ActionMailer::Base.deliveries.first
     assert_equal 1, email.to.count
     assert_equal third_user.email, email.to.first
@@ -116,7 +116,7 @@ class PasswordsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :redirect
     assert_redirected_to login_path
-    assert_match(/^Sorry you lost it/, flash[:notice])
+    assert_match(/^If your email address exists/, flash[:notice])
     email = ActionMailer::Base.deliveries.first
     assert_equal 1, email.to.count
     assert_equal third_user.email, email.to.first

@@ -139,6 +139,19 @@ class User < ApplicationRecord
     display_name
   end
 
+  def self.find_first_by_auth_conditions(tainted_conditions, opts = {})
+    # to_adapter.find_first(devise_parameter_filter.filter(tainted_conditions).merge(opts))
+    conditions = devise_parameter_filter.filter(tainted_conditions).merge(opts)
+    user = visible.find_by(conditions)
+    return user if user
+
+    email = conditions.delete("email")
+    users = visible.where(*conditions.merge("LOWER(email) = LOWER(?)" => email))
+    return users.first if users.count == 1
+
+    nil
+  end
+
   def self.authenticate(options)
     if options[:username] && options[:password]
       user = find_by("email = ? OR display_name = ?", options[:username].strip, options[:username])
