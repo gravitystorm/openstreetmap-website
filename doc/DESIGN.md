@@ -16,3 +16,5 @@ Other audiences are generally not prioritised. This includes people looking for 
 We want to make it as easy as practicable for developers to contribute. Most of our developers come from an OpenStreetMap background, are often unfamiliar with Ruby and/or Rails, and often only have limited time to learn the codebase beyond their immediate needs.
 
 To help them, we keep our code as straightforward as we can. We follow widespread conventions, so that when they find documentation elsewhere it is likely to be applicable. We also provide an extensive set of checks and linting, both in CI and ideally with editor integration, so that they can get immediate and actionable feedback on their code changes.
+
+We want to minimise the amount of code that we have to maintain. We can do this by finding upstream libraries that implement the features that we need. This way we benefit from our own efforts and also the efforts of the upstream developers too.
