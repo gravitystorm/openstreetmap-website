@@ -297,10 +297,10 @@ nav.primary, nav.secondary {
     display: none;
     position: relative;
     float: right;
-    width: 250px;
-    height: 100%;
+    width: 100%;
+    height: 50%;
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: scroll;
   }
 
   @include media-breakpoint-up(md) {
@@ -315,15 +315,15 @@ nav.primary, nav.secondary {
     #map {
       width: auto;
     }
+
+    #map-ui {
+      width: 250px;
+      height: 100%;
+      overflow-y: auto;
+    }
   }
 
   @include media-breakpoint-down(md) {
-    #map-ui {
-      width: 100%;
-      height: 50%;
-      overflow-y: scroll;
-    }
-
     .overlay-sidebar.overlay-right-sidebar {
       #sidebar {
         position: absolute;
