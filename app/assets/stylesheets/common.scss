@@ -303,6 +303,19 @@ nav.primary, nav.secondary {
     overflow-y: scroll;
   }
 
+  .overlay-sidebar.overlay-right-sidebar {
+    #sidebar {
+      position: absolute;
+      width: 350px;
+      height: auto;
+      overflow: hidden;
+    }
+
+    #map {
+      height: 100%;
+    }
+  }
+
   @include media-breakpoint-up(md) {
     #sidebar, #map {
       height: 100%;
@@ -316,25 +329,14 @@ nav.primary, nav.secondary {
       width: auto;
     }
 
+    .overlay-sidebar.overlay-right-sidebar #sidebar {
+      width: $sidebarWidth;
+    }
+
     #map-ui {
       width: 250px;
       height: 100%;
       overflow-y: auto;
-    }
-  }
-
-  @include media-breakpoint-down(md) {
-    .overlay-sidebar.overlay-right-sidebar {
-      #sidebar {
-        position: absolute;
-        width: 350px;
-        height: auto;
-        overflow: hidden;
-      }
-
-      #map {
-        height: 100%;
-      }
     }
   }
 }
