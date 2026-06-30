@@ -238,6 +238,7 @@ nav.primary, nav.secondary {
 
   #sidebar, #map {
     position: relative;
+    width: 100%;
     height: 50%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -245,7 +246,7 @@ nav.primary, nav.secondary {
 
   #sidebar {
     float: left;
-    width: $sidebarWidth;
+
   }
 
   .overlay-sidebar #sidebar {
@@ -305,13 +306,17 @@ nav.primary, nav.secondary {
     #sidebar, #map {
       height: 100%;
     }
+
+    #sidebar {
+      width: $sidebarWidth;
+    }
+
+    #map {
+      width: auto;
+    }
   }
 
   @include media-breakpoint-down(md) {
-    #sidebar, #map {
-      width: 100%;
-    }
-
     #map-ui {
       width: 100%;
       height: 50%;
