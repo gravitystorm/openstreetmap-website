@@ -299,7 +299,8 @@ nav.primary, nav.secondary {
     float: right;
     width: 250px;
     height: 100%;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: auto;
   }
 
   @include media-breakpoint-up(md) {
