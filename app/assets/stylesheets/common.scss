@@ -301,10 +301,8 @@ nav.primary, nav.secondary {
     height: 100%;
     overflow: auto;
   }
-}
 
-@include media-breakpoint-down(md) {
-  .map-layout {
+  @include media-breakpoint-down(md) {
     #sidebar, #map {
       position: relative;
       overflow-x: hidden;
