@@ -304,7 +304,7 @@ nav.primary, nav.secondary {
 }
 
 @include media-breakpoint-down(md) {
-  body.map-layout {
+  .map-layout {
     #sidebar, #map {
       position: relative;
       overflow-x: hidden;
